@@ -1,5 +1,5 @@
 layout: page
 title: Test Page
-permalink: /test
+permalink: /test/
 
 Did this work?
