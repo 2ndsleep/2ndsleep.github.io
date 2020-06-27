@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Home
+layout: main
+title: Second Sleep Home
 ---
 # Home
 
