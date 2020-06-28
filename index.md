@@ -1,7 +1,7 @@
 ---
-layout: default
-title: Home
+layout: main
+title: Second Sleep Home
 ---
-# Home
+# Second Sleep
 
-This is the placeholder for Second Sleep home page.
+Welcome to Second Sleep. This site is a collection of resources to show you how to execute and automate specific IT tasks.
