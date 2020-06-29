@@ -1,0 +1,7 @@
+- short_name: adds
+  name: Active Directory Domain Services
+  procedures:
+    - short_name: domain
+      name: New Domain
+    - short_name: dc
+      name: Additional Domain Controller
