@@ -1,8 +1,7 @@
 ---
 layout: service
-name: Active Directory Domain Services
-service: adds
-procedures: [domain]
+title: Active Directory Domain Services
+name: Active Directory
 ---
 Active Directory Domain Services is a directory that contains account information for users and other items in your network. In the olden days, you would create an username and password on a computer for each user that wanted to use that computer. This is a piss-poor way to do things if you have more than, well honestly, one person in your organization. What happens if a user wanted to use a different computer? Well, you'd have to create a user account on that new computer. What happens if the user changes their password on one computer? Now they have to remember two passwords. It's a mess!
 
