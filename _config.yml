@@ -5,3 +5,24 @@ collections:
     output: true
   procedures:
     output: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: "services"
+    values:
+      layout: service
+  - scope:
+      path: ""
+      type: "procedures"
+    values:
+      layout: procedure

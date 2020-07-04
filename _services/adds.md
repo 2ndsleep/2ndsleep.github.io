@@ -1,5 +1,4 @@
 ---
-layout: service
 title: Active Directory Domain Services
 name: Active Directory
 ---
