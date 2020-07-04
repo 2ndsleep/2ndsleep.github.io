@@ -9,15 +9,15 @@
     <div class="wrapper">
       {% include navigation.html %}
 
-      {% assign service = site.data.services | where: 'short_name', page.service | first %}
-      {% assign procedure_count = service.procedures | size %}
+      {% assign procedures = site.procedures | where: 'service', page.service %}
+      {% assign procedure_count = procedures | size %}
 
       {% if procedure_count != 0 %}
       <h2>Procedures</h2>
       <ul>
-        {% for procedure in service.procedures %}
+        {% for procedure in procedures %}
           <li>
-            {{ procedure.name }}
+            <a href="{{ procedure.url }}">{{ procedure.title }}</a>
           </li>
         {% endfor %}
       </ul>

@@ -3,3 +3,5 @@ theme: jekyll-theme-modernist
 collections:
   services:
     output: true
+  procedures:
+    output: true
