@@ -8,6 +8,8 @@
   <body>
     <div class="wrapper">
       {% include navigation.html %}
+      {{ content }}
+      {% include procedure-content.md %}
 
       {% assign service_posts = site.posts | where: 'service', page.service %}
       {% assign description_posts = service_posts | where: 'type', 'description' %}
@@ -57,8 +59,6 @@
         {% endfor %}      
       </ul>
       {% endif %}
-
-      {{ content }}  
     </div>
   </body>
 </html>

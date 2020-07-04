@@ -8,6 +8,8 @@
   <body>
     <div class="wrapper">
       {% include navigation.html %}
+      {% include service-content.md %}
+      {{ content }}
 
       {% assign procedures = site.procedures | where: 'service', page.name %}
       {% assign procedure_count = procedures | size %}
@@ -22,8 +24,6 @@
         {% endfor %}
       </ul>
       {% endif %}
-
-      {{ content }}
     </div>
   </body>
 </html>
