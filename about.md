@@ -1,5 +1,4 @@
 ---
-layout: default
 title: About
 ---
 # About (I'm Flattered You Care)
