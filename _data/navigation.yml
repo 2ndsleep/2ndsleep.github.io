@@ -1,8 +1,6 @@
-- name: Home
-  link: /
 - name: Topics
-  link: /topics.html
+  url: /topics.html
 - name: Latest Posts
-  link: /blog.html
+  url: /blog.html
 - name: About
-  link: /about.html
+  url: /about.html

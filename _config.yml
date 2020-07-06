@@ -1,4 +1,5 @@
-theme: jekyll-theme-modernist
+#theme: minima
+remote_theme: mmistakes/minimal-mistakes
 
 collections:
   services:
@@ -6,23 +7,5 @@ collections:
   procedures:
     output: true
 
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: post
-  - scope:
-      path: ""
-      type: "services"
-    values:
-      layout: service
-  - scope:
-      path: ""
-      type: "procedures"
-    values:
-      layout: procedure
+plugins:
+  - jekyll-include-cache
