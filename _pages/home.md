@@ -7,7 +7,7 @@ header:
   overlay_filter: "0"
   actions:
     - label: "Start Learning"
-      url: "https://google.com"
+      url: "/start"
 excerpt: "Bringing DevOps to IT"
 feature_row:
   - image_path: /assets/images/logos/secondsleep/profile.png
