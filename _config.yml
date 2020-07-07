@@ -19,5 +19,7 @@ collections:
   procedures:
     output: true
 
+include: ["_pages"]
+
 plugins:
   - jekyll-include-cache

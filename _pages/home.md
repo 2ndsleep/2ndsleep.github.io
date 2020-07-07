@@ -1,4 +1,5 @@
 ---
+permalink: /
 layout: splash
 title: Second Sleep
 header:
