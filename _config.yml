@@ -1,5 +1,17 @@
 #theme: minima
 remote_theme: mmistakes/minimal-mistakes
+minimal_mistakes_skin: "mint"
+locale: "en-US"
+title: "Second Sleep"
+subtitle: "Automate more. Nap more."
+name: "Blaine Perry"
+description: "A blog for using a DevOps approach to IT."
+url: "https://2ndsleep.github.io"
+logo: "/assets/images/logos/secondsleep/88x88.png"
+author:
+  name: "Blaine Perry"
+  location: "Asheville, NC"
+  bio: "Systems architecture with over 25 years of Azure cloud experience"
 
 collections:
   services:
