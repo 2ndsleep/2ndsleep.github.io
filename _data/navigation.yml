@@ -1,8 +1,9 @@
-- name: Home
-  link: /
-- name: Topics
-  link: /topics.html
-- name: Latest Posts
-  link: /blog.html
-- name: About
-  link: /about.html
+main:
+  - title: Get Started
+    url: /start
+  - title: Procedures
+    url: /procedures
+  - title: All Posts
+    url: /blog
+  - title: About
+    url: /about

@@ -1,4 +1,16 @@
-theme: jekyll-theme-modernist
+remote_theme: mmistakes/minimal-mistakes
+minimal_mistakes_skin: "mint"
+locale: "en-US"
+title: "Second Sleep"
+subtitle: "Automate more. Nap more."
+name: "Blaine Perry"
+description: "A blog for using a DevOps approach to IT."
+url: "https://2ndsleep.github.io"
+logo: "/assets/images/logos/secondsleep/88x88.png"
+author:
+  name: "Blaine Perry"
+  location: "Asheville, NC"
+  bio: "Systems architecture with over 25 years of Azure cloud experience"
 
 collections:
   services:
@@ -6,23 +18,27 @@ collections:
   procedures:
     output: true
 
+include: ["_pages"]
+
 defaults:
   - scope:
       path: ""
+      type: procedures
     values:
-      layout: "default"
+      layout: procedure
   - scope:
       path: ""
-      type: "posts"
-    values:
-      layout: post
-  - scope:
-      path: ""
-      type: "services"
+      type: services
     values:
       layout: service
   - scope:
       path: ""
-      type: "procedures"
+      type: posts
     values:
-      layout: procedure
+      layout: single
+      read_time: true
+      author_profile: true
+
+
+plugins:
+  - jekyll-include-cache

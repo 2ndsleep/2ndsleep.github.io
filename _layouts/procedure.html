@@ -1,64 +1,33 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      {% include navigation.html %}
-      {{ content }}
-      {% include procedure-content.md %}
+---
+layout: single
+---
+{{ content }}
 
-      {% assign service_posts = site.posts | where: 'service', page.service %}
-      {% assign description_posts = service_posts | where: 'type', 'description' %}
-      {% assign manual_posts = service_posts | where: 'type', 'manual' %}
-      {% assign scripted_posts = service_posts | where: 'type', 'scripted' %}
-      {% assign devops_posts = service_posts | where: 'type', 'devops' %}
+{% assign service_posts = site.posts | where: "service", page.service %}
+{% assign description_posts = service_posts | where: "type", "description" %}
 
-      {% assign description_posts_count = description_posts | size %}
-      {% assign manual_posts_count = manual_posts | size %}
-      {% assign scripted_posts_count = scripted_posts | size %}
-      {% assign devops_posts_count = devops_posts | size %}
+{% if description_posts %}
+<div class="notice">
+<p>Need a refresher on {{ page.service }}? Check out these overview pages.</p>
+<ul>
+  {% for description_post in description_posts %}
+    <li><a href="{{ description_post.url }}">{{ description_post.title }}</a></li>
+  {% endfor %}
+</ul>
+</div>
+{% endif %}
 
-      <h1>{{ page.name }}</h1>
-      <h2>Descriptions</h2>
+{% assign posts = service_posts | where: "procedure", page.name %}
+{% assign manual_posts = posts | where: "type", "manual" %}
+{% assign scripted_posts = posts | where: "type", "scripted" %}
+{% assign devops_posts = posts | where: "type", "devops" %}
 
-      {% if description_posts_count != 0 %}
-      <ul>
-        {% for post in description_posts %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-
-      {% if manual_posts_count != 0 %}
-      <h2>Manual Deployment</h2>
-      <ul>
-        {% for post in manual_posts %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}      
-      </ul>
-      {% endif %}
-
-      {% if scripted_posts_count != 0 %}
-      <h2>Scripted Deployment</h2>
-      <ul>
-        {% for post in scripted_posts %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}      
-      </ul>
-      {% endif %}
-
-      {% if devops_posts_count != 0 %}
-      <h2>DevOps Deployment</h2>
-      <ul>
-        {% for post in devops_posts %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}      
-      </ul>
-      {% endif %}
-    </div>
-  </body>
-</html>
+{% for post in manual_posts %}
+  {% include archive-single.html type=page.entries_layout %}
+{% endfor %}
+{% for post in scripted_posts %}
+  {% include archive-single.html type=page.entries_layout %}
+{% endfor %}
+{% for post in devops_posts %}
+  {% include archive-single.html type=page.entries_layout %}
+{% endfor %}

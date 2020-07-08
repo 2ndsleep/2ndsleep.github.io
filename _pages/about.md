@@ -1,5 +1,7 @@
 ---
 title: About
+permalink: /about
+layout: single
 ---
 # About (I'm Flattered You Care)
 
