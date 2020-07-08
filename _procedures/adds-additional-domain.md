@@ -1,6 +1,6 @@
 ---
-title: Add Domain Controllers to Domain
+name: Additional Domain Controller
 service: Active Directory
-procedure: Additional Domain
+order: 2
 ---
 This procedure shows you how to add domain controllers to an existing domain.

@@ -21,5 +21,20 @@ collections:
 
 include: ["_pages"]
 
+defaults:
+  - scope:
+      path: ""
+      type: procedures
+    values:
+      layout: procedure
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      read_time: true
+      author_profile: true
+
+
 plugins:
   - jekyll-include-cache

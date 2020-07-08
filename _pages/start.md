@@ -5,3 +5,7 @@ permalink: /start
 author_profile: true
 ---
 This describes what this is all about.
+
+[Procedures](/procedures)
+[Explainers](/explainers)
+[Thoughts](/thoughts)
