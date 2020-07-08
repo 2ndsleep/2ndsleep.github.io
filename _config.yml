@@ -29,6 +29,12 @@ defaults:
       layout: procedure
   - scope:
       path: ""
+      type: services
+    values:
+      layout: service
+      read_time: true
+  - scope:
+      path: ""
       type: posts
     values:
       layout: single
