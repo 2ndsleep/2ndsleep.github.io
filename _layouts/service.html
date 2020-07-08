@@ -14,3 +14,16 @@ layout: single
   {% endfor %}
 </ul>
 {% endif %}
+
+{% assign procedures = site.procedures | where: "service", page.name | sort: "order" %}
+{% if procedures %}
+  <h2>Do it yourself</h2>
+  {% for procedure in procedures %}
+    <ul>
+      <li>
+        <a href="{{ procedure.url }}">{{ procedure.name }}</a><br />
+        {{ procedure.excerpt }}
+      </li>
+    </ul>
+  {% endfor %}
+{% endif %}
