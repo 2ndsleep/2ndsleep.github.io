@@ -3,7 +3,7 @@ main:
     url: /start
   - title: Procedures
     url: /procedures
-  - title: Latest Posts
+  - title: All Posts
     url: /blog
   - title: About
     url: /about
