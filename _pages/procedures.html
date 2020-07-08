@@ -6,9 +6,14 @@ permalink: /procedures
 
 {% assign services = site.procedures | group_by: "service" %}
 
+{% assign description_posts = service_posts | where: "type", "description" %}
+
 <dl>
 {% for service in services %}
-  <dt>{{ service.name }}</dt>
+  {% assign service_collection_item = site.services | where: "name", service.name | first %}
+  <dt>
+    {{ service.name }} <a title="learn about {{ service.name }}" class="small" href="{{ service_collection_item.url }}">(?)</a>
+  </dt>
 
   {% assign procedures = service.items | sort: "order" %}
   {% for procedure in procedures %}
