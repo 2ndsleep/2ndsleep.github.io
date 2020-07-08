@@ -32,7 +32,6 @@ defaults:
       type: services
     values:
       layout: service
-      read_time: true
   - scope:
       path: ""
       type: posts
