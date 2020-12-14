@@ -1,1 +1,0 @@
-<p>Here is a list of all the procedures for the {{ page.name }} topic. Click on a procedure below to start doing this in your own lab!</p>

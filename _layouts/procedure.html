@@ -1,17 +1,21 @@
 ---
 layout: single
 ---
+{% assign parent_service = site.services | where: "title", page.service | first %}
+{% assign service_posts = site.posts | where: "service", page.service %}
+{% assign explainer_posts = service_posts | where: "type", "explainer" %}
+<div class="notice--info">
+  This procedure is part of the <a href="{{ parent_service.permalink }}">{{ parent_service.title }}</a>  service category.
+</div>
+
 {{ content }}
 
-{% assign service_posts = site.posts | where: "service", page.service %}
-{% assign description_posts = service_posts | where: "type", "description" %}
-
-{% if description_posts %}
+{% if explainer_posts.size > 0 %}
 <div class="notice">
 <p>Need a refresher on {{ page.service }}? Check out these overview pages.</p>
 <ul>
-  {% for description_post in description_posts %}
-    <li><a href="{{ description_post.url }}">{{ description_post.title }}</a></li>
+  {% for explainer_post in explainer_posts %}
+    <li><a href="{{ explainer_post.url }}">{{ explainer_post.title }}</a></li>
   {% endfor %}
 </ul>
 </div>
