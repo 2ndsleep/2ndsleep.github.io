@@ -1,9 +1,13 @@
 main:
-  - title: Get Started
+  - title: Start Learning
     url: /start
-  - title: Procedures
-    url: /procedures
+  - title: Show Me
+    url: /services
+  - title: Tell Me
+    url: /explainers
+  - title: Useless Thoughts
+    url: /thoughts
   - title: All Posts
     url: /blog
-  - title: About
+  - title: Why?
     url: /about

@@ -1,5 +1,5 @@
 ---
 name: New Virtual Network
-service: Network
+service: Networking
 ---
 This will show how to create a new virtual network.
