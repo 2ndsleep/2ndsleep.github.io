@@ -1,10 +1,6 @@
 main:
   - title: Start Learning
-    url: /start
-  - title: Show Me
     url: /services
-  - title: Tell Me
-    url: /explainers
   - title: Useless Thoughts
     url: /thoughts
   - title: All Posts
