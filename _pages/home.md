@@ -7,7 +7,7 @@ header:
   overlay_filter: "0"
   actions:
     - label: "Start Learning"
-      url: "/start"
+      url: "/services"
 excerpt: "Bringing DevOps to IT"
 ---
 This is a blog to show you how to automate for IT in Azure. Or to show you some IT basics. Or both.
