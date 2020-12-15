@@ -26,7 +26,7 @@ When you go to the [Start Learning](/services) page and then click on a service 
 
 ### Explainers
 
-The explainers are just write-ups to describe in plain English how things work. Like, suppose you're a fairly smart person but you're kind of starting out and you don't know 100% how DNS works, but you don't want to read a freaking white paper about it. Or maybe you're experienced but you just never got around to DNS. No shame. We can't know everything. This is a safe space. If you don't have the confidence leave the explainer up on your screen, keep a browser window open to the [AES ciphers](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#Description_of_the_ciphers) so you can look smart when your coworkers walk by.
+The explainers are write-ups to describe in plain English how things work. Like, suppose you're a fairly smart person but you're kind of starting out and you don't know 100% how DNS works, but you don't want to read a freaking white paper about it. Or maybe you're experienced but you just never got around to DNS. No shame. We can't know everything. This is a safe space. If you don't have the confidence leave the explainer up on your screen, keep a browser window open to the [AES ciphers](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#Description_of_the_ciphers) so you can look smart when your coworkers walk by.
 
 ### Procedures
 

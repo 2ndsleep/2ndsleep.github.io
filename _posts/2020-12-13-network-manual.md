@@ -1,7 +1,7 @@
 ---
 title: Network Manual
 procedure: New Virtual Network
-type: manual
+category: manual
 service: Networking
 ---
 This is manual network.

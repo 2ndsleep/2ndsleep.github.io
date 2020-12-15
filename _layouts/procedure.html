@@ -22,9 +22,9 @@ layout: single
 {% endif %}
 
 {% assign posts = service_posts | where: "procedure", page.name %}
-{% assign manual_posts = posts | where: "type", "manual" %}
-{% assign scripted_posts = posts | where: "type", "scripted" %}
-{% assign devops_posts = posts | where: "type", "devops" %}
+{% assign manual_posts = posts | where: "category", "manual" %}
+{% assign scripted_posts = posts | where: "category", "scripted" %}
+{% assign devops_posts = posts | where: "category", "devops" %}
 
 {% for post in manual_posts %}
   {% include archive-single.html type=page.entries_layout %}

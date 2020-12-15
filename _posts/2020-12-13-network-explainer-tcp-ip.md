@@ -1,6 +1,6 @@
 ---
 title: TCP/IP Explainer
-type: explainer
+category: explainer
 service: Networking
 toc: true
 ---

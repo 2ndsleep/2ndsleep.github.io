@@ -5,7 +5,7 @@ layout: single
 
 
 {% assign service_posts = site.posts | where: "service", page.title %}
-{% assign explainer_posts = service_posts | where: "type", "explainer" %}
+{% assign explainer_posts = service_posts | where: "category", "explainer" %}
 {% assign procedures = site.procedures | where: "service", page.title | sort: "order" %}
 
 {% if explainer_posts.size > 0 %}
