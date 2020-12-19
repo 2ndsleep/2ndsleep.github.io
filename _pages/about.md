@@ -13,7 +13,7 @@ What the filthy hell does that mean?? Well don't worry, just a few pages into th
 
 ![Landing zone architecture](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/ns-arch-expanded.png)
 
-Ah, that clears it up. Okay, so what do I do if I'm not some idiot manager who's looking to impress other idiot managers with nicer cufflinks by repeating words like "multisubscription" and "governance," but I'm not a hyper-nerd who spends their evenings reading RFCs? Where do I go? Just a regular nerd who wants to spend their weekends doing normal people things, like bird-watching or filling their bathtub with butter and rolling around so they can feel the butter between their toes and in their armpits. Normal things.
+Ah, that clears it up. Okay, so what do I do if I'm not some idiot manager who's looking to impress other idiot managers with more expensive neckties by repeating words like "multisubscription" and "governance," but I'm not a hyper-nerd who spends their evenings reading RFCs? Where do I go? Just a regular nerd who wants to spend their weekends doing normal people things, like bird-watching or filling their bathtub with butter and rolling around so they can feel the butter between their toes and in their armpits. Normal things.
 
 ## What's Here
 
