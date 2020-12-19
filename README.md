@@ -10,6 +10,14 @@ This site uses the [Minimal Mistakes Theme](https://mademistakes.com/work/minima
 
 Visitors that drop into the home page are expected navigate through the **Starting Learning** links. These actually links to the [Services](/services) page which lists all the broad categories of blog content. Each service is further divided into Explainers and Procedures.
 
+``` mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
 ### Services
 
 Services are the broad categories of blog content. They closely follow Azure resource types, but will not necessarily be a one-to-one mapping of resource types.
