@@ -1,5 +1,5 @@
 ---
-title: Why? Who? What?
+title: Why? What? Huh?
 permalink: /about
 layout: single
 ---
