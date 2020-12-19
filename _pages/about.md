@@ -9,7 +9,7 @@ For example, here's the expository line describing a feature called [Azure landi
 
 > Azure landing zones are the output of a multisubscription Azure environment that accounts for scale, security, governance, networking, and identity.
 
-What the fuck does that mean?? Well don't worry, just a few pages into the documentation you get this:
+What the filthy hell does that mean?? Well don't worry, just a few pages into the documentation you get this:
 
 ![Landing zone architecture](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/ns-arch-expanded.png)
 
@@ -19,14 +19,14 @@ Ah, that clears it up. Okay, so what do I do if I'm not some idiot manager who's
 
 This blog has two main goals:
 
-- Explain how the hell things actually work
+- Explain how things actually work
 - Show you how to automate your Azure environment
 
 When you go to the [Start Learning](/services) page and then click on a service category, you'll be presented with links to the following items.
 
 ### Explainers
 
-The explainers are write-ups to describe in plain English how things work. Like, suppose you're a fairly smart person but you're kind of starting out and you don't know 100% how DNS works, but you don't want to read a freaking white paper about it. Or maybe you're experienced but you just never got around to DNS. No shame. We can't know everything. This is a safe space. If you don't have the confidence leave the explainer up on your screen, keep a browser window open to the [AES ciphers](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#Description_of_the_ciphers) so you can look smart when your coworkers walk by.
+The explainers are write-ups to describe in plain English how things work. Like, suppose you're a fairly smart person but you're kind of starting out and you don't know 100% how DNS works, but you don't want to read a freaking white paper about it. Or maybe you're experienced but you just never got around to DNS. No shame. We can't know everything. This is a safe space. If you don't have the confidence leave the explainer up on your screen, keep a browser window open to the [AES ciphers](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#Description_of_the_ciphers) Wikipedia page so you can look smart when your coworkers walk by.
 
 ### Procedures
 
