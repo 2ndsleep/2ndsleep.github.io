@@ -12,7 +12,10 @@ author:
   name: "Blaine Perry"
   location: "Asheville, NC"
   bio: "Systems architecture with over 25 years of Azure cloud experience"
-
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-58PR5VHWK0"  
 collections:
   services:
     output: true
