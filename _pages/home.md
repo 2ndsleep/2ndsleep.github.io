@@ -17,7 +17,6 @@ feature_row:
   - title: You want to DevOps better
     excerpt: ...or automate more in general?
 ---
-
 Has this ever happened to you?
 
 {% include feature_row %}
