@@ -1,0 +1,25 @@
+{% comment %}
+This include will remove the following header, if present, in an SVG file.
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+If this header exists in the SVG file, it will be escaped and rendered as plain text in the output.
+This header is always included when created SVG with Inkscape, so this will ensure the header is removed
+so that the SVG author doesn't have to remember to remove it each time.
+
+To use this include for adding SVG images, use this in your Jekyll files:
+    {% include svg.html path="svg_file_render.svg" %}
+{% endcomment %}
+
+{% capture full_svg %}
+    {% include {{ include.path }} %}
+{% endcapture %}
+
+{% assign svg_split = full_svg | split: '?>' %}
+{% if svg_split.size == 0 %}
+    {% assign svg_content = full_svg %}
+{% else %}
+    {% assign line_to_remove = svg_split[0] | append: '?>' %}
+    {% assign svg_content = full_svg | remove_first: line_to_remove %}
+{% endif %}
+
+{{ svg_content }}
