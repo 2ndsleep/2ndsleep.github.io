@@ -54,3 +54,17 @@ Procedures are simply posts that have have a Front Matter `procedure` value matc
 Explainers are posts that descibe how a certain service works in plain English. They are intended to be an introduction for audiences that are not familiar with the topic where introductory information is not readily available.
 
 Explainers are simply posts that have have a Front Matter `category` value of `thoughts`.
+
+## Miscellaneous
+
+SVG drawings made by Inkscape will have a leading prolog that will get rendered as escaped HTML when using the `include` Liquid tag. This prolog looks like this.
+
+``` xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+```
+
+As special include file of `svg.html` will properly render an embedded SVG file by removing the prolog if it exists. The syntax for using this include file is as follows.
+
+```
+{% include svg.html path="svg_file_render.svg" %}
+```
