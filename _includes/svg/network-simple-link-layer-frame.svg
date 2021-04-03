@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="76"
+   width="659.31836"
+   version="1.1"
+   id="svg987"
+   sodipodi:docname="network-simple-link-layer-frame.svg"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
+  <metadata
+     id="metadata993">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs991">
+    <rect
+       x="68.224136"
+       y="220.72514"
+       width="169.89148"
+       height="89.627785"
+       id="rect997" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1255"
+     inkscape:window-height="766"
+     id="namedview989"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="2.1900633"
+     inkscape:cx="610.74989"
+     inkscape:cy="3.5074297"
+     inkscape:window-x="1931"
+     inkscape:window-y="154"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg987"
+     inkscape:document-rotation="0" />
+  <rect
+     x="9.8183594"
+     y="0.50000226"
+     width="100"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rect923" />
+  <text
+     x="59.818359"
+     y="22.479494"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text927">Preamble &amp; <tspan
+   x="59.818359"
+   y="37.479496"
+   text-anchor="middle"
+   id="tspan925">SFD</tspan></text>
+  <rect
+     x="9.8183594"
+     y="50.500004"
+     width="100"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rect929" />
+  <text
+     x="59.818359"
+     y="66.747559"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text931">indicates new frame</text>
+  <rect
+     x="109.81836"
+     y="0.50000226"
+     width="100"
+     height="50"
+     id="rectMacDestination"
+     style="stroke:#000000;fill:none"
+     class="svg-primary" />
+  <text
+     x="159.81836"
+     y="22.350588"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text937">MAC <tspan
+   x="159.81836"
+   y="37.35059"
+   text-anchor="middle"
+   id="tspan935">Destination</tspan></text>
+  <rect
+     x="109.81836"
+     y="50.500004"
+     width="100"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rect939" />
+  <text
+     x="159.81836"
+     y="60.790531"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text943">where this frame <tspan
+   x="159.81836"
+   y="70.790527"
+   text-anchor="middle"
+   id="tspan941">is coming from</tspan></text>
+  <rect
+     x="209.81836"
+     y="0.50000226"
+     width="100"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectMacSource"
+     class="svg-primary" />
+  <text
+     x="259.81836"
+     y="22.350588"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text949">MAC <tspan
+   x="259.81836"
+   y="37.35059"
+   text-anchor="middle"
+   id="tspan947">Source</tspan></text>
+  <rect
+     x="209.81836"
+     y="50.500004"
+     width="100"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rect951" />
+  <text
+     x="259.81836"
+     y="60.790531"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text955">where this frame <tspan
+   x="259.81836"
+   y="70.790527"
+   text-anchor="middle"
+   id="tspan953">is going</tspan></text>
+  <rect
+     x="309.81836"
+     y="0.50000226"
+     width="75"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rect957" />
+  <text
+     x="346.81836"
+     y="21.351564"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text961">Ethernet <tspan
+   x="346.81836"
+   y="36.351566"
+   text-anchor="middle"
+   id="tspan959">Type</tspan></text>
+  <rect
+     x="309.81836"
+     y="50.500004"
+     width="75"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rect963" />
+  <text
+     x="346.81836"
+     y="61.723148"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text967">metadata <tspan
+   x="346.81836"
+   y="71.723145"
+   text-anchor="middle"
+   id="tspan965">about frame</tspan></text>
+  <rect
+     x="384.81836"
+     y="0.50000226"
+     width="200"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectPayload"
+     class="svg-primary" />
+  <text
+     x="484.81836"
+     y="28.851564"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text971">Payload</text>
+  <rect
+     x="384.81836"
+     y="50.500004"
+     width="200"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rect973" />
+  <text
+     x="484.81836"
+     y="66.723145"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text975">actual data</text>
+  <rect
+     x="584.87262"
+     y="0.55427003"
+     width="73.891464"
+     height="49.891464"
+     style="fill:none;stroke:#000000;stroke-width:1.10854"
+     id="rect977" />
+  <text
+     x="621.57812"
+     y="29.862307"
+     width="60"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text979">FCS</text>
+  <rect
+     x="584.87207"
+     y="50.553684"
+     width="73.892639"
+     height="24.892635"
+     style="fill:#d3d3d3;stroke:#000000;stroke-width:1.10736"
+     id="rect981" />
+  <text
+     x="623.42725"
+     y="61.747562"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="text985">verification <tspan
+   x="623.42725"
+   y="71.747559"
+   text-anchor="middle"
+   id="tspan983">data</tspan></text>
+</svg>
