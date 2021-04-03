@@ -10,7 +10,7 @@
    height="76"
    width="659.31836"
    version="1.1"
-   id="svg987"
+   id="svgLayer2Frame"
    sodipodi:docname="network-simple-link-layer-frame.svg"
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
   <metadata
@@ -51,13 +51,13 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="2.1900633"
-     inkscape:cx="610.74989"
-     inkscape:cy="3.5074297"
-     inkscape:window-x="1931"
-     inkscape:window-y="154"
+     inkscape:zoom="0.77430431"
+     inkscape:cx="332.99782"
+     inkscape:cy="-99.776715"
+     inkscape:window-x="1886"
+     inkscape:window-y="84"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg987"
+     inkscape:current-layer="svgLayer2Frame"
      inkscape:document-rotation="0" />
   <rect
      x="9.8183594"
@@ -65,14 +65,14 @@
      width="100"
      height="50"
      style="fill:none;stroke:#000000"
-     id="rect923" />
+     id="rectPreamble" />
   <text
      x="59.818359"
      y="22.479494"
      font-size="12px"
      fill="#000000"
      text-anchor="middle"
-     id="text927">Preamble &amp; <tspan
+     id="textPreamble">Preamble &amp; <tspan
    x="59.818359"
    y="37.479496"
    text-anchor="middle"
@@ -83,14 +83,14 @@
      width="100"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rect929" />
+     id="rectPreambleDescription" />
   <text
      x="59.818359"
      y="66.747559"
      font-size="10px"
      fill="#000000"
      text-anchor="middle"
-     id="text931">indicates new frame</text>
+     id="textPreambleDescription">indicates new frame</text>
   <rect
      x="109.81836"
      y="0.50000226"
@@ -105,7 +105,7 @@
      font-size="12px"
      fill="#000000"
      text-anchor="middle"
-     id="text937">MAC <tspan
+     id="textMacDestination">MAC <tspan
    x="159.81836"
    y="37.35059"
    text-anchor="middle"
@@ -116,14 +116,14 @@
      width="100"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rect939" />
+     id="rectMacDestinationDescription" />
   <text
      x="159.81836"
      y="60.790531"
      font-size="10px"
      fill="#000000"
      text-anchor="middle"
-     id="text943">where this frame <tspan
+     id="textMacDestinationDescription">where this frame <tspan
    x="159.81836"
    y="70.790527"
    text-anchor="middle"
@@ -142,7 +142,7 @@
      font-size="12px"
      fill="#000000"
      text-anchor="middle"
-     id="text949">MAC <tspan
+     id="textMacSource">MAC <tspan
    x="259.81836"
    y="37.35059"
    text-anchor="middle"
@@ -153,14 +153,14 @@
      width="100"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rect951" />
+     id="rectMacSourceDescription" />
   <text
      x="259.81836"
      y="60.790531"
      font-size="10px"
      fill="#000000"
      text-anchor="middle"
-     id="text955">where this frame <tspan
+     id="textMacSourceDescription">where this frame <tspan
    x="259.81836"
    y="70.790527"
    text-anchor="middle"
@@ -171,14 +171,14 @@
      width="75"
      height="50"
      style="fill:none;stroke:#000000"
-     id="rect957" />
+     id="rectType" />
   <text
      x="346.81836"
      y="21.351564"
      font-size="12px"
      fill="#000000"
      text-anchor="middle"
-     id="text961">Ethernet <tspan
+     id="textType">Ethernet <tspan
    x="346.81836"
    y="36.351566"
    text-anchor="middle"
@@ -189,14 +189,14 @@
      width="75"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rect963" />
+     id="rectTypeDescription" />
   <text
      x="346.81836"
      y="61.723148"
      font-size="10px"
      fill="#000000"
      text-anchor="middle"
-     id="text967">metadata <tspan
+     id="textTypeDescription">metadata <tspan
    x="346.81836"
    y="71.723145"
    text-anchor="middle"
@@ -215,28 +215,28 @@
      font-size="12px"
      fill="#000000"
      text-anchor="middle"
-     id="text971">Payload</text>
+     id="textPayload">Payload</text>
   <rect
      x="384.81836"
      y="50.500004"
      width="200"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rect973" />
+     id="rectPayloadDescription" />
   <text
      x="484.81836"
      y="66.723145"
      font-size="10px"
      fill="#000000"
      text-anchor="middle"
-     id="text975">actual data</text>
+     id="textPayloadDescription">actual data</text>
   <rect
      x="584.87262"
      y="0.55427003"
      width="73.891464"
      height="49.891464"
      style="fill:none;stroke:#000000;stroke-width:1.10854"
-     id="rect977" />
+     id="rectFcs" />
   <text
      x="621.57812"
      y="29.862307"
@@ -244,21 +244,21 @@
      font-size="12px"
      fill="#000000"
      text-anchor="middle"
-     id="text979">FCS</text>
+     id="textFcs">FCS</text>
   <rect
      x="584.87207"
      y="50.553684"
      width="73.892639"
      height="24.892635"
      style="fill:#d3d3d3;stroke:#000000;stroke-width:1.10736"
-     id="rect981" />
+     id="rectFcsDescription" />
   <text
      x="623.42725"
      y="61.747562"
      font-size="10px"
      fill="#000000"
      text-anchor="middle"
-     id="text985">verification <tspan
+     id="textFcsDescription">verification <tspan
    x="623.42725"
    y="71.747559"
    text-anchor="middle"
