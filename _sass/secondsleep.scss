@@ -1,5 +1,33 @@
-$svg-primary: $primary-color;
+/* Pull colors from minimal mistakes theme */
+$svg-primary-color: $primary-color;
+$svg-secondary-color: $border-color;
+$svg-border-color: mix(#000, $svg-secondary-color, 25%);
+$svg-text-color: $text-color;
 
-.svg-primary {
-    fill: $svg-primary !important;
+%svg-box-shared {
+    stroke:$svg-border-color !important;
+}
+
+.svg-box {
+    @extend %svg-box-shared;
+}
+
+.svg-box-primary {
+    @extend %svg-box-shared;
+    fill: $svg-primary-color !important;
+}
+
+.svg-box-secondary {
+    @extend %svg-box-shared;
+    fill: $svg-secondary-color !important;
+}
+
+svg text::selection {
+    fill: #fff;
+    background: #000;
+}
+
+svg tspan::selection {
+    fill: #fff;
+    background: #000;
 }

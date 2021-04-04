@@ -52,10 +52,10 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.77430431"
-     inkscape:cx="332.99782"
-     inkscape:cy="-99.776715"
-     inkscape:window-x="1886"
-     inkscape:window-y="84"
+     inkscape:cx="388.58479"
+     inkscape:cy="-26.155724"
+     inkscape:window-x="259"
+     inkscape:window-y="82"
      inkscape:window-maximized="0"
      inkscape:current-layer="svgLayer2Frame"
      inkscape:document-rotation="0" />
@@ -65,7 +65,8 @@
      width="100"
      height="50"
      style="fill:none;stroke:#000000"
-     id="rectPreamble" />
+     id="rectPreamble"
+     class="svg-box" />
   <text
      x="59.818359"
      y="22.479494"
@@ -83,7 +84,8 @@
      width="100"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rectPreambleDescription" />
+     id="rectPreambleDescription"
+     class="svg-box-secondary" />
   <text
      x="59.818359"
      y="66.747559"
@@ -98,7 +100,7 @@
      height="50"
      id="rectMacDestination"
      style="stroke:#000000;fill:none"
-     class="svg-primary" />
+     class="svg-box-primary" />
   <text
      x="159.81836"
      y="22.350588"
@@ -116,7 +118,8 @@
      width="100"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rectMacDestinationDescription" />
+     id="rectMacDestinationDescription"
+     class="svg-box-secondary" />
   <text
      x="159.81836"
      y="60.790531"
@@ -135,7 +138,7 @@
      height="50"
      style="fill:none;stroke:#000000"
      id="rectMacSource"
-     class="svg-primary" />
+     class="svg-box-primary" />
   <text
      x="259.81836"
      y="22.350588"
@@ -153,7 +156,8 @@
      width="100"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rectMacSourceDescription" />
+     id="rectMacSourceDescription"
+     class="svg-box-secondary" />
   <text
      x="259.81836"
      y="60.790531"
@@ -171,7 +175,8 @@
      width="75"
      height="50"
      style="fill:none;stroke:#000000"
-     id="rectType" />
+     id="rectType"
+     class="svg-box" />
   <text
      x="346.81836"
      y="21.351564"
@@ -189,7 +194,8 @@
      width="75"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rectTypeDescription" />
+     id="rectTypeDescription"
+     class="svg-box-secondary" />
   <text
      x="346.81836"
      y="61.723148"
@@ -208,7 +214,7 @@
      height="50"
      style="fill:none;stroke:#000000"
      id="rectPayload"
-     class="svg-primary" />
+     class="svg-box-primary" />
   <text
      x="484.81836"
      y="28.851564"
@@ -222,7 +228,8 @@
      width="200"
      height="25"
      style="fill:#d3d3d3;stroke:#000000"
-     id="rectPayloadDescription" />
+     id="rectPayloadDescription"
+     class="svg-box-secondary" />
   <text
      x="484.81836"
      y="66.723145"
@@ -236,7 +243,8 @@
      width="73.891464"
      height="49.891464"
      style="fill:none;stroke:#000000;stroke-width:1.10854"
-     id="rectFcs" />
+     id="rectFcs"
+     class="svg-box" />
   <text
      x="621.57812"
      y="29.862307"
@@ -251,7 +259,8 @@
      width="73.892639"
      height="24.892635"
      style="fill:#d3d3d3;stroke:#000000;stroke-width:1.10736"
-     id="rectFcsDescription" />
+     id="rectFcsDescription"
+     class="svg-box-secondary" />
   <text
      x="623.42725"
      y="61.747562"
