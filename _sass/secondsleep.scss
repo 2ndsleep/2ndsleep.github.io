@@ -1,8 +1,9 @@
-// Pull colors from minimal mistakes theme
+// Pull colors from minimal mistakes theme where necessary/possible.
 $svg-primary-color: $primary-color;
 $svg-secondary-color: $border-color;
 $svg-border-color: mix(#000, $svg-secondary-color, 25%);
 $svg-text-color: $text-color;
+$svg-primary-text-color: #fff;
 
 %svg-box-shared {
     stroke:$svg-border-color !important;
@@ -15,6 +16,10 @@ $svg-text-color: $text-color;
 .svg-box-primary {
     @extend %svg-box-shared;
     fill: $svg-primary-color !important;
+}
+
+.svg-text-primary {
+    fill: $svg-primary-text-color;
 }
 
 .svg-box-secondary {
