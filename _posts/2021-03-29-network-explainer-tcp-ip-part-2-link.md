@@ -39,15 +39,7 @@ Each physical network device has something called a MAC address associated with 
 
 A MAC address is a hexadecimal value that looks something like this: `{{ mac1 }}`. As I said, each network adapter has one MAC address assigned to it. If we made the world's smallest network and connected two computers together with an Ethernet cable, these two computers could talk to each other directly by sending data to each other's MAC addresses. They wouldn't even need to use IP addresses!
 
-<div class="mermaid">
-graph LR;
-  subgraph Computer 1;
-    NIC1[{{ mac1 }}];
-  end;
-  subgraph Computer 2;
-    NIC1-->NIC2[{{ mac2 }}];
-  end;
-</div>
+{% include svg.html path="svg/network-link-layer-2-computer.svg" %}
 
 ## Data Frames
 
