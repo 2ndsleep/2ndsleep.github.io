@@ -47,14 +47,14 @@ Okay, first of all, let's settle on some terms. I'm going to mix up the language
 
 An Ethernet frame is a chunk of data that's sent from one network adapter, transmitted over a cable, and then received by another network adapter. This data is a bunch of 1's & 0's but it is ordered in a way that each network adapter can understand it. The sequence of the data on a frame is thusly:
 
-{% include svg.html path="svg/network-simple-link-layer-frame.svg" %}
+{% include svg.html path="svg/network-link-layer-frame.svg" %}
 
-Most of this isn't that imporant (unless you're dealing with VLANs, which I'm totally ignoring in this post), so let's focus on the three things that are worth talking about.
+The diagram above means that when one computer transit a frame of data, it will transfer a bunch of 1's & 0's representing the preamble first, then 1's & 0's respresenting the MAC destination, etc. The receiving computer will receive the data in the same order, beginning with the preamble. Most of this isn't that imporant (unless you're dealing with VLANs, which I'm totally ignoring in this post), so let's focus on the three things that are worth talking about.
 
 - **MAC Destination**: This is the MAC address of the network adapter that this frame is going to. When a network adapter wants to send a frame to another network adapter, it puts the MAC address of that other network adapter here.
 - **MAC Source**: This is the MAC address of the network adapter that sent this frame. If this is the network adapter that's sending this frame, it's going to put its own MAC address here.
 - **Payload**: This is the actual data we're sending. So if one computer is sending a video of a cat to another computer, this video data will be sent in the payload. This deserves a little more nuanced explanation here.
-  - Well, not the entire cat video will be sent. As you can probably guess, data is broken up into smaller chunks and sent in pieces. So the payload of this frame will be one part of the cat video.
+  - Not the entire cat video will be sent. As you can probably guess, data is broken up into smaller chunks and sent in pieces. So the payload of this frame will be one part of the cat video, like a whisker.
   - The payload won't just contain the cat video data, it will contain information about the Internet Layer, i.e., IP addresses. But don't get too hung up on that. The point is, each layer will contain a payload that may or may not have information inside it for the next layer, but the current layer doesn't care. The network adapter just knows that it's going to unpack the payload from the frame and send it on to the next layer. This concept is known as *encapsulation* if you're reading a textbook.
 
 How does a network adapter know the MAC address of another network adapter? We'll get to that later in this section, but for now, let's just assume that the computers already know the MAC addresses of all the other computers it wants to talk to. In fact, you may be wondering, why do we need IP addresses if we have MAC addresses? Well, the truth is, we don't. If we had just a few computers networked together, MAC addresses would be sufficient and we could conceivably skip IP addresses altogether. But once we get outside of our little network, we're going to need more than just MAC addresses, as we'll see.
