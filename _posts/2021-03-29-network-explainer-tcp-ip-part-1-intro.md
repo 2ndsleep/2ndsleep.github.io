@@ -12,6 +12,10 @@ Ethernet (Not all layers have to use Ethernet/IP/TCP, etc)
 
 Virtual/physical
 
+NIC vs computer
+
+No wireless
+
 Network+
 
 ## Models
