@@ -63,56 +63,15 @@ How does a network adapter know the MAC address of another network adapter? We'l
 
 The end of the last section gave you a preview of what IP addresses do, but let's go back to pretending they don't exist. We're going to keep our network small but make it bigger than two computers. If we want to have three or more computers talk to each other, we'll need to put some kind of network device to connect them all. We'll need to use something called a *switch*. (If you're old like me, you'll be familiar with something called a *hub*. They look like switches, but they are very anitquated, and slow as dick for reasons that will make sense if you study for the Network+ exam. I don't even know where you'd buy a hub anymore. If you're still using a hub in a professional environment, then may God have mercy on your soul.)
 
-<div class="mermaid">
-graph LR;
-  S(Switch);
-  subgraph Computer 1;
-    NIC1[{{ mac1 }}];
-  end;
-  subgraph Computer 2;
-    NIC2[{{ mac2 }}];
-  end;
-  subgraph Computer 3;
-    NIC3[{{ mac3 }}];
-  end;
-  NIC1[{{ mac1 }}]---S;
-  NIC2[{{ mac2 }}]---S;
-  NIC3[{{ mac3 }}]---S;
-</div>
+{% include svg.html path="svg/network-link-layer-computers-switch.svg" %}
 
 A switch is a device that has multiple physical ports. For the sake of argument, let's say this is the rare 3-port switch and it looks like this.
 
-<div class="mermaid">
-graph LR;
-  subgraph Switch;
-    P1[Port1];
-    P2[Port2];
-    P3[Port3];
-  end;
-</div>
+{% include svg.html path="svg/network-link-layer-switch.svg" %}
 
 So let's show the switch ports that each computer is plugged into.
 
-<div class="mermaid">
-graph LR;
-  subgraph Switch;
-    P1[Port1];
-    P2[Port2];
-    P3[Port3];
-  end;
-  subgraph Computer 1;
-    NIC1[{{ mac1 }}];
-  end;
-  subgraph Computer 2;
-    NIC2[{{ mac2 }}];
-  end;
-  subgraph Computer 3;
-    NIC3[{{ mac3 }}];
-  end;
-  NIC1[{{ mac1 }}]---P1;
-  NIC2[{{ mac2 }}]---P2;
-  NIC3[{{ mac3 }}]---P3;
-</div>
+{% include svg.html path="svg/network-link-layer-computers-switch-numbered.svg" %}
 
 To be clear, the ports on the right are the physical ports of the switch. Like, the jacks on the port that you'd plug an Ethernet cable into so that it makes a click sound. Since each switch port is plugged into a network adapter on a computer, you've got that computer's netwok adapter MAC address associated with each switch port. The switch keeps track of which MAC address is associated with each port in its MAC address table.
 
