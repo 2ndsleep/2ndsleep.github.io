@@ -20,7 +20,7 @@ Ethernet is a way for computers to communicate with each other on a network. Eth
 
 Before we move forward, I'm going to offer an absurdly over-simplified analgoy for how Ethernet works. It gets more confusing later on so hopefully this will help you picture it easily.
 
-Let's pretend that it's 1987, the internet doesn't exist, and you're just hooking a bunch of computers together in your living room for shits and giggles. And let's pretend that each computer is assigned a unique identifying number. So in our scenario, we've got four computers. The ID number for the first one is `1` and the ID number for the fourth one is `4`. (At this point, if you don't understand my numbering system, then yes, you *are* kind of dumb and maybe you should think about pursuing a management career path instead.)
+Let's pretend that it's 1987, the public internet doesn't exist, and you're just hooking a bunch of computers together in your living room for shits and giggles. And let's pretend that each computer is assigned a unique identifying number. So in our scenario, we've got four computers. The ID number for the first one is `1` and the ID number for the fourth one is `4`. (At this point, if you don't understand my numbering system, then yes, you *are* kind of dumb and maybe you should think about pursuing a management career path instead.)
 
 {% include svg.html path="svg/network-simple-link-layer.svg" %}
 
@@ -73,15 +73,11 @@ So let's show the switch ports that each computer is plugged into.
 
 {% include svg.html path="svg/network-link-layer-computers-switch-numbered.svg" %}
 
-To be clear, the ports on the right are the physical ports of the switch. Like, the jacks on the port that you'd plug an Ethernet cable into so that it makes a click sound. Since each switch port is plugged into a network adapter on a computer, you've got that computer's netwok adapter MAC address associated with each switch port. The switch keeps track of which MAC address is associated with each port in its MAC address table.
+Since each switch port is plugged into a network adapter on a computer, you've got that computer's netwok adapter MAC address associated with each switch port. The switch keeps track of which MAC address is associated with each port in its MAC address table.
 
-Let's say this switch has been running for a while and computer 1 and computer 2 have been chatting with each other. The switch has figured out the MAC addresses of these computers by now and has recorded it into the MAC address table.
+Let's say this switch has been running for a while and computer 1 and computer 2 have been chatting with each other, while computer 3 has been shutdown. The switch has figured out the MAC addresses of these computers by now and has recorded it into the MAC address table.
 
-|Port|MAC Address|
-|----|-----------|
-|1|{{ mac1 }}|
-|2|{{ mac2 }}|
-|3|dunno|
+{% include svg.html path="svg/network-link-layer-computers-switch-1-2.svg" %}
 
 So when computer 1 sends a packet to computer 2, it generates an Ethernet frame with a source MAC address of `{{ mac1 }}` and destintion MAC address of `{{ mac2 }}`. Computer 1 puts the frame on the Ethernet cable and then, bleep, bloop, bleep, the signal travels down the wire and arrives at port 1 of the switch. The switch reads the frame, inspects the destination MAC address, and looks up the destination MAC address from the table. It sees that `{{ mac2 }}` is connected to port 2 and then bloop, bleep, bloop, it sends the signal over the Ethernet cable plugged into port 2 and onto computer 2.
 
