@@ -81,6 +81,8 @@ Let's say this switch has been running for a while and computer 1 and computer 2
 
 So when computer 1 sends a packet to computer 2, it generates an Ethernet frame with a source MAC address of `{{ mac1 }}` and destintion MAC address of `{{ mac2 }}`. Computer 1 puts the frame on the Ethernet cable and then, bleep, bloop, bleep, the signal travels down the wire and arrives at port 1 of the switch. The switch reads the frame, inspects the destination MAC address, and looks up the destination MAC address from the table. It sees that `{{ mac2 }}` is connected to port 2 and then bloop, bleep, bloop, it sends the signal over the Ethernet cable plugged into port 2 and onto computer 2.
 
+{% include svg.html path="svg/network-link-layer-computers-switch-1-2-animated.svg" %}
+
 Great, pretty easy, right? The switch simply checks the destination MAC address of all incoming frames, looks up that MAC address from its MAC address table, and then sends it to the associated port. But how does the switch know which MAC address is associated with which port? Pretty simple, actually. Everytime the switch receives a frame, it records in its MAC address table the source MAC address of the incoming frame.
 
 So let's say computer 3 wants to send a cat video to computer 2. First, let's just assume that computer 3 already knows the MAC address of computer 2 (don't worry how it knows yet). Computer 3 generates an Ethernet frame with a source MAC address of `{{ mac3 }}` and a destination MAC address of `{{ mac2 }}` and sends it over the wire. The switch receives the frame on port 3 and says, "hey, I don't know balls about port 3 - I should remember this!" So it inspects the source MAC address and records it in its MAC address table, like this:
