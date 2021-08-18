@@ -36,3 +36,56 @@ svg tspan::selection {
     fill: #fff;
     background: #000;
 }
+
+
+
+@keyframes msg-1-move {
+    from {
+        offset-distance: 0%;
+    }
+    20% {
+        offset-distance: 100%;
+    }
+    to {
+        offset-distance: 100%;
+    }
+}
+
+@keyframes msg-2-appear {
+    20% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes highlight-row {
+    20% {
+        fill: transparent;
+    }
+    30% {
+        fill: $svg-secondary-color;
+    }
+    to {
+        fill: $svg-secondary-color;
+    }
+}
+
+#gMessage1 {
+    offset-path: path('M0,0 L23,18');
+    offset-rotate: 0deg;
+    animation: 10s ease-in-out 0s infinite both running msg-1-move;
+}
+
+#gMessage2 {
+    opacity: 0;
+    animation: 10s linear 0s infinite backwards running msg-2-appear;
+}
+
+#rectAddressTableRow2 {
+    animation: 10s linear 0s infinite backwards running highlight-row;
+}
