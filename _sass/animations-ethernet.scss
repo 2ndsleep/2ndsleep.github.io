@@ -34,6 +34,18 @@
     }
 }
 
+@keyframes msg-2-appear-opposite {
+    20% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 @keyframes highlight-row {
     20% {
         fill: transparent;
@@ -69,4 +81,13 @@
 
 #svg3-2-animated #rectAddressTableRow3 {
     animation: 10s linear 0s infinite backwards running highlight-row;
+}
+
+#svg3-2-animated #textAddressTableMac3Dunno {
+    animation: 10s linear 0s infinite backwards running msg-2-appear-opposite;
+}
+
+#svg3-2-animated #textAddressTableMac3 {
+    animation: 10s linear 0s infinite backwards running msg-2-appear;
+    opacity: 0;
 }
