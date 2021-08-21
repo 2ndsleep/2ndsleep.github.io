@@ -87,11 +87,7 @@ Great, pretty easy, right? The switch simply checks the destination MAC address 
 
 So let's say computer 3 wants to send a cat video to computer 2. First, let's just assume that computer 3 already knows the MAC address of computer 2 (don't worry how it knows yet). Computer 3 generates an Ethernet frame with a source MAC address of `{{ mac3 }}` and a destination MAC address of `{{ mac2 }}` and sends it over the wire. The switch receives the frame on port 3 and says, "hey, I don't know balls about port 3 - I should remember this!" So it inspects the source MAC address and records it in its MAC address table, like this:
 
-|Port|MAC Address|
-|----|-----------|
-|1|{{ mac1 }}|
-|2|{{ mac2 }}|
-|3|{{ mac3 }}|
+{% include svg.html path="svg/network-link-layer-computers-switch-3-2-animated.svg" %}
 
 Now the next time either of the other computers wants to send something to computer 3, the switch knows to send it via port 3.
 
