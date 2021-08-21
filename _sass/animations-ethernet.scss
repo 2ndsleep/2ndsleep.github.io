@@ -9,10 +9,10 @@
         r: 1.5;
     }
     20% {
-        offset-distance: 69%;
+        offset-distance: 69.1%;
     }
     40% {
-        offset-distance: 69%;
+        offset-distance: 69.1%;
     }
     75% {
         offset-distance: 100%;
@@ -52,11 +52,21 @@
     animation: 10s ease-in-out 0s infinite both running dg-1-move;
 }
 
-#svg1-2-animated #gMessage2 {
+#gMessage2 {
     opacity: 0;
     animation: 10s linear 0s infinite backwards running msg-2-appear;
 }
 
 #svg1-2-animated #rectAddressTableRow2 {
+    animation: 10s linear 0s infinite backwards running highlight-row;
+}
+
+#svg3-2-animated #cirDatagram1 {
+    offset-path: path('M0,0 L-47,39 M-58.5,39 L-58.5,12');
+    offset-rotate: 0deg;
+    animation: 10s ease-in-out 0s infinite both running dg-1-move;
+}
+
+#svg3-2-animated #rectAddressTableRow3 {
     animation: 10s linear 0s infinite backwards running highlight-row;
 }
