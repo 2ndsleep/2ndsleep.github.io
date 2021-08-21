@@ -39,11 +39,23 @@ svg tspan::selection {
 
 
 
-@keyframes msg-1-move {
+@keyframes dg-1-move {
     from {
         offset-distance: 0%;
     }
+    3% {
+        r: 3;
+    }
+    6% {
+        r: 1.5;
+    }
     20% {
+        offset-distance: 69%;
+    }
+    40% {
+        offset-distance: 69%;
+    }
+    75% {
         offset-distance: 100%;
     }
     to {
@@ -75,17 +87,17 @@ svg tspan::selection {
     }
 }
 
-#gMessage1 {
-    offset-path: path('M0,0 L23,18');
+#svg1-2-animated #cirDatagram1 {
+    offset-path: path('M0,0 L47,38 M60,39 L60,12');
     offset-rotate: 0deg;
-    animation: 10s ease-in-out 0s infinite both running msg-1-move;
+    animation: 10s ease-in-out 0s infinite both running dg-1-move;
 }
 
-#gMessage2 {
+#svg1-2-animated #gMessage2 {
     opacity: 0;
     animation: 10s linear 0s infinite backwards running msg-2-appear;
 }
 
-#rectAddressTableRow2 {
+#svg1-2-animated #rectAddressTableRow2 {
     animation: 10s linear 0s infinite backwards running highlight-row;
 }
