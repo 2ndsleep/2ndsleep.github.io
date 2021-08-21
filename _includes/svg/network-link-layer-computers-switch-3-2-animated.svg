@@ -444,7 +444,7 @@
        inkscape:path-effect="#path-effect1819"
        inkscape:original-d="m 114.37347,87.534627 c -0.0394,9.836806 -0.0791,19.673343 -0.11899,29.509623 -0.0394,0.15892 -0.0791,0.31757 -0.11899,0.47596" />
     <path
-       style="opacity:0.25;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 172.97061,76.008822 c -16.67659,13.797446 -33.3532,27.594908 -50.02983,41.392398"
        id="pathComputer3"
        inkscape:path-effect="#path-effect1823"
@@ -604,7 +604,7 @@
        y="122.05922"
        id="textAddressTableMac3"><tspan
          sodipodi:role="line"
-         id="tspanAddressTableMac3"
+         id="tspan921"
          x="179.8596"
          y="122.05922">{{ mac3 }}</tspan></text>
     <text
