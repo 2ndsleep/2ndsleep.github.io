@@ -99,12 +99,18 @@
 
 #svg-layer2-switch-1-2-animated #gDatagram1 {
     offset-path: path('M0,0 L47,38');
-//    offset-path: path('M0,0 L47,38 M60,39 L60,12');
     offset-rotate: 0deg;
     animation: 10s ease-in-out 0s infinite both running dg-1-move;
 }
 
-#svg-layer2-switch-1-2-animated #cirDatagram1 {
+#svg-layer2-switch-3-2-animated #gDatagram1 {
+    offset-path: path('M0,0 L-47,38');
+    offset-rotate: 0deg;
+    animation: 10s ease-in-out 0s infinite both running dg-1-move;
+}
+
+
+#cirDatagram1 {
     animation: 10s ease-in-out 0s infinite both running dg-1-bump;
 }
 
@@ -117,14 +123,13 @@
     animation: 10s linear 0s infinite backwards running highlight-row;
 }
 
-#svg-layer2-switch-1-2-animated #gDatagram2 {
+#gDatagram2 {
     offset-path: path('M0,0 L0,-26');
-//    offset-path: path('M0,0 L47,38 M60,39 L60,12');
     offset-rotate: 0deg;
     animation: 10s ease-in-out 0s infinite both running dg-2-move;
 }
 
-#svg-layer2-switch-1-2-animated #cirDatagram2 {
+#cirDatagram2 {
     animation: 10s ease-in-out 0s infinite both running dg-2-bump;
 }
 
