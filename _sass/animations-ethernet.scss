@@ -1,24 +1,63 @@
 @keyframes dg-1-move {
     from {
         offset-distance: 0%;
-    }
-    3% {
-        r: 3;
-    }
-    6% {
-        r: 1.5;
+        opacity: 1;
     }
     20% {
-        offset-distance: 69.1%;
+        offset-distance: 100%;
+    }
+    35% {
+        opacity: 1;
     }
     40% {
-        offset-distance: 69.1%;
-    }
-    75% {
-        offset-distance: 100%;
+        opacity: 0;
     }
     to {
         offset-distance: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes dg-1-bump {
+    3% {
+        r: 4;
+    }
+    15% {
+        r: 1.5;
+    }
+}
+
+@keyframes dg-2-move {
+    from {
+        offset-distance: 0%;
+        opacity: 0;
+    }
+    35% {
+        opacity: 0;
+    }
+    40% {
+        offset-distance: 0%;
+        opacity: 1;
+    }
+    80% {
+        offset-distance: 100%;
+        opacity: 1;
+    }
+    to {
+        offset-distance: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes dg-2-bump {
+    45% {
+        r: 1.5
+    }
+    50% {
+        r: 4;
+    }
+    60% {
+        r: 1.5;
     }
 }
 
@@ -58,10 +97,15 @@
     }
 }
 
-#svg-layer2-switch-1-2-animated #cirDatagram1 {
-    offset-path: path('M0,0 L47,38 M60,39 L60,12');
+#svg-layer2-switch-1-2-animated #gDatagram1 {
+    offset-path: path('M0,0 L47,38');
+//    offset-path: path('M0,0 L47,38 M60,39 L60,12');
     offset-rotate: 0deg;
     animation: 10s ease-in-out 0s infinite both running dg-1-move;
+}
+
+#svg-layer2-switch-1-2-animated #cirDatagram1 {
+    animation: 10s ease-in-out 0s infinite both running dg-1-bump;
 }
 
 #gMessage2 {
@@ -73,10 +117,15 @@
     animation: 10s linear 0s infinite backwards running highlight-row;
 }
 
-#svg-layer2-switch-3-2-animated #cirDatagram1 {
-    offset-path: path('M0,0 L-47,39 M-58.5,39 L-58.5,12');
+#svg-layer2-switch-1-2-animated #gDatagram2 {
+    offset-path: path('M0,0 L0,-26');
+//    offset-path: path('M0,0 L47,38 M60,39 L60,12');
     offset-rotate: 0deg;
-    animation: 10s ease-in-out 0s infinite both running dg-1-move;
+    animation: 10s ease-in-out 0s infinite both running dg-2-move;
+}
+
+#svg-layer2-switch-1-2-animated #cirDatagram2 {
+    animation: 10s ease-in-out 0s infinite both running dg-2-bump;
 }
 
 #svg-layer2-switch-3-2-animated #rectAddressTableRow3 {

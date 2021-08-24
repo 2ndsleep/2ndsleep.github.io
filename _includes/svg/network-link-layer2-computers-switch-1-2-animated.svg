@@ -15,7 +15,7 @@
    version="1.1"
    id="svg-layer2-switch-1-2-animated"
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
-   sodipodi:docname="network-link-layer-computers-switch-1-2-animated.svg">
+   sodipodi:docname="network-link-layer2-computers-switch-1-2-animated.svg">
   <defs
      id="defs2">
     <inkscape:path-effect
@@ -162,7 +162,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2141782"
-     inkscape:cx="79.550293"
+     inkscape:cx="283.11184"
      inkscape:cy="83.085349"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -597,7 +597,7 @@
          sodipodi:role="line"
          id="tspan970"
          x="179.8596"
-         y="122.05922">dunno</tspan></text>
+         y="122.05922">??????</tspan></text>
     <text
        xml:space="preserve"
        x="179.82739"
@@ -655,11 +655,57 @@
            x="116.12975"
            y="109.59122">goes to port 2.</tspan></text>
     </g>
-    <circle
-       style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-       id="cirDatagram1"
-       cx="54.313866"
-       cy="75.770432"
-       r="1.5" />
+    <g
+       id="gDatagram1">
+      <circle
+         style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
+         id="cirDatagram1"
+         cx="54.313866"
+         cy="75.770432"
+         r="1.5" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="56.769505"
+         y="71.856735"
+         id="textDatagram1"><tspan
+           id="tspan1091"
+           x="56.769505"
+           y="71.856735"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           sodipodi:role="line">from: {{ mac1 }}</tspan><tspan
+           x="56.769505"
+           y="75.384514"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           id="tspan1095"
+           sodipodi:role="line">to: {{ mac2 }}</tspan></text>
+    </g>
+    <g
+       id="gDatagram2"
+       style="opacity:0.999"
+       transform="translate(59.828406,37.600945)">
+      <circle
+         style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
+         id="cirDatagram2"
+         cx="54.313866"
+         cy="75.770432"
+         r="1.5" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="56.769505"
+         y="71.856735"
+         id="textDatagram2"><tspan
+           id="tspan1091-1"
+           x="56.769505"
+           y="71.856735"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           sodipodi:role="line">from: {{ mac1 }}</tspan><tspan
+           x="56.769505"
+           y="75.384514"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           id="tspan1095-5"
+           sodipodi:role="line">to: {{ mac2 }}</tspan></text>
+    </g>
   </g>
 </svg>
