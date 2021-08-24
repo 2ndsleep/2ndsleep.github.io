@@ -97,6 +97,25 @@
     }
 }
 
+@keyframes reset {
+    from {
+        opacity: 0;
+    }
+    3% {
+        opacity: 1;
+    }
+    97% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#svg-layer2-switch-1-2-animated, #svg-layer2-switch-3-2-animated {
+    animation: 10s ease-in-out 0s infinite both running reset;
+}
+
 #svg-layer2-switch-1-2-animated #gDatagram1 {
     offset-path: path('M0,0 L47,38');
     offset-rotate: 0deg;
