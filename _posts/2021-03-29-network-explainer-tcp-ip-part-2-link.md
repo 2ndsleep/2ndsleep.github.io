@@ -22,13 +22,13 @@ Before we move forward, I'm going to offer an absurdly over-simplified analgoy f
 
 Let's pretend that it's 1987, the public internet doesn't exist, and you're just hooking a bunch of computers together in your living room for shits and giggles. And let's pretend that each computer is assigned a unique identifying number. So in our scenario, we've got four computers. The ID number for the first one is `1` and the ID number for the fourth one is `4`. (At this point, if you don't understand my numbering system, then yes, you *are* kind of dumb and maybe you should think about pursuing a management career path instead.)
 
-{% include svg.html path="svg/network-simple-link-layer.svg" %}
+{% include svg.html path="svg/network-simple-link-layer2.svg" %}
 
 > **Once again, pretend IP doesn't exist. This will make less sense if you know a bit about IP and you're trying to shoehorn that knowledge into this made-up scenario.**
 
 Okay to recap, we've got four computers each numbered 1 through 4. Ethernet basically works by sending chunks of data from one computer to another computer and putting the "to" and "from" ID numbers at the beginning of the chunk. If computer 1 wants to send something a chunk of data to computer 4, it will send a chunk of data that looks something like this.
 
-{% include svg.html path="svg/network-simple-link-layer-to-from.svg" %}
+{% include svg.html path="svg/network-simple-link-layer2-to-from.svg" %}
 
 The switch in the middle will know which physical port computer 4 is connected to and send the data to computer 4. Easy, right? Wrong, it's much more complicated than that! But hopefully this helps you get into the correct headspace. By the way, the computer IDs aren't really computer IDs. They are NIC identifiers called MAC addresses...
 
@@ -39,7 +39,7 @@ Each physical network device has something called a MAC address associated with 
 
 A MAC address is a hexadecimal value that looks something like this: `{{ mac1 }}`. As I said, each network adapter has one MAC address assigned to it. If we made the world's smallest network and connected two computers together with an Ethernet cable, these two computers could talk to each other directly by sending data to each other's MAC addresses. They wouldn't even need to use IP addresses!
 
-{% include svg.html path="svg/network-link-layer-2-computer.svg" %}
+{% include svg.html path="svg/network-link-layer2-computer.svg" %}
 
 ## Data Frames
 
@@ -47,7 +47,7 @@ Okay, first of all, let's settle on some terms. I'm going to mix up the language
 
 An Ethernet frame is a chunk of data that's sent from one network adapter, transmitted over a cable, and then received by another network adapter. This data is a bunch of 1's & 0's but it is ordered in a way that each network adapter can understand it. The sequence of the data on a frame is thusly:
 
-{% include svg.html path="svg/network-link-layer-frame.svg" %}
+{% include svg.html path="svg/network-link-layer2-frame.svg" %}
 
 The diagram above means that when one computer transit a frame of data, it will transfer a bunch of 1's & 0's representing the preamble first, then 1's & 0's respresenting the MAC destination, etc. The receiving computer will receive the data in the same order, beginning with the preamble. Most of this isn't that imporant (unless you're dealing with VLANs, which I'm totally ignoring in this post), so let's focus on the three things that are worth talking about.
 
@@ -63,31 +63,31 @@ How does a network adapter know the MAC address of another network adapter? We'l
 
 The end of the last section gave you a preview of what IP addresses do, but let's go back to pretending they don't exist. We're going to keep our network small but make it bigger than two computers. If we want to have three or more computers talk to each other, we'll need to put some kind of network device to connect them all. We'll need to use something called a *switch*. (If you're old like me, you'll be familiar with something called a *hub*. They look like switches, but they are very anitquated, and slow as dick for reasons that will make sense if you study for the Network+ exam. I don't even know where you'd buy a hub anymore. If you're still using a hub in a professional environment, then may God have mercy on your soul.)
 
-{% include svg.html path="svg/network-link-layer-computers-switch.svg" %}
+{% include svg.html path="svg/network-link-layer2-computers-switch.svg" %}
 
 A switch is a device that has multiple physical ports. For the sake of argument, let's say this is the rare 3-port switch and it looks like this.
 
-{% include svg.html path="svg/network-link-layer-switch.svg" %}
+{% include svg.html path="svg/network-link-layer2-switch.svg" %}
 
 So let's show the switch ports that each computer is plugged into.
 
-{% include svg.html path="svg/network-link-layer-computers-switch-numbered.svg" %}
+{% include svg.html path="svg/network-link-layer2-computers-switch-numbered.svg" %}
 
 Since each switch port is plugged into a network adapter on a computer, you've got that computer's netwok adapter MAC address associated with each switch port. The switch keeps track of which MAC address is associated with each port in its MAC address table.
 
 Let's say this switch has been running for a while and computer 1 and computer 2 have been chatting with each other, while computer 3 has been shutdown. The switch has figured out the MAC addresses of these computers by now and has recorded it into the MAC address table.
 
-{% include svg.html path="svg/network-link-layer-computers-switch-1-2.svg" %}
+{% include svg.html path="svg/network-link-layer2-computers-switch-1-2.svg" %}
 
 So when computer 1 sends a packet to computer 2, it generates an Ethernet frame with a source MAC address of `{{ mac1 }}` and destintion MAC address of `{{ mac2 }}`. Computer 1 puts the frame on the Ethernet cable and then, bleep, bloop, bleep, the signal travels down the wire and arrives at port 1 of the switch. The switch reads the frame, inspects the destination MAC address, and looks up the destination MAC address from the table. It sees that `{{ mac2 }}` is connected to port 2 and then bloop, bleep, bloop, it sends the signal over the Ethernet cable plugged into port 2 and onto computer 2.
 
-{% include svg.html path="svg/network-link-layer-computers-switch-1-2-animated.svg" %}
+{% include svg.html path="svg/network-link-layer2-computers-switch-1-2-animated.svg" %}
 
 Great, pretty easy, right? The switch simply checks the destination MAC address of all incoming frames, looks up that MAC address from its MAC address table, and then sends it to the associated port. But how does the switch know which MAC address is associated with which port? Pretty simple, actually. Everytime the switch receives a frame, it records in its MAC address table the source MAC address of the incoming frame.
 
 So let's say computer 3 wants to send a cat video to computer 2. First, let's just assume that computer 3 already knows the MAC address of computer 2 (don't worry how it knows yet). Computer 3 generates an Ethernet frame with a source MAC address of `{{ mac3 }}` and a destination MAC address of `{{ mac2 }}` and sends it over the wire. The switch receives the frame on port 3 and says, "hey, I don't know balls about port 3 - I should remember this!" So it inspects the source MAC address and records it in its MAC address table, like this:
 
-{% include svg.html path="svg/network-link-layer-computers-switch-3-2-animated.svg" %}
+{% include svg.html path="svg/network-link-layer2-computers-switch-3-2-animated.svg" %}
 
 Now the next time either of the other computers wants to send something to computer 3, the switch knows to send it via port 3.
 

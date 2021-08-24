@@ -13,9 +13,9 @@
    height="84.437653mm"
    viewBox="0 0 216.81795 84.437652"
    version="1.1"
-   id="svg8"
+   id="svg-layer2-switch-3-2-animated"
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
-   sodipodi:docname="network-link-layer-computers-switch-1-2.svg">
+   sodipodi:docname="network-link-layer-computers-switch-3-2-animated.svg">
   <defs
      id="defs2">
     <inkscape:path-effect
@@ -140,6 +140,19 @@
          stdDeviation="1.0557142e-05"
          id="feGaussianBlur1092" />
     </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1154"
+       x="-8.1687801e-07"
+       width="1.0000016"
+       y="-2.2599193e-06"
+       height="1.0000045">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.5222095e-05"
+         id="feGaussianBlur1156" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -148,17 +161,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.4283564"
-     inkscape:cx="681.42572"
-     inkscape:cy="242.33963"
+     inkscape:zoom="1.2141782"
+     inkscape:cx="391.64572"
+     inkscape:cy="83.085349"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1534"
      inkscape:window-height="943"
-     inkscape:window-x="151"
-     inkscape:window-y="46"
+     inkscape:window-x="100"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -172,7 +185,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -201,7 +214,7 @@
        ry="0"
        rx="0"
        transform="translate(-8.8289889,-43.746163)"
-       class="svg-box-secondary" />
+       class="svg-box" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.106;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rectAddressTableRow2"
@@ -212,7 +225,7 @@
        ry="0"
        rx="0"
        transform="translate(-8.8289889,-43.746163)"
-       class="svg-box-secondary" />
+       class="svg-box" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.106;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rectAddressTableRow3"
@@ -358,8 +371,7 @@
     </g>
     <g
        id="gComputerAndMac3"
-       transform="translate(164.10349,-0.26726953)"
-       style="opacity:0.25">
+       transform="translate(164.10349,-0.26726953)">
       <g
          id="gComputer3"
          transform="matrix(0.79778555,0,0,0.79778555,-52.081266,16.995728)">
@@ -432,7 +444,7 @@
        inkscape:path-effect="#path-effect1819"
        inkscape:original-d="m 114.37347,87.534627 c -0.0394,9.836806 -0.0791,19.673343 -0.11899,29.509623 -0.0394,0.15892 -0.0791,0.31757 -0.11899,0.47596" />
     <path
-       style="opacity:0.25;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 172.97061,76.008822 c -16.67659,13.797446 -33.3532,27.594908 -50.02983,41.392398"
        id="pathComputer3"
        inkscape:path-effect="#path-effect1823"
@@ -580,21 +592,83 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="179.8596"
        y="122.05922"
-       id="textAddressTableMac3"><tspan
+       id="textAddressTableMac3Dunno"><tspan
          sodipodi:role="line"
-         id="tspan970"
+         id="tspanAddressTableMac3"
          x="179.8596"
          y="122.05922">dunno</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="179.8596"
+       y="122.05922"
+       id="textAddressTableMac3"><tspan
+         sodipodi:role="line"
+         id="tspan921"
+         x="179.8596"
+         y="122.05922">{{ mac3 }}</tspan></text>
     <text
        xml:space="preserve"
        x="179.82739"
        y="102.05305"
        id="textAddressTableHeaderMacAddress"
        class="svg-text-primary"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056000000000001px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"><tspan
          sodipodi:role="line"
          id="tspan1713"
          x="179.82739"
          y="102.05305">MAC Address</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.999;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="176.211"
+       y="58.462372"
+       id="textMessage1"><tspan
+         sodipodi:role="line"
+         id="tspan2543"
+         x="176.211"
+         y="58.462372">I want to send data</tspan><tspan
+         sodipodi:role="line"
+         id="tspan2545"
+         x="176.211"
+         y="63.313072">to {{ mac2 }}</tspan></text>
+    <g
+       id="gMessage2"
+       style="filter:url(#filter1154)"
+       transform="translate(-86.847,15.478928)">
+      <rect
+         style="opacity:0.999;fill:none;stroke:#000000;stroke-width:0.14004;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rectMessage2"
+         width="68"
+         height="16.165634"
+         x="112.834"
+         y="95.480911"
+         ry="2"
+         class="svg-box-secondary" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.998001;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="116.12975"
+         y="99.889816"
+         id="textMessage2"><tspan
+           sodipodi:role="line"
+           id="tspan1823"
+           x="116.12975"
+           y="99.889816">This is coming from</tspan><tspan
+           sodipodi:role="line"
+           id="tspan1825"
+           x="116.12975"
+           y="104.74052">{{ mac3 }} on port 3.</tspan><tspan
+           sodipodi:role="line"
+           id="tspan1827"
+           x="116.12975"
+           y="109.59122">Let's remember that!</tspan></text>
+    </g>
+    <circle
+       style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
+       id="cirDatagram1"
+       cx="172.8577"
+       cy="75.770432"
+       r="1.5" />
   </g>
 </svg>
