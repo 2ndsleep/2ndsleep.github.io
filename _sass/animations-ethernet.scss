@@ -97,6 +97,21 @@
     }
 }
 
+@keyframes computer-receive-msg-appear {
+    from {
+        opacity: 0;
+    }
+    65% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes reset {
     from {
         opacity: 0;
@@ -112,7 +127,7 @@
     }
 }
 
-#svg-layer2-switch-1-2-animated, #svg-layer2-switch-3-2-animated {
+#svg-layer2-switch-1-2-animated, #svg-layer2-switch-3-2-animated, #svg-layer2-switch-flood-animated {
     animation: 10s ease-in-out 0s infinite both running reset;
 }
 
@@ -122,10 +137,22 @@
     animation: 10s ease-in-out 0s infinite both running dg-1-move;
 }
 
+#svg-layer2-switch-flood-animated #gDatagram1 {
+    offset-path: path('M0,0 L47,38');
+    offset-rotate: 0deg;
+    animation: 10s ease-in-out 0s infinite both running dg-1-move;
+}
+
 #svg-layer2-switch-3-2-animated #gDatagram1 {
     offset-path: path('M0,0 L-47,38');
     offset-rotate: 0deg;
     animation: 10s ease-in-out 0s infinite both running dg-1-move;
+}
+
+#svg-layer2-switch-flood-animated #gDatagram3 {
+    offset-path: path('M0,0 L47,-38');
+    offset-rotate: 0deg;
+    animation: 10s ease-in-out 0s infinite both running dg-2-move;
 }
 
 
@@ -148,7 +175,7 @@
     animation: 10s ease-in-out 0s infinite both running dg-2-move;
 }
 
-#cirDatagram2 {
+#cirDatagram2,#cirDatagram3 {
     animation: 10s ease-in-out 0s infinite both running dg-2-bump;
 }
 
@@ -163,4 +190,8 @@
 #svg-layer2-switch-3-2-animated #textAddressTableMac3 {
     animation: 10s linear 0s infinite backwards running msg-2-appear;
     opacity: 0;
+}
+
+#textMessage2,#textMessage3 {
+    animation: 10s linear 0s infinite backwards running computer-receive-msg-appear;
 }

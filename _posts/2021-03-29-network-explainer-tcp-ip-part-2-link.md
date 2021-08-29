@@ -93,6 +93,8 @@ Now the next time either of the other computers wants to send something to compu
 
 One more little thing to button up here. What if the switch receives a frame and doesn't know the destination MAC address? How will it know which port to send it? Easy, it *floods* all the ports of the switch with a copy of the frame. The way Ethernet works is that each network adapter checks to see if the destination MAC address of the frame it receives matches its own MAC address. If it's a match, it accepts the frame. If not, it discards the frame.
 
+{% include svg.html path="svg/network-link-layer2-computers-switch-flood-animated.svg" %}
+
 Now that you know everything you need to know (that is, you have the absolute least functional knowledge about Ethernet), let's demo what happens when you plug these three computers into that switch and turn it on. Before any computer sends any frames, the MAC address table looks like this:
 
 |Port|MAC Address|
