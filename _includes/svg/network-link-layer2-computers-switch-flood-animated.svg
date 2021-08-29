@@ -613,7 +613,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.999;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="11.469948"
        y="59.334019"
-       id="textMessage1"><tspan
+       id="textDisplayMessage1"><tspan
          sodipodi:role="line"
          id="tspan2543"
          x="11.469948"
@@ -711,7 +711,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.999;fill:#ff3555;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="93.326309"
        y="59.334019"
-       id="textMessage2"><tspan
+       id="textDisplayMessage2"><tspan
          sodipodi:role="line"
          id="tspan4267"
          x="93.326309"
