@@ -95,12 +95,13 @@ One more little thing to button up here. What if the switch receives a frame and
 
 {% include svg.html path="svg/network-link-layer2-computers-switch-flood-animated.svg" %}
 
-Now that you know everything you need to know (that is, you have the absolute least functional knowledge about Ethernet), let's demo what happens when you plug these three computers into that switch and turn it on. Before any computer sends any frames, the MAC address table looks like this:
+Now that you know everything you need to know (that is, you have the absolute least functional knowledge about Ethernet), let's demo what happens when you plug these three computers into that switch and turn it on. The only assumption you'll need to make is that these computers all magically know the MAC addresses of all the other computers. The switch, however, just turned on and doesn't know shit.
 
-|Port|MAC Address|
-|----|-----------|
-|1|dunno|
-|2|dunno|
-|3|dunno|
+{% include svg.html path="svg/network-link-layer2-computers-switch-full-animated.svg" %}
 
-**Computer 1 Sends to Computer 2**
+Here's what's going on, step-by-step.
+
+1. **Computer 1 sends a frame to Computer 2**. Two things happen right off the bat. The switch's address table is completely empty so it learns the MAC address of computer 1 which is `{{ mac1 }}` and adds it to the table. However, it doesn't know the other two computers' MAC addresses, so it floods the other two ports with the same frame and hopes there's a computer out there with MAC address `{{ mac2 }}`.
+1. **Computer 2 sends a frame to Computer 1**. In real life, if Computer 1 sends a frame to Computer 2, Computer 2 is probably going to send something back. Computers conversations are similar to people in that you usually respond with something when someone says something to you (I know there's always that one guy in meetings who *only* talks, but most humans without a major personality disorder have a back-and-forth). When Computer 2 sends a frame back to Computer 1, the switch won't flood the ports because it learned the port for Computer 1. Also, the switch has learned the MAC address for Computer 2, so now it knows two MAC addresses.
+1. **Computer 1 sends a frame to Computer 3**. Computer 1 wants to send a frame to Computer 3, but the switch doesn't know the MAC address for Computer 3, so it floods again. It's going to flood all ports again, because it's possible that port 2 has more than Computer 2 attached (maybe there's another networking device attached to port 2 that in turn has multiple computers attached to it).
+1. **Computer 3 sends a frame to Computer 1**. Computer 3 sends a frame back to computer and the switch now knows the ports associated with all 3 computers. It will remember this until the switch is restarted.

@@ -1,0 +1,214 @@
+$animation-duration-full: 10s;
+
+@keyframes dg-1-1-move-full {
+    from {
+        offset-distance: 0%;
+        opacity: 1;
+    }
+    20% {
+        offset-distance: 100%;
+    }
+    35% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    to {
+        offset-distance: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes dg-1-1-bump-full {
+    3% {
+        r: 4;
+    }
+    15% {
+        r: 1.5;
+    }
+}
+
+@keyframes dg-1-2-move-full {
+    from {
+        offset-distance: 0%;
+        opacity: 0;
+    }
+    35% {
+        opacity: 0;
+    }
+    40% {
+        offset-distance: 0%;
+        opacity: 1;
+    }
+    80% {
+        offset-distance: 100%;
+        opacity: 1;
+    }
+    to {
+        offset-distance: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes dg-1-2-bump-full {
+    45% {
+        r: 1.5
+    }
+    50% {
+        r: 4;
+    }
+    60% {
+        r: 1.5;
+    }
+}
+
+@keyframes msg-1-appear-full {
+    from {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes steps-full {
+    from {
+        opacity: 0;
+    }
+    3% {
+        opacity: 1;
+    }
+    97% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes msg-1-appear-opposite-full {
+    from {
+        opacity: 1;
+    }
+    20% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes highlight-row-1-full {
+    20% {
+        fill: transparent;
+    }
+    30% {
+        fill: $svg-secondary-color;
+    }
+    to {
+        fill: $svg-secondary-color;
+    }
+}
+
+@keyframes computer-receive-msg-1-appear-full {
+    from {
+        opacity: 0;
+    }
+    65% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes reset-full {
+    from {
+        opacity: 0;
+    }
+    3% {
+        opacity: 1;
+    }
+    97% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#svg-layer2-switch-full-animated {
+    animation: $animation-duration-full ease-in-out 0s infinite both running reset;
+}
+
+#svg-layer2-switch-full-animated #gStep1 {
+    animation: $animation-duration-full ease-in-out 0s infinite both running steps-full;
+}
+
+#svg-layer2-switch-full-animated #gDatagram1 {
+    offset-path: path('M0,0 L47,38');
+    offset-rotate: 0deg;
+    animation: $animation-duration-full ease-in-out 0s infinite both running dg-1-1-move-full;
+}
+
+#svg-layer2-switch-full-animated #gDatagram2 {
+    offset-path: path('M0,0 L0,-26');
+    offset-rotate: 0deg;
+    animation: $animation-duration-full ease-in-out 0s infinite both running dg-1-2-move-full;
+}
+
+#svg-layer2-switch-full-animated #gDatagram3 {
+    offset-path: path('M0,0 L47,-38');
+    offset-rotate: 0deg;
+    animation: $animation-duration-full ease-in-out 0s infinite both running dg-1-2-move-full;
+}
+
+#svg-layer2-switch-full-animated #cirDatagram1 {
+    animation: $animation-duration-full ease-in-out 0s infinite both running dg-1-1-bump-full;
+}
+
+#svg-layer2-switch-full-animated #cirDatagram2,#cirDatagram3 {
+    animation: $animation-duration-full ease-in-out 0s infinite both running dg-1-2-bump-full;
+}
+
+#svg-layer2-switch-full-animated #gMessage2 {
+    opacity: 0;
+    animation: $animation-duration-full linear 0s infinite backwards running msg-1-appear-full;
+}
+
+#svg-layer2-switch-full-animated #rectAddressTableRow1 {
+    animation: $animation-duration-full linear 0s infinite backwards running highlight-row-1-full;
+}
+
+#svg-layer2-switch-full-animated #textAddressTableMac1 {
+    animation: $animation-duration-full linear 0s infinite backwards running msg-1-appear-full;
+}
+
+#svg-layer2-switch-full-animated #textAddressTableMac1Dunno {
+    animation: $animation-duration-full linear 0s infinite backwards running msg-1-appear-opposite-full;
+}
+
+#svg-layer2-switch-full-animated #rectAddressTableRow3 {
+//    animation: $animation-duration-full linear 0s infinite backwards running highlight-row;
+}
+
+#svg-layer2-switch-full-animated #textAddressTableMac3Dunno {
+//    animation: $animation-duration-full linear 0s infinite backwards running msg-2-appear-opposite;
+}
+
+#svg-layer2-switch-full-animated #textDisplayMessage2,#textDisplayMessage3 {
+    animation: $animation-duration-full linear 0s infinite backwards running computer-receive-msg-1-appear-full;
+}
