@@ -1,3 +1,5 @@
+$animation-duration: 10s;
+
 @keyframes dg-1-move {
     from {
         offset-distance: 0%;
@@ -128,70 +130,70 @@
 }
 
 #svg-layer2-switch-1-2-animated, #svg-layer2-switch-3-2-animated, #svg-layer2-switch-flood-animated {
-    animation: 10s ease-in-out 0s infinite both running reset;
+    animation: $animation-duration ease-in-out 0s infinite both running reset;
 }
 
 #svg-layer2-switch-1-2-animated #gDatagram1 {
     offset-path: path('M0,0 L47,38');
     offset-rotate: 0deg;
-    animation: 10s ease-in-out 0s infinite both running dg-1-move;
+    animation: $animation-duration ease-in-out 0s infinite both running dg-1-move;
 }
 
 #svg-layer2-switch-flood-animated #gDatagram1 {
     offset-path: path('M0,0 L47,38');
     offset-rotate: 0deg;
-    animation: 10s ease-in-out 0s infinite both running dg-1-move;
+    animation: $animation-duration ease-in-out 0s infinite both running dg-1-move;
 }
 
 #svg-layer2-switch-3-2-animated #gDatagram1 {
     offset-path: path('M0,0 L-47,38');
     offset-rotate: 0deg;
-    animation: 10s ease-in-out 0s infinite both running dg-1-move;
+    animation: $animation-duration ease-in-out 0s infinite both running dg-1-move;
 }
 
 #svg-layer2-switch-flood-animated #gDatagram3 {
     offset-path: path('M0,0 L47,-38');
     offset-rotate: 0deg;
-    animation: 10s ease-in-out 0s infinite both running dg-2-move;
+    animation: $animation-duration ease-in-out 0s infinite both running dg-2-move;
 }
 
 
 #cirDatagram1 {
-    animation: 10s ease-in-out 0s infinite both running dg-1-bump;
+    animation: $animation-duration ease-in-out 0s infinite both running dg-1-bump;
 }
 
 #gMessage2 {
     opacity: 0;
-    animation: 10s linear 0s infinite backwards running msg-2-appear;
+    animation: $animation-duration linear 0s infinite backwards running msg-2-appear;
 }
 
 #svg-layer2-switch-1-2-animated #rectAddressTableRow2 {
-    animation: 10s linear 0s infinite backwards running highlight-row;
+    animation: $animation-duration linear 0s infinite backwards running highlight-row;
 }
 
 #gDatagram2 {
     offset-path: path('M0,0 L0,-26');
     offset-rotate: 0deg;
-    animation: 10s ease-in-out 0s infinite both running dg-2-move;
+    animation: $animation-duration ease-in-out 0s infinite both running dg-2-move;
 }
 
 #cirDatagram2,#cirDatagram3 {
-    animation: 10s ease-in-out 0s infinite both running dg-2-bump;
+    animation: $animation-duration ease-in-out 0s infinite both running dg-2-bump;
 }
 
 #svg-layer2-switch-3-2-animated #rectAddressTableRow3 {
-    animation: 10s linear 0s infinite backwards running highlight-row;
+    animation: $animation-duration linear 0s infinite backwards running highlight-row;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3Dunno {
-    animation: 10s linear 0s infinite backwards running msg-2-appear-opposite;
+    animation: $animation-duration linear 0s infinite backwards running msg-2-appear-opposite;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3 {
-    animation: 10s linear 0s infinite backwards running msg-2-appear;
+    animation: $animation-duration linear 0s infinite backwards running msg-2-appear;
     opacity: 0;
 }
 
 #textDisplayMessage2,#textDisplayMessage3 {
-    animation: 10s linear 0s infinite backwards running computer-receive-msg-appear;
+    animation: $animation-duration linear 0s infinite backwards running computer-receive-msg-appear;
 }
