@@ -161,9 +161,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.8567128"
-     inkscape:cx="106.04265"
-     inkscape:cy="202.34298"
+     inkscape:zoom="1.8120079"
+     inkscape:cx="386.02412"
+     inkscape:cy="121.35193"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -685,10 +685,10 @@
            id="tspan3563">send it to everyone!</tspan></text>
     </g>
     <g
-       id="gDatagram1">
+       id="gDatagram1-1">
       <circle
          style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-         id="cirDatagram1"
+         id="cirgDatagram1-1"
          cx="54.313866"
          cy="75.770432"
          r="1.5" />
@@ -697,7 +697,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="56.769505"
          y="71.856735"
-         id="textDatagram1"><tspan
+         id="textgDatagram1-1"><tspan
            sodipodi:role="line"
            id="tspan6171"
            x="56.769505"
@@ -708,12 +708,12 @@
            y="75.384514">to: {{ mac2 }}</tspan></text>
     </g>
     <g
-       id="gDatagram2"
+       id="gDatagram1-2"
        style="opacity:0.999"
        transform="translate(59.828406,37.600945)">
       <circle
          style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-         id="cirDatagram2"
+         id="cirgDatagram1-2"
          cx="54.313866"
          cy="75.770432"
          r="1.5" />
@@ -722,7 +722,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="56.769505"
          y="71.856735"
-         id="textDatagram2"><tspan
+         id="textgDatagram1-2"><tspan
            sodipodi:role="line"
            id="tspan6175"
            x="56.769505"
@@ -757,12 +757,12 @@
          x="95.459534"
          y="59.334019">Yep, this is for me!</tspan></text>
     <g
-       id="gDatagram3"
+       id="gDatagram1-3"
        style="opacity:0.999"
        transform="translate(-47.286785,38.130112)">
       <circle
          style="opacity:0.999;fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-         id="cirDatagram3"
+         id="cirgDatagram1-3"
          cx="173.41418"
          cy="75.423561"
          r="1.5" />
@@ -771,7 +771,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.999;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="175.86983"
          y="80"
-         id="textDatagram3"><tspan
+         id="textgDatagram1-3"><tspan
            sodipodi:role="line"
            id="tspan6179"
            x="175.86983"
@@ -792,7 +792,7 @@
          ry="8.1665926" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58329999999999949px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
          x="20.934929"
          y="110.92795"
          id="textStep1"><tspan
@@ -800,7 +800,32 @@
            id="tspan7676"
            x="20.934929"
            y="110.92795"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58329999999999949px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none">1</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none">1</tspan></text>
+    </g>
+    <g
+       id="gDatagram2-1"
+       style="opacity:0.999"
+       transform="translate(59.941218,11.703813)">
+      <circle
+         style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
+         id="cirgDatagram2-1"
+         cx="54.313866"
+         cy="75.770432"
+         r="1.5" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="56.769505"
+         y="71.856735"
+         id="textgDatagram2-1"><tspan
+           sodipodi:role="line"
+           id="tspan6171-2"
+           x="56.769505"
+           y="71.856735">from: {{ mac1 }}</tspan><tspan
+           sodipodi:role="line"
+           id="tspan6173-5"
+           x="56.769505"
+           y="75.384514">to: {{ mac2 }}</tspan></text>
     </g>
   </g>
 </svg>
