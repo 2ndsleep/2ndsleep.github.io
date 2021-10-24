@@ -5,12 +5,21 @@ $bump-duration: 1;
 $reset-fade-duration: 0.25;
 $computer1-to-switch1-path: path('M0,0 L47,38');
 $switch2-to-computer2-path: path('M0,0 L0,-26');
+$computer3-to-switch3-path: path('M0,0 L-47,38');
 
 // Calculated values. These values are derived from the above values.
 $bump-duration-percentage-number: $bump-duration / $animation-duration * 100;
 $reset-fade-duration-perecentage-number: $reset-fade-duration / $animation-duration * 100;
 $animation-duration-time: #{$animation-duration}s;
 
+// Mixins
+@mixin datagram-motion($path, $keyframe) {
+    offset-path: $path;
+    offset-rotate: 0deg;
+    animation: $animation-duration-time ease-in-out 0s infinite both running $keyframe;
+}
+
+/* Keyframes */
 @keyframes reset {
     from {
         opacity: 0;
@@ -26,7 +35,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes datagram-computer1-to-switch1-motion {
+@keyframes datagram1-motion {
     from {
         offset-distance: 0%;
         opacity: 1;
@@ -46,7 +55,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes datagram-1-bump {
+@keyframes datagram1-bump {
     from {
         r: 1.5;
     }
@@ -58,7 +67,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes datagram-switch2-to-computer2-motion {
+@keyframes datagram2-motion {
     from {
         offset-distance: 0%;
         opacity: 0;
@@ -80,7 +89,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes datagram-2-bump {
+@keyframes datagram2-bump {
     45% {
         r: 1.5
     }
@@ -92,26 +101,99 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-#svg-layer2-switch-1-2-animated {
+@keyframes message1-appear {
+    from {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes message2-appear {
+    20% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes message2-remove {
+    20% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes highlight-row {
+    20% {
+        fill: transparent;
+    }
+    25% {
+        fill: $svg-secondary-color;
+    }
+    to {
+        fill: $svg-secondary-color;
+    }
+}
+
+/* Fade in/out at beginning/end of animation to indicate animation is restarting. */
+#svg-layer2-switch-1-2-animated, #svg-layer2-switch-3-2-animated {
     animation: $animation-duration-time ease-in-out 0s infinite both running reset;
 }
 
+/* Datagrams */
+/* Motion paths for datagrams. */
 #svg-layer2-switch-1-2-animated #gDatagram1 {
-    offset-path: $computer1-to-switch1-path;
-    offset-rotate: 0deg;
-    animation: $animation-duration-time ease-in-out 0s infinite both running datagram-computer1-to-switch1-motion;
+    @include datagram-motion($path: $computer1-to-switch1-path, $keyframe: datagram1-motion)
 }
 
-#svg-layer2-switch-1-2-animated #gDatagram2 {
-    offset-path: $switch2-to-computer2-path;
-    offset-rotate: 0deg;
-    animation: $animation-duration-time ease-in-out 0s infinite both running datagram-switch2-to-computer2-motion;
+#svg-layer2-switch-3-2-animated #gDatagram1 {
+    @include datagram-motion($path: $computer3-to-switch3-path, $keyframe: datagram1-motion)
 }
 
-#svg-layer2-switch-1-2-animated #cirDatagram1 {
-    animation: $animation-duration-time ease-in-out 0s infinite both running datagram-1-bump;
+#svg-layer2-switch-1-2-animated #gDatagram2, #svg-layer2-switch-3-2-animated #gDatagram2 {
+    @include datagram-motion($path: $switch2-to-computer2-path, $keyframe: datagram2-motion)
 }
 
-#svg-layer2-switch-1-2-animated #cirDatagram2 {
-    animation: $animation-duration-time ease-in-out 0s infinite both running datagram-2-bump;
+/* Brief enlargement of datagram to emphasize movement. */
+#svg-layer2-switch-1-2-animated #cirDatagram1, #svg-layer2-switch-3-2-animated #cirDatagram1 {
+    animation: $animation-duration-time ease-in-out 0s infinite both running datagram1-bump;
+}
+
+#svg-layer2-switch-1-2-animated #cirDatagram2, #svg-layer2-switch-3-2-animated #cirDatagram2 {
+    animation: $animation-duration-time ease-in-out 0s infinite both running datagram2-bump;
+}
+
+/* Message appear/disappear. */
+#svg-layer2-switch-1-2-animated #gMessage2, #svg-layer2-switch-3-2-animated #gMessage2 {
+    animation: $animation-duration-time linear 0s infinite backwards running message1-appear;
+}
+
+#svg-layer2-switch-3-2-animated #textAddressTableMac3 {
+    animation: $animation-duration-time linear 0s infinite backwards running message2-appear;
+    opacity: 0;
+}
+
+#svg-layer2-switch-3-2-animated #textAddressTableMac3Dunno {
+    animation: $animation-duration-time linear 0s infinite backwards running message2-remove;
+}
+
+#svg-layer2-switch-1-2-animated #rectAddressTableRow2, #svg-layer2-switch-3-2-animated #rectAddressTableRow3 {
+    animation: $animation-duration-time linear 0s infinite backwards running highlight-row;
 }
