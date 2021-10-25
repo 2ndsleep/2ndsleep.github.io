@@ -102,7 +102,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes message1-appear {
+@keyframes switch-message-appear {
     from {
         opacity: 0;
     }
@@ -117,7 +117,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes message2-appear {
+@keyframes mactable-message-appear {
     20% {
         opacity: 0;
     }
@@ -129,7 +129,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes message2-remove {
+@keyframes switch-message-remove {
     20% {
         opacity: 1;
     }
@@ -141,7 +141,7 @@ $animation-duration-time: #{$animation-duration}s;
     }
 }
 
-@keyframes highlight-row {
+@keyframes mactable-highlight-row {
     20% {
         fill: transparent;
     }
@@ -214,21 +214,21 @@ $animation-duration-time: #{$animation-duration}s;
 #svg-layer2-switch-1-2-animated #gMessage2
 , #svg-layer2-switch-3-2-animated #gMessage2
 , #svg-layer2-switch-flood-animated #gMessage2 {
-    animation: $animation-duration-time linear 0s infinite backwards running message1-appear;
+    animation: $animation-duration-time linear 0s infinite backwards running switch-message-appear;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3 {
-    animation: $animation-duration-time linear 0s infinite backwards running message2-appear;
+    animation: $animation-duration-time linear 0s infinite backwards running mactable-message-appear;
     opacity: 0;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3Dunno {
-    animation: $animation-duration-time linear 0s infinite backwards running message2-remove;
+    animation: $animation-duration-time linear 0s infinite backwards running switch-message-remove;
 }
 
 #svg-layer2-switch-1-2-animated #rectAddressTableRow2
 , #svg-layer2-switch-3-2-animated #rectAddressTableRow3 {
-    animation: $animation-duration-time linear 0s infinite backwards running highlight-row;
+    animation: $animation-duration-time linear 0s infinite backwards running mactable-highlight-row;
 }
 
 #svg-layer2-switch-flood-animated #textDisplayMessage2
