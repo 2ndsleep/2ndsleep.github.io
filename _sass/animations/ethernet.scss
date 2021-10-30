@@ -1,6 +1,7 @@
 // Configurable values. Change these to change the animation behavior.
-// $animation-duration must be greater than the other duration variables.
-$animation-duration: 10;
+// $animation-step-duration must be greater than the other duration variables.
+$animation-step-duration: 10;
+$animation-full-duration: 40;
 $bump-duration: 1;
 $reset-fade-duration: 0.25;
 $computer1-to-switch1-path: path('M0,0 L47,38');
@@ -9,229 +10,280 @@ $computer3-to-switch3-path: path('M0,0 L-47,38');
 $switch3-to-computer3-path: path('M0,0 L47,-38');
 
 // Calculated values. These values are derived from the above values.
-$bump-duration-percentage-number: $bump-duration / $animation-duration * 100;
-$reset-fade-duration-perecentage-number: $reset-fade-duration / $animation-duration * 100;
-$animation-duration-time: #{$animation-duration}s;
+$bump-duration-percentage-number: $bump-duration / $animation-step-duration * 100;
+$reset-step-fade-duration-perecentage-number: $reset-fade-duration / $animation-step-duration * 100;
+$reset-full-fade-duration-perecentage-number: $reset-fade-duration / $animation-full-duration * 100;
+$animation-step-duration-time: #{$animation-step-duration}s;
 
 // Mixins
 @mixin datagram-motion($path, $keyframe) {
     offset-path: $path;
     offset-rotate: 0deg;
-    animation: $animation-duration-time ease-in-out 0s infinite both running $keyframe;
+    animation: $animation-step-duration-time ease-in-out 0s infinite both running $keyframe;
+}
+
+@function calculate-keyframe-percent($relative-percent, $step, $full-duration, $step-duration) {
+    $delay: (($step - 1) * $step-duration) / $full-duration * 100;
+    $total-steps: $full-duration / $step-duration;
+    $percent: $relative-percent / $total-steps;
+    @return $delay + $percent;
+}
+
+@mixin keyframes-datagram-motion1($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(0, $step, $full-duration, $step-duration)}% {
+            offset-distance: 0%;
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(20, $step, $full-duration, $step-duration)}% {
+            offset-distance: 100%;
+        }
+        #{calculate-keyframe-percent(35, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(40, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+            offset-distance: 100%;
+            opacity: 0;
+        }
+    }    
+}
+
+@mixin keyframes-datagram-bump1($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(0, $step, $full-duration, $step-duration)}% {
+            r: 1.5;
+        }
+        #{calculate-keyframe-percent(5, $step, $full-duration, $step-duration)}% {
+            r: 4;
+        }
+        #{calculate-keyframe-percent(5 + $bump-duration-percentage-number, $step, $full-duration, $step-duration)}% {
+            r: 1.5;
+        }
+    }    
+}
+
+@mixin keyframes-datagram-motion2($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(0, $step, $full-duration, $step-duration)}% {
+            offset-distance: 0%;
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(35, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(40, $step, $full-duration, $step-duration)}% {
+            offset-distance: 0%;
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(80, $step, $full-duration, $step-duration)}% {
+            offset-distance: 100%;
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+            offset-distance: 100%;
+            opacity: 1;
+        }
+    }
+}
+
+@mixin keyframes-datagram-bump2($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(45, $step, $full-duration, $step-duration)}% {
+            r: 1.5
+        }
+        #{calculate-keyframe-percent(45 + $bump-duration-percentage-number, $step, $full-duration, $step-duration)}% {
+            r: 4;
+        }
+        #{calculate-keyframe-percent(60, $step, $full-duration, $step-duration)}% {
+            r: 1.5;
+        }
+    }
+}
+
+@mixin keyframes-switch-message-appear($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(0, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(20, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(25, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin keyframes-mactable-message-appear($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(20, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(25, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin keyframes-switch-message-remove($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(20, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(25, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+    }
+}
+
+@mixin keyframes-mactable-highlight-row($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(20, $step, $full-duration, $step-duration)}% {
+            fill: transparent;
+        }
+        #{calculate-keyframe-percent(25, $step, $full-duration, $step-duration)}% {
+            fill: $svg-secondary-color;
+        }
+        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+            fill: $svg-secondary-color;
+        }
+    }
+}
+
+@mixin keyframes-computer-message-appear($name, $step, $full-duration, $step-duration) {
+    @keyframes #{$name} {
+        #{calculate-keyframe-percent(0, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(65, $step, $full-duration, $step-duration)}% {
+            opacity: 0;
+        }
+        #{calculate-keyframe-percent(70, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+            opacity: 1;
+        }
+    }
 }
 
 /* Keyframes */
-@keyframes reset {
+@keyframes reset-step {
     from {
         opacity: 0;
     }
-    #{$reset-fade-duration-perecentage-number}% {
+    #{$reset-step-fade-duration-perecentage-number}% {
         opacity: 1;
     }
-    #{100 - $reset-fade-duration-perecentage-number}% {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes datagram1-motion {
-    from {
-        offset-distance: 0%;
-        opacity: 1;
-    }
-    20% {
-        offset-distance: 100%;
-    }
-    35% {
-        opacity: 1;
-    }
-    40% {
-        opacity: 0;
-    }
-    to {
-        offset-distance: 100%;
-        opacity: 0;
-    }
-}
-
-@keyframes datagram1-bump {
-    from {
-        r: 1.5;
-    }
-    5% {
-        r: 4;
-    }
-    #{5 + $bump-duration-percentage-number}% {
-        r: 1.5;
-    }
-}
-
-@keyframes datagram2-motion {
-    from {
-        offset-distance: 0%;
-        opacity: 0;
-    }
-    35% {
-        opacity: 0;
-    }
-    40% {
-        offset-distance: 0%;
-        opacity: 1;
-    }
-    80% {
-        offset-distance: 100%;
+    #{100 - $reset-step-fade-duration-perecentage-number}% {
         opacity: 1;
     }
     to {
-        offset-distance: 100%;
-        opacity: 1;
+        opacity: 0;
     }
 }
 
-@keyframes datagram2-bump {
-    45% {
-        r: 1.5
-    }
-    #{45 + $bump-duration-percentage-number}% {
-        r: 4;
-    }
-    60% {
-        r: 1.5;
-    }
-}
-
-@keyframes switch-message-appear {
+@keyframes reset-full {
     from {
         opacity: 0;
     }
-    20% {
-        opacity: 0;
-    }
-    25% {
+    #{$reset-full-fade-duration-perecentage-number}% {
         opacity: 1;
     }
-    to {
+    #{100 - $reset-full-fade-duration-perecentage-number}% {
         opacity: 1;
-    }
-}
-
-@keyframes mactable-message-appear {
-    20% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes switch-message-remove {
-    20% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 0;
     }
     to {
         opacity: 0;
     }
 }
 
-@keyframes mactable-highlight-row {
-    20% {
-        fill: transparent;
-    }
-    25% {
-        fill: $svg-secondary-color;
-    }
-    to {
-        fill: $svg-secondary-color;
-    }
-}
-
-@keyframes computer-message-appear {
-    from {
-        opacity: 0;
-    }
-    65% {
-        opacity: 0;
-    }
-    70% {
-        opacity: 1;
-    }
-    to {
-        opacity: 1;
-    }
-}
+@include keyframes-datagram-motion1('datagram-motion-single1', 1, 10, 10);
+@include keyframes-datagram-bump1('datagram-bump-single1', 1, 10, 10);
+@include keyframes-datagram-motion2('datagram-motion-single2', 1, 10, 10);
+@include keyframes-datagram-bump2('datagram-bump-single2', 1, 10, 10);
+@include keyframes-switch-message-appear('switch-message-appear-single1', 1, 10, 10);
+@include keyframes-mactable-message-appear('mactable-message-appear-single1', 1, 10, 10);
+@include keyframes-switch-message-remove('switch-message-remove-single1', 1, 10, 10);
+@include keyframes-mactable-highlight-row('mactable-highlight-row-single1', 1, 10, 10);
+@include keyframes-computer-message-appear('computer-message-appear-single1', 1, 10, 10);
 
 /* Fade in/out at beginning/end of animation to indicate animation is restarting. */
 #svg-layer2-switch-1-2-animated
 , #svg-layer2-switch-3-2-animated
 , #svg-layer2-switch-flood-animated {
-    animation: $animation-duration-time ease-in-out 0s infinite both running reset;
+    animation: $animation-step-duration-time ease-in-out 0s infinite both running reset-step;
 }
 
 /* Datagrams */
 /* Motion paths for datagrams. */
 #svg-layer2-switch-1-2-animated #gDatagram1
 , #svg-layer2-switch-flood-animated #gDatagram1 {
-    @include datagram-motion($path: $computer1-to-switch1-path, $keyframe: datagram1-motion)
+    @include datagram-motion($path: $computer1-to-switch1-path, $keyframe: datagram-motion-single1)
 }
 
 #svg-layer2-switch-3-2-animated #gDatagram1 {
-    @include datagram-motion($path: $computer3-to-switch3-path, $keyframe: datagram1-motion)
+    @include datagram-motion($path: $computer3-to-switch3-path, $keyframe: datagram-motion-single1)
 }
 
 #svg-layer2-switch-1-2-animated #gDatagram2
 , #svg-layer2-switch-3-2-animated #gDatagram2
 , #svg-layer2-switch-flood-animated #gDatagram2 {
-        @include datagram-motion($path: $switch2-to-computer2-path, $keyframe: datagram2-motion)
+        @include datagram-motion($path: $switch2-to-computer2-path, $keyframe: datagram-motion-single2)
 }
 
 #svg-layer2-switch-flood-animated #gDatagram3 {
-    @include datagram-motion($path: $switch3-to-computer3-path, $keyframe: datagram2-motion)
+    @include datagram-motion($path: $switch3-to-computer3-path, $keyframe: datagram-motion-single2)
 }
 
 /* Brief enlargement of datagram circle to emphasize movement. */
 #svg-layer2-switch-1-2-animated #cirDatagram1
 , #svg-layer2-switch-3-2-animated #cirDatagram1
 , #svg-layer2-switch-flood-animated #cirDatagram1 {
-    animation: $animation-duration-time ease-in-out 0s infinite both running datagram1-bump;
+    animation: $animation-step-duration-time ease-in-out 0s infinite both running datagram-bump-single1;
 }
 
 #svg-layer2-switch-1-2-animated #cirDatagram2
 , #svg-layer2-switch-3-2-animated #cirDatagram2
 , #svg-layer2-switch-flood-animated #cirDatagram2
 , #svg-layer2-switch-flood-animated #cirDatagram3 {
-    animation: $animation-duration-time ease-in-out 0s infinite both running datagram2-bump;
+    animation: $animation-step-duration-time ease-in-out 0s infinite both running datagram-bump-single2;
 }
 
 /* Message appear/disappear. */
 #svg-layer2-switch-1-2-animated #gMessage2
 , #svg-layer2-switch-3-2-animated #gMessage2
 , #svg-layer2-switch-flood-animated #gMessage2 {
-    animation: $animation-duration-time linear 0s infinite backwards running switch-message-appear;
+    animation: $animation-step-duration-time linear 0s infinite backwards running switch-message-appear-single1;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3 {
-    animation: $animation-duration-time linear 0s infinite backwards running mactable-message-appear;
+    animation: $animation-step-duration-time linear 0s infinite backwards running mactable-message-appear-single1;
     opacity: 0;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3Dunno {
-    animation: $animation-duration-time linear 0s infinite backwards running switch-message-remove;
+    animation: $animation-step-duration-time linear 0s infinite backwards running switch-message-remove-single1;
 }
 
 #svg-layer2-switch-1-2-animated #rectAddressTableRow2
 , #svg-layer2-switch-3-2-animated #rectAddressTableRow3 {
-    animation: $animation-duration-time linear 0s infinite backwards running mactable-highlight-row;
+    animation: $animation-step-duration-time linear 0s infinite backwards running mactable-highlight-row-single1;
 }
 
 #svg-layer2-switch-flood-animated #textDisplayMessage2
 , #svg-layer2-switch-flood-animated #textDisplayMessage3 {
-    animation: $animation-duration-time linear 0s infinite backwards running computer-message-appear;
+    animation: $animation-step-duration-time linear 0s infinite backwards running computer-message-appear-single1;
 }
