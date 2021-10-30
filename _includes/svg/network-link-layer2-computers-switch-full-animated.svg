@@ -153,6 +153,19 @@
          stdDeviation="1.5222095e-05"
          id="feGaussianBlur1156" />
     </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1154-3"
+       x="-8.1687801e-07"
+       width="1.0000015"
+       y="-2.2599193e-06"
+       height="1.0000045">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.5222095e-05"
+         id="feGaussianBlur1156-3" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -688,7 +701,7 @@
        id="gDatagram1-1">
       <circle
          style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-         id="cirgDatagram1-1"
+         id="cirDatagram1-1"
          cx="54.313866"
          cy="75.770432"
          r="1.5" />
@@ -713,7 +726,7 @@
        transform="translate(59.828406,37.600945)">
       <circle
          style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-         id="cirgDatagram1-2"
+         id="cirDatagram1-2"
          cx="54.313866"
          cy="75.770432"
          r="1.5" />
@@ -762,7 +775,7 @@
        transform="translate(-47.286785,38.130112)">
       <circle
          style="opacity:0.999;fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-         id="cirgDatagram1-3"
+         id="cirDatagram1-3"
          cx="173.41418"
          cy="75.423561"
          r="1.5" />
@@ -808,7 +821,7 @@
        transform="translate(59.941218,11.703813)">
       <circle
          style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
-         id="cirgDatagram2-1"
+         id="cirDatagram2-1"
          cx="54.313866"
          cy="75.770432"
          r="1.5" />
@@ -821,11 +834,68 @@
            sodipodi:role="line"
            id="tspan6171-2"
            x="56.769505"
-           y="71.856735">from: {{ mac1 }}</tspan><tspan
+           y="71.856735">from: {{ mac2 }}</tspan><tspan
            sodipodi:role="line"
            id="tspan6173-5"
            x="56.769505"
-           y="75.384514">to: {{ mac2 }}</tspan></text>
+           y="75.384514">to: {{ mac1 }}</tspan></text>
+    </g>
+    <g
+       id="gDatagram2-2"
+       style="opacity:0.999"
+       transform="translate(46.620925,37.785895)">
+      <circle
+         style="fill:#f4fe27;fill-opacity:1;stroke:#000000;stroke-width:0.106"
+         id="cirDatagram2-2"
+         cx="54.313866"
+         cy="75.770432"
+         r="1.5" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="56.769505"
+         y="71.856735"
+         id="textgDatagram2-2"><tspan
+           sodipodi:role="line"
+           id="tspan6171-2-2"
+           x="56.769505"
+           y="71.856735">from: {{ mac2 }}</tspan><tspan
+           sodipodi:role="line"
+           id="tspan6173-5-9"
+           x="56.769505"
+           y="75.384514">to: {{ mac1 }}</tspan></text>
+    </g>
+    <g
+       id="gMessage3"
+       style="opacity:0.999;filter:url(#filter1154-3)"
+       transform="translate(-65.156124,15.381012)">
+      <rect
+         style="opacity:0.999;fill:none;stroke:#000000;stroke-width:0.143512;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rectMessage3"
+         width="46.968117"
+         height="16.165634"
+         x="110.58863"
+         y="95.480911"
+         ry="2"
+         class="svg-box-secondary" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.998001;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="112.64317"
+         y="100.10773"
+         id="text4301-3"><tspan
+           sodipodi:role="line"
+           id="tspan1247"
+           x="112.64317"
+           y="100.10773">This is coming from</tspan><tspan
+           sodipodi:role="line"
+           id="tspan1249"
+           x="112.64317"
+           y="104.95843">port 2.</tspan><tspan
+           sodipodi:role="line"
+           id="tspan1251"
+           x="112.64317"
+           y="109.80913">Let's remember that!</tspan></text>
     </g>
   </g>
 </svg>
