@@ -316,6 +316,16 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 @include keyframes-mactable-message-remove('mactable-message-remove-full-step2', 2, $animation-full-duration, $animation-step-duration);
 @include keyframes-mactable-highlight-row('mactable-highlight-row-full-step2', 2, $animation-full-duration, $animation-step-duration);
 
+@include keyframes-datagram-motion1('datagram1-motion-full-step3', 3, $animation-full-duration, $animation-step-duration);
+@include keyframes-datagram-bump1('datagram1-bump-full-step3', 3, $animation-full-duration, $animation-step-duration);
+@include keyframes-datagram-motion2('datagram2-motion-full-step3', 3, $animation-full-duration, $animation-step-duration);
+@include keyframes-datagram-bump2('datagram2-bump-full-step3', 3, $animation-full-duration, $animation-step-duration);
+
+@include keyframes-datagram-motion1('datagram1-motion-full-step4', 4, $animation-full-duration, $animation-step-duration);
+@include keyframes-datagram-bump1('datagram1-bump-full-step4', 4, $animation-full-duration, $animation-step-duration);
+@include keyframes-datagram-motion2('datagram2-motion-full-step4', 4, $animation-full-duration, $animation-step-duration);
+@include keyframes-datagram-bump2('datagram2-bump-full-step4', 4, $animation-full-duration, $animation-step-duration);
+
 /* Fade in/out at beginning/end of animation to indicate animation is restarting. */
 #svg-layer2-switch-1-2-animated
 , #svg-layer2-switch-3-2-animated
@@ -357,6 +367,26 @@ $animation-full-duration-time: #{$animation-full-duration}s;
     @include datagram-motion($path: $switch1-to-computer1-path, $keyframe: datagram2-motion-full-step2, $time: $animation-full-duration-time)
 }
 
+#svg-layer2-switch-full-animated #gDatagram3-1 {
+    @include datagram-motion($path: $computer1-to-switch1-path, $keyframe: datagram1-motion-full-step3, $time: $animation-full-duration-time)
+}
+
+#svg-layer2-switch-full-animated #gDatagram3-2 {
+    @include datagram-motion($path: $switch2-to-computer2-path, $keyframe: datagram2-motion-full-step3, $time: $animation-full-duration-time)
+}
+
+#svg-layer2-switch-full-animated #gDatagram3-3 {
+    @include datagram-motion($path: $switch3-to-computer3-path, $keyframe: datagram2-motion-full-step3, $time: $animation-full-duration-time)
+}
+
+#svg-layer2-switch-full-animated #gDatagram4-1 {
+    @include datagram-motion($path: $computer3-to-switch3-path, $keyframe: datagram1-motion-full-step4, $time: $animation-full-duration-time)
+}
+
+#svg-layer2-switch-full-animated #gDatagram4-2 {
+    @include datagram-motion($path: $switch1-to-computer1-path, $keyframe: datagram2-motion-full-step4, $time: $animation-full-duration-time)
+}
+
 #svg-layer2-switch-1-2-animated #gDatagram2
 , #svg-layer2-switch-3-2-animated #gDatagram2
 , #svg-layer2-switch-flood-animated #gDatagram2 {
@@ -396,6 +426,23 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 
 #svg-layer2-switch-full-animated #cirDatagram2-2 {
     animation: $animation-full-duration-time ease-in-out 0s infinite both running datagram2-bump-full-step2;
+}
+
+#svg-layer2-switch-full-animated #cirDatagram3-1 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running datagram1-bump-full-step3;
+}
+
+#svg-layer2-switch-full-animated #cirDatagram3-2
+, #svg-layer2-switch-full-animated #cirDatagram3-3 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running datagram2-bump-full-step3;
+}
+
+#svg-layer2-switch-full-animated #cirDatagram4-1 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running datagram1-bump-full-step4;
+}
+
+#svg-layer2-switch-full-animated #cirDatagram4-2 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running datagram2-bump-full-step4;
 }
 
 /* Message appear/disappear. */
