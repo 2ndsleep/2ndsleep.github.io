@@ -286,6 +286,11 @@ $animation-full-duration-time: #{$animation-full-duration}s;
     }
 }
 
+@include keyframes-computer-message-remove('step1', 1, $animation-full-duration, $animation-step-duration);
+@include keyframes-computer-message-remove('step2', 2, $animation-full-duration, $animation-step-duration);
+@include keyframes-computer-message-remove('step3', 3, $animation-full-duration, $animation-step-duration);
+@include keyframes-computer-message-remove('step4', 4, $animation-full-duration, $animation-step-duration);
+
 @include keyframes-datagram-motion1('datagram-motion-single1', 1, $animation-step-duration, $animation-step-duration);
 @include keyframes-datagram-bump1('datagram-bump-single1', 1, $animation-step-duration, $animation-step-duration);
 @include keyframes-datagram-motion2('datagram-motion-single2', 1, $animation-step-duration, $animation-step-duration);
@@ -335,6 +340,22 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 
 #svg-layer2-switch-full-animated {
     animation: $animation-full-duration-time ease-in-out 0s infinite both running reset-full;
+}
+
+#svg-layer2-switch-full-animated #gStep1 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running step1;
+}
+
+#svg-layer2-switch-full-animated #gStep2 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running step2;
+}
+
+#svg-layer2-switch-full-animated #gStep3 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running step3;
+}
+
+#svg-layer2-switch-full-animated #gStep4 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running step4;
 }
 
 /* Motion paths for datagrams. */
