@@ -224,19 +224,24 @@ $animation-full-duration-time: #{$animation-full-duration}s;
     }
 }
 
-@mixin keyframes-mactable-highlight-row($name, $step, $full-duration, $step-duration) {
+@mixin keyframes-mactable-highlight-row($name, $steps, $full-duration, $step-duration) {
     @keyframes #{$name} {
-        #{calculate-keyframe-percent(20, $step, $full-duration, $step-duration)}% {
+        from {
             fill: transparent;
         }
-        #{calculate-keyframe-percent(25, $step, $full-duration, $step-duration)}% {
-            fill: $svg-secondary-color;
-        }
-        #{calculate-keyframe-percent(95, $step, $full-duration, $step-duration)}% {
-            fill: $svg-secondary-color;
-        }
-        #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
-            fill: transparent;
+        @each $step in $steps {
+            #{calculate-keyframe-percent(20, $step, $full-duration, $step-duration)}% {
+                fill: transparent;
+            }
+            #{calculate-keyframe-percent(25, $step, $full-duration, $step-duration)}% {
+                fill: $svg-secondary-color;
+            }
+            #{calculate-keyframe-percent(95, $step, $full-duration, $step-duration)}% {
+                fill: $svg-secondary-color;
+            }
+            #{calculate-keyframe-percent(100, $step, $full-duration, $step-duration)}% {
+                fill: transparent;
+            }
         }
         to {
             fill: transparent;
@@ -344,7 +349,7 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 @include keyframes-switch-message-appear('switch-message-appear-full-step1', 1, $animation-full-duration, $animation-step-duration);
 @include keyframes-mactable-message-appear('mactable-message-appear-full-step1', 1, $animation-full-duration, $animation-step-duration);
 @include keyframes-mactable-message-remove('mactable-message-remove-full-step1', 1, $animation-full-duration, $animation-step-duration);
-@include keyframes-mactable-highlight-row('mactable-highlight-row-full-step1', 1, $animation-full-duration, $animation-step-duration);
+@include keyframes-mactable-highlight-row('mactable-highlight-row-full-step1', [1, 4], $animation-full-duration, $animation-step-duration);
 @include keyframes-computer-message-appear('computer-message-appear-full-step1', 1, $animation-full-duration, $animation-step-duration);
 @include keyframes-computer-message-remove('computer-message-remove-full-step1', 1, $animation-full-duration, $animation-step-duration);
 
