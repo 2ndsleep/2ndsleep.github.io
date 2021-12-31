@@ -179,6 +179,19 @@
          stdDeviation="1.5222095e-05"
          id="feGaussianBlur1156-9" />
     </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1154-0-7"
+       x="-8.1687801e-07"
+       width="1.0000015"
+       y="-2.2599193e-06"
+       height="1.0000045">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.5222095e-05"
+         id="feGaussianBlur1156-9-7" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -188,7 +201,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.8120079"
-     inkscape:cx="370.42286"
+     inkscape:cx="286.5576"
      inkscape:cy="203.83943"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -1182,5 +1195,45 @@
          id="tspan4299-4"
          x="176.86035"
          y="59.438599">Yep, this is for me!</tspan></text>
+    <g
+       id="gMessage5"
+       style="opacity:0.999;filter:url(#filter1154-0-7)"
+       transform="translate(-62.897452,15.720381)">
+      <rect
+         style="opacity:0.999;fill:none;stroke:#000000;stroke-width:0.229155;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rectMessage5"
+         width="61.344009"
+         height="31.557701"
+         x="96.172859"
+         y="80.048965"
+         ry="3.9042947"
+         class="svg-box-secondary" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.998001;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="98.190247"
+         y="85.469841"
+         id="text4301-5-4"><tspan
+           sodipodi:role="line"
+           id="tspan1250"
+           x="98.190247"
+           y="85.469841">I know this goes to port 1!</tspan><tspan
+           sodipodi:role="line"
+           id="tspan1252"
+           x="98.190247"
+           y="90.320541"></tspan><tspan
+           sodipodi:role="line"
+           id="tspan1254"
+           x="98.190247"
+           y="95.171242">And now I finally know what</tspan><tspan
+           sodipodi:role="line"
+           id="tspan1256"
+           x="98.190247"
+           y="100.02194">is on port 3. Let's remember</tspan><tspan
+           sodipodi:role="line"
+           id="tspan1258"
+           x="98.190247"
+           y="104.87264">that!</tspan></text>
+    </g>
   </g>
 </svg>

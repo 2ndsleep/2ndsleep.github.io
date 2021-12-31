@@ -321,6 +321,7 @@ $animation-full-duration-time: #{$animation-full-duration}s;
     }
 }
 
+// Generate the keyframes from the mixins.
 @include keyframes-computer-message-remove('step1', 1, $animation-full-duration, $animation-step-duration);
 @include keyframes-computer-message-remove('step2', 2, $animation-full-duration, $animation-step-duration);
 @include keyframes-computer-message-remove('step3', 3, $animation-full-duration, $animation-step-duration);
@@ -367,6 +368,10 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 @include keyframes-datagram-bump1('datagram1-bump-full-step4', 4, $animation-full-duration, $animation-step-duration);
 @include keyframes-datagram-motion2('datagram2-motion-full-step4', 4, $animation-full-duration, $animation-step-duration);
 @include keyframes-datagram-bump2('datagram2-bump-full-step4', 4, $animation-full-duration, $animation-step-duration);
+@include keyframes-switch-message-appear('switch-message-appear-full-step4', 4, $animation-full-duration, $animation-step-duration);
+@include keyframes-mactable-message-appear('mactable-message-appear-full-step4', 4, $animation-full-duration, $animation-step-duration);
+@include keyframes-mactable-message-remove('mactable-message-remove-full-step4', 4, $animation-full-duration, $animation-step-duration);
+@include keyframes-mactable-highlight-row('mactable-highlight-row-full-step4', 4, $animation-full-duration, $animation-step-duration);
 
 /* Fade in/out at beginning/end of animation to indicate animation is restarting. */
 #svg-layer2-switch-1-2-animated
@@ -526,6 +531,10 @@ $animation-full-duration-time: #{$animation-full-duration}s;
     animation: $animation-full-duration-time ease-in-out 0s infinite both running switch-message-appear-full-step3;
 }
 
+#svg-layer2-switch-full-animated #gMessage5 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running switch-message-appear-full-step4;
+}
+
 #svg-layer2-switch-3-2-animated #textAddressTableMac3 {
     animation: $animation-step-duration-time linear 0s infinite backwards running mactable-message-appear-single1;
     opacity: 0;
@@ -537,6 +546,10 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 
 #svg-layer2-switch-full-animated #textAddressTableMac2 {
     animation: $animation-full-duration-time linear 0s infinite backwards running mactable-message-appear-full-step2;
+}
+
+#svg-layer2-switch-full-animated #textAddressTableMac3 {
+    animation: $animation-full-duration-time linear 0s infinite backwards running mactable-message-appear-full-step4;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3Dunno {
@@ -551,6 +564,10 @@ $animation-full-duration-time: #{$animation-full-duration}s;
     animation: $animation-full-duration-time linear 0s infinite backwards running mactable-message-remove-full-step2;
 }
 
+#svg-layer2-switch-full-animated #textAddressTableMac3Dunno {
+    animation: $animation-full-duration-time linear 0s infinite backwards running mactable-message-remove-full-step4;
+}
+
 #svg-layer2-switch-1-2-animated #rectAddressTableRow2
 , #svg-layer2-switch-3-2-animated #rectAddressTableRow3 {
     animation: $animation-step-duration-time linear 0s infinite backwards running mactable-highlight-row-single1;
@@ -562,6 +579,10 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 
 #svg-layer2-switch-full-animated #rectAddressTableRow2 {
     animation: $animation-full-duration-time linear 0s infinite backwards running mactable-highlight-row-full-step2;
+}
+
+#svg-layer2-switch-full-animated #rectAddressTableRow3 {
+    animation: $animation-full-duration-time linear 0s infinite backwards running mactable-highlight-row-full-step4;
 }
 
 #svg-layer2-switch-flood-animated #textDisplayMessage2
