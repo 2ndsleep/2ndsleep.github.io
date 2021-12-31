@@ -1,3 +1,38 @@
+// This contains CSS animations for SVG diagrams.
+//
+// There are a lot of mixins that generate keyframes. These mixins are used
+// to create the correct keyframe percentage values which is particularly useful
+// for multi-step animations because it calculates the percentage according
+// to the offset of the step position. 
+// For example, let's say there is a 2-step animation where each step runs for 10 seconds
+// and the overall animation runs for 20 seconds. You have a keyframe definition that wants to
+// do something at the 25% mark and 75% mark WITHIN a step. You can use the mixim to tell it to
+// produce two different keyframes:
+// @keyframe step1 { 12.5% { ... } 37.5% { ... } }
+// @keyframe step2 { 62.5% { ... } 87.5% { ... } }
+// step1 will do things at the 25% and 75% mark for the first step, and
+// step2 will do things at the 25% and 75% mark for the second step.
+//
+// These mixins are independent but they all have the same signature:
+//   $name, $step, $full-duration, $step-duration
+// $name - resulting name of the keyframe that can be used by animation styles
+// $step - which step in a multi-step animation this will occur
+// $full-duration - length in seconds of the full animation
+// $step-duration - length in seconds of a single step
+//
+// For a multi-step animation, follow this general process to animate the SVG.
+//  1. Create the mixin, if it does not already exist for this type of animation.
+//  2. Create an include to generate the keyframe. Something like this:
+//       @include mixin-name-from-above('name-of-keyframe', 1, $animation-full-duration, $animation-step-duration);
+//  3. Add the CSS. Something like this:
+//       #svg-element-id {
+//         animation: $animation-full-duration-time ease-in-out 0s infinite both running name-of-keyframe;
+//       }
+
+// ************************************************************************* //
+// ************************************************************************* //
+// ************************************************************************* //
+
 // Configurable values. Change these to change the animation behavior.
 // $animation-step-duration must be greater than the other duration variables.
 $animation-step-duration: 10;
@@ -211,7 +246,7 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 
 @mixin keyframes-computer-message-appear($name, $step, $full-duration, $step-duration) {
     @keyframes #{$name} {
-        #{calculate-keyframe-percent(0, $step, $full-duration, $step-duration)}% {
+        from {
             opacity: 0;
         }
         #{calculate-keyframe-percent(65, $step, $full-duration, $step-duration)}% {
@@ -325,6 +360,8 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 @include keyframes-datagram-bump1('datagram1-bump-full-step3', 3, $animation-full-duration, $animation-step-duration);
 @include keyframes-datagram-motion2('datagram2-motion-full-step3', 3, $animation-full-duration, $animation-step-duration);
 @include keyframes-datagram-bump2('datagram2-bump-full-step3', 3, $animation-full-duration, $animation-step-duration);
+@include keyframes-switch-message-appear('switch-message-appear-full-step3', 3, $animation-full-duration, $animation-step-duration);
+@include keyframes-computer-message-appear('computer-message-appear-full-step3', 3, $animation-full-duration, $animation-step-duration);
 
 @include keyframes-datagram-motion1('datagram1-motion-full-step4', 4, $animation-full-duration, $animation-step-duration);
 @include keyframes-datagram-bump1('datagram1-bump-full-step4', 4, $animation-full-duration, $animation-step-duration);
@@ -467,7 +504,7 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 }
 
 /* Message appear/disappear. */
-#svg-layer2-switch-full-animated #textDisplayMessage1 {
+#svg-layer2-switch-full-animated #textDisplayMessage1-1 {
     animation: $animation-full-duration-time linear 0s infinite backwards running computer-message-remove-full-step1;
 }
 
@@ -483,6 +520,10 @@ $animation-full-duration-time: #{$animation-full-duration}s;
 
 #svg-layer2-switch-full-animated #gMessage3 {
     animation: $animation-full-duration-time ease-in-out 0s infinite both running switch-message-appear-full-step2;
+}
+
+#svg-layer2-switch-full-animated #gMessage4 {
+    animation: $animation-full-duration-time ease-in-out 0s infinite both running switch-message-appear-full-step3;
 }
 
 #svg-layer2-switch-3-2-animated #textAddressTableMac3 {
@@ -528,7 +569,12 @@ $animation-full-duration-time: #{$animation-full-duration}s;
     animation: $animation-step-duration-time linear 0s infinite backwards running computer-message-appear-single1;
 }
 
-#svg-layer2-switch-full-animated #textDisplayMessage2
-, #svg-layer2-switch-full-animated #textDisplayMessage3 {
+#svg-layer2-switch-full-animated #textDisplayMessage1-2
+, #svg-layer2-switch-full-animated #textDisplayMessage1-3 {
     animation: $animation-full-duration-time linear 0s infinite backwards running computer-message-appear-full-step1;
+}
+
+#svg-layer2-switch-full-animated #textDisplayMessage3-1
+, #svg-layer2-switch-full-animated #textDisplayMessage3-2 {
+    animation: $animation-full-duration-time linear 0s infinite backwards running computer-message-appear-full-step3;
 }
