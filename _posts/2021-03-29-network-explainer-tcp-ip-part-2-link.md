@@ -49,7 +49,7 @@ An Ethernet frame is a chunk of data that's sent from one network adapter, trans
 
 {% include svg.html path="svg/network-link-layer2-frame.svg" %}
 
-The diagram above means that when one computer transit a frame of data, it will transfer a bunch of 1's & 0's representing the preamble first, then 1's & 0's respresenting the MAC destination, etc. The receiving computer will receive the data in the same order, beginning with the preamble. Most of this isn't that imporant (unless you're dealing with VLANs, which I'm totally ignoring in this post), so let's focus on the three things that are worth talking about.
+The diagram above means that when one computer transmit a frame of data, it will transfer a bunch of 1's & 0's representing the preamble first, then 1's & 0's respresenting the MAC destination, etc. The receiving computer will receive the data in the same order, beginning with the preamble. Most of this isn't that imporant (unless you're dealing with VLANs, which I'm totally ignoring in this post), so let's focus on the three things that are worth talking about.
 
 - **MAC Destination**: This is the MAC address of the network adapter that this frame is going to. When a network adapter wants to send a frame to another network adapter, it puts the MAC address of that other network adapter here.
 - **MAC Source**: This is the MAC address of the network adapter that sent this frame. If this is the network adapter that's sending this frame, it's going to put its own MAC address here.
