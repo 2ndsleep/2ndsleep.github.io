@@ -43,5 +43,13 @@ Wouldn't it be better if we broke up our networks into discrete chunks and then 
 There's a lot of ways this can be and are done, but since this is a crash course, here's how it works in practical terms.
 
 - Each computer in a broadcast domain is assigned an IP address that is in the same network.
-- Any computer that needs to talk to a computer in its same network can just chat directly over switches.
+- Any computer that needs to talk to a computer in its same network can just chat directly through switches.
 - Any computer that needs to talk to a computer outside is network needs to go through a router.
+
+I like to think of this whole situation like a bunch of rooms in a building. Each room has a bunch of people in it. People inside a room can pass messages to people in the same room, but they must go through a doorman (door person? how about we say "doorkeeper"?) to pass messages to people in other rooms.
+
+Why are all these people trapped in various rooms, you ask? I don't know. Maybe they're in a prison in one of those Nordic countries where even the criminals are better than people in other countries. I'll let you shoehorn in the logic of the example. For now, it looks something like this.
+
+{% include svg.html path="svg/network-ip-layer3-rooms.svg" %}
+
+All the people in room 1 can pass messages directly to each other, and all the people in room 2 can pass messages directly to each other, but a person in room 1 can only pass a message to a person in room 2 by giving it to the doorkeeper in the middle who then passes it to the person in room 2.
