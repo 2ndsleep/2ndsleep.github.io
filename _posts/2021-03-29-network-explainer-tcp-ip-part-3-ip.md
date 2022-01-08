@@ -52,4 +52,8 @@ Why are all these people trapped in various rooms, you ask? I don't know. Maybe 
 
 {% include svg.html path="svg/network-ip-layer3-rooms.svg" %}
 
-All the people in room 1 can pass messages directly to each other, and all the people in room 2 can pass messages directly to each other, but a person in room 1 can only pass a message to a person in room 2 by giving it to the doorkeeper in the middle who then passes it to the person in room 2.
+All the people in room 1 can pass messages directly to each other, and all the people in room 2 can pass messages directly to each other, but a person in room 1 can only pass a message to a person in room 2 by giving it to the doorkeeper in the middle (the red one) who then passes it to the person in room 2.
+
+You may have figured out by now that the rooms are broadcast domains and the doorkeeper is a router. In short, all the devices that are connected to the same set of switches are in the same broadcast domain. So in the diagram below there are four broadcast domains - each room is its own broadcast domain. If any computer in a room wants to talk to a computer in another room, it must go through the router in the middle.
+
+{% include svg.html path="svg/network-ip-layer3-rooms-computers.svg" %}
