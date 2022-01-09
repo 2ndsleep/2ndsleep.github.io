@@ -120,13 +120,13 @@ This is often called *dot-decimal notation*. The IP address is broken up into fo
 
 I'm going to breeze through this very quickly. There are two ways to assign an IP address to a computer.
 
-The first is that an administrator logs into the computer and then types the IP address into the place where you configure an IP address. This is different for each operating system, and as I already warned you, I'm not going to explain that. But these links may help for [Windows](https://support.microsoft.com/en-us/windows/change-tcp-ip-settings-bd0a07af-15f5-cd6a-363f-ca2b6f391ace), [macOS](https://support.apple.com/sq-al/guide/mac-help/mchlp2718/mac), or [Linux](https://danielmiessler.com/study/manually-set-ip-linux/).
-
 ### Manual Assignment
 
-Walking over to each computer and assigning an IP address is a lot of management, and more worrisome, it involves exercise. This is nearly impossible if you're managing hundreds or thousands of computers. What we do instead is let the computer request an IP address automatically from a DHCP server. When the computer starts up, it sends a broadcast frame with a payload that is requesting an IP address from a DHCP server. The first DHCP server to respond will return an IP address that the computer will assign itself.
+The first is that an administrator logs into the computer and then types the IP address into the place where you configure an IP address. This is different for each operating system, and as I already warned you, I'm not going to explain that. But these links may help for [Windows](https://support.microsoft.com/en-us/windows/change-tcp-ip-settings-bd0a07af-15f5-cd6a-363f-ca2b6f391ace), [macOS](https://support.apple.com/sq-al/guide/mac-help/mchlp2718/mac), or [Linux](https://danielmiessler.com/study/manually-set-ip-linux/).
 
 ### DHCP Assignment
+
+Walking over to each computer and assigning an IP address is a lot of management, and more worrisome, it involves exercise. This is nearly impossible if you're managing hundreds or thousands of computers. What we do instead is let the computer request an IP address automatically from a DHCP server. When the computer starts up, it sends a broadcast frame with a payload that is requesting an IP address from a DHCP server. The first DHCP server to respond will return an IP address that the computer will assign itself.
 
 People rarely manually assign IP addresses. Even in small networks like your home network, your home router has a DHCP server built into it to assign your laptop an IP address.
 
