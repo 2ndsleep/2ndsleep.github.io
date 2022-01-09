@@ -6,16 +6,44 @@ toc: true
 ---
 IP is how computers talk to each other over long distances. Computers are assigned IP addresses which can be routed across multiple networks.
 
+{% comment %}
+Change these values to update the IP or MAC addresses used thoughout this post.
+Monospace-formatted IPv4 text and binary values will be automatically calculated. 
+{% endcomment %}
+{% assign ip1 = '192.168.1.10' %}
+{% assign subnet1mask = '255.255.255.0' %}
+{% assign subnet1 = '192.168.1.0' %}
+
 {% assign mac1 = 'A2-63-00-A3-58-B7' %}
 {% assign mac2 = 'C2-8E-55-92-FC-36' %}
 {% assign mac3 = '12-DD-67-45-7E-8D' %}
 
-{% assign ip1 = '192.168.1.100' %}
+{% comment %}
+These Liquid statements render the monospace-formatted IPv4 text and binary values.
+Do not change these unless the output needs to be changed.
+{% endcomment %}
+{% assign space = ' ' %}
+
+{% comment %}IP address octets{% endcomment %}
 {% assign ip1octets = ip1 | split: "." %}
-{% assign subnet1mask = '255.255.255.0' %}
-{% assign subnet1maskoctets = subnet1 | split: "." %}
-{% assign subnet1 = '192.168.1.0' %}
+{% comment %}IP address monospace-formatted text{% endcomment %}
+{% capture ip1monospace %}{% for i in (0..3) %}{% assign osize = ip1octets[i] | size %}{% if osize == 1 %}{{ space }}{{ space }}{% endif %}{% if osize == 2 %}{{ space }}{% endif %}{{ ip1octets[i] }}{% if i < 3 %}{{ space }}.{{ space }}{% endif %}{% endfor %}{% endcapture %}
+{% comment %}IP address binary value{% endcomment %}
+{% capture ip1binary %}{% for octet in ip1octets %}{% assign o = octet %}{% assign d = 128 %}{% for i in (0..7) %}{% assign bit = o | divided_by: d %}{% assign o = o | modulo: d %}{% assign d = d | divided_by: 2 %}{{ bit }}{% endfor %}{% endfor %}{% endcapture %}
+
+{% comment %}Subnet mask octets{% endcomment %}
+{% assign subnet1maskoctets = subnet1mask | split: "." %}
+{% comment %}Subnet mask monospace-formatted text{% endcomment %}
+{% capture subnet1maskmonospace %}{% for i in (0..3) %}{% assign osize = subnet1maskoctets[i] | size %}{% if osize == 1 %}{{ space }}{{ space }}{% endif %}{% if osize == 2 %}{{ space }}{% endif %}{{ subnet1maskoctets[i] }}{% if i < 3 %}{{ space }}.{{ space }}{% endif %}{% endfor %}{% endcapture %}
+{% comment %}Subnet mask binary value{% endcomment %}
+{% capture subnet1maskbinary %}{% for octet in subnet1maskoctets %}{% assign o = octet %}{% assign d = 128 %}{% for i in (0..7) %}{% assign bit = o | divided_by: d %}{% assign o = o | modulo: d %}{% assign d = d | divided_by: 2 %}{{ bit }}{% endfor %}{% endfor %}{% endcapture %}
+
+{% comment %}Subnet ID octets{% endcomment %}
 {% assign subnet1octets = subnet1 | split: "." %}
+{% comment %}Subnet ID monospace-formatted text{% endcomment %}
+{% capture subnet1monospace %}{% for i in (0..3) %}{% assign osize = subnet1octets[i] | size %}{% if osize == 1 %}{{ space }}{{ space }}{% endif %}{% if osize == 2 %}{{ space }}{% endif %}{{ subnet1octets[i] }}{% if i < 3 %}{{ space }}.{{ space }}{% endif %}{% endfor %}{% endcapture %}
+{% comment %}Subnet ID binary value{% endcomment %}
+{% capture subnet1binary %}{% for octet in subnet1octets %}{% assign o = octet %}{% assign d = 128 %}{% for i in (0..7) %}{% assign bit = o | divided_by: d %}{% assign o = o | modulo: d %}{% assign d = d | divided_by: 2 %}{{ bit }}{% endfor %}{% endfor %}{% endcapture %}
 
 # The Problem
 
@@ -75,7 +103,7 @@ If you were taking a real networking class, you'd learn a lot more than this lit
 
 - **How to actually assign an IP address on a computer.** You can Google that.
 - **Detailed IP math.** You absolutely should learn how to do that if you will be managing networks in any way, but we're going to keep it simple here.
-- **IPv6.** That is a tutorial all on its own. And to be honest, I don't understand it well enough to teach it. We're sticking with IPv4 only. IPv4 addresses are the ones that look like `192.168.1.1`.
+- **IPv6.** That is a tutorial all on its own. And to be honest, I don't understand it well enough to teach it. We're sticking with IPv4 only. IPv4 addresses are the ones that look like `10.248.85.17`.
 - **The concept of classful networking, because it's antiquated.** If you don't know what that means, great! The less you know about it, the better.
 
 # IP Addresses
@@ -83,7 +111,7 @@ If you were taking a real networking class, you'd learn a lot more than this lit
 An IP address is a numeric value that is used to assign an identity to a computer. Behind the scenes, it is really just one long 32-bit binary number but we write in a way that is easier for mere humans to understand, which looks like this.
 
 ```
-192.168.1.1
+{{ ip1 }}
 ```
 
 This is often called *dot-decimal notation*. The IP address is broken up into four *octets* separated by dots. Or "decimals," if you prefer. Or "dot-decimal." The English language can be really dumb sometimes. Each octet is an 8-bit number which means that it can be a value of 0 through 255.
@@ -146,7 +174,7 @@ We do all this by grouping IP addresses into separate networks called *subnets*.
 
 Whenever a computer is assigned an IP address, it also needs to be assigned a subnet mask in order to know which subnet it is part of. The subnet mask combined with an IP address is used to calculate the subnet that an IP address is on.
 
-Assume a computer is assigned an IP address of `192.168.1.1`. If it were assigned a subnet mask of `255.255.255.0` then it would be on the `192.168.1.0` subnet.
+Assume a computer is assigned an IP address of `{{ ip1 }}`. If it were assigned a subnet mask of `{{ subnet1mask }}` then it would be on the `{{ subnet1 }}` subnet.
 
 <img src="/assets/images/posts/no-math.jpeg" width="290" height="293">
 
@@ -157,20 +185,20 @@ The subnet mask in this case says to keep all the octets in the IP address the s
 So...
 
 ```
-IP Address:  192  . 168  .  1   .  1
-Subnet Mask: 255  . 255  . 255  .  0
+IP Address:  {{ ip1monospace }}
+Subnet Mask: {{ subnet1maskmonospace }}
 =======================================
-             keep   keep   keep   zero
-Subnet ID:   192  . 168  .  1   .  0
+             keep  keep  keep  zero
+Subnet ID:   {{ subnet1monospace }}
 ```
 
-Very quick, here's what's really happening in a technical sense. The IP address and the subnet mask are converted to binary and then a binary AND operation is performed on them. Anywhere the subnet mask is 1, we use the value from the IP address. Anywhere the subnet mask is 0, we ignore the IP address and use 0.
+Very quick, here's what's really happening. As far as your network card is concerned, the IP address and the subnet mask are binary values and it performs a binary AND operation on them. Anywhere the subnet mask is 1, we use the value from the IP address. Anywhere the subnet mask is 0, we ignore the IP address and use 0.
 
 ```
-IP Address:  11000000101010000000000100000001
-Subnet Mask: 11111111111111111111111100000000
+IP Address:  {{ ip1binary }}
+Subnet Mask: {{ subnet1maskbinary }}
 =============================================
-Subnet ID:   11000000101010000000000100000000
+Subnet ID:   {{ subnet1binary }}
 ```
 
 If you need help converting to binary, you can use an online tool like Code Beautify's [IP to Binary Converter](https://codebeautify.org/ip-to-binary-converter).
