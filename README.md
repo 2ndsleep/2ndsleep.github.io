@@ -2,6 +2,10 @@
 
 This is the Jekyll content for the Second Sleep blog. The Second Sleep blog is a project to help system administrators, system engineers, and IT specialists with their Azure deployments. This Jekyll content is intended to be hosted on GitHub pages.
 
+## Getting Started
+
+Running Jekyll for GitHub Pages is slightly different than running Jekyll in general, mostly with the Gemfile. See [About GitHub Pages and Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) for help getting setup. For help with Jekyll in general, see the [Jekyll Installation](https://jekyllrb.com/docs/installation/) page.
+
 ## Minimal Mistakes Theme
 
 This site uses the [Minimal Mistakes Theme](https://mademistakes.com/work/minimal-mistakes-jekyll-theme/) which was created by the talented [Michael Rose](https://mademistakes.com/about/). Go to the [quick start guide](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/) for usage information.
