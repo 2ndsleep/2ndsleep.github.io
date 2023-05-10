@@ -1,8 +1,9 @@
 remote_theme: mmistakes/minimal-mistakes
-minimal_mistakes_skin: "mint"
+minimal_mistakes_skin: "air"
+excerpt_separator: <!--more-->
 locale: "en-US"
 title: "Second Sleep"
-subtitle: "Automate more. Nap more."
+subtitle: "<i>Automating your way to success!</i>"
 name: "Blaine Perry"
 description: "A blog for using a DevOps approach to IT."
 url: "https://2ndsleep.github.io"
@@ -11,7 +12,10 @@ author:
   name: "Blaine Perry"
   location: "Asheville, NC"
   bio: "Systems architecture with over 25 years of Azure cloud experience"
-
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-58PR5VHWK0"  
 collections:
   services:
     output: true

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="242.21301"
+   width="827.7243"
+   version="1.1"
+   id="svg-layer2-frame"
+   sodipodi:docname="network-link-layer2-layer3-encapsulation.svg"
+   inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata
+     id="metadata993">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs991">
+    <rect
+       x="-136.68716"
+       y="8.437479"
+       width="114.74972"
+       height="48.937382"
+       id="rect58614" />
+    <rect
+       x="68.224136"
+       y="220.72514"
+       width="169.89148"
+       height="89.627785"
+       id="rect997" />
+    <rect
+       x="-136.68716"
+       y="8.437479"
+       width="114.74972"
+       height="48.937382"
+       id="rect58614-7" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1556"
+     inkscape:window-height="879"
+     id="namedview989"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="10"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.59259405"
+     inkscape:cx="368.71784"
+     inkscape:cy="-243.84315"
+     inkscape:window-x="1973"
+     inkscape:window-y="106"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg-layer2-frame"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="0" />
+  <rect
+     x="129.07393"
+     y="0.52185303"
+     width="109.02659"
+     height="49.956299"
+     style="fill:none;stroke:#000000;stroke-width:1.0437"
+     id="rectPreamble"
+     class="svg-box" />
+  <text
+     x="184.91437"
+     y="22.479494"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPreamble">Preamble &amp; <tspan
+   x="184.91437"
+   y="37.479496"
+   text-anchor="middle"
+   id="tspan925">SFD</tspan></text>
+  <rect
+     x="129.0737"
+     y="50.521633"
+     width="109.02703"
+     height="24.956743"
+     style="fill:#d3d3d3;stroke:#000000;stroke-width:1.04326"
+     id="rectPreambleDescription"
+     class="svg-box-secondary" />
+  <text
+     x="183.40411"
+     y="66.747559"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPreambleDescription">indicates new frame</text>
+  <rect
+     x="238.12236"
+     y="0.50000226"
+     width="100"
+     height="50"
+     id="rectMacDestination"
+     style="fill:none;stroke:#000000"
+     class="svg-box-primary" />
+  <text
+     x="288.12238"
+     y="22.350588"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacDestination"
+     class="svg-text-primary">MAC <tspan
+   x="288.12238"
+   y="37.35059"
+   text-anchor="middle"
+   id="tspan935">Destination</tspan></text>
+  <rect
+     x="238.12236"
+     y="50.500004"
+     width="100"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectMacDestinationDescription"
+     class="svg-box-secondary" />
+  <text
+     x="288.12238"
+     y="60.790531"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacDestinationDescription">where this frame <tspan
+   x="288.12238"
+   y="70.790527"
+   text-anchor="middle"
+   id="tspan941">is coming from</tspan></text>
+  <rect
+     x="338.12238"
+     y="0.50000226"
+     width="100"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectMacSource"
+     class="svg-box-primary" />
+  <text
+     x="388.12234"
+     y="22.350588"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacSource"
+     class="svg-text-primary">MAC <tspan
+   x="388.12234"
+   y="37.35059"
+   text-anchor="middle"
+   id="tspan947">Source</tspan></text>
+  <rect
+     x="338.12238"
+     y="50.500004"
+     width="100"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectMacSourceDescription"
+     class="svg-box-secondary" />
+  <text
+     x="388.12234"
+     y="60.790531"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacSourceDescription">where this frame <tspan
+   x="388.12234"
+   y="70.790527"
+   text-anchor="middle"
+   id="tspan953">is going</tspan></text>
+  <rect
+     x="438.12234"
+     y="0.50000226"
+     width="75"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectType"
+     class="svg-box" />
+  <text
+     x="475.12234"
+     y="21.351564"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textType">Ethernet <tspan
+   x="475.12234"
+   y="36.351566"
+   text-anchor="middle"
+   id="tspan959">Type</tspan></text>
+  <rect
+     x="438.12234"
+     y="50.500004"
+     width="75"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectTypeDescription"
+     class="svg-box-secondary" />
+  <text
+     x="475.12234"
+     y="61.723148"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textTypeDescription">metadata <tspan
+   x="475.12234"
+   y="71.723145"
+   text-anchor="middle"
+   id="tspan965">about frame</tspan></text>
+  <rect
+     x="513.12238"
+     y="0.50000226"
+     width="200"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectPayload"
+     class="svg-box-primary" />
+  <text
+     x="613.12238"
+     y="28.851564"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPayload"
+     class="svg-text-primary">Payload</text>
+  <rect
+     x="513.12238"
+     y="50.500004"
+     width="200"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectPayloadDescription"
+     class="svg-box-secondary" />
+  <text
+     x="613.12238"
+     y="66.723145"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPayloadDescription">actual data</text>
+  <rect
+     x="713.17664"
+     y="0.55427003"
+     width="73.891464"
+     height="49.891464"
+     style="fill:none;stroke:#000000;stroke-width:1.10854"
+     id="rectFcs"
+     class="svg-box" />
+  <text
+     x="749.88214"
+     y="29.862307"
+     width="60"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textFcs">FCS</text>
+  <rect
+     x="713.17609"
+     y="50.553684"
+     width="73.892639"
+     height="24.892635"
+     style="fill:#d3d3d3;stroke:#000000;stroke-width:1.10736"
+     id="rectFcsDescription"
+     class="svg-box-secondary" />
+  <text
+     x="751.73126"
+     y="61.747562"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textFcsDescription">verification <tspan
+   x="751.73126"
+   y="71.747559"
+   text-anchor="middle"
+   id="tspan983">data</tspan></text>
+  <rect
+     x="243.17589"
+     y="136.73485"
+     width="109.02659"
+     height="49.956299"
+     style="fill:none;stroke:#000000;stroke-width:1.0437"
+     id="rectPreamble-6"
+     class="svg-box" />
+  <text
+     x="299.01633"
+     y="158.6925"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPreamble-2"><tspan
+       sodipodi:role="line"
+       id="tspan4149"
+       x="299.01633"
+       y="158.6925">Various</tspan><tspan
+       sodipodi:role="line"
+       id="tspan4151"
+       x="299.01633"
+       y="173.6925">Headers</tspan></text>
+  <rect
+     x="243.17566"
+     y="186.73462"
+     width="109.02703"
+     height="24.956743"
+     style="fill:#d3d3d3;stroke:#000000;stroke-width:1.04326"
+     id="rectPreambleDescription-7"
+     class="svg-box-secondary" />
+  <text
+     x="297.50607"
+     y="202.96054"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPreambleDescription-0">IP version, flags, etc.</text>
+  <rect
+     x="352.22433"
+     y="136.713"
+     width="100"
+     height="50"
+     id="rectMacDestination-6"
+     style="fill:none;stroke:#000000"
+     class="svg-box-primary" />
+  <text
+     x="402.2243"
+     y="158.5636"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacDestination-6"
+     class="svg-text-primary"><tspan
+       sodipodi:role="line"
+       id="tspan22232"
+       x="402.2243"
+       y="158.5636">IP Address</tspan><tspan
+       sodipodi:role="line"
+       id="tspan22234"
+       x="402.2243"
+       y="173.5636">Source<tspan
+   x="402.2243"
+   y="173.5636"
+   text-anchor="middle"
+   id="tspan935-5" /></tspan></text>
+  <rect
+     x="352.22433"
+     y="186.71301"
+     width="100"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectMacDestinationDescription-6"
+     class="svg-box-secondary" />
+  <text
+     x="402.2243"
+     y="197.00354"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacDestinationDescription-9">where this packet<tspan
+   x="402.2243"
+   y="207.00351"
+   text-anchor="middle"
+   id="tspan941-7">is going</tspan></text>
+  <rect
+     x="452.2243"
+     y="136.713"
+     width="100"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectMacSource-2"
+     class="svg-box-primary" />
+  <text
+     x="502.2243"
+     y="158.5636"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacSource-0"
+     class="svg-text-primary">IP Address<tspan
+   x="502.2243"
+   y="173.5636"
+   text-anchor="middle"
+   id="tspan947-6">Destination</tspan></text>
+  <rect
+     x="452.2243"
+     y="186.71301"
+     width="100"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectMacSourceDescription-4"
+     class="svg-box-secondary" />
+  <text
+     x="502.2243"
+     y="197.00354"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textMacSourceDescription-0">where this packet<tspan
+   x="502.2243"
+   y="207.00351"
+   text-anchor="middle"
+   id="tspan953-7">is coming from</tspan></text>
+  <rect
+     x="552.2243"
+     y="136.713"
+     width="75"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectType-4"
+     class="svg-box" />
+  <text
+     x="589.2243"
+     y="164.95909"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textType-5">Options</text>
+  <rect
+     x="552.2243"
+     y="186.71301"
+     width="75"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectTypeDescription-1"
+     class="svg-box-secondary" />
+  <text
+     x="589.2243"
+     y="197.93616"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textTypeDescription-3"><tspan
+       sodipodi:role="line"
+       id="tspan42547"
+       x="589.2243"
+       y="197.93616">not really</tspan><tspan
+       sodipodi:role="line"
+       id="tspan42549"
+       x="589.2243"
+       y="210.43616">used</tspan></text>
+  <rect
+     x="627.2243"
+     y="136.713"
+     width="200"
+     height="50"
+     style="fill:none;stroke:#000000"
+     id="rectPayload-7"
+     class="svg-box-primary" />
+  <text
+     x="727.22437"
+     y="165.06458"
+     font-size="12px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPayload-4"
+     class="svg-text-primary">Payload</text>
+  <rect
+     x="627.2243"
+     y="186.71301"
+     width="200"
+     height="25"
+     style="fill:#d3d3d3;stroke:#000000"
+     id="rectPayloadDescription-6"
+     class="svg-box-secondary" />
+  <text
+     x="727.22437"
+     y="202.93613"
+     font-size="10px"
+     fill="#000000"
+     text-anchor="middle"
+     id="textPayloadDescription-5">actual data</text>
+  <rect
+     style="fill:none;stroke:#000000;stroke-width:0.00019729"
+     id="rect52139"
+     width="199.27104"
+     height="34.603954"
+     x="512.52722"
+     y="88.299744" />
+  <path
+     id="rect52143"
+     style="fill:#c500d3;fill-opacity:0.178138;stroke:#000000;stroke-width:0.812772"
+     d="M 512.5722,75.544998 H 713.07739 L 827.2243,136.713 243.1759,136.7349 Z"
+     sodipodi:nodetypes="ccccc" />
+  <text
+     xml:space="preserve"
+     id="text58612"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect58614);fill:#000000;fill-opacity:1;stroke:none"
+     transform="translate(138.86458,21.812471)"><tspan
+       x="-136.6875"
+       y="25.467697"
+       id="tspan62965">MAC Frame</tspan></text>
+  <text
+     xml:space="preserve"
+     id="text58612-1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect58614-7);fill:#000000;fill-opacity:1;stroke:none"
+     transform="translate(139.4388,156.67448)"><tspan
+       x="-136.6875"
+       y="25.467697"
+       id="tspan62967">IP Packet</tspan></text>
+</svg>

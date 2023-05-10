@@ -1,9 +1,9 @@
 main:
-  - title: Get Started
-    url: /start
-  - title: Procedures
-    url: /procedures
+  - title: Start Learning
+    url: /services
+  - title: Useless Thoughts
+    url: /thoughts
   - title: All Posts
     url: /blog
-  - title: About
+  - title: Why?
     url: /about
