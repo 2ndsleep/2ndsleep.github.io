@@ -5,7 +5,9 @@
 @charset "utf-8";
 
 $background-color: rgb(248, 244, 231);
+$footer-background-color: $background-color;
 $text-color: rgb(88, 16, 66);
+$primary-color: $text-color;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
