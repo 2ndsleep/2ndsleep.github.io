@@ -12,6 +12,12 @@ Once you've got everything set up, run the following command to start the servic
 bundle exec jekyll serve
 ```
 
+If you want to display [draft posts](https://jekyllrb.com/docs/posts/#drafts), add the `--drafts` parameter.
+
+```
+bundle exec jekyll serve --drafts
+```
+
 After that, you can access your local development service at http://localhost:4000.
 
 ## Minimal Mistakes Theme
