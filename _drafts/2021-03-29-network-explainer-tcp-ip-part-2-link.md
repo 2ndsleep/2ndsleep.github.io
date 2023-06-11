@@ -1,7 +1,6 @@
 ---
 title: TCP/IP Explainer Part 2 (Ethernet)
-category: explainer
-service: Networking
+categories: networking explainer
 toc: true
 ---
 The most basic part of TCP/IP networking is the Link Layer (AKA, Ethernet). This is how two network devices talk directly to each other.

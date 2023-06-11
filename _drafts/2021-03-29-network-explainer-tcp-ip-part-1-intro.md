@@ -1,7 +1,6 @@
 ---
-title: TCP/IP Explainer Part 1 (The Boring Stuff)
-category: explainer
-service: Networking
+title: 'TCP/IP Explainer Part 1 (The Boring Stuff)'
+categories: networking explainer
 toc: true
 ---
 Why

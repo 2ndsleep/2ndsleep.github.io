@@ -4,9 +4,9 @@ layout: single
 {{ content }}
 
 
-{% assign service_posts = site.posts | where: "service", page.title %}
-{% assign explainer_posts = service_posts | where: "category", "explainer" %}
-{% assign procedures = site.procedures | where: "service", page.title | sort: "order" %}
+{% assign service_posts = site.posts | where_exp: "item", "item.categories contains page.service" %}
+{% assign explainer_posts = service_posts | where_exp: "item", "item.categories contains 'explainer'" %}
+{% assign procedures = site.procedures | where: "service", page.service | sort: "order" %}
 
 {% if explainer_posts.size > 0 %}
 <h2>Learn more about {{ page.title }}</h2>

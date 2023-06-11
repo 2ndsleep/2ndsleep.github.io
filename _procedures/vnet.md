@@ -1,5 +1,5 @@
 ---
 title: New Virtual Network
-service: Networking
+service: networking
 ---
 This will show how to create a new virtual network.
