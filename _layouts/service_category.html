@@ -1,0 +1,12 @@
+---
+layout: single
+---
+{{ content }}
+
+{% assign services = site.services | where: "service_category", page.service_category %}
+
+
+{% for service in services %}
+<h2><a href="{{ service.url }}">{{ service.title }}</a></h2>
+<p>{{ service.excerpt }}</p>
+{% endfor %}

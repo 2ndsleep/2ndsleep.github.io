@@ -21,14 +21,23 @@ atom_feed:
   hide: true
 
 collections:
+  service_categories:
+    output: true
+    permalink: /categories/:name
   services:
     output: true
+    # permalink: /categories/:name
   procedures:
     output: true
 
 include: ["_pages"]
 
 defaults:
+  - scope:
+      path: ""
+      type: service_categories
+    values:
+      layout: service_category
   - scope:
       path: ""
       type: procedures

@@ -1,7 +1,6 @@
 ---
 title: Networking
-service: networking
-permalink: /services/networking
+service_category: networking
 ---
 Software-defined networking, like virtual networks and subnets. Think routers and switches, but in the cloud.
 <!--more-->

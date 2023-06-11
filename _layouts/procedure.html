@@ -1,11 +1,11 @@
 ---
 layout: single
 ---
-{% assign parent_service = site.services | where: "title", page.service | first %}
-{% assign service_posts = site.posts | where: "service", page.service %}
+{% assign parent_service = site.services | find: "service", page.service | first %}
+{% assign service_posts = site.posts | where_exp: "post", "post.categories contains page.service" %}
 {% assign explainer_posts = service_posts | where: "type", "explainer" %}
 <div class="notice--info">
-  This procedure is part of the <a href="{{ parent_service.permalink }}">{{ parent_service.title }}</a>  service category.
+  This procedure is part of the <a href="{{ parent_service.permalink }}">{{ parent_service.title }}</a> service category.
 </div>
 
 {{ content }}
