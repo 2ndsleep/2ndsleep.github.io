@@ -1,24 +1,15 @@
 ---
 permalink: /
-layout: splash
-title: Second Sleep
+layout: 'splash'
+title: 'Clouds Should Be Soft'
 header:
-  overlay_color: "#00cc99"
-  overlay_filter: "0"
+  overlay_color: '#F8F4E7'
+  overlay_filter: '0.5'
   actions:
-    - label: "Start Learning"
-      url: "/services"
-excerpt: "Combining Azure, IT, and DevOps"
-feature_row:
-  - title: You can't understand the Azure documentation
-    excerpt: ...even though you're pretty smart?
-  - title: You're responsible for IT
-    excerpt: ...in an Azure cloud environment?
-  - title: You want to DevOps better
-    excerpt: ...or automate more in general?
+    - label: 'Start Learning'
+      url: '/services'
+excerpt: 'Then why does Azure seem so hard?'
 ---
-Has this ever happened to you?
+Look, we get it. The cloud is supposed to make your life easier, but it can seem like there are so many offerings, you don't even know where to start.
 
-{% include feature_row %}
-
-Then you'll want to click on things at this site. You can [jump right in](/services) or get the two-minute rundown about [how this works](/about).
+Second Sleep helps you make sense of your cloud landscape and how to integrate your services in Azure. Contact us at [info@secondsleep.net](mailto:info@secondsleep.net) to see what we can do for you.
