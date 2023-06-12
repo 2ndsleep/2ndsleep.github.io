@@ -1,12 +1,9 @@
 ---
-layout: single
+layout: archive
 ---
 {{ content }}
 
-{% assign services = site.services | where: "service_category", page.service_category %}
-
-
-{% for service in services %}
-<h2><a href="{{ service.url }}">{{ service.title }}</a></h2>
-<p>{{ service.excerpt }}</p>
-{% endfor %}
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+  {% include filtered_collection.html collection='services' filter_key='service_category' filter_value=page.service_category sort_by=page.sort_by sort_order=page.sort_order type=entries_layout %}
+</div>

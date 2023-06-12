@@ -47,7 +47,8 @@ defaults:
       path: ""
       type: services
     values:
-      layout: service
+      layout: collection
+      collection: procedures
   - scope:
       path: ""
       type: posts
