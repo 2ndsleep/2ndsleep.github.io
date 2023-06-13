@@ -3,6 +3,8 @@ title: Virtual Network
 service_category: networking
 service: virtual-network
 permalink: networking/virtual-network
+guided: true
+guided_order: 1
 ---
 Software-defined networking, like virtual networks and subnets. Think routers and switches, but in the cloud.
 <!--more-->
