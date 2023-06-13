@@ -23,11 +23,8 @@ atom_feed:
 collections:
   service_categories:
     output: true
-    permalink: /categories/:name
+    permalink: /:name
   services:
-    output: true
-    # permalink: /categories/:name
-  procedures:
     output: true
 
 include: ["_pages"]
@@ -40,15 +37,9 @@ defaults:
       layout: service_category
   - scope:
       path: ""
-      type: procedures
-    values:
-      layout: procedure
-  - scope:
-      path: ""
       type: services
     values:
-      layout: collection
-      collection: procedures
+      layout: service
   - scope:
       path: ""
       type: posts

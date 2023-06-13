@@ -1,6 +1,6 @@
 ---
 title: TCP/IP Explainer Part 4 (IP Routing)
-categories: networking explainer
+categories: networking virtual-network explainer
 toc: true
 ---
 The best thing about IP addresses is that they are routable. Routers get IP packets from one computer to a computer on a different network.

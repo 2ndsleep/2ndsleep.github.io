@@ -1,6 +1,6 @@
 ---
 title: TCP/IP Explainer Part 3 (IP Addressing)
-categories: networking explainer
+categories: networking virtual-network explainer
 toc: true
 ---
 IP is how computers talk to each other over long distances. Computers are assigned IP addresses which can be routed across multiple networks.

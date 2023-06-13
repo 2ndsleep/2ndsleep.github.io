@@ -3,9 +3,9 @@ layout: single
 ---
 {{ content }}
 
-{% assign service_posts = site.posts | where_exp: "item", "item.categories contains page.service" %}
-{% assign explainer_posts = service_posts | where_exp: "item", "item.categories contains 'explainer'" %}
-{% assign procedures = site.procedures | where: "service", page.service | sort: "order" %}
+{% assign service_posts = site.posts | where_exp: "post", "post.categories[0] == page.service_category" | where_exp: "post", "post.categories[1] == page.service" %}
+{% assign explainer_posts = service_posts | where_exp: "post", "post.categories[2] == 'explainer'" %}
+{% assign procedure_posts = service_posts | where_exp: "post", "post.categories[2] == 'procedure'" %}
 
 {% if explainer_posts.size > 0 %}
 <h2>Learn more about {{ page.title }}</h2>
@@ -18,7 +18,7 @@ layout: single
 
 {% if procedures.size > 0 %}
   <h2>Do it yourself</h2>
-  {% for procedure in procedures %}
+  {% for procedure in procedure_posts %}
     <ul>
       <li>
         <a href="{{ procedure.url }}">{{ procedure.title }}</a><br />
