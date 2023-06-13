@@ -1,6 +1,6 @@
 ---
-title: Categories
-permalink: /categories
+title: Browse
+permalink: /browse
 layout: collection
 collection: service_categories
 ---
