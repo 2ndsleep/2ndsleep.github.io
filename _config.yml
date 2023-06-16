@@ -19,6 +19,7 @@ analytics:
     tracking_id: "G-58PR5VHWK0"
 atom_feed:
   hide: true
+fake_company_name: "Scramoose"
 
 collections:
   service_categories:

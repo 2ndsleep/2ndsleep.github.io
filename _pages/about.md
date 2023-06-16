@@ -1,7 +1,7 @@
 ---
-title: Why? What? Huh?
-permalink: /about
-layout: single
+title: 'About'
+permalink: '/about'
+layout: 'single'
 ---
 This blog is intended to be a repository for learning about Azure, IT, and automation. Azure has a ton of documentation, which is wonderful, but sometimes it feels like it was written for either braindead executives or super-geeks and nothing in between.
 
