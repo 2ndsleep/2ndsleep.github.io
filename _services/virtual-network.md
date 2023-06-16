@@ -1,5 +1,5 @@
 ---
-title: Virtual Network
+title: Virtual Networks
 service_category: networking
 service: virtual-network
 permalink: networking/virtual-network
