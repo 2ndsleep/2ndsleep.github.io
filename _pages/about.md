@@ -10,7 +10,7 @@ For example, here's the expository line describing a feature called [Azure landi
 
 > An Azure landing zone is an environment that follows key design principles across eight design areas. These design principles accommodate all application portfolios and enable application migration, modernization, and innovation at scale.
 
-What the filthy hell does that mean?? Well don't worry, just a few pages into the documentation you get this:
+What the filthy hell does that mean?? Well don't worry, just a few paragraphs into the documentation you get this:
 
 ![Landing zone architecture](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/ns-arch-expanded.png)
 
