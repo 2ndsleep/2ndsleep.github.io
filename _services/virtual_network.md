@@ -1,8 +1,8 @@
 ---
 title: Virtual Networks
 service_category: networking
-service: virtual-network
-permalink: networking/virtual-network
+service: virtual_network
+permalink: networking/virtual_network
 guided: true
 guided_order: 1
 ---

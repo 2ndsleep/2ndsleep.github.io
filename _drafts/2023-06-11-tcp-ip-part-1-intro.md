@@ -1,6 +1,6 @@
 ---
 title: 'TCP/IP Explainer Part 1 (The Boring Stuff)'
-categories: networking virtual-network explainer
+categories: networking virtual_network explainer
 toc: true
 ---
 Why
