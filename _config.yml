@@ -20,6 +20,7 @@ analytics:
 atom_feed:
   hide: true
 fake_company_name: "Scramoose"
+permalink: /:categories/:title
 
 collections:
   service_categories:

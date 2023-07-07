@@ -8,7 +8,7 @@ layout: single
 {% assign procedure_posts = service_posts | where_exp: "post", "post.categories[2] == 'procedure'" %}
 
 {% if explainer_posts.size > 0 %}
-<h2>Learn more about {{ page.title }}</h2>
+<h2>Learn more</h2>
 <ul>
   {% for explainer_post in explainer_posts %}
     <li><a href="{{ explainer_post.url }}">{{ explainer_post.title }}</a></li>
