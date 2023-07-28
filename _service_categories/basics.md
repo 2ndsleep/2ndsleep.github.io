@@ -2,7 +2,7 @@
 title: Cloud Basics
 service_category: basics
 ---
-Basics of the cloud, including DevOps, infrastructure-as-code and creating your cloud account.
+This is the place to start if you're new or have some basic questions that you're too afraid to ask your coworkers.
 <!--more-->
 
-This is the place for all the questions you're too afraid to ask your coworkers out loud. Like, "what is the cloud"? (It's a legitimate question.)
+There are tons of tutorials explaining how to get started with the cloud. I'm not going to revent the wheel here, so I'll point you to those where appropriate. But doing the cloud the "right" way will involve some concepts like DevOps, infrastructure-as-code, and boring things like naming conventions. It may not be obvious when you're starting out why you'd want to bother with these details, but understanding and implementing these concepts earlier than later will make your life easier, trust me.
