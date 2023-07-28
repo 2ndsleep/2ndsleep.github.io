@@ -3,7 +3,7 @@ layout: single
 ---
 {{ content }}
 
-{% assign service_posts = site.posts | where_exp: "post", "post.categories[0] == page.service_category" | where_exp: "post", "post.categories[1] == page.service" %}
+{% assign service_posts = site.posts | where_exp: "post", "post.categories[0] == page.service_category" | where_exp: "post", "post.categories[1] == page.service" | sort: "sort_order" %}
 {% assign explainer_posts = service_posts | where_exp: "post", "post.categories[2] == 'explainer'" %}
 {% assign procedure_posts = service_posts | where_exp: "post", "post.categories[2] == 'procedure'" %}
 
