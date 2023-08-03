@@ -11,7 +11,7 @@ There are a lot of different ways to think of what the cloud is. Kind of like "b
 
 ## Brief History
 
-This is the history of the cloud according to Blaine, pulled from my head. Leave a firey comment if you have any disputes with my version.
+This is the history of the cloud according to Blaine, pulled from my head. Leave a fiery comment if you have any disputes with my version.
 
 ### Virtualization
 
@@ -64,7 +64,7 @@ Google copied AWS in 2008 (although arguably didn't get started in earnest until
 
 ## Where is the Cloud?
 
-Each big cloud provider has mutliple datacenters located throughout the world. Each datacenter is one or more buildings that house a *crapload* of physical servers. I'm talking about a **full crapload**! To ensure things keep running, each datacenter usually has multiple power sources, backup cooling systems, redundant internet connections, and is located away from things that are the source of natural disasters like oceans and rivers. In fact, each location is usually made up of multiple datacenters so that if one datacenter happens to go down another one can take over. These cloud providers make their money by making sure your services are running, so they do everything they can to make sure it's always working.
+Each big cloud provider has multiple datacenters located throughout the world. Each datacenter is one or more buildings that house a *crapload* of physical servers. I'm talking about a **full crapload**! To ensure things keep running, each datacenter usually has multiple power sources, backup cooling systems, redundant internet connections, and is located away from things that are the source of natural disasters like oceans and rivers. In fact, each location is usually made up of multiple datacenters so that if one datacenter happens to go down another one can take over. These cloud providers make their money by making sure your services are running, so they do everything they can to make sure it's always working.
 
 You might be wondering, why a remote datacenter? Don't I want my servers to be close to my business? The answer is: usually no. You generally want all your servers to be close to *each other* but not necessarily close to you. Around the beginning of AWS, businesses started moving more toward web apps (if you were born after 2000, you'd be shocked to know how many things were not web-based). Accessing websites is usually pretty fast, as long as the the services that the website depends on are quickly accessible by the website, such as databases.
 
