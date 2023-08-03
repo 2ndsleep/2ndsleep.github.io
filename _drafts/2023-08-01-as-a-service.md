@@ -56,3 +56,9 @@ Oh, and containers are a way to deploy your applications, which we'll tackle muc
 Software as a service is not something you'll use a ton as an infrastructure engineer but it's important to know. Usually SaaS is accessed directly by the user on the web. You probably use a lot of SaaS products in your personal life (for example, if you use Gmail you're using a SaaS product). If you're working for a software company, you're probably working for a company that is delivering a SaaS product. Software products that *aren't* SaaS would be software you install on your laptop, like Adobe Photoshop or Slack (assuming you're not using the web versions of those products).
 
 The only time you arguably could be using SaaS is if you connect to a SaaS product as part of an automated deployment. Like, maybe after you deploy a new application, you want to close out an Asana ticket. Connecting to Asana could be considered a SaaS integration.
+
+## Pizza and Other Resources
+
+If you don't like the way I described it, Google also has a good [description](https://cloud.google.com/learn/paas-vs-iaas-vs-saas).
+
+There's also a commonly used analogy to describe these concepts using pizza. David Ng has an [update](https://m.oursky.com/saas-paas-and-iaas-explained-in-one-graphic-d56c3e6f4606) on this analogy that I agree with.
