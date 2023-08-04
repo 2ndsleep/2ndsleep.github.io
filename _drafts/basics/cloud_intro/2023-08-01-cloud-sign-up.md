@@ -19,6 +19,9 @@ But you are going to want to keep track of what you're doing after your free tri
 - [Azure spending limit](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit)
 - [Google Cloud spending budgets](https://cloud.google.com/blog/topics/developers-practitioners/protect-your-google-cloud-spending-budgets)
 
+:calendar: Consider setting a reminder to check your cloud environment the day before your trial is set to expire and delete all the resources you aren't using.
+{: .notice--success}
+
 ## Whoops, I Closed My Browser
 
 If signed up and then closed your browser and can't remember how to get back, here are the links for the administrator portals, which you'll probably memorize after working with this for a few weeks.
