@@ -53,3 +53,4 @@ defaults:
 
 plugins:
   - jekyll-include-cache
+  - jemoji
