@@ -60,6 +60,6 @@ The only time you arguably could be using SaaS is if you connect to a SaaS produ
 
 ## Pizza and Other Resources
 
-If you don't like the way I described it, Google also has a good [description](https://cloud.google.com/learn/paas-vs-iaas-vs-saas).
+If you don't like the way I described it, Google has a good [description](https://cloud.google.com/learn/paas-vs-iaas-vs-saas).
 
 There's also a commonly used analogy to describe these concepts using pizza. David Ng has an [update](https://m.oursky.com/saas-paas-and-iaas-explained-in-one-graphic-d56c3e6f4606) on this analogy that I agree with.
