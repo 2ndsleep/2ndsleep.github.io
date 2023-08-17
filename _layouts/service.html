@@ -10,9 +10,11 @@ layout: single
 {% if explainer_posts.size > 0 %}
 <h2>Learn more</h2>
 <ul>
-  {% for explainer_post in explainer_posts %}
-    {% assign cloud_provider = explainer_post.categories[3] %}
-    <li><b>{% include cloud_provider_icon.html cloud_provider=cloud_provider %}</b><a href="{{ explainer_post.url }}">{{ explainer_post.title }}</a></li>
+  {% for explainer in explainer_posts %}
+    {% assign cloud_provider = explainer.categories[3] %}
+    <li><a href="{{ explainer.url }}">{{ explainer.title }}</a><br />
+      {{ explainer.excerpt }}
+    </li>
   {% endfor %}
 </ul>
 {% endif %}
@@ -23,7 +25,7 @@ layout: single
     {% assign cloud_provider = procedure.categories[3] %}
     <ul>
       <li>
-        <b>{% include cloud_provider_icon.html cloud_provider=cloud_provider %}</b><a href="{{ procedure.url }}">{{ procedure.title }}</a><br />
+        <a href="{{ procedure.url }}">{{ procedure.title }}</a><br />
         {{ procedure.excerpt }}
       </li>
     </ul>

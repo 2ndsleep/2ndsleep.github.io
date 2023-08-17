@@ -1,6 +1,6 @@
 ---
 title: Git Tutorial
-categories: basics azure_intro procedure
+categories: basics cloud_intro procedure
 toc: false
 sort_order: 1
 ---
