@@ -1,8 +1,8 @@
 ---
 title: Naming Conventions
-categories: basics cloud_intro explainer
+categories: basics azure_intro explainer
 toc: true
-sort_order: 5
+sort_order: 1
 ---
 Spend some time thinking about how you will name your resources and you'll be thankful.<!--more--> This sounds trivial, but it is perhaps the most important thing you'll do.
 

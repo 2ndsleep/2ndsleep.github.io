@@ -1,6 +1,6 @@
 ---
 title: Sign-Up for the Cloud
-categories: basics cloud_intro procedure
+categories: basics azure_intro procedure
 toc: true
 sort_order: 0
 ---

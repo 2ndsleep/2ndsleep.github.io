@@ -1,8 +1,8 @@
 ---
 title: Azure Cloud Structure
-categories: basics cloud_intro explainer
+categories: basics azure_intro explainer
 toc: true
-sort_order: 4
+sort_order: 0
 ---
 The first post about the actual cloud!<!--more--> This one is still going to be boring, though. You can start using Azure without knowing how it's all organized, but it helps to understand this stuff.
 

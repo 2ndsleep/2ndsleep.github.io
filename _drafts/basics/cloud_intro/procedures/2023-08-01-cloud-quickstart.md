@@ -2,7 +2,7 @@
 title: Your First Cloud Resource
 categories: basics cloud_intro procedure
 toc: true
-sort_order: 1
+sort_order: 0
 ---
 If you are brand new to the cloud, it's time to get your hands dirty! <!--more-->Honestly, these tutorials won't teach you a ton about platform engineering, but creating your first resources will be a Karmic experience, connecting you to the cloud universe in a burst of ecstatic energy that will leave you viewing the world in a completely different way. 
 

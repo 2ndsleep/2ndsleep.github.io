@@ -2,7 +2,9 @@
 title: Infrastructure-as-Code
 service_category: basics
 service: iac
-sort_order: 1
+sort_order: 2
+guided: true
+guided_order: 2
 ---
 Infrastructure-as-code is the way to define exactly what your cloud environment should look like using text-based files.
 <!--more-->

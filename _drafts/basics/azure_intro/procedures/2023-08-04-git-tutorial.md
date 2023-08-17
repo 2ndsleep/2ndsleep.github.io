@@ -1,8 +1,8 @@
 ---
 title: Git Tutorial
-categories: basics cloud_intro procedure
+categories: basics azure_intro procedure
 toc: false
-sort_order: 2
+sort_order: 1
 ---
 There's already a ton of Git tutorials out there, so I'm just going to point you to them.<!--more--> This will be another brief post.
 
