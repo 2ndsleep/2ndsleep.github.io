@@ -49,7 +49,8 @@ defaults:
       layout: single
       read_time: true
       author_profile: true
-
+      toc_icon: cloud
+      toc_sticky: true
 
 plugins:
   - jekyll-include-cache
