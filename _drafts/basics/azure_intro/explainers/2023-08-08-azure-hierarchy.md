@@ -19,7 +19,7 @@ If your organization is a Microsoft 356 or Office 365 organization, this same te
 
 ## Management Groups
 
-Management groups are a way for you to group [subscriptions](#subscriptions) together. The reason for this is to restrict access or enforce specific policies for a group of subscriptions. More on this in another post.
+Management groups are a way for you to group [subscriptions](#subscriptions) together. The reason for this is to restrict access or enforce specific policies for a group of subscriptions. This is useful if you're in a large organization or if you're using [landing zones]({% post_url /basics/azure_intro/explainers/2023-09-20-landing-zones %}#management-groups).
 
 ## Subscriptions
 
