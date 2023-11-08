@@ -28,6 +28,9 @@ Sure, you could do these manually, but that's a lot of work when you're managing
 
 Since this blog is all about automating deployments, you may also be thinking, can't I configure these things as part of my deployment process? For example, can't a just include a shutdown schedule when I deploy my VM? You absolutely can, but the drawback is that you only set the shutdown schedule at deploy time. If you decide later to change the shutdown schedule, you have to write a script to update everything. Managing the landing zone configuration will make the change automatically. And a benefit is that you don't have to include all that shutdown schedule nonsense as part of your deployment. Just deploy it into the correct landing zone (AKA, subscription) and you're good to go.
 
+I had a hard time wrapping my head around landing zones at first because I just didn't understand what it *was*. A landing zone is technically the subscription where you put your resources. But a subscription that doesn't have configurations applied to it isn't a useful landing zone. So then is a subscription without any configurations a landing zone? I think technically yes. So then are all the configurations part of the landing zone? I think technically no. Honestly, I still don't know what the hell a landing zone technically is, and I think all the big cloud providers' documentation dances around giving a solid definition. In the end it doesn't really matter as long as you get the concept.
+{: .notice--info}
+
 ## How Does a Landing Zone Work?
 
 The reason I said the subscription has "configurations applied" rather than "is configured" is that there's not a lot of configuration that can be done to a subscription itself. The way you configure a landing zone is to assign certain things at a subscription level or above the subscription at the management group level. Here are the "things" you can configure to make the landing zone work the way you want it to.
@@ -60,7 +63,7 @@ Each subscription that is a member of the **Online** or **Corp** management grou
 |Landing zone A1|subscription|Add delete lock to all resources|
 |Landing zone A2|subscription|Shutdown VMs after 7 pm|
 
-### Policies & RBAC
+### Configurations
 
 Up until now, I've used this vague term of "configurations" to describe how you configure your landing zone. These "configurations" are achieved by a combination of Azure Policy and RBAC.
 
@@ -75,8 +78,6 @@ It's worth noting that policies aren't squarely in the security realm, but are o
 #### RBAC
 
 I talk about role-based access control (RBAC) in the [Azure Security]({% post_url /basics/azure_intro/explainers/2023-08-10-basic-security %}#rbac) post, but RBAC can and should be part of your landing zone. This will ensure that the proper users have the proper access to your landing zone. Some landing zones will need to more locked down, like your production environment. Your sandbox environment might be more of a free-for-all where developers can spin up resources without going through the platform engineering team.
-
-### Under the Covers
 
 ## Should You Use a Landing Zone?
 
@@ -94,6 +95,14 @@ You can then start migrating resources to landing zones one-by-one. Or if you th
 
 Oh, and if you're not using landing zones or choose not to, no shame. I don't have hard numbers, but I'm going to assume that most organizations only use landing zones when they bring in consultants. When you sign up for Azure, you'll start getting a bunch of "getting started" emails about creating various resources. One of those emails will be encouraging you to use landing zones, but it will send you to Microsoft's inscrutable documentation at which point you'll probably close the browser in anguish. I think Microsoft could do a much better job of explaining this very valuable tool, so I hope this post helps in that effort.
 
+## Microsoft's Secret Documentation
+
+As I mentioned, Microsoft's official [landing zone documentation](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/) is piss-poor. But if you poke around there, it will lead you to Microsoft's [secret documentation](https://github.com/Azure/Enterprise-Scale) on GitHub. Well, not really secret. It's more like the "user guide" and source code for Microsoft's recommended landing zone deployments. It's under active development and is in fact a community project that you can contribute to and give feedback! The Learn documentation is more abstract whereas the GitHub documentation gets into the nitty gritty of what happens if you deploy the landing zone accelerator.
+
 ## Making This All About Me
 
-Here's my personal beef with landing zones. They make a lot of the rest of this blog pointless. If you follow along, we're going to spin up a lot of the things that are created automatically by a landing zone in a matter of minutes. If you create a landing zone and never need to come back to this blog, great! The point of this blog is to show how to use Azure for specific solutions, so the rest of this blog will proceed as if landing zones don't exist, but I'll point out things that can be accomplished with a landing zone accelerator along the way.
+Here's my personal beef with the Microsoft landing zone accelerators. They make a lot of the rest of this blog pointless. If you create a landing zone and never need to come back to this blog, great! The point of this blog is to show how to use Azure for specific solutions, so you should deploy a landing zone if that makes sense for your organization.
+
+But! I think Microsoft's enterprise-scale landing zone is a very sensible way to construct your cloud environment so I'm going to borrow heavily from the enterprise. If you follow along, we're going to do the same thing bit-by-bit (byte-by-byte?) that the landing zone accelerator in minutes, and I'll refer to the enterprise-scale landing zone accelerator source code where possible.
+
+Landing zones don't have to deployed with the Azure landing accelerator. They can be created manually. In fact, that's what we'll be doing slowly throughout this blog.
