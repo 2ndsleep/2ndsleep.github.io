@@ -9,7 +9,7 @@ Some people say platform infrastructure folks are really developers. Others say 
 
 ## Declarative Code
 
-Declarative code sounds like one of those fancy terms, but is a pretty simple concept. Usually when you think of code, you think of *imperative* code. Imperative code is code that performs a bunch of logic and calculations to produce a result. It's an instruction set of "how" something should be done. It's pretty much what comes to mind when you picture code like JavaScript, Python, or C#.
+Declarative code sounds like one of those fancy terms, but is a pretty simple concept. Usually when you think of code, you think of **imperative** code. Imperative code is code that performs a bunch of logic and calculations to produce a result. It's an instruction set of "how" something should be done. It's pretty much what comes to mind when you picture code like JavaScript, Python, or C#.
 
 Declarative code on the other hand describes "what" something should look like. But it doesn't care how it's done. HTML is declarative, and infrastructure as code like Terraform is declarative. Terraform code will simply say "we want a VM with 16 GB of memory and 2 vCPUs." That code is passed on to another process that will "make it so." Declarative code often is expected to be idempotent, as described in the next section.
 
@@ -62,6 +62,6 @@ In the real world, you might have some infrastructure as code that you used to d
 
 # DRY
 
-DRY is an acronym of *Don't Repeat Yourself*. If you see that your code has a lot of the same or similar content, you are violating the DRY principle. For example, if you create a Terraform module to deploy a VM that contains three virtual disks, the most straightforward way to do that would be to create three virtual disk resources. But that introduces some potential headaches down the line.
+**DRY** is an acronym of **Don't Repeat Yourself**. If you see that your code has a lot of the same or similar content, you are violating the DRY principle. For example, if you create a Terraform module to deploy a VM that contains three virtual disks, the most straightforward way to do that would be to create three virtual disk resources. But that introduces some potential headaches down the line.
 
 What if you need to add another disk? Then you need to copy and paste the virtual disk resource. You need to remember to change the disk name and other properties after you paste it, and we tend to forget to make all the changes.
