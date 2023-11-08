@@ -3,6 +3,7 @@ title: Create Landing Zones
 categories: basics azure_intro procedure
 toc: true
 sort_order: 1
+description: Optionally create a landing zone
 ---
 ## TODO
 - [ ] link to {% post_url /basics/azure_intro/explainers/2023-09-21-landing-zones %}

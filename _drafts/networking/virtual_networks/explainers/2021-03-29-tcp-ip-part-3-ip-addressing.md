@@ -2,6 +2,7 @@
 title: TCP/IP Explainer Part 3 (IP Addressing)
 categories: networking virtual_network explainer
 toc: true
+description: How IP addresses work
 ---
 IP is how computers talk to each other over long distances. Computers are assigned IP addresses which can be routed across multiple networks.
 

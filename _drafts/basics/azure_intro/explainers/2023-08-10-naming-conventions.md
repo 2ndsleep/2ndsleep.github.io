@@ -3,8 +3,10 @@ title: Naming Conventions
 categories: basics azure_intro explainer
 toc: true
 sort_order: 1
+description: Possibly the most singularly important part of your job
 ---
-Spend some time thinking about how you will name your resources and you'll be thankful.<!--more--> This sounds trivial, but it is perhaps the most important thing you'll do.
+Spend some time thinking about how you will name your resources and you'll be thankful. This sounds trivial, but it is perhaps the most important thing you'll do.
+<!--more-->
 
 ## Naming and Tagging
 

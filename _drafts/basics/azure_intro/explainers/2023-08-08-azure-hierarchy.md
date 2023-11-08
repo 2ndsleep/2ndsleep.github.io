@@ -3,10 +3,12 @@ title: Azure Cloud Structure
 categories: basics azure_intro explainer
 toc: true
 sort_order: 0
+description: How Azure is organized
 ---
-The first post about the actual cloud!<!--more--> This one is still going to be boring, though. You can start using Azure without knowing how it's all organized, but it helps to understand this stuff.
+The first post about the actual cloud! This one is still going to be boring, though. You can start using Azure without knowing how it's all organized, but it helps to understand this stuff.
 
 Microsoft has a ton of documentation about the Azure hierarchy in their [Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview), but reading this is like reading [*Cold Mountain*](https://a.co/d/3O6MT6J): it's tedious and afterwards you're not sure you understood it (I make no apologies). So let me give you the quick explainer by using Microsoft's actually helpful images.
+<!--more-->
 
 ![Azure hierarchy](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/az-scopes-billing.png){: .align-center}
 

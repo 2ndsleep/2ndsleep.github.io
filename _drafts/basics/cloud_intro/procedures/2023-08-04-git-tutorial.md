@@ -3,10 +3,12 @@ title: Git Tutorial
 categories: basics cloud_intro procedure
 toc: false
 sort_order: 1
+description: A link to Git tutorials
 ---
-There's already a ton of Git tutorials out there, so I'm just going to point you to them.<!--more--> This will be another brief post.
+There's already a ton of Git tutorials out there, so I'm just going to point you to them. This will be another brief post.
 
 I would suggest setting aside 8 hours either all at once or spread out over a few days to learn Git. I think it will take less time than that (no shame if not).
+<!--more-->
 
 First, start with this short and sweet tutorial from this git-scm.com site: [gittutorial](https://git-scm.com/docs/gittutorial).
 

@@ -3,14 +3,15 @@ title: Sign-Up for the Cloud
 categories: basics cloud_intro procedure
 toc: true
 sort_order: 0
+description: Sign up for Azure if you haven't already
 ---
 Signing up for a cloud service is easy. So easy that I'm simply going to refer you to the links.
-<!--more-->
 
 - [Azure](https://azure.microsoft.com/en-us/free)
 - [Google Cloud Platform](https://cloud.google.com/free)
 
 You'll see that both cloud providers will provide links to sign up for a free account. What I like about the free account is that it doesn't cost any money. I can use that money for other pursuits, like my model train hobby.
+<!--more-->
 
 ## Set a Spending Budget
 

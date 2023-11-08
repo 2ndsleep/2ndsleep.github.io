@@ -3,6 +3,7 @@ title: Infrastructure-as-Code Principles
 categories: basics iac explainer
 toc: true
 sort_order: 1
+description: Here are some basic concepts to help you write code better
 ---
 Some people say platform infrastructure folks are really developers. Others say platform folks are mere humans and should not be allowed to make eye contact with developers. I have [opinions](/thoughts/thinking-like-a-developer), but no matter what you think, there are some ~~coding~~ universal practices that will help you in your platform role.
 

@@ -1,8 +1,9 @@
 ---
-title: Azure Security
+title: Entra ID
 categories: basics azure_intro explainer
 toc: true
 sort_order: 2
+description: Microsoft's free cloud directory
 ---
 Security isn't a one-time task, but there are a few basics you should definitely do. This post reviews some low-hanging fruit that I think are most important, but please don't stop here. Work with your colleagues and your security team (if you're lucky enough to have one) to continually improve your security posture. [Introduction to Azure security](https://learn.microsoft.com/en-us/azure/security/fundamentals/overview) is a great place to start.
 <!--more-->

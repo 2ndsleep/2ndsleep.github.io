@@ -2,6 +2,7 @@
 title: TCP/IP Explainer Part 4 (IP Routing)
 categories: networking virtual_network explainer
 toc: true
+description: How computers on different LANs talk to each other
 ---
 The best thing about IP addresses is that they are routable. Routers get IP packets from one computer to a computer on a different network.
 

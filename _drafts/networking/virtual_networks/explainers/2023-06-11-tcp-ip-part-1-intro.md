@@ -2,6 +2,7 @@
 title: 'TCP/IP Explainer Part 1 (The Boring Stuff)'
 categories: networking virtual_network explainer
 toc: true
+description: Because you have to start somewhere
 ---
 Why
 

@@ -3,11 +3,12 @@ title: Landing Zones
 categories: basics azure_intro explainer
 toc: true
 sort_order: 3
-description: Configure your entire Azure environment automatically.
+description: Configure your entire Azure environment automatically
 ---
-First, I'm going to make fun of landing zones, because I didn't understand what in God's name they were even after carefully reading the documentation. Try it yourself. Go to [What is an Azure landing zone?](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/), take five minutes to read the page, and then turn to the person or animal closest to you and see if you can faithfully describe it to them.<!--more--> You can't do it! Especially if you're talking to an animal because they don't speak human languages... [yet](https://www.popularmechanics.com/science/animals/a42689511/humans-could-decode-animal-language/).
+First, I'm going to make fun of landing zones, because I didn't understand what in God's name they were even after carefully reading the documentation. Try it yourself. Go to [What is an Azure landing zone?](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/), take five minutes to read the page, and then turn to the person or animal closest to you and see if you can faithfully describe it to them. You can't do it! Especially if you're talking to an animal because they don't speak human languages... [yet](https://www.popularmechanics.com/science/animals/a42689511/humans-could-decode-animal-language/).
 
 After reading it, you know that a landing zone is "scalable" and "modular." You know that it's a "conceptual architecture." You kind of know what it can *do*. But what the hell is it?? This bothered me so much when I started exploring landing zones that I'm going waste my time and yours ranting about it.
+<!--more-->
 
 Here's what a landing zone is: it's an Azure subscription. You can find that answer in the fourth question of the [Azure landing zones FAQ](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/faq#what-does-a-landing-zone-map-to-in-azure-in-the-context-of-azure-landing-zone-architecture). Wouldn't it be nice if they mentioned that at the beginning?
 
