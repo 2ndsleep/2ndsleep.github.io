@@ -9,25 +9,18 @@ layout: single
 
 {% if explainer_posts.size > 0 %}
 <h2>Learn more</h2>
-<ul>
   {% for explainer in explainer_posts %}
     {% assign cloud_provider = explainer.categories[3] %}
-    <li><a href="{{ explainer.url }}">{{ explainer.title }}</a><br />
-      {{ explainer.description | markdownify }}
-    </li>
+    <a href="{{ explainer.url }}">{{ explainer.title }}</a><br />
+    {{ explainer.description | markdownify }}
   {% endfor %}
-</ul>
 {% endif %}
 
 {% if procedure_posts.size > 0 %}
   <h2>Do it yourself</h2>
   {% for procedure in procedure_posts %}
     {% assign cloud_provider = procedure.categories[3] %}
-    <ul>
-      <li>
-        <a href="{{ procedure.url }}">{{ procedure.title }}</a><br />
-        {{ procedure.description | markdownify }}
-      </li>
-    </ul>
+    <a href="{{ procedure.url }}">{{ procedure.title }}</a><br />
+    {{ procedure.description | markdownify }}
   {% endfor %}
 {% endif %}
