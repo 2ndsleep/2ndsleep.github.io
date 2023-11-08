@@ -37,13 +37,13 @@ Here are all the terms you should use when chatting with technologists so you do
 - **Host**: This is the physical server that runs all the virtual servers. If you want to be even more academic, you can call this the **hypervisor**.
 - **VM**: I've been using the term "virtual server," but we usually call it a **virtual machine**, or **VM** for short. You may also hear this referred to as the **guest** operating system.
 
-### Infrastructure-as-a-Service
+### Infrastructure as a Service
 
 So what does virtualization have to do with the cloud? Well, when people first started experimenting with virtualization in their IT shops, they quickly realized it made their lives much easier. You have to maintain fewer physical servers and can create a new VM with an operating system in a matter of minutes. Before that, you'd need to determine what kind of physical server you needed, get budget approval, and then order a new server. That may take several months, and then you still had to unpack the server and install it in your server room, assuming you even had physical space for the server in the first place.
 
 This changed the game for IT teams, specifically that your IT infrastructure teams were now shifting away from managing hardware to managing software that's pretending to be hardware. We started using the term "hardware" less and the more broad term "**infrastructure**" more. The whole procurement process wasn't as big of a bottleneck and now system administrators could provision servers in more of a service-oriented way. You could say that they now offered **infrastructure as a service**. "Oh the web team needs another web server? Give me a couple of hours."
 
-It's a logical leap that companies would start to exclusively offer infrastructure-as-a-service to the general public. A lot of companies were doing this but there was a big player about to shake things up in the mid-2000s.
+It's a logical leap that companies would start to exclusively offer infrastructure as a service to the general public. A lot of companies were doing this but there was a big player about to shake things up in the mid-2000s.
 
 ### The Big Players
 
@@ -51,7 +51,7 @@ Here's a very brief history of the three biggest public cloud providers.
 
 #### Amazon Web Services
 
-Amazon Web Services (AWS) launches publicly in March 2006 with a storage service called S3. This wasn't exactly virtualization as explained above, but was infrastructure-as-a-service. Anyone could now put any digital objects (aka, "files") in the AWS cloud for a small cost. In August of that same year, AWS released EC2 which was their virtualization product. Now IT teams could ditch their server hardware altogether and create VMs in a remote datacenter.
+Amazon Web Services (AWS) launches publicly in March 2006 with a storage service called S3. This wasn't exactly virtualization as explained above, but was infrastructure as a service. Anyone could now put any digital objects (aka, "files") in the AWS cloud for a small cost. In August of that same year, AWS released EC2 which was their virtualization product. Now IT teams could ditch their server hardware altogether and create VMs in a remote datacenter.
 
 #### Microsoft Azure
 

@@ -1,5 +1,5 @@
 ---
-title: Infrastructure-as-Code Principles
+title: Infrastructure as Code Principles
 categories: basics iac explainer
 toc: true
 sort_order: 1
@@ -11,13 +11,13 @@ Some people say platform infrastructure folks are really developers. Others say 
 
 Declarative code sounds like one of those fancy terms, but is a pretty simple concept. Usually when you think of code, you think of *imperative* code. Imperative code is code that performs a bunch of logic and calculations to produce a result. It's an instruction set of "how" something should be done. It's pretty much what comes to mind when you picture code like JavaScript, Python, or C#.
 
-Declarative code on the other hand describes "what" something should look like. But it doesn't care how it's done. HTML is declarative, and infrastructure-as-code like Terraform is declarative. Terraform code will simply say "we want a VM with 16 GB of memory and 2 vCPUs." That code is passed on to another process that will "make it so." Declarative code often is expected to be idempotent, as described in the next section.
+Declarative code on the other hand describes "what" something should look like. But it doesn't care how it's done. HTML is declarative, and infrastructure as code like Terraform is declarative. Terraform code will simply say "we want a VM with 16 GB of memory and 2 vCPUs." That code is passed on to another process that will "make it so." Declarative code often is expected to be idempotent, as described in the next section.
 
 For a great explanation of imperative versus declaractive code, see Yehuda Margolis's [Imperative vs Declarative Programming in JavaScript](https://www.linkedin.com/pulse/imperative-vs-declarative-programming-javascript-yehuda-margolis) article.
 
 ## Idempotency
 
-You may have come across this word before and thought it was needlessly academic, but it's a real honest-to-God principle that you should think about while authoring infrastructure-as-code. In computery terms, **idempotency** means that when you do some activity with a set of inputs, that activity will yield the same result every time if you provide the same input. Here's an absurbly simple JavaScript example.
+You may have come across this word before and thought it was needlessly academic, but it's a real honest-to-God principle that you should think about while authoring infrastructure as code. In computery terms, **idempotency** means that when you do some activity with a set of inputs, that activity will yield the same result every time if you provide the same input. Here's an absurbly simple JavaScript example.
 
 ``` javascript
 function idempotent(param1, param2) {
@@ -56,9 +56,9 @@ notIdempotent('Hello', 'World!')
 // We ran it again 5 seconds later, so the output changed.
 ```
 
-Idempotency alone isn't good or bad, it's just a thing. But when you are writing infrastructure-as-code, you'll want to be able to deploy the same infrastructure again and again and know exactly what it's going to produce. If you deploy an Apache web server one day and then run that exact same deployment the next day, you don't want it delete Apache and install Tomcat. Your developers are expecting an Apache server with some specific settings and you want to be able to deliver that exact same server configuration each time.
+Idempotency alone isn't good or bad, it's just a thing. But when you are writing infrastructure as code, you'll want to be able to deploy the same infrastructure again and again and know exactly what it's going to produce. If you deploy an Apache web server one day and then run that exact same deployment the next day, you don't want it delete Apache and install Tomcat. Your developers are expecting an Apache server with some specific settings and you want to be able to deliver that exact same server configuration each time.
 
-In the real world, you might have some infrastructure-as-code that you used to deploy to a test environment. Then you get a Slack message that, oops, an intern deleted the entire test environment. "No problem," you say, "just give me five minutes." You simply re-run the deployment and that test environment is back up! If the deployment was indeed idempotent, then the environment will be exactly the same as the first time you ran it.
+In the real world, you might have some infrastructure as code that you used to deploy to a test environment. Then you get a Slack message that, oops, an intern deleted the entire test environment. "No problem," you say, "just give me five minutes." You simply re-run the deployment and that test environment is back up! If the deployment was indeed idempotent, then the environment will be exactly the same as the first time you ran it.
 
 # DRY
 
