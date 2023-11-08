@@ -1,15 +1,9 @@
 ---
 layout: archive
 ---
-<div class="notice--primary text-center">
-  {{ page.excerpt }}
-</div>
-  
-{% assign content_main = page.content | split: site.excerpt_separator | last %}
-
-{{ content_main }}
+{{ content }}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 <div class="entries-{{ entries_layout }}">
-  {% include filtered_collection.html collection='services' filter_key='service_category' filter_value=page.service_category sort_by='sort_order' %}
+  {% include filtered_collection.html collection='services' filter_key='service_category' filter_value=page.service_category sort_by='sort_order' type=entries_layout %}
 </div>
