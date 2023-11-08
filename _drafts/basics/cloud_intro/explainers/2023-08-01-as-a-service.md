@@ -7,12 +7,12 @@ description: Understanding the different types of cloud services will help you t
 ---
 As you start your cloud journey, you've probably come across a bunch of "as-a-Service" terms, like the previously mentioned [infrastructure-as-a-service](/basics/cloud_intro/explainer/what-is-the-cloud#infrastructure-as-a-service). When you begin, especially if you are migrating from an on-premises environment, thinking in terms of these "as-a-service" types will keep you mentally organized.
 
-The three main "as-a-service's's's" are *infrastructure-as-a-service*, *platform-as-a-service*, and *software-as-a-service*. There's the newcomer of *container-as-a-service*, which I'm going to include here so pedantic people don't blow a gasket. These terms are abbreviated as *IaaS*, *PaaS*, *SaaS*, and *CaaS*.
+The three main "as-a-service's's's" are **infrastructure-as-a-service**, **platform-as-a-service**, and **software-as-a-service**. There's the newcomer of **container-as-a-service**, which I'm going to include here so pedantic people don't blow a gasket. These terms are abbreviated as **IaaS**, **PaaS**, **SaaS**, and **CaaS**.
 <!--more-->
 
 In short, these terms refer to how much in the weeds you are with your infrastructure and how much control you have. So if your organization's email is hosted on a Microsoft Exchange server that you have running on a virtual machine, you're using IaaS. If you use Microsoft 365 for your email, you're using SaaS.
 
-Up until now, I've used dashes twixt all the words, but that notation seems to be getting old school, so I'm dropping that now. Typing those dashes is hard on the pinky finger, too.
+There are more "as a service" things, depending on whom you ask. But I'm limiting it to these four, because otherwise where does it end?!
 {: .notice--info}
 
 ## Infrastructure as a Service (IaaS)
@@ -41,7 +41,7 @@ To help - or more likely confuse - here is diagram from Microsoft's docs showing
 
 ![Azure SQL availability](https://learn.microsoft.com/en-us/azure/azure-sql/database/media/high-availability-sla/general-purpose-service-tier.png?view=azuresql-db)
 
-Now let's dig into the details slightly. With PaaS, Azure is going to handle high availability by giving you [four nodes](https://learn.microsoft.com/en-us/azure/azure-sql/database/high-availability-sla?view=azuresql-db&tabs=azure-powershell#general-purpose-service-tier-zone-redundant-availability) (think of this as four SQL Server VMs) so if one of the nodes stops working, one of the other three will pick up the load. For most people, this will be more than enough. But let's say your CTO is a complete freak and insists you have ten nodes. Well, you don't have that kind of control with PaaS. You're going to have to install SQL Server on VMs, therefore going the IaaS route.
+Now let's dig into the details slightly. With PaaS, Azure is going to handle high availability by giving you [four nodes](https://learn.microsoft.com/en-us/azure/azure-sql/database/high-availability-sla?view=azuresql-db&tabs=azure-powershell#general-purpose-service-tier-zone-redundant-availability) (think of this as four SQL Server VMs) as shown by the control ring at the top of the image. So if one of the nodes stops working, one of the other three will pick up the load. For most people, this will be more than enough. But let's say your CTO is a complete freak and insists you have ten nodes. Well, you don't have that kind of control with PaaS. You're going to have to install SQL Server on VMs, therefore going the IaaS route.
 
 Here's another possible scenario. SQL Server has the concept of [synchronous/asynchronous replication](https://learn.microsoft.com/en-us/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups). In short, synchronous replication means that SQL Server won't consider data written until all redundant nodes have written the data. You can control the synchronous/asynchronous mode in an IaaS environment and configure synchronous replication even if the nodes are on different sides of the country. This would make your SQL Server slower than you'd probably prefer, but you may have a good reason to enforce this (think finance or healthcare). However, you [cannot enforce synchronous replication](https://learn.microsoft.com/en-us/azure/azure-sql/database/active-geo-replication-overview?view=azuresql-db#preventing-the-loss-of-critical-data) in Azure's PaaS offering.
 
