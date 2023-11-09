@@ -4,6 +4,10 @@ This is the Jekyll content for the Second Sleep blog. The Second Sleep blog is a
 
 ## Getting Started
 
+You can run this project locally or as a Docker container.
+
+### Local
+
 Running Jekyll for GitHub Pages is slightly different than running Jekyll in general, mostly with the Gemfile. See [About GitHub Pages and Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) for help getting setup. For help with Jekyll in general, see the [Jekyll Installation](https://jekyllrb.com/docs/installation/) page.
 
 Once you've got everything set up, run the following command to start the service locally.
@@ -19,6 +23,16 @@ bundle exec jekyll serve --drafts
 ```
 
 After that, you can access your local development service at http://localhost:4000.
+
+### Docker
+
+Run the following command to run this project as a Docker container. This assumes your current path (`$PWD`) is this repository.
+
+``` bash
+docker run --rm --name blog -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
+```
+
+To re-use this container, exclude the `--rm` parameter.
 
 ## Minimal Mistakes Theme
 
