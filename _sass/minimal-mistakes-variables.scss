@@ -1,10 +1,14 @@
 // Override Minimal Mistakes Sass variables in the _variables.scss file.
 // https://github.com/mmistakes/minimal-mistakes/blob/master/_sass/minimal-mistakes/_variables.scss
 $max-width: 1400px;
+
 $background-color: rgb(251, 252, 244); // Hex value: #FBFCF4
+$footer-background-color: $background-color;
+$active-color: rgb(218, 223, 82);
+
 $sans-serif: Verdana, Georgia, Times, serif;
+$link-color: rgb(47, 117, 68);
+$text-color: black;
 
 $notice-background-mix: 50%;
-$footer-background-color: $background-color;
-$text-color: black;
 $primary-color: $text-color;
