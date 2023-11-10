@@ -1,0 +1,17 @@
+.site-title {
+    font-size: 3em;
+}
+
+.masthead__menu-item {
+    font-size: $type-size-6;
+}
+
+.greedy-nav {
+    align-items: end;
+}
+
+.page__content {
+    p, li, dl {
+        font-size: $type-size-6;
+    }
+}

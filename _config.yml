@@ -3,13 +3,11 @@ minimal_mistakes_skin: "default"
 excerpt_separator: <!--more-->
 locale: "en-US"
 title: "Second Sleep"
-subtitle: "We've got our head in the clouds"
 name: "Blaine Perry"
 description: "Azure consulting services"
 repository: 2ndsleep/2ndsleep.github.io
-url: "https://www.secondsleep.net"
+url: "https://www.secondsleep.io"
 masthead_title: "Second Sleep"
-logo: "/assets/images/logos/secondsleep/88x88.png"
 author:
   name: "Blaine Perry"
   location: "Asheville, NC"
