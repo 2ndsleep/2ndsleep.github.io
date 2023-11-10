@@ -1,7 +1,7 @@
 ---
 title: Guided Training
 permalink: /guided
-layout: archive
+layout: single
 collection: service
 ---
 If you're starting out, consider doing the training in this order.
