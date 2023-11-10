@@ -32,11 +32,11 @@ Run the following command to run this project as a Docker container. This assume
 docker run --rm --name blog -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
 ```
 
-To use a Docker container on a 32-bit operating system, such as a Raspberry Pi, build it from the `Dockerfile`.
+To use a Docker container on an arm32v7 Raspberry Pi processor, build it from the `Dockerfile`.
 
 ``` bash
-docker build -t blog32 .
-docker run --rm --name blog32 -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" blog32 /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
+docker build -t razblog .
+docker run --rm --name razblog -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" razblog /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
 ```
 
 ## Minimal Mistakes Theme
