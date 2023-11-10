@@ -4,8 +4,9 @@ layout: 'splash'
 title: 'Clouds Should Be Soft'
 excerpt: 'Then why does Azure seem so hard?'
 header:
-  overlay_color: '#F8F4E7'
-  overlay_filter: '0.5'
+  overlay_color: '#FBFCF4'
+  overlay_filter: '0'
+  overlay_image: /assets/images/pages/second-sleep-banner.png
   actions:
     - label: 'Start Learning'
       url: '/guided'
