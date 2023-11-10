@@ -26,13 +26,18 @@ After that, you can access your local development service at http://localhost:40
 
 ### Docker
 
-Run the following command to run this project as a Docker container. This assumes your current path (`$PWD`) is this repository.
+Run the following command to run this project as a Docker container. This assumes your current path (`$PWD`) is this repository. To re-use this container, exclude the `--rm` parameter.
 
 ``` bash
 docker run --rm --name blog -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
 ```
 
-To re-use this container, exclude the `--rm` parameter.
+To use a Docker container on a 32-bit operating system, such as a Raspberry Pi, build it from the `Dockerfile`.
+
+``` bash
+docker build -t blog32 .
+docker run --rm --name blog32 -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" blog32 /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
+```
 
 ## Minimal Mistakes Theme
 
