@@ -4,16 +4,20 @@
 
 @charset "utf-8";
 
+// Override Minimal Mistakes Sass variables in the _variables.scss file.
+// https://github.com/mmistakes/minimal-mistakes/blob/master/_sass/minimal-mistakes/_variables.scss
 $max-width: 1400px;
-
+$background-color: rgb(251, 252, 244); // Hex value: #FBFCF4
 $notice-background-mix: 50%;
-$background-color: rgb(248, 244, 231);
 $footer-background-color: $background-color;
 $text-color: rgb(88, 16, 66);
 $primary-color: $text-color;
 
+
+// Minimal Mistakes styles
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+// Second Sleep styles. Minimal Mistakes variables can be used in these Sass files.
 @import "secondsleep";
 @import "animations/ethernet";
