@@ -24,9 +24,10 @@ permalink: /:categories/:title
 collections:
   service_categories:
     output: true
-    permalink: /:name
+    permalink: /:categories
   services:
     output: true
+    permalink: /:categories
 
 include: ["_pages"]
 

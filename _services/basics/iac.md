@@ -2,6 +2,7 @@
 title: Infrastructure as code
 service_category: basics
 service: iac
+categories: basics iac
 sort_order: 2
 guided: true
 guided_order: 2

@@ -2,6 +2,7 @@
 title: Cloud Introduction
 service_category: basics
 service: cloud_intro
+categories: basics cloud_intro
 sort_order: 0
 guided: true
 guided_order: 0
