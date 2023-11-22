@@ -2,6 +2,8 @@
 title: 'Contact'
 permalink: '/contact'
 layout: 'single'
+header:
+  overlay_image: /assets/images/pages/second-sleep-banner.png
 ---
 I hope this site has been helpful, but if you're looking for more help, maybe I'm that special person you've been looking for. Fill out the form below and I'll get in contact with you.
 

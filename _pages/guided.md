@@ -3,6 +3,8 @@ title: Guided Training
 permalink: /guided
 layout: single
 collection: service
+header:
+  overlay_image: /assets/images/pages/second-sleep-banner.png
 ---
 If you're starting out, consider doing the training in this order.
 

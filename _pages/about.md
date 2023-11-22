@@ -3,6 +3,8 @@ title: 'Why Am I Here?'
 permalink: '/about'
 layout: 'single'
 toc: true
+header:
+  overlay_image: /assets/images/pages/second-sleep-banner.png
 ---
 This blog is intended to be a repository for learning about Azure, cloud infrastructure, and automation. Azure has a ton of documentation, which is wonderful, but sometimes it feels like it was written for either braindead executives or super-geeks and nothing in between.
 
