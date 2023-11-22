@@ -24,9 +24,9 @@
         {% assign crumb_index = crumb_index | plus: 1 %}
         <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
         {% if forloop.first %}
-          {% assign crumb_page = site.service_categories | where: "service_category", crumb | first %}
+          {% assign crumb_page = site.service_categories | where_exp: "service_category", "service_category.categories[0] == crumbs[0]" | first %}
         {% else %}
-          {% assign crumb_page = site.services | where: "service_category", crumbs[0] | where: "service", crumb | first %}
+          {% assign crumb_page = site.services | where_exp: "service", "service.categories[0] == crumbs[0]" | where_exp: "service", "service.categories[1] == crumbs[1]" | first %}
         {% endif %}
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/{{ crumb_page.categories | join: '/' | }}" itemprop="item"><span itemprop="name">{{ crumb_page.title }}</span></a>

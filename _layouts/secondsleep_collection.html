@@ -1,6 +1,9 @@
 ---
-layout: collection
+layout: single
 ---
-<div class="page__content">
-  {{ content }}
+{{ content }}
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+  {% include filtered_collection_by_categories.html collection=page.collection type=entries_layout %}
 </div>

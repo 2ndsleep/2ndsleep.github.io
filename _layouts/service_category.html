@@ -5,5 +5,5 @@ layout: single
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 <div class="entries-{{ entries_layout }}">
-  {% include filtered_collection.html collection='services' filter_key='service_category' filter_value=page.service_category sort_by='sort_order' type=entries_layout %}
+  {% include filtered_collection_by_categories.html collection='services' categories=page.categories sort_by='sort_order' type=entries_layout %}
 </div>

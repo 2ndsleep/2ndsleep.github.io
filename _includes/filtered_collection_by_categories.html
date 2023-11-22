@@ -1,0 +1,19 @@
+{% assign category_index = 0 %}
+{% assign entries = site[include.collection] %}
+{% for category in include.categories %}
+  {% assign entries = entries | where_exp: "entry", "entry.categories[category_index] == category" %}
+{% endfor %}
+
+{% if include.sort_by %}
+  {% assign entries = entries | sort: include.sort_by %}
+{% endif %}
+
+{% if include.sort_order == 'reverse' %}
+  {% assign entries = entries | reverse %}
+{% endif %}
+
+{%- for post in entries -%}
+  {%- unless post.hidden -%}
+    {% include archive-single.html %}
+  {%- endunless -%}
+{%- endfor -%}
