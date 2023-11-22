@@ -1,11 +1,7 @@
 main:
   - title: 'Start Learning'
-    url: '/guided'
-  - title: 'Browse'
     url: '/browse'
-  - title: 'Useless Thoughts'
-    url: '/thoughts'
   - title: 'Contact'
     url: '/contact'
-  - title: 'What? Why? How?'
+  - title: 'About'
     url: '/about'

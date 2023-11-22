@@ -43,20 +43,4 @@ Each service is part of a bigger fictional company called {{ site.fake_company_n
 
 ## Jump In!
 
-Here's where you can go from here.
-
-### [Start Learning](/guided)
-
-If you're new to the cloud, you'll want to start here. This is a guided tutorial that will step you through the development of {{ site.fake_company_name }}'s website. Each service will build on the previous service.
-
-### [Browse Topics](/browse)
-
-Services are grouped together by topics, so if you're interested in a specific service, you can jump right into that service.
-
-### [Useless Thoughts](/thoughts)
-
-These are vanity posts about whatever I think is important. But important to me, definitely not important to anyone else.
-
-### [All Posts](/posts)
-
-Finally, if you just want to see all the posts in reverse order for whatever freaky reason, you can do that here.
+Ready to get started? [Start learning](/browse) now!
