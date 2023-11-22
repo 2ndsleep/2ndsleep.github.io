@@ -39,16 +39,19 @@ defaults:
       type: service_categories
     values:
       layout: service_category
+      page_type: service_category
   - scope:
       path: ""
       type: services
     values:
       layout: service
+      page_type: service
   - scope:
       path: ""
       type: posts
     values:
       layout: single
+      page_type: post
       read_time: true
       author_profile: true
       toc_icon: cloud
