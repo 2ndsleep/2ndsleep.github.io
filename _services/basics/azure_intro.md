@@ -1,7 +1,5 @@
 ---
 title: Azure Introduction
-service_category: basics
-service: azure_intro
 categories: basics azure_intro
 sort_order: 1
 guided: true

@@ -32,6 +32,8 @@ collections:
 include: ["_pages"]
 
 breadcrumbs: true
+breadcrumb_home_url: /browse
+breadcrumb_home_label: Browse
 
 defaults:
   - scope:

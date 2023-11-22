@@ -1,6 +1,5 @@
 ---
 title: Networking
-service_category: networking
 categories: networking
 excerpt: Software-defined networking, like virtual networks and subnets. Think routers and switches, but in the cloud.
 ---

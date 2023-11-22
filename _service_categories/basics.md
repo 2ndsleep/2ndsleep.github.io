@@ -1,6 +1,5 @@
 ---
 title: Cloud Basics
-service_category: basics
 categories: basics
 excerpt: This is the place to start if you're new or have some basic questions that you're too afraid to ask your coworkers.
 ---

@@ -1,7 +1,5 @@
 ---
-title: Infrastructure as code
-service_category: basics
-service: iac
+title: Infrastructure as Code
 categories: basics iac
 sort_order: 2
 guided: true

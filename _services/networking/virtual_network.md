@@ -1,7 +1,5 @@
 ---
 title: Virtual Networks
-service_category: networking
-service: virtual_network
 categories: networking virtual_network
 guided: true
 guided_order: 1
