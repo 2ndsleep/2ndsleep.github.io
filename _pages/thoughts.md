@@ -1,6 +1,6 @@
 ---
 title: Useless Thoughts
-layout: category
+layout: secondsleep_category
 permalink: /thoughts
 taxonomy: thoughts
 ---
