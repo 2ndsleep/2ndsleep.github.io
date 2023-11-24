@@ -1,6 +1,6 @@
 main:
   - title: 'Start Learning'
-    url: '/browse'
+    url: '/learn'
   - title: 'Contact'
     url: '/contact'
   - title: 'About'

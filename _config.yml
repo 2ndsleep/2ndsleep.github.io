@@ -32,8 +32,8 @@ collections:
 include: ["_pages"]
 
 breadcrumbs: true
-breadcrumb_home_url: /browse
-breadcrumb_home_label: Browse
+breadcrumb_home_url: /learn
+breadcrumb_home_label: Learning
 
 defaults:
   - scope:

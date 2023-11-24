@@ -45,4 +45,4 @@ Each service is part of a bigger fictional company called {{ site.fake_company_n
 
 ## Jump In!
 
-Ready to get started? [Start learning](/browse) now!
+Ready to get started? [Start learning](/learn) now!

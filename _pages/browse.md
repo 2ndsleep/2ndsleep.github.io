@@ -1,6 +1,6 @@
 ---
-title: Browse
-permalink: /browse
+title: Learn
+permalink: /learn
 layout: secondsleep_collection
 collection: service_categories
 header:
