@@ -1,6 +1,6 @@
 # Second Sleep Blog
 
-This is the Jekyll content for the Second Sleep blog. The Second Sleep blog is a project to help system administrators, system engineers, and IT specialists with their Azure deployments. This Jekyll content is intended to be hosted on GitHub pages.
+This is the Jekyll content for the [Second Sleep blog](https://secondsleep.io). The Second Sleep blog is a project to help system administrators, system engineers, and IT specialists with their Azure deployments. This Jekyll content is intended to be hosted on [GitHub Pages](https://pages.github.com/).
 
 ## Getting Started
 
@@ -29,70 +29,90 @@ After that, you can access your local development service at http://localhost:40
 Run the following command to run this project as a Docker container. This assumes your current path (`$PWD`) is this repository. To re-use this container, exclude the `--rm` parameter.
 
 ``` bash
-docker run --rm --name blog -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
+docker run --rm --name blog -ditp 4000:4000 \
+    --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll /bin/sh \
+    -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
 ```
 
-To use a Docker container on an arm32v7 Raspberry Pi processor, build it from the `Dockerfile`.
+To use a Docker container on an arm32v7 Raspberry Pi processor, build it from the Dockerfile.
 
 ``` bash
 docker build -t razblog .
-docker run --rm --name razblog -ditp 4000:4000 --volume="$PWD:/srv/jekyll:Z" razblog /bin/sh -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
+docker run --rm --name razblog -ditp 4000:4000 \
+    --volume="$PWD:/srv/jekyll:Z" razblog /bin/sh \
+    -c "bundle install; bundle exec jekyll serve --drafts --host=0.0.0.0"
 ```
 
 ## Minimal Mistakes Theme
 
 This site uses the [Minimal Mistakes Theme](https://mademistakes.com/work/minimal-mistakes-jekyll-theme/) which was created by the talented [Michael Rose](https://mademistakes.com/about/). Go to the [quick start guide](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/) for usage information.
 
-## Navigation
+## Authoring
 
-Visitors that drop into the home page are expected navigate through the **Starting Learning** links. These actually links to the [Services](/services) page which lists all the broad categories of blog content. Each service is further divided into Explainers and Procedures.
+Follow these guidelines for authoring pages and posts.
 
-### Services
+### Training Content
 
-Services are the broad categories of blog content. They closely follow Azure resource types, but will not necessarily be a one-to-one mapping of resource types.
+Training-related content is categorized in the following way:
 
-#### Services Collection
+**Service Category | Service | explainer/procedure**
 
-The `/services` page will enumerate the **services** site collection, displaying a title linking to the service page and the collection item's excerpt. Clicking on a service will navigate to that's service page. The `/services` page is rendered by the [`collection`](https://mmistakes.github.io/minimal-mistakes/docs/layouts/#layout-collection) layout of the Minimal Mistakes Theme. The content for the `/services` page is pulled from the `_pages/services.md` file.
+The main category is the **service** which roughly corresponds to a workload that focuses on a specific training topic. A service may be something simple, like a VM, but a later service may later amend that service to add something like monitoring. Services are managed by the `_services` collection.
 
-To add a service, create a new markdown or HTML file in the `_services` folder with the following Front Matter.
+Since there may be a lot of services, they are grouped into **service categories** which are displayed in the [Learn](/_pages/learn.md) page. Service categories and managed by the `_service_categories` collection.
 
-- title
-- permalink
+Posts are the actual blog entries related to the service and come in two flavors: **explainers** and **procedures**. Explainers give detailed background on the service being discussed whereas procedures give the short and sweet how-to.
 
-The `title` value will be used to link the service to posts and procedures. The service content will be rendered on the service page, with only the excerpt being displayed on the service collection page.
+Categories are defined in a service category, service, or post by specifying the `categories` Front Matter value. This a canonical field and will be specified to the depth necessary for the type of page or post. In other words, the `categories` field will have one item for service categories, two items for services, and three items for posts.
 
-#### Serivce Page
+|Category|`categories` Structure|Example|
+|--------|----------------------|-------|
+|Service Category|`service_category`|`networking`|
+|Service|`service_category service`|`networking vnet`|
+|Post|`service_category service post_type`|`network vnet explainer`<br />-or-<br />`network vnet procedure`|
 
-Each service has its own page with links to [Explainers](#explainers) and [Procedures](#procedures) related to that service. The individual service page is rendered by the `_layouts/service.html` file. The content is pulled from the individual service file in the `_services` collection. The layout is defined in the `_config.yml` file so that any page in the `_services` collection will use the `_layout/services.html` layout.
+### Creating Service Categories and Services
 
-Explainers are posts containing a Front Matter `category` with a value of **explainer**. Explainer posts that have Front Matter `service` with a value matching the service title will be displayed in the **Learn more about...** section of the service page.
+To create a service category or service, create a new file in the `_service_categories` or `services` folder and specify the `categories` value appropriately. The layouts for these pages will render the excerpt for the page as a short description. However, the normal excerpt is not usually suitable for the view, so you should override the excerpt by specifying `excerpt` in Front Matter.
 
-Procedures are a site collection named `_procedures` containing a Front Matter `service` with a value matching the service title. Procedures matching these values will be displayed in the **Do it yourself** section of the service page.
+The service pages have additional Front Matter values that you may want to specify.
 
-### Procedures
+- `sort_order`: This is a numerical value that sets the order that this service will be rendered on the service category page.
+- `guided`: Services can be part of a guided tour that will list the services in the order that they would have been performed for the fake company. Set this value to `true` for this service to appear in the [guided tour](/_pages/guided.md) page.
+- `guided_order`: This is a numerical value that sets the order that this service will be rendered on the guided tour page.
 
-Procedures are a list of posts that show various ways of accomplishing some kind of task. A procedure will contain at least one of the following procedure types, although it will usually contain all three.
+### Creating a Training Post
 
-- **manual**: A step-by-step set of instructions for the procedure, usually involving using the GUI.
-- **scripted**: A scripted method for performing the procedure, usually with PowerShell, Windows command line, or Bash.
-- **devops**: An automated way of performing the procedure, usually with ARM templates or PowerShell DSC.
+Create a new file in the `_posts` or `_drafts` folder and add the following Front Matter and specify the `categories` value appropriately. A short description will appear under each post in the services pages, but unlike the service category and service pages, we specify this value with the `description` field in Front Matter. This will not override the excerpt, which we will want to preserve for other pages.
 
-#### Procedure Collection
+The post will also have additional Front Matter values that you may want to specify.
 
-Procedures are defined by the `_procedures` collection. There is not a page to display all procedures, as that would be an unwieldy list. Instead an individual procedure has its own page which is linked from the parent service page. The procedure page will list any of the posts with a Front Matter `procedure` matching the name of the procedure.
+- `sort_order`: This is a numerical value that sets the order that this post will be rendered within the explainer or procedure section on the service page.
+- `toc`: This indicated if the table of contents should appear. If omitted, it will default to `true`. You may want to set this value to `false` for shorter posts that will require little to no scrolling.
 
-#### Procedures
+### Thoughts
 
-Procedures are simply posts that have have a Front Matter `procedure` value matching the `title` value of a procedure in the `_procedures` collection, and a Front Matter `category` value of the list at the beginning of [this section](#procedures).
+"Thoughts" posts are like other posts, but they omit the `categories` Front Matter field and instead have the following line in Front Matter.
 
-### Explainers
+``` yaml
+category: thoughts
+```
 
-Explainers are posts that descibe how a certain service works in plain English. They are intended to be an introduction for audiences that are not familiar with the topic where introductory information is not readily available.
+You may also choose to omit the table of contents by specifying `toc: false`.
 
-Explainers are simply posts that have have a Front Matter `category` value of `thoughts`.
+### Subfolders
 
-## Miscellaneous
+Service category pages, service pages, and posts can be organized into subfolders for convenience. The subfolder structure will have no bearing on how the static site is generated.
+
+### Stylesheets
+
+The Minimal Mistakes theme can be overridden by modifying one of two files.
+
+The simplest way to make changes is to set custom values for variables in the [minimal-mistakes-variables.scss](/_sass/minimal-mistakes-variables.scss) file. This will override the default values in the [_variables.scss](https://github.com/mmistakes/minimal-mistakes/blob/master/_sass/minimal-mistakes/_variables.scss) file of the theme.
+
+The [minimal-mistakes-overrides.scss](/_sass/minimal-mistakes-overrides.scss) is imported after the theme SASS is imported. You can specify SASS content that will take precedence over the theme's SASS.
+
+### SVG Drawings
 
 SVG drawings made by Inkscape will have a leading prolog that will get rendered as escaped HTML when using the `include` Liquid tag. This prolog looks like this.
 
@@ -105,3 +125,11 @@ As special include file of `svg.html` will properly render an embedded SVG file 
 ```
 {% include svg.html path="svg_file_render.svg" %}
 ```
+
+### Breadcrumbs
+
+The breadcrumbs feature has been customized by the [breadcrumbs.html](/_includes/breadcrumbs.html) include to only show breadcrumbs for service categories, services, and related posts. Set the following items in the `_config.yml` file to customize breadcrumbs.
+
+- `breadcrumbs`: Set to `true` to enable breadcrumbs.
+- `breadcrumb_home_label`: Set the text to appear as the root of the breadcrumb chain.
+- `breadcrumb_home_url`: Set the path that the root of the breadcrumb chain will link to.
