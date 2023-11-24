@@ -33,7 +33,7 @@ include: ["_pages"]
 
 breadcrumbs: true
 breadcrumb_home_url: /learn
-breadcrumb_home_label: Learning
+breadcrumb_home_label: Learn
 
 defaults:
   - scope:

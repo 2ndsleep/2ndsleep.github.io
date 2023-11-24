@@ -2,7 +2,7 @@
 title: Virtual Networks
 categories: networking virtual_network
 guided: true
-guided_order: 1
+guided_order: 4
 ---
 Software-defined networking, like virtual networks and subnets. Think routers and switches, but in the cloud.
 <!--more-->
