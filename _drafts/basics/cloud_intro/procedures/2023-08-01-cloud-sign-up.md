@@ -23,4 +23,4 @@ But you are going to want to keep track of what you're doing after your free tri
 
 ## Whoops, I Closed My Browser
 
-If signed up and then closed your browser and can't remember how to get back, you simply go to [`portal.azure.com`](https://portal.azure.com) which you'll probably memorize after working with this for a few days.
+If you signed up and then closed your browser and can't remember how to get back, you simply go to [`portal.azure.com`](https://portal.azure.com) which you'll probably memorize after working with this for a few days.
