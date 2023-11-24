@@ -1,5 +1,5 @@
 main:
-  - title: 'Start Learning'
+  - title: 'Learn'
     url: '/learn'
   - title: 'Contact'
     url: '/contact'

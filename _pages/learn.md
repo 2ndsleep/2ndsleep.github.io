@@ -6,10 +6,10 @@ collection: service_categories
 header:
   overlay_image: /assets/images/pages/second-sleep-banner.png
 feature_row:
-  - title: Guided Tour
+  - title: Guided Training
     excerpt: This steps you through the creation of our fake company Scramoose from the beginning.
     url: /guided
-    btn_label: Guided Tour
+    btn_label: Guided Training
     btn_class: btn--info
   - title: Useless Thoughts
     excerpt: These are vanity posts about whatever I think is important.
