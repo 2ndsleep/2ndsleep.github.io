@@ -15,6 +15,7 @@ First, let's get some terms out of the way. **Naming** is exactly what you think
 Azure resources allow you to apply [**tags**](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources). These are simply name-value pairs of whatever the frick you want. Here's some tagging examples.
 
 |Tag Name|Value|
+|--------|-----|
 |environment|prd, stg, dev|
 |cost-center|Engineering, Business Intelligence, IT|
 |workload|web API, billing export, ETL|
@@ -58,16 +59,19 @@ scram-webapi-prd-1
 The first thing you may notice is that a lot of items are shortened. The main reason is to save space so that they names aren't super long which can be particularly difficult if you're working on the command line. But another reason you might want to do this is because you want each segment to have a pre-determined length. This is convenient because you may want to run a script to get all the resources that are associated with, say, a particular workload. If all the resources have a known length, the script could know to grab characters 7-12 for the workload. To help with this, you'll probably want to document a list of codes that will be used for each segment, perhaps as such:
 
 |Organization|Code|
+|------------|----|
 |Scramoose|scram|
 |AdventureWorks|adwrk|
 |Datum|datum|
 
 |Workload|Code|
+|--------|----|
 |Database|sqldat|
 |Web API|webapi|
 |Front-End|userui|
 
 |Environment|Code|
+|-----------|----|
 |Production|prd|
 |Staging|stg|
 |Test|tst|
