@@ -14,7 +14,7 @@ This is the history of the cloud according to Blaine, pulled from my head. Leave
 
 ### Virtualization
 
-The cloud has its origins in something called **virtualization**. In the old days, companies would build data centers in their office basements with many physical servers running. The best practice was (and still is) for each single server to have a single purpose. So if have a physical server that is a database server, all that server would be is a database server.
+The cloud has its origins in something called **virtualization**. In the old days, companies would build data centers in their office basements with many physical servers running. The best practice was (and still is) for each single server to have a single purpose. So if you have a physical server that is a database server, all that server would be is a database server.
 
 If that seems wasteful, well it kind of is, but there are at least two good reasons to only install one workload on a server. You can count on the performance to be a little more consistent. If you have a database and web server installed on the same server and you suddenly get a lot of unexpected web traffic, the CPU might get hit hard serving web content and now your database is getting slow. There is also a security concern. If your web server gets hacked, that hacker probably has access to your database. Separating your workloads on different servers makes it less likely that a hacker can get to all your services.
 {: .notice--info}
