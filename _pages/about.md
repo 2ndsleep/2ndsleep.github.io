@@ -2,7 +2,6 @@
 title: 'About'
 permalink: '/about'
 layout: 'single'
-toc: true
 header:
   overlay_image: /assets/images/pages/second-sleep-banner.png
 ---
