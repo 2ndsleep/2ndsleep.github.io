@@ -5,7 +5,7 @@ toc: true
 sort_order: 0
 description: A quick history and answering the question you were afraid to ask
 ---
-If you don't really know what "the cloud" means, don't feel bad. You're not alone. There are a lot of different ways to think of what the cloud is. Kind of like "blockchain" or "AI," it can both be used as a meaningless word by marketing dummies or refer to a very real thing.
+If you don't really know what "the cloud" means, don't feel bad. You're not alone. There are a lot of different ways to think of what the cloud is. Kind of like "blockchain" or "AI," it can both be used as a meaningless word by marketing vultures or refer to a very real thing.
 <!--more-->
 
 ## Brief History
@@ -21,7 +21,7 @@ If that seems wasteful, well it kind of is, but there are at least two good reas
 
 In the past we'd buy a beefed up physical server that's only doing about 25% of what it's capable of doing. Wouldn't it be great if we could use another 25% for something else? Like that web server that we don't want to put on the database server?
 
-That's where virtualization comes in. Some smart people thought, wouldn't it be great if we could put, like, two servers on that one server? The two servers would be, like "virtual," man (puff, puff, cough, cough :herb:). To achieve this wild idea, the physical server hardware would be virtually broken up for each server.
+That's where virtualization comes in. Some smart people thought, wouldn't it be great if we could put, like, two servers on that one server? The two servers would be, like "virtual," man (puff, puff, cough, cough :herb:). To achieve this wild idea, the physical server hardware would be broken up - virtually - for each server.
 
 - **Compute**: The CPU would be shared between each virtual server. In the same way that the processor rapidly switches among each application running on your computer to make it appear that each application is running simultaneously, the processor switches among virtual servers so that they appear to be running at the same time.
 - **Memory**: The physical server carves out a section of the physical memory that is exclusive for each virtual server.
@@ -36,8 +36,10 @@ Yes, this is all grossly oversimplified. Storage is usually located on separate 
 
 Here are all the terms you should use when chatting with technologists so you don't sound like a newbie.
 
-- **Host**: This is the physical server that runs all the virtual servers. If you want to be even more academic, you can call this the **hypervisor**.
+- **Host**: This is the physical server that runs all the virtual servers. If you want to be even more academic, the host has a service call the **hypervisor** that makes the physical hardware appear as virtual hardware.
 - **VM**: I've been using the term "virtual server," but we usually call it a **virtual machine**, or **VM** for short. You may also hear this referred to as the **guest** operating system.
+
+Virtualization is fun! If you've never messed around with, test out a free [type 2 hypervisor](https://aws.amazon.com/compare/the-difference-between-type-1-and-type-2-hypervisors/) with something like [VMware Fusion](https://www.vmware.com/products/fusion.html) for macOS, [VMware Workstation Player](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html) for Windows, [QEMU](https://www.qemu.org/) for Linux, or if you hate pretty user interfaces try [VirtualBox](https://www.virtualbox.org/) for all three platforms.
 
 ### Infrastructure as a Service
 
@@ -45,7 +47,7 @@ So what does virtualization have to do with the cloud? Well, when people first s
 
 This changed the game for IT teams, specifically that your IT infrastructure teams were now shifting away from managing hardware to managing software that's pretending to be hardware. We started using the term "hardware" less and the more broad term "**infrastructure**" more. The whole procurement process wasn't as big of a bottleneck and now system administrators could provision servers in more of a service-oriented way. You could say that they now offered **infrastructure as a service**. "Oh the web team needs another web server? Give me a couple of hours."
 
-It's a logical leap that companies would start to exclusively offer infrastructure as a service to the general public. A lot of companies were doing this but there was a big player about to shake things up in the mid-2000s.
+It's a logical leap that companies would start to exclusively offer infrastructure as a service to the general public. A lot of companies were doing this, but there was a big player about to shake things up in the mid-2000s.
 
 ### The Big Players
 
@@ -70,6 +72,19 @@ Each big cloud provider has multiple datacenters located throughout the world. E
 You might be wondering, why a remote datacenter? Don't I want my servers to be close to my business? The answer is: usually no. You generally want all your servers to be close to *each other* but not necessarily close to you. Around the beginning of AWS, businesses started moving more toward web apps (if you were born after 2000, you'd be shocked to know how many things were not web-based). Accessing websites is usually pretty fast, as long as the the services that the website depends on are quickly accessible by the website, such as databases.
 
 ## Yeah, But What is the Cloud???
+
+Okay, you may be thinking that I've skipped over some important steps on the cloud story. After all, doesn't a cloud provider like Azure offer more than just virtual machines? If you have some familiarity with the cloud, you may know that they offer other services like databases and virtual networking.
+
+Cloud providers each have their own cloud operating system. In Azure's case, the cloud operating system consists of two main parts: the **fabric controller** and the **orchestrator**. The fabric controller runs on each physical... you know what? Just watch this two-minute video that explains it better than I can:
+
+<div class="responsive-video-container">
+  <iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE2ixGo?postJsllMsg=true" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+That's the cloud operating system part, but almost everything that is created by the cloud operating system is one or more VMs of some sort. If you request a Windows VM, well that will obviously be a VM. But if you create an Azure SQL Server, that will create a few VMs that you can't see but are there behind the scenes.
+
+What if you create a virtual network? Is a VM created? Actually, I don't know the answer to that, but my guess is that it's a VM with some type of proprietary network appliance is created. I've Googled the hell out of this and can't find an explanation so if anyone knows, please let me know.
+{: .notice--info}
 
 For the purposes of this blog, the cloud is just a company that maintains a bunch of servers where you can run your IT operations. Those IT operations could be VMs that run your custom software, or a place to store your files, a database to keep your HR records, or a combination of any of these things. Basically, almost anything that you've done in a traditional physical IT setting, you can do in a remote cloud datacenter.
 
