@@ -22,4 +22,12 @@ To use this include for adding SVG images, use this in your Jekyll files:
     {% assign svg_content = full_svg | remove_first: line_to_remove %}
 {% endif %}
 
-{{ svg_content }}
+
+<figure class="{{ include.class }}">
+  {{ svg_content }}
+  {%- if include.caption -%}
+    <figcaption>
+      {{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}
+    </figcaption>
+  {%- endif -%}
+</figure>

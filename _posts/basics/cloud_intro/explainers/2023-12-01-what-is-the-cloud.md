@@ -25,7 +25,9 @@ That's where virtualization comes in. Some smart people thought, wouldn't it be 
 
 - **Compute**: The CPU would be shared between each virtual server. In the same way that the processor rapidly switches among each application running on your computer to make it appear that each application is running simultaneously, the processor switches among virtual servers so that they appear to be running at the same time.
 - **Memory**: The physical server carves out a section of the physical memory that is exclusive for each virtual server.
-- **Storage**: Like memory, the physical server carves out disk space that is exclusive for each virtual server. In its simplest form, the physical server creates a single file on its local disk for each virtual server's hard drive.
+- **Storage**: Like memory, the physical server allocates disk space that is exclusive for each virtual server. In its simplest form, the physical server creates a single file on its local disk for each virtual server's virtual hard drive.
+
+{% include svg.html path="svg/virtualization.svg" caption="A crude representation of virtualization" %}
 
 From the point of view of each virtual server, it thinks it's getting 100% of everything that's been allocated. So it gets 100% of a virtual processor, 100% of some virtual memory, and 100% of its disk drive. The virtual server doesn't know it's actually just a piece of the physical server. In fact, it doesn't know that it's virtual. It just thinks it's a server.
 
