@@ -31,7 +31,7 @@ Run the following command to run this project as a Docker container. This assume
 ``` bash
 docker run --rm --name blog -ditp 4000:4000 \
     --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll /bin/sh \
-    -c "bundle install; bundle exec jekyll serve --drafts  --future --host=0.0.0.0"
+    -c "bundle install; bundle exec jekyll serve --drafts --future --host=0.0.0.0"
 ```
 
 To use a Docker container on an arm32v7 Raspberry Pi processor, build it from the Dockerfile.
@@ -40,7 +40,7 @@ To use a Docker container on an arm32v7 Raspberry Pi processor, build it from th
 docker build -t razblog .
 docker run --rm --name razblog -ditp 4000:4000 \
     --volume="$PWD:/srv/jekyll:Z" razblog /bin/sh \
-    -c "bundle install; bundle exec jekyll serve --drafts  --future --host=0.0.0.0"
+    -c "bundle install; bundle exec jekyll serve --drafts --future --host=0.0.0.0"
 ```
 
 ## Minimal Mistakes Theme
