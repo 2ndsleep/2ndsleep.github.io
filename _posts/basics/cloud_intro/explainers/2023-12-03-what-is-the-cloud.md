@@ -73,19 +73,6 @@ You might be wondering, why a remote datacenter? Don't I want my servers to be c
 
 ## Yeah, But What is the Cloud???
 
-Okay, you may be thinking that I've skipped over some important steps on the cloud story. After all, doesn't a cloud provider like Azure offer more than just virtual machines? If you have some familiarity with the cloud, you may know that they offer other services like databases and virtual networking.
+For the purposes of this blog, the cloud is just a company that maintains a bunch of servers where you can run your IT operations. Those IT operations could be VMs that run your custom software, or a place to store your files, a database to keep your HR records, or a combination of any of these things. Basically, almost anything that you've done in a traditional physical IT setting, you can do in a remote cloud datacenter. If you're not satisfied with that explanation, I discuss a bit about Azure's cloud operating system in this [short post]({% post_url thoughts/2023-12-06-azure-cloud-os %}).
 
-Cloud providers each have their own cloud operating system. In Azure's case, the cloud operating system consists of two main parts: the **fabric controller** and the **orchestrator**. The fabric controller runs on each physical... you know what? Just watch this two-minute video that explains it better than I can:
-
-<div class="responsive-video-container">
-  <iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE2ixGo?postJsllMsg=true" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowfullscreen></iframe>
-</div>
-
-That's the cloud operating system part, but almost everything that is created by the cloud operating system is one or more VMs of some sort. If you request a Windows VM, well that will obviously be a VM. But if you create an Azure SQL Server, that will create a few VMs that you can't see but are there behind the scenes.
-
-What if you create a virtual network? Is a VM created? Actually, I don't know the answer to that, but my guess is that it's a VM with some type of proprietary network appliance is created. I've Googled the hell out of this and can't find an explanation so if anyone knows, please let me know.
-{: .notice--info}
-
-For the purposes of this blog, the cloud is just a company that maintains a bunch of servers where you can run your IT operations. Those IT operations could be VMs that run your custom software, or a place to store your files, a database to keep your HR records, or a combination of any of these things. Basically, almost anything that you've done in a traditional physical IT setting, you can do in a remote cloud datacenter.
-
-The above description is what us geeks think of as the cloud. Now here's the annoying thing. "The cloud" can mean just about anything that involves computers. If you store your iPhone photos in the iCloud, you're using a cloud service. If you use Gmail, you are using Google's cloud email service. Pretty much everything electronic uses the cloud these days. So in a way, you've wasted a lot of time reading this post. But from a cosmic perspective, you've only wasted a small amount of time reading this post.
+The above description is what us geeks think of as the cloud. Now here's the annoying thing. "The cloud" can mean just about anything that involves computers. If you store your iPhone photos in the iCloud, you're using a cloud service. If you use Gmail, you are using Google's cloud email service. Pretty much everything electronic uses the cloud these days. So in a way, you've wasted a lot of time reading this post. But on a cosmic scale, you've only wasted a small amount of time reading this post.
