@@ -1,7 +1,7 @@
 ---
 title: Git Tutorial
 categories: basics cloud_intro procedure
-toc: false
+toc: true
 sort_order: 2
 description: A link to Git tutorials
 ---
@@ -22,9 +22,13 @@ You should see output similar to `git version 2.43.0`. If not, follow [these ste
 
 ## Starter
 
-First, start with this short and sweet tutorial from this git-scm.com site: [gittutorial](https://git-scm.com/docs/gittutorial).
+Head over to the [Git Immersion](https://gitimmersion.com) site for an interactive Git tutorial. This tutorial is easy to follow with a pretty interface. It covers a lot of things, but if you took about 15 minutes each day, you could knock it out in about week or two.
 
-There are a couple of things with this tutorial that can be confusing for beginners, so here's some pointers.
+## Intermediate
+
+The official Git documentation site has the short and sweet [gittutorial](https://git-scm.com/docs/gittutorial), which I actually find to be a bit difficult. Nevertheless, it covers the basics and is a solid tutorial.
+
+There are a few things with this tutorial that can be confusing for beginners, so here's some pointers.
 
 - In the [Importing a new project](https://git-scm.com/docs/gittutorial#_importing_a_new_project) section, they tell you to unzip a tarball with the command `tar xzf project.tar.gz`, but they don't supply an example tarball file for you. I created one that you can download [here](/assets/downloads/project.tar.gz).
 - When committing messages, you will be dropped into a file editor and how that file editor works will be different depending on your operating system. To get around that, use the `-m` option to specify the commit message, like this: `git commit -m "Update webpage link"`.
@@ -35,13 +39,6 @@ There are a couple of things with this tutorial that can be confusing for beginn
 brew update
 brew install git-gui
 ```
-
-## Intermediate
-
-Second, try one or both of these more extensive guided tutorials that have a prettier design.
-
-- [GitHub Skills](https://skills.github.com)
-- [Git Immersion](https://gitimmersion.com)
 
 ## Challenging
 
