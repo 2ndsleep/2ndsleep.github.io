@@ -90,7 +90,7 @@ I can't give you the correct answer for your organization, but my advice is that
 
 ## Tenant & Entra ID
 
-An Azure **tenant** is the highest level of Azure. It represents your organization. You should have a one-to-one relationship between tenants and organizations. The reason for this is that every tenant has a single [**Entra ID**]({% post_url /basics/azure_intro/explainers/2023-08-10-basic-security %}) associated with it. Entra ID is the directory that will store all of your users, groups, and everything related to authentication, authorization, and security in general.
+An Azure **tenant** is the highest level of Azure. It represents your organization. You should have a one-to-one relationship between tenants and organizations. The reason for this is that every tenant has a single [**Entra ID**]({% post_url /basics/azure_intro/explainers/2023-12-08-entra-id %}) associated with it. Entra ID is the directory that will store all of your users, groups, and everything related to authentication, authorization, and security in general.
 
 I'm going to come at this from another angle. When you create your organization's existence in Microsoft, you're going to create something called a tenant. This will either be done by creating your first Microsoft 365 account or creating your first Azure subscription. By creating this tenant, you'll automatically create a single Entra ID directory linked to that tenant. You can manage Entra ID through one of several administrative consoles including: [Microsoft 365 admin](https://admin.microsoft.com), [Azure portal](https://portal.azure.com), or [Entra ID admin](https://entra.microsoft.com). All of these are available whether you're using Microsoft 365, Azure, or both.
 
