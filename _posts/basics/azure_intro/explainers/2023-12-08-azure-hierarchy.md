@@ -62,7 +62,7 @@ When you start out, you'll have just one subscription and that will likely be al
 
 - A company has subsidiaries, and each subsidiary should be billed separately for accounting purposes. In that case, each subsidiary would have its resources in its own subscription.
 - Azure has several subscription types known as [subscription offers](https://azure.microsoft.com/en-us/support/legal/offer-details/). One of them is a Dev/Test subscription which has cheaper pricing for your non-production resources. If you would like to spend less money for the resources that aren't actually generating money for your organization, consider creating a Dev/Test subscription.
-- You're an overachiever and you want to create a "proper" [landing zone]({% post_url /basics/azure_intro/2023-09-20-landing-zones %}) configuration.
+- You're an overachiever and you want to create a "proper" [landing zone]({% post_url /basics/azure_intro/2023-12-08-landing-zones %}) configuration.
 
 ### Subscription Offers
 
@@ -78,15 +78,15 @@ The rest of the types are either Azure support plans, enterprise for very large 
 
 ### How Many Subscriptions?
 
-Okay, I said earlier that you'll probably only need one subscription and I stand by that, but I should highlight that this is in contrast from Microsoft's recommendations. Read their [subscription democratization](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-principles#subscription-democratization) documentation if you can stomach the Gartner-esque language, but let me translate: Microsoft suggests you create subscriptions for each business unit. This is recommendation is part of their [landing zone]({% post_url /basics/azure_intro/explainers/2023-09-20-landing-zones %}) guidance, and you should read that before deciding if you want to have multiple subscriptions.
+Okay, I said earlier that you'll probably only need one subscription and I stand by that, but I should highlight that this is in contrast from Microsoft's recommendations. Read their [subscription democratization](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-principles#subscription-democratization) documentation if you can stomach the Gartner-esque language, but let me translate: Microsoft suggests you create subscriptions for each business unit. This is recommendation is part of their [landing zone]({% post_url /basics/azure_intro/explainers/2023-12-08-landing-zones %}) guidance, and you should read that before deciding if you want to have multiple subscriptions.
 
 Microsoft says that each business unit will have more control over their own subscription, which is true but if you're talking purely access control then there are ways to easily grant access to resource groups if you're properly using infrastructure as code. Here's the major downside to multiple subscriptions: not all resources can be moved to a different subscription. So in many cases, if you decide that a resource should be in a different subscription, you'll have to create the resource in the other subscription and then delete it from the old subscription. (Microsoft has a [list](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-support-resources) of resources that can be moved.)
 
-I can't give you the correct answer for your organization, but my advice is that you read about [landing zones]({% post_url /basics/azure_intro/explainers/2023-09-20-landing-zones %}), give it some serious thought and discussion with stakeholders, and then decide if there is a justification for multiple subscriptions. The larger your organization, the more likely the answer is yes.
+I can't give you the correct answer for your organization, but my advice is that you read about [landing zones]({% post_url /basics/azure_intro/explainers/2023-12-08-landing-zones %}), give it some serious thought and discussion with stakeholders, and then decide if there is a justification for multiple subscriptions. The larger your organization, the more likely the answer is yes.
 
 ## Management Groups
 
-**Management groups** are a way for you to group [subscriptions](#subscriptions) together. The reason for this is to restrict access or enforce specific policies for a group of subscriptions. This is useful if you're in a large organization or if you're using [landing zones]({% post_url /basics/azure_intro/explainers/2023-09-20-landing-zones %}#management-groups).
+**Management groups** are a way for you to group [subscriptions](#subscriptions) together. The reason for this is to restrict access or enforce specific policies for a group of subscriptions. This is useful if you're in a large organization or if you're using [landing zones]({% post_url /basics/azure_intro/explainers/2023-12-08-landing-zones %}#management-groups).
 
 ## Tenant & Entra ID
 
