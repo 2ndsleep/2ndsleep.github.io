@@ -2,7 +2,7 @@
 title: Sign-Up for the Cloud
 categories: basics cloud_intro procedure
 toc: true
-sort_order: 0
+sort_order: 1
 description: Sign up for Azure if you haven't already
 ---
 Signing up for a cloud service is easy. So easy that I'm simply going to refer you to the link:
