@@ -2,7 +2,7 @@
 title: Landing Zones
 categories: basics azure_intro explainer
 toc: true
-sort_order: 3
+sort_order: 4
 description: Configure your entire Azure environment automatically
 ---
 First, I'm going to make fun of landing zones, because I didn't understand what in God's name they were even after carefully reading the documentation. Try it yourself. Go to [What is an Azure landing zone?](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/), take five minutes to read the page, and then turn to the person or animal closest to you and see if you can faithfully describe it to them. You can't do it! Especially if you're talking to an animal because they don't speak human languages... [yet](https://www.popularmechanics.com/science/animals/a42689511/humans-could-decode-animal-language/).
@@ -17,7 +17,7 @@ Out of fairness, [Google](https://cloud.google.com/architecture/landing-zones) i
 
 ## What Is an Azure Landing Zone (but like, for real)?
 
-A cloud landing zone is some kind of location where you put your cloud resources that will ensure your resources will be configured the way you want them. It differs for each cloud environment, but in Azure it's a subscription that has configurations applied to it so that your resources will automatically have the settings, features, or restrictions that you want. Each landing zone is a different subscription that may have different configurations applied to it.
+A cloud landing zone is some kind of location where you put your cloud resources that will ensure your resources will be configured the way you want them. It differs for each cloud environment, but in Azure it's a subscription. This subscription has configurations applied to it so that your resources will automatically have the settings, features, or restrictions that you want. Each landing zone is a different subscription that may have different configurations applied to it.
 
 The goal here is to ensure that your resources are configured the way you want without having to remember to configure them or to make sure that someone doesn't make a change that you don't want. Here are some examples of what your landing zone may do.
 
@@ -40,14 +40,14 @@ The reason I said the subscription has "configurations applied" rather than "is 
 - Policies
 - Role-based access (RBAC)
 
-This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /basics/azure_intro/explainers/2023-08-08-azure-hierarchy %}) and [Azure Security]({% post_url /basics/azure_intro/explainers/2023-08-10-basic-security %}).
+This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /basics/azure_intro/explainers/2023-12-08-azure-hierarchy %}).
 {: .notice--info}
 
 ### Management Groups
 
 Management groups are ways to group your subscriptions together. This can be useful if you want to apply configurations to a bunch of landing zones (AKA, subscriptions) at once. You can then apply additional configurations to each subscription that are more specific to the subscription.
 
-![Management Groups](https://learn.microsoft.com/en-us/azure/governance/media/mg-org.png)
+{% include figure image_path="https://learn.microsoft.com/en-us/azure/governance/media/mg-org.png" alt="landing zone management groups" caption="This is the recommended management group structure for Microsoft's enterprise-scale landing zone." %}
 
 The image above is Microsoft's recommended landing zone organization. There's a lot going on, but zero in on the **Landing zones** management group. If you decide to implement this structure, you're going to mostly be working with subscriptions that are part of that management group. This is where your application resources, like VMs, App Services, and databases are going to live. You can see that the **Landing zones** management group has three management groups below it. Let's ignore **SAP** and focus on **Corp** and **Online**. These two management groups would contain subscriptions that contain the following types of resources.
 
@@ -78,7 +78,7 @@ It's worth noting that policies aren't squarely in the security realm, but are o
 
 #### RBAC
 
-I talk about role-based access control (RBAC) in the [Azure Security]({% post_url /basics/azure_intro/explainers/2023-08-10-basic-security %}#rbac) post, but RBAC can and should be part of your landing zone. This will ensure that the proper users have the proper access to your landing zone. Some landing zones will need to more locked down, like your production environment. Your sandbox environment might be more of a free-for-all where developers can spin up resources without going through the platform engineering team.
+I'm going to talk about role-based access control (RBAC) in a future post, but in short, RBAC is the permission you assign to your subscriptions that specify who can do what to each subscription. RBAC can and should be part of your landing zone. Some landing zones will need to more locked down, like your production environment. Your sandbox environment might be more of a free-for-all where developers can spin up resources without going through the platform engineering team.
 
 ## Should You Use a Landing Zone?
 
@@ -88,9 +88,9 @@ I think landing zones are a no-brainer if you have a greenfield deployment, mean
 
 So you may be thinking that if you're already using Azure, then landing zones are going to be a headache. Nope. You can and should still use landing zones! Take another look at Microsoft's recommended management group organization:
 
-![Management Groups](https://learn.microsoft.com/en-us/azure/governance/media/mg-org.png)
+{% include figure image_path="https://learn.microsoft.com/en-us/azure/governance/media/mg-org.png" alt="landing zone management groups" caption="Can you find your current subscription in this diagram? (The answer is no.)" %}
 
-Notice how the subscriptions that you currently have aren't in there. Any subscriptions that you have are going to be branched directly from the tenant root group at the top. Policies and RBAC are not applied to the root, which means you could run the landing zone accelerator right now and it will create a management group organization similar to the image above, but your existing subscriptions will be completely unaffected by the landing zone organization.
+Notice how the subscriptions that you currently have aren't in there. Any subscriptions that you already have are going to be branched directly from the tenant root group at the top. Policies and RBAC are not applied to the root, which means you could run the landing zone accelerator right now and it will create a management group organization similar to the image above, but your existing subscriptions will be completely unaffected by the landing zone organization.
 
 You can then start migrating resources to landing zones one-by-one. Or if you think you're ready to take the leap, you can move your existing subscriptions to either the **Corp** or **Online** management group (which takes only a few seconds). The landing zone accelerator will also give you the option to move your existing subscriptions under these management groups, but you'll want to make sure that you're ready for that. For example, if the landing zone will prevent IP forwarding and you have a virtual router (AKA network virtual appliance, AKA NVA) in your subscription, then that router won't work anymore. You'll either have to disable that IP forwarding policy or rethink your architecture.
 
@@ -104,6 +104,6 @@ As I mentioned, Microsoft's official [landing zone documentation](https://learn.
 
 Here's my personal beef with the Microsoft landing zone accelerators. They make a lot of the rest of this blog pointless. If you create a landing zone and never need to come back to this blog, great! The point of this blog is to show how to use Azure for specific solutions, so you should deploy a landing zone if that makes sense for your organization.
 
-But! I think Microsoft's enterprise-scale landing zone is a very sensible way to construct your cloud environment so I'm going to borrow heavily from the enterprise. If you follow along, we're going to do the same thing bit-by-bit (byte-by-byte?) that the landing zone accelerator in minutes, and I'll refer to the enterprise-scale landing zone accelerator source code where possible.
+But! I think Microsoft's enterprise-scale landing zone is a very sensible way to construct your cloud environment so I'm going to borrow heavily from the enterprise. If you follow along, we're going to do the same thing bit-by-bit (byte-by-byte?) that the landing zone accelerator does in minutes, and I'll refer to the enterprise-scale landing zone accelerator source code where possible.
 
 Landing zones don't have to deployed with the Azure landing accelerator. They can be created manually. In fact, that's what we'll be doing slowly throughout this blog.
