@@ -82,7 +82,7 @@ Okay, I said earlier that you'll probably only need one subscription and I stand
 
 Microsoft says that each business unit will have more control over their own subscription, which is true but if you're talking purely access control then there are ways to easily grant access to resource groups if you're properly using infrastructure as code. Here's the major downside to multiple subscriptions: not all resources can be moved to a different subscription. So in many cases, if you decide that a resource should be in a different subscription, you'll have to create the resource in the other subscription and then delete it from the old subscription. (Microsoft has a [list](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-support-resources) of resources that can be moved.)
 
-I can't give you the correct answer for your organization, but my advice is that you give it some serious thought and discussion with stakeholders and decided if there is a justification for multiple subscriptions. The larger your organization, the more likely the answer is yes.
+I can't give you the correct answer for your organization, but my advice is that you read about [landing zones]({% post_url /basics/azure_intro/explainers/2023-09-20-landing-zones %}), give it some serious thought and discussion with stakeholders, and then decide if there is a justification for multiple subscriptions. The larger your organization, the more likely the answer is yes.
 
 ## Management Groups
 
