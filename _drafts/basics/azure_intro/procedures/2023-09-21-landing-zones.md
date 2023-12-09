@@ -2,7 +2,7 @@
 title: Create Landing Zones
 categories: basics azure_intro procedure
 toc: true
-sort_order: 1
+sort_order: 2
 description: Optionally create a landing zone
 ---
 ## TODO
