@@ -80,6 +80,10 @@ It's worth noting that policies aren't squarely in the security realm, but are o
 
 I'm going to talk about role-based access control (RBAC) in a future post, but in short, RBAC is the permission you assign to your subscriptions that specify who can do what to each subscription. RBAC can and should be part of your landing zone. Some landing zones will need to more locked down, like your production environment. Your sandbox environment might be more of a free-for-all where developers can spin up resources without going through the platform engineering team.
 
+## How Do I Create a Landing Zone?
+
+Landing zones can be created manually by configuring Azure policies, RBAC, and management groups yourself. But Microsoft offers a couple of ways to deploy their recommended landing zone configurations automatically through their [landing zone accelerators]({% post_url 2023-09-21-landing-zones %}).
+
 ## Should You Use a Landing Zone?
 
 Yes. Landing zones are simply a smart way to work. Plus it automatically creates the more mundane operational things that you should have anyway, like a Log Analytics workspace to collect monitor data from your resources, a Network Watcher to inspect network traffic, and a Key Vault to store passwords used for various operational resources.
