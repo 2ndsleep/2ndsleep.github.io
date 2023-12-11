@@ -40,7 +40,7 @@ The reason I said the subscription has "configurations applied" rather than "is 
 - Policies
 - Role-based access (RBAC)
 
-This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /basics/azure_intro/explainers/2023-12-08-azure-hierarchy %}).
+This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /basics/azure_intro/explainers/2023-12-11-azure-hierarchy %}).
 {: .notice--info}
 
 ### Management Groups
