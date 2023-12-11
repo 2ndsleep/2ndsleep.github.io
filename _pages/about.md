@@ -13,7 +13,7 @@ For example, here's the expository line describing a feature called [Azure landi
 
 What the filthy hell does that mean?? Well don't worry, just a few paragraphs into the documentation you get this:
 
-![Landing zone architecture](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/ns-arch-expanded.png)
+{% include figure image_path="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/ns-arch-expanded.png" alt="landing zone architecture" caption="What is this???" %}
 
 Ah, that clears it up. Okay, so what do I do if I'm not some idiot manager who's looking to impress other idiot managers by repeating words like "application portfolios" and "innovation," but I'm not a hyper-nerd who spends their evenings reading RFCs? Where do I go? Just a regular nerd who wants to spend their weekends doing normal people things, like bird-watching or filling their bathtub with butter and rolling around so they can feel the butter between their toes and in their armpits. You know, normal things.
 
