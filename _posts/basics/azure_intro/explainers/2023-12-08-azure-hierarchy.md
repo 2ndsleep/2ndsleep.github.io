@@ -7,7 +7,7 @@ description: How Azure is organized
 ---
 The first actual post about Azure! This one is still going to be boring, though.
 
-You can start using Azure without knowing how it's all organized, but it helps to understand this stuff. Microsoft has a ton of documentation about the Azure hierarchy in their [Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview), but reading this is like reading [*Cold Mountain*](https://a.co/d/3O6MT6J): it's tedious and afterwards you're not sure you understood it (I make no apologies). So let me give you the quick explainer by using Microsoft's helpful (for once) images.
+You can start using Azure without knowing how it's all organized, but it helps to understand this stuff. Microsoft has a ton of documentation about the Azure hierarchy in their [Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview), but reading this is like reading [*Cold Mountain*](https://a.co/d/3O6MT6J): it's tedious and afterwards you're not sure you understood it (I make no apologies). So let me give you the quick explainer by using Microsoft's helpful image.
 <!--more-->
 
 {% include figure image_path="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/az-scopes-billing.png" alt="Azure hierarchy" caption="Azure hierarchy" class="half" %}
@@ -16,7 +16,7 @@ Most documentation will start at the top and go down. But I think it makes more 
 
 ## Resources
 
-**Resources** are the actual things you create in Azure. They're what the cloud is all about. Your VMs, databases, storage accounts, Web Apps, virtual networks, monitoring tools, containers, machine learning and AI nonsense... there's [so many things](https://azure.microsoft.com/en-us/products)!
+**Resources** are the actual things you create in Azure. They're what the cloud is all about. Your VMs, databases, storage accounts, Web Apps, virtual networks, monitoring tools, containers, machine learning and AI nonsense... there are [so many things](https://azure.microsoft.com/en-us/products)!
 
 ## Resource Groups
 
@@ -70,7 +70,7 @@ If you go to the [subscription offer](https://azure.microsoft.com/en-us/support/
 
 - **Free Trial**: When you sign up for a brand new Azure subscription, you'll be pushed to the free trial, which gives you $200 in credits your first month. After that month is up, you'll need to convert it to a different subscription offer to keep using it.
 - **Pay-As-You-Go**: This is the most basic offer, which is exactly as it sounds: you pay for the resources you create and don't pay after you delete those resources.
-- **Visual Studio**: If you are a Visual Studio subscriber, you can create your own subscription with free credits attached to it. This is great if you're a developer and want to spin up a few resources for testing without getting approval from your organization. There's different Visual Studio offers based on your Visual Studio subscription level.
+- **Visual Studio**: If you are a Visual Studio subscriber, you can create your own subscription with free credits attached to it. This is great if you're a developer and want to spin up a few resources for testing without getting approval from your organization. There are different Visual Studio offers based on your Visual Studio subscription level.
 - **Dev/Test**: Cheaper pricing as discussed in the main [Subscriptions](#subscriptions) section :point_up:
 - **Students**: If you are a student, you can get a subscription with some free credits.
 
