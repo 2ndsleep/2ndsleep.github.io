@@ -55,7 +55,7 @@ At the time of this posting, it looks like all the deployment links go to the **
 
 The deployment will start after you complete the wizard, and the portal will redirect you to the status of the deployment. If you close the browser and want to return to the deployment, the portal doesn't list the previous deployments that happen at the tenant level. To get back to that status page, you need to do a little bit of command line work.
 
-First, install the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli). Then run these commands.
+First, install the {% include reference.html item='azure_cli' %}. Then run these commands.
 
 ``` bash
 az login
