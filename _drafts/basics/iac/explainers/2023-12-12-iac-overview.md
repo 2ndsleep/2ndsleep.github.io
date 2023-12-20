@@ -1,6 +1,7 @@
 ---
 title: Infrastructure as Code Introduction
 categories: basics iac explainer
+toc: true
 sort_order: 1
 description: Introduction to the infrastructure as code concept
 ---
@@ -58,12 +59,21 @@ This approach has a mantra of "treating your resources like cattle not pets," an
 
 A lot of times you create resources in the cloud and forget how you did it or even why you did it. Since IaC is code, it inherently documents how the resources are created and in which order. And since it's stored in a repository, you can add README files where you can document weird little nuances of why things work a certain way instead of stashing in random Google docs or OneNote notebooks.
 
-### Preview Changes
-
-Most IaC tools will let you actually preview the changes that you're about to make to your infrastructure. When you update your IaC, you can run the code in speculative way that will show you what things that are going to change that you may not have realized. For instance, sometimes a small change to a resource can only be done by deleting the resource and re-creating it, so you definitely want to know that before proceeding.
-
 ## IaC Tools
 
 There are tons of IaC tools you can use to manage your environment, but I'll highlight two major ones for Azure. The first is **ARM templates** and its sister tool **Bicep**. These are IaC tools created by Microsoft specifically for managing Azure. The second is **Terraform**. This is a product created by Hashicorp that can manage multiple cloud providers, including Azure, AWS, and Google Cloud Platform (GCP).
 
-Both of these products are IaC tools and they are both fantastic. I like both of them a lot and wrestled with which one I'd use for {% include fake_ref.html %} but eventually settled on using Terraform for reasons I'll explain in a future post. I even considered using examples of both, but I thought that would be way too much work. I'll still do a quick explainer of ARM templates and Bicep.
+Behind the scenes, these tools simply convert the IaC definitions to REST API calls to the [Azure orchestrator]({% post_url /thoughts/2023-12-06-azure-cloud-os %}#cloud-operating-system) which makes the changes to the resources.
+
+Both of these products are IaC tools and they are both fantastic. I like both of them a lot and wrestled with which one I'd use for {% include reference.html item='fake_company' %} but eventually settled on using Terraform for reasons I'll explain in a future post. I even considered using examples of both, but I thought that would be way too much work. I'll still do a quick explainer of ARM templates and Bicep.
+
+## Authoring
+
+You'll also want some type of application to write your IaC files. As I mentioned, these are text files, so you can use something as simple as Windows Notepad. But opening a ton of Notepad windows is a dumb way to work and you'd be dumb to do that, dummy. Instead, you should use something that will help you keep your files organized and highlight the text with pretty colors so it's easier to navigate.
+
+There are lots of options for text editors with syntax highlighting, such as Notepad++ or Sublime Text. But we'll be using an editor that has quickly risen to fame, {% include reference.html item='vscode' %}.
+
+Some people, including me, refer to VS Code as an IDE which stands for integrated development environment. The consensus is that this is incorrect because VS Code doesn't have all the tooling that an IDE has. Rather, VS Code is just a very fancy text editor. You're forgiven if you call VS Code an IDE.
+{: .notice--info}
+
+At this point, we should introduce another term, which is **authoring**. Some people say that when you are writing IaC files, you're not really coding. I don't fully agree with this (after all, it's called infrastructure as *code*), and I'm not at all interested in the argument. However, to avoid any confusion and to make sure the pedants don't blow a gasket, I'll use the term "authoring" from this point forward since it does accurately represent the work of editing IaC files.
