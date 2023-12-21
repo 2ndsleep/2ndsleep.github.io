@@ -1,8 +1,10 @@
-{% case include.item %}
-  {% when 'fake_company' %}
-    [{{ include.anchor_text | default: site.fake_company_name }}]({% link _pages/about.md %}#{{ site.fake_company_name | slugify }})
-  {% when 'azure_cli' %}
+{%- case include.item -%}
+  {%- when 'fake_company' -%}
+    [{{ include.anchor_text | default: site.fake_company_name }}]({%- link _pages/about.md -%}#{{ site.fake_company_name | slugify }})
+  {%- when 'azure_cli' -%}
     [{{ include.anchor_text | default: 'Azure CLI' }}](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-  {% when 'vscode' %}
+  {%- when 'vscode' -%}
     [{{ include.anchor_text | default: 'VS Code' }}](https://code.visualstudio.com/)
-{% endcase %}
+  {%- when 'policy' -%}
+    [{{ include.anchor_text | default: 'Azure Policy' }}](https://learn.microsoft.com/en-us/azure/governance/policy/overview)
+{%- endcase -%}

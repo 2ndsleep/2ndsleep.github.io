@@ -70,7 +70,7 @@ Up until now, I've used this vague term of "configurations" to describe how you 
 
 #### Policies
 
-The main way these configurations are made are through [Azure Policy](https://learn.microsoft.com/en-us/azure/governance/policy/overview). Policies allow you to enforce settings that you want on your landing zones. Policies can be assigned to management groups, subscriptions, resource groups, or resources, but for the purposes of landing zones you'll only be interested in assigning them to management groups or subscriptions.
+The main way these configurations are made are through {% include reference.html item='policy' %}. Policies allow you to enforce settings that you want on your landing zones. Policies can be assigned to management groups, subscriptions, resource groups, or resources, but for the purposes of landing zones you'll only be interested in assigning them to management groups or subscriptions.
 
 This post has had a bunch of policy examples so far masquerading as "configurations," and these have been focused on configuring resources. But you can do other things, like limiting what resources can be deployed, restricting which regions you can deploy resources, and enforcing your resource [tag](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources) management.
 
