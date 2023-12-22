@@ -1,0 +1,6 @@
+<ul>
+  {% for i in include.filesystem %}
+    <li>{% if i.type == 'file' %}:page_facing_up:{% else %}:file_folder:{% endif %} {{ i.name }}</li>
+    {% if i.children %}{% include filesystem_list.html filesystem=i.children %}{% endif %}
+  {% endfor %}
+</ul>

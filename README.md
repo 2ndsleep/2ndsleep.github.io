@@ -51,7 +51,11 @@ This site uses the [Minimal Mistakes Theme](https://mademistakes.com/work/minima
 
 Follow these guidelines for authoring pages and posts.
 
-### Training Content
+### Content
+
+Use the following structure and guidelines when creating content.
+
+#### Training Content
 
 Training-related content is categorized in the following way:
 
@@ -71,7 +75,7 @@ Categories are defined in a service category, service, or post by specifying the
 |Service|`service_category service`|`networking vnet`|
 |Post|`service_category service post_type`|`network vnet explainer`<br />-or-<br />`network vnet procedure`|
 
-### Creating Service Categories and Services
+#### Creating Service Categories and Services
 
 To create a service category or service, create a new file in the `_service_categories` or `services` folder and specify the `categories` value appropriately. The layouts for these pages will render the excerpt for the page as a short description. However, the normal excerpt is not usually suitable for the view, so you should override the excerpt by specifying `excerpt` in Front Matter.
 
@@ -81,7 +85,7 @@ The service pages have additional Front Matter values that you may want to speci
 - `guided`: Services can be part of a guided tour that will list the services in the order that they would have been performed for the fake company. Set this value to `true` for this service to appear in the [guided tour](/_pages/guided.md) page.
 - `guided_order`: This is a numerical value that sets the order that this service will be rendered on the guided tour page.
 
-### Creating a Training Post
+#### Creating a Training Post
 
 Create a new file in the `_posts` or `_drafts` folder and add the following Front Matter and specify the `categories` value appropriately. A short description will appear under each post in the services pages, but unlike the service category and service pages, we specify this value with the `description` field in Front Matter. This will not override the excerpt, which we will want to preserve for other pages.
 
@@ -90,7 +94,7 @@ The post will also have additional Front Matter values that you may want to spec
 - `sort_order`: This is a numerical value that sets the order that this post will be rendered within the explainer or procedure section on the service page.
 - `toc`: This indicated if the table of contents should appear. If omitted, it will default to `true`. You may want to set this value to `false` for shorter posts that will require little to no scrolling.
 
-### Thoughts
+#### Thoughts
 
 "Thoughts" posts are like other posts, but they omit the `categories` Front Matter field and instead have the following line in Front Matter.
 
@@ -100,7 +104,7 @@ category: thoughts
 
 You may also choose to omit the table of contents by specifying `toc: false`.
 
-### Subfolders
+#### Subfolders
 
 Service category pages, service pages, and posts can be organized into subfolders for convenience. The subfolder structure will have no bearing on how the static site is generated.
 
@@ -111,6 +115,45 @@ The Minimal Mistakes theme can be overridden by modifying one of two files.
 The simplest way to make changes is to set custom values for variables in the [minimal-mistakes-variables.scss](/_sass/minimal-mistakes-variables.scss) file. This will override the default values in the [_variables.scss](https://github.com/mmistakes/minimal-mistakes/blob/master/_sass/minimal-mistakes/_variables.scss) file of the theme.
 
 The [minimal-mistakes-overrides.scss](/_sass/minimal-mistakes-overrides.scss) is imported after the theme SASS is imported. You can specify SASS content that will take precedence over the theme's SASS.
+
+### Render Folder Structure
+
+Use the `filesystem.html` include to render a folder structure with file/folder emojis. This include requires the folder structure to defined by Front Matter on the page, as so:
+
+``` yaml
+my_file_structure:
+  - name: parent_folder
+    type: folder
+    children:
+      - name: subfolder1
+        type: folder
+        children:
+          - name: subfolder1-1
+            type: folder
+          - name: file1
+            type: file
+          - name: file2
+            type: file
+      - name: subfolder2
+        type: folder
+```
+
+The `type` property is optional and defaults to `folder`. The above can be simplified as:
+
+``` yaml
+my_file_structure:
+  - name: parent_folder
+    children:
+      - name: subfolder1
+        children:
+          - name: subfolder1-1
+          - name: file1
+            type: file
+          - name: file2
+            type: file
+      - name: subfolder2
+```
+
 
 ### SVG Drawings
 

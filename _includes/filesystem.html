@@ -1,0 +1,5 @@
+{% assign filesystem = page[include.id] %}
+
+<div class="{{ include.class | default: 'filesystem' }}">
+  {% include filesystem_list.html filesystem=filesystem %}
+</div>

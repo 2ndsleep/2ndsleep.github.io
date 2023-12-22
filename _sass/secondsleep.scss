@@ -38,4 +38,15 @@ svg tspan::selection {
 }
 
 
-
+// Filesystem box.
+.filesystem {
+  @include notice($info-color);
+  font-family: monospace;
+  ul {
+    list-style: none;
+    margin: 0;
+    li {
+        text-indent: -2rem;
+    }
+  }
+}
