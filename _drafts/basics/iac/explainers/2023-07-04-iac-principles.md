@@ -1,8 +1,8 @@
 ---
-title: Infrastructure as Code Principles
+title: Coding Principles
 categories: basics iac explainer
 toc: true
-sort_order: 1
+sort_order: 4
 description: Here are some basic concepts to help you write code better
 ---
 Some people say platform infrastructure folks are really developers. Others say platform folks are mere humans and should not be allowed to make eye contact with developers. I have [opinions](/thoughts/thinking-like-a-developer), but no matter what you think, there are some ~~coding~~ universal practices that will help you in your platform role.
@@ -58,10 +58,117 @@ notIdempotent('Hello', 'World!')
 
 Idempotency alone isn't good or bad, it's just a thing. But when you are writing infrastructure as code, you'll want to be able to deploy the same infrastructure again and again and know exactly what it's going to produce. If you deploy an Apache web server one day and then run that exact same deployment the next day, you don't want it delete Apache and install Tomcat. Your developers are expecting an Apache server with some specific settings and you want to be able to deliver that exact same server configuration each time.
 
-In the real world, you might have some infrastructure as code that you used to deploy to a test environment. Then you get a Slack message that, oops, an intern deleted the entire test environment. "No problem," you say, "just give me five minutes." You simply re-run the deployment and that test environment is back up! If the deployment was indeed idempotent, then the environment will be exactly the same as the first time you ran it.
+IaC code tends to be idempotent unless you go out of your way to make it dynamic by depending on random number generators or datetime values, so knowing about idempotence is a little show-offy if you work with people who don't like you talking fancy to them.
 
-# DRY
+## DRY
 
-**DRY** is an acronym of **Don't Repeat Yourself**. If you see that your code has a lot of the same or similar content, you are violating the DRY principle. For example, if you create a Terraform module to deploy a VM that contains three virtual disks, the most straightforward way to do that would be to create three virtual disk resources. But that introduces some potential headaches down the line.
+**DRY** is an acronym of **Don't Repeat Yourself**. If you see that your code has a lot of the same or similar content, you are violating the DRY principle. For example, let's say that you have a Terraform configuration that deploys two Linux VMs for your new product called Badass™. One VM is for a database and the other for a web service. The database will need a large disk but the web service won't be saving anything to disk so it can keep the standard size. Otherwise, everything else about the VMs would be the same.
 
-What if you need to add another disk? Then you need to copy and paste the virtual disk resource. You need to remember to change the disk name and other properties after you paste it, and we tend to forget to make all the changes.
+Well, you could approach it by creating two different virtual machines like this.
+
+{% highlight terraform linenos %}
+resource "azurerm_linux_virtual_machine" "database" {
+  name                = "database"
+  resource_group_name = "{{ site.fake_company_code }}-badass"
+  location            = "centralus"
+  size                = "Standard_F2"
+  admin_username      = "adminuser"
+  network_interface_ids = [
+    "/{{ site.fake_subscription_guid }}/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/virtualInterfaces/{{ site.fake_company_code }}-badass-nic-db"
+  ]
+
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+    disk_size_gb         = 1024
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+}
+
+resource "azurerm_linux_virtual_machine" "web" {
+  name                = "web"
+  resource_group_name = "{{ site.fake_company_code }}-badass"
+  location            = "centralus"
+  size                = "Standard_F2"
+  admin_username      = "adminuser"
+  network_interface_ids = [
+    "/{{ site.fake_subscription_guid }}/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/virtualInterfaces/{{ site.fake_company_code }}-badass-nic-web"
+  ]
+
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+}
+{% endhighlight %}
+
+Notice the only differences are that lines 1, 2, 8 differ from lines 30, 31, 37 and the first VM has the additional size setting on line 19. Everything else is exactly the same. You could instead use a loop to only change the values you care about.
+
+{% highlight terraform linenos %}
+locals {
+  vm_configs = {
+    database = {
+      nic = "/{{ site.fake_subscription_guid }}/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/virtualInterfaces/{{ site.fake_company_code }}-badass-nic-db"
+      disk_size_gb = 1024
+    }
+    web = {
+      nic = "/{{ site.fake_subscription_guid }}/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/virtualInterfaces/{{ site.fake_company_code }}-badass-nic-web"
+    }
+  }
+}
+
+resource "azurerm_linux_virtual_machine" "badass" {
+  for_each            = local.vm_configs
+  name                = each.key
+  resource_group_name = "{{ site.fake_company_code }}-badass"
+  location            = "centralus"
+  size                = "Standard_F2"
+  admin_username      = "adminuser"
+  network_interface_ids = [
+    each.value.nic
+  ]
+
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+    disk_size_gb         = each.value.disk_size_gb
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+}
+{% endhighlight %}
+
+As you can see, we created a loop in the example above that created two identical VMs, but with different names, virtual network interfaces, and disk sizes. Now let's suppose we want to upgrade both of our VMs to use premium disks, we could change line 31 to `storage_account_type = "Premium_LRS"` and redeploy the configuration.
