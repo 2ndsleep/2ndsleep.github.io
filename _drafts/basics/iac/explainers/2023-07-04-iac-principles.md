@@ -17,7 +17,7 @@ For a great explanation of imperative versus declaractive code, see Yehuda Margo
 
 ## Idempotency
 
-You may have come across this word before and thought it was needlessly academic, but it's a real honest-to-God principle that you should think about while authoring infrastructure as code. In computery terms, **idempotency** means that when you do some activity with a set of inputs, that activity will yield the same result every time if you provide the same input. Here's an absurbly simple JavaScript example.
+You may have come across this word before and thought it was needlessly academic, but it's a real honest-to-god principle that you should think about while authoring infrastructure as code. In computery terms, **idempotency** means that when you do some activity with a set of inputs, that activity will yield the same result every time if you provide the same input. Here's an absurbly simple JavaScript example.
 
 ``` javascript
 function idempotent(param1, param2) {
