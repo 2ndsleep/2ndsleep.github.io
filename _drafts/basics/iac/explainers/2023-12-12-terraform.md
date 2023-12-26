@@ -53,7 +53,7 @@ This blog will be using Terraform as the IaC solution. Here's why:
 
 This is not a knock against Azure's IaC tools. In fact, if you read my post about [ARM templates and Bicep]({% post_url /basics/iac/explainers/2023-12-12-arm-bicep %}) you'll see that I gush over how great they are. If you think those tools would be better for your environment, I enjoin you to use them. Or use a combination of Terraform and Bicep if you want.
 
-Please note that the examples in this post won't really work and are more for a conceptual overview. I mean, they'll work, but there's a lot of important information missing that you'll need to know before you can just pounding out these commands on your keyboard.
+Please note that the examples in this post won't really work and are more for a conceptual overview. I mean, they'll work, but there's a lot of important information missing that you'll need to know before you can just start pounding out these commands on your keyboard. For a tutorial, go [here]({% post_url /basics/iac/procedures/2023-12-20-azure-terraform-tutorial %}).
 {: .notice--info}
 
 ## Terraform Overview
