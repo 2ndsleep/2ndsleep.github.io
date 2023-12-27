@@ -32,7 +32,7 @@ Oh, I'm flattered you asked. My name is Blaine Perry, and I'm just a humble clou
 
 ## {{ site.fake_company_name }}
 
-<img src="/assets/images/logos/scramoose/scramoose_logo.png" alt="{{ site.fake_company_name }} logo" />
+![{{ site.fake_company_name }} logo](/assets/images/logos/scramoose/scramoose_banner.png)
 
 To make this feel somewhat realistic, all the training content on here is part of creating a fictional company called {{ site.fake_company_name }}. {{ site.fake_company_name }} is a hot new startup that will recommend the ideal place you should live based on your preferences. I'll be building the platform infrastructure from scratch to support this fake company.
 
