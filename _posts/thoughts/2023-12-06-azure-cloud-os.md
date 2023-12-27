@@ -1,6 +1,7 @@
 ---
 title: The Azure Cloud Operating System
 category: thoughts
+toc: true
 ---
 If you read my post about the [history of the cloud]({% post_url /learn/basics/cloud_intro/explainers/2023-12-03-what-is-the-cloud %}), you may be thinking that I've skipped over some important steps on the cloud story. In short, I said that the cloud is built on virtualization. But if you've dipped your toe in the cloud world, you'd know that most cloud providers offer more than just virtual machines. You may know that they offer other services like storage, databases, and virtual networking.
 
