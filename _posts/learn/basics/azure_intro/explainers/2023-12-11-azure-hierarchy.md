@@ -62,7 +62,7 @@ When you start out, you'll have just one subscription and that will likely be al
 
 - A company has subsidiaries, and each subsidiary should be billed separately for accounting purposes. In that case, each subsidiary would have its resources in its own subscription.
 - Azure has several subscription types known as [subscription offers](https://azure.microsoft.com/en-us/support/legal/offer-details/). One of them is a Dev/Test subscription which has cheaper pricing for your non-production resources. If you would like to spend less money for the resources that aren't actually generating money for your organization, consider creating a Dev/Test subscription.
-- You're an overachiever and you want to create a "proper" [landing zone]({% post_url /learn/basics/azure_intro/2023-12-08-landing-zones %}) configuration.
+- You're an overachiever and you want to create a "proper" [landing zone]({% post_url /learn/basics/azure_intro/explainers/2023-12-08-landing-zones %}) configuration.
 
 ### Subscription Offers
 
