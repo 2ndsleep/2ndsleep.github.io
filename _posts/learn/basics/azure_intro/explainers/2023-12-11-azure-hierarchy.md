@@ -62,7 +62,7 @@ When you start out, you'll have just one subscription and that will likely be al
 
 - A company has subsidiaries, and each subsidiary should be billed separately for accounting purposes. In that case, each subsidiary would have its resources in its own subscription.
 - Azure has several subscription types known as [subscription offers](https://azure.microsoft.com/en-us/support/legal/offer-details/). One of them is a Dev/Test subscription which has cheaper pricing for your non-production resources. If you would like to spend less money for the resources that aren't actually generating money for your organization, consider creating a Dev/Test subscription.
-- You're an overachiever and you want to create a "proper" [landing zone]({% post_url /basics/azure_intro/2023-12-08-landing-zones %}) configuration.
+- You're an overachiever and you want to create a "proper" [landing zone]({% post_url /learn/basics/azure_intro/2023-12-08-landing-zones %}) configuration.
 
 ### Subscription Offers
 
@@ -78,19 +78,19 @@ The rest of the types are either Azure support plans, enterprise for very large 
 
 ### How Many Subscriptions?
 
-Okay, I said earlier that you'll probably only need one subscription and I stand by that, but I should highlight that this is in contrast from Microsoft's recommendations. Read their [subscription democratization](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-principles#subscription-democratization) documentation if you can stomach the Gartner-esque language, but let me translate: Microsoft suggests you create subscriptions for each business unit. This is recommendation is part of their [landing zone]({% post_url /basics/azure_intro/explainers/2023-12-08-landing-zones %}) guidance, and you should read that before deciding if you want to have multiple subscriptions.
+Okay, I said earlier that you'll probably only need one subscription and I stand by that, but I should highlight that this is in contrast from Microsoft's recommendations. Read their [subscription democratization](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-principles#subscription-democratization) documentation if you can stomach the Gartner-esque language, but let me translate: Microsoft suggests you create subscriptions for each business unit. This is recommendation is part of their [landing zone]({% post_url /learn/basics/azure_intro/explainers/2023-12-08-landing-zones %}) guidance, and you should read that before deciding if you want to have multiple subscriptions.
 
 Microsoft says that each business unit will have more control over their own subscription, which is true but if you're talking purely access control then there are ways to easily grant access to resource groups if you're properly using infrastructure as code. Here's the major downside to multiple subscriptions: not all resources can be moved to a different subscription. So in many cases, if you decide that a resource should be in a different subscription, you'll have to create the resource in the other subscription and then delete it from the old subscription. (Microsoft has a [list](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-support-resources) of resources that can be moved.)
 
-I can't give you the correct answer for your organization, but my advice is that you read about [landing zones]({% post_url /basics/azure_intro/explainers/2023-12-08-landing-zones %}), give it some serious thought and discussion with stakeholders, and then decide if there is a justification for multiple subscriptions. The larger your organization, the more likely the answer is yes.
+I can't give you the correct answer for your organization, but my advice is that you read about [landing zones]({% post_url /learn/basics/azure_intro/explainers/2023-12-08-landing-zones %}), give it some serious thought and discussion with stakeholders, and then decide if there is a justification for multiple subscriptions. The larger your organization, the more likely the answer is yes.
 
 ## Management Groups
 
-**Management groups** are a way for you to group [subscriptions](#subscriptions) together. The reason for this is to restrict access or enforce specific policies for a group of subscriptions. This is useful if you're in a large organization or if you're using [landing zones]({% post_url /basics/azure_intro/explainers/2023-12-08-landing-zones %}#management-groups).
+**Management groups** are a way for you to group [subscriptions](#subscriptions) together. The reason for this is to restrict access or enforce specific policies for a group of subscriptions. This is useful if you're in a large organization or if you're using [landing zones]({% post_url /learn/basics/azure_intro/explainers/2023-12-08-landing-zones %}#management-groups).
 
 ## Tenant & Entra ID
 
-An Azure **tenant** is the highest level of Azure. It represents your organization. You should have a one-to-one relationship between tenants and organizations. The reason for this is that every tenant has a single [**Entra ID**]({% post_url /basics/azure_intro/explainers/2023-12-11-entra-id %}) associated with it. Entra ID is the directory that will store all of your users, groups, and everything related to authentication, authorization, and security in general.
+An Azure **tenant** is the highest level of Azure. It represents your organization. You should have a one-to-one relationship between tenants and organizations. The reason for this is that every tenant has a single [**Entra ID**]({% post_url /learn/basics/azure_intro/explainers/2023-12-11-entra-id %}) associated with it. Entra ID is the directory that will store all of your users, groups, and everything related to authentication, authorization, and security in general.
 
 I'm going to come at this from another angle. When you create your organization's existence in Microsoft, you're going to create something called a tenant. This will either be done by creating your first Microsoft 365 account or creating your first Azure subscription. By creating this tenant, you'll automatically create a single Entra ID directory linked to that tenant. You can manage Entra ID through one of several administrative consoles including: [Microsoft 365 admin](https://admin.microsoft.com), [Azure portal](https://portal.azure.com), or [Entra ID admin](https://entra.microsoft.com). All of these are available whether you're using Microsoft 365, Azure, or both.
 

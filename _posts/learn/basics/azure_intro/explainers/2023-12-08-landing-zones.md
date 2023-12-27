@@ -40,7 +40,7 @@ The reason I said the subscription has "configurations applied" rather than "is 
 - Policies
 - Role-based access (RBAC)
 
-This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /basics/azure_intro/explainers/2023-12-11-azure-hierarchy %}).
+This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /learn/basics/azure_intro/explainers/2023-12-11-azure-hierarchy %}).
 {: .notice--info}
 
 ### Management Groups
@@ -82,7 +82,7 @@ I'm going to talk about role-based access control (RBAC) in a future post, but i
 
 ## How Do I Create a Landing Zone?
 
-Landing zones can be created manually by configuring Azure policies, RBAC, and management groups yourself. But Microsoft offers a couple of ways to deploy their recommended landing zone configurations [automatically]({% post_url /basics/azure_intro/procedures/2023-12-11-create-landing-zones %}).
+Landing zones can be created manually by configuring Azure policies, RBAC, and management groups yourself. But Microsoft offers a couple of ways to deploy their recommended landing zone configurations [automatically]({% post_url /learn/basics/azure_intro/procedures/2023-12-11-create-landing-zones %}).
 
 ## Should You Use a Landing Zone?
 

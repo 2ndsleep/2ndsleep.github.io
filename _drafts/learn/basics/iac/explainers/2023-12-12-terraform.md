@@ -51,14 +51,14 @@ This blog will be using Terraform as the IaC solution. Here's why:
 - Terraform has a product called Terraform Cloud that will give us a detailed view of our deployments.
 - Terraform is a little easier to read and understand than ARM templates or Bicep.
 
-This is not a knock against Azure's IaC tools. In fact, if you read my post about [ARM templates and Bicep]({% post_url /basics/iac/explainers/2023-12-12-arm-bicep %}) you'll see that I gush over how great they are. If you think those tools would be better for your environment, I enjoin you to use them. Or use a combination of Terraform and Bicep if you want.
+This is not a knock against Azure's IaC tools. In fact, if you read my post about [ARM templates and Bicep]({% post_url /learn/basics/iac/explainers/2023-12-12-arm-bicep %}) you'll see that I gush over how great they are. If you think those tools would be better for your environment, I enjoin you to use them. Or use a combination of Terraform and Bicep if you want.
 
-Please note that the examples in this post won't really work and are more for a conceptual overview. I mean, they'll work, but there's a lot of important information missing that you'll need to know before you can just start pounding out these commands on your keyboard. For a tutorial, go [here]({% post_url /basics/iac/procedures/2023-12-20-azure-terraform-tutorial %}).
+Please note that the examples in this post won't really work and are more for a conceptual overview. I mean, they'll work, but there's a lot of important information missing that you'll need to know before you can just start pounding out these commands on your keyboard. For a tutorial, go [here]({% post_url /learn/basics/iac/procedures/2023-12-20-azure-terraform-tutorial %}).
 {: .notice--info}
 
 ## Terraform Overview
 
-Conceptually, you can think of Terraform in two ways. First, it is a [declarative]({% post_url /basics/iac/explainers/2023-07-04-iac-principles %}#declarative-code) language that is used to define your resources. However, Terraform doesn't intrinsically know about any resources, so secondly, it uses **providers** that tell Terraform how to manage the cloud resources. When you write your Terraform files, the first thing you'll do is list the providers you'll be using. Since we'll be using Azure, we'll be using a lot of the `azurerm` provider. Here's an example of a Terraform file.
+Conceptually, you can think of Terraform in two ways. First, it is a [declarative]({% post_url /learn/basics/iac/explainers/2023-07-04-iac-principles %}#declarative-code) language that is used to define your resources. However, Terraform doesn't intrinsically know about any resources, so secondly, it uses **providers** that tell Terraform how to manage the cloud resources. When you write your Terraform files, the first thing you'll do is list the providers you'll be using. Since we'll be using Azure, we'll be using a lot of the `azurerm` provider. Here's an example of a Terraform file.
 
 ``` terraform
 terraform {

@@ -5,7 +5,7 @@ toc: true
 sort_order: 2
 description: Understanding the different types of cloud services will help you think clearly
 ---
-As you start your cloud journey, you've probably come across a bunch of "as a service" terms, like the previously mentioned [infrastructure as a service]({% post_url /basics/cloud_intro/explainer/2023-12-03-what-is-the-cloud %}#infrastructure-as-a-service). When you begin, especially if you are migrating from an on-premises environment, thinking in terms of these "as a service" types will keep you mentally organized.
+As you start your cloud journey, you've probably come across a bunch of "as a service" terms, like the previously mentioned [infrastructure as a service]({% post_url /learn/basics/cloud_intro/explainer/2023-12-03-what-is-the-cloud %}#infrastructure-as-a-service). When you begin, especially if you are migrating from an on-premises environment, thinking in terms of these "as a service" types will keep you mentally organized.
 
 The three main "as a service's's's" are **infrastructure as a service**, **platform as a service**, and **software as a service**. These terms are abbreviated as **IaaS**, **PaaS**, and **SaaS**.<!--more--> In short, these terms refer to how much in the weeds you are with your infrastructure and how much control you have. So if your organization's email is hosted on a Microsoft Exchange server that you have running on a virtual machine, you're using IaaS. If you use Microsoft 365 for your email, you're using SaaS.
 
