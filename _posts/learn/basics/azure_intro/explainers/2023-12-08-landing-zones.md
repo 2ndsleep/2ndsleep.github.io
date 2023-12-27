@@ -1,7 +1,6 @@
 ---
 title: Landing Zones
 categories: basics azure_intro explainer
-toc: true
 sort_order: 4
 description: Configure your entire Azure environment automatically
 ---

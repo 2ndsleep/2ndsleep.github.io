@@ -1,7 +1,6 @@
 ---
 title: Naming Conventions
 categories: basics azure_intro explainer
-toc: true
 sort_order: 3
 description: Possibly the most singularly important part of your job
 ---

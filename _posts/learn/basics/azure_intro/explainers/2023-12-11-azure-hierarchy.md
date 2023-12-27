@@ -1,7 +1,6 @@
 ---
 title: Azure Cloud Structure
 categories: basics azure_intro explainer
-toc: true
 sort_order: 1
 description: How Azure is organized
 ---

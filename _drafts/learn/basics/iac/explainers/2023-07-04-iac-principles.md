@@ -1,7 +1,6 @@
 ---
 title: Coding Principles
 categories: basics iac explainer
-toc: true
 sort_order: 4
 description: Here are some basic concepts to help you write code better
 ---

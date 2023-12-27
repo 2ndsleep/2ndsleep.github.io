@@ -1,7 +1,6 @@
 ---
 title: Accessing Azure
 categories: basics azure_intro explainer
-toc: true
 sort_order: 5
 description: How the hell do I get to Azure?
 ---

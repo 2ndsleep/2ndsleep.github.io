@@ -1,7 +1,6 @@
 ---
 title: '"as a Service"'
 categories: basics cloud_intro explainer
-toc: true
 sort_order: 2
 description: Understanding the different types of cloud services will help you think clearly
 ---

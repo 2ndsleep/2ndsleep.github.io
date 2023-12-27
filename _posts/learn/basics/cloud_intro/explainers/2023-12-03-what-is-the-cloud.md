@@ -1,7 +1,6 @@
 ---
 title: What is the Cloud?
 categories: basics cloud_intro explainer
-toc: true
 sort_order: 1
 description: A quick history and answering the question you were afraid to ask
 ---

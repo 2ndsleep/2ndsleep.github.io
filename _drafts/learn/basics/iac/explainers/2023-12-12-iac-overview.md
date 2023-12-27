@@ -1,7 +1,6 @@
 ---
 title: Infrastructure as Code Introduction
 categories: basics iac explainer
-toc: true
 sort_order: 1
 description: Introduction to the infrastructure as code concept
 ---

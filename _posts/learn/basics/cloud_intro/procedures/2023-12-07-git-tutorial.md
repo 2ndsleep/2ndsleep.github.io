@@ -1,7 +1,6 @@
 ---
 title: Git Tutorial
 categories: basics cloud_intro procedure
-toc: true
 sort_order: 2
 description: A link to Git tutorials
 ---
