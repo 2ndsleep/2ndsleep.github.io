@@ -60,6 +60,11 @@ defaults:
       author_profile: true
       toc_icon: cloud
       toc_sticky: true
+  - scope:
+      path: "*/learn/*"
+      type: posts
+    values:
+      toc: true
 
 plugins:
   - jekyll-include-cache
