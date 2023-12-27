@@ -7,6 +7,6 @@ feature_row:
     btn_label: Start Learning
     btn_class: btn--info
 ---
-Look, I get it. The cloud is supposed to make your life easier, but it can seem like there are so many offerings, you don't even know where to start. Second Sleep helps you make sense of your cloud landscape and how to integrate your services in Azure.
+My name is Blaine and I'm an Azure cloud architect. I like to teach others how to automate their Azure cloud environment by using infrastructure as code. If you're a cloud infrastructure engineer or would like to become one, I hope this blog can you help you out. Follow along as I create the Azure infrastructure for a fake company named {% include reference.html item='fake_company' %}.
 
 {% include feature_row type="center" %}
