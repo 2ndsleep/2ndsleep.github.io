@@ -27,7 +27,7 @@ Virtual Machine:
 
 This is saying that you want a VM named `jumpbox` running Windows Server with 4 virtual processors, 16 GB of memory, and two virtual disks of two different sizes. This file would be used as input to some type of cloud provisioning service that would create a VM with those properties in your cloud provider.
 
-This type of code is called [**declarative**]({% post_url /learn/basics/iac/explainers/2023-07-04-iac-principles %}#declarative-code) code because you are declaring what you what your resource should look like. You're not saying how it should be created, you're simply saying you want a VM with all those properties. You don't know how it gets created and you don't care.
+This type of code is called [**declarative**]({% post_url /learn/basics/iac/explainers/2024-07-04-iac-principles %}#declarative-code) code because you are declaring what you what your resource should look like. You're not saying how it should be created, you're simply saying you want a VM with all those properties. You don't know how it gets created and you don't care.
 
 The above example is fake using some half-ass YAML structure that I made up, so it won't work in real life. Most IaC will use JSON or a JSON-like format.
 {: .notice--info}
@@ -52,7 +52,7 @@ IaC enforces the idea that your resources should have a default, known state. Fo
 
 This means that you can run your IaC over and over again and always expect the same result. So if you have an [App Service](https://learn.microsoft.com/en-us/azure/app-service/overview) and want to have a backup App Service in another region, you can run the same IaC in a different region and know that those Web Apps will be configured exactly the same way. At least until some cowboy goes in and starts changing the settings on your web app. But if they do, you can *re-run* the IaC and restore everything to a known state.
 
-This approach has a mantra of "treating your resources like cattle not pets," and can require a shift in thinking, depending on how you've worked in the past. The idea is that no single resource is precious. If you've designed things correctly and have proper backups of your data, then your infrastructure can get wiped out and you simply re-run your IaC and restore your data, and you'll be back in operation. By the way, this idea of running a task over and over and getting the same result is known as [**idempotency**]({% post_url /learn/basics/iac/explainers/2023-07-04-iac-principles %}#idempotency).
+This approach has a mantra of "treating your resources like cattle not pets," and can require a shift in thinking, depending on how you've worked in the past. The idea is that no single resource is precious. If you've designed things correctly and have proper backups of your data, then your infrastructure can get wiped out and you simply re-run your IaC and restore your data, and you'll be back in operation. By the way, this idea of running a task over and over and getting the same result is known as [**idempotency**]({% post_url /learn/basics/iac/explainers/2024-07-04-iac-principles %}#idempotency).
 
 ### Self-Documenting
 
@@ -62,7 +62,7 @@ A lot of times you create resources in the cloud and forget how you did it or ev
 
 There are tons of IaC tools you can use to manage your environment, but I'll highlight two major ones for Azure. The first is **ARM templates** and its sister tool **Bicep**. These are IaC tools created by Microsoft specifically for managing Azure. The second is **Terraform**. This is a product created by Hashicorp that can manage multiple cloud providers, including Azure, AWS, and Google Cloud Platform (GCP).
 
-Behind the scenes, these tools simply convert the IaC definitions to REST API calls to the [Azure orchestrator]({% post_url /thoughts/2023-12-06-azure-cloud-os %}#cloud-operating-system) which makes the changes to the resources.
+Behind the scenes, these tools simply convert the IaC definitions to REST API calls to the [Azure orchestrator]({% post_url /thoughts/2023-12-29-azure-cloud-os %}#cloud-operating-system) which makes the changes to the resources.
 
 Both of these products are IaC tools and they are both fantastic. I like both of them a lot and wrestled with which one I'd use for {% include reference.html item='fake_company' %} but eventually settled on using Terraform for reasons I'll explain in a future post. I even considered using examples of both, but I thought that would be way too much work. I'll still do a quick explainer of ARM templates and Bicep.
 

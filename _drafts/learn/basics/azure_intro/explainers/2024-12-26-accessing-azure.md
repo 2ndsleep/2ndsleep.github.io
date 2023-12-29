@@ -14,12 +14,12 @@ The goal of this blog is to learn how to automate your infrastructure so hopeful
 
 ## Command Lines
 
-There are three main command line interfaces for managing Azure. This blog will favor using commands over the portal with a preference of the Azure CLI because it will work the same on Windows, macOS, and Linux. (For what it's worth, I personally like PowerShell better.) See [this post]({% post_url /learn/basics/azure_intro/procedures/2023-12-26-azure-command-line-tools %}) on how to install these tools.
+There are three main command line interfaces for managing Azure. This blog will favor using commands over the portal with a preference of the Azure CLI because it will work the same on Windows, macOS, and Linux. (For what it's worth, I personally like PowerShell better.) See [this post]({% post_url /learn/basics/azure_intro/procedures/2024-12-26-azure-command-line-tools %}) on how to install these tools.
 
 I'm going to editorialize here and say that knowing how to use command line tools is the mark of a serious platform engineer. If you are only interested in using the portal, you may not find this blog worthwhile.
 {: .notice--info}
 
-Behind the scenes, these command line tools just convert the commands to REST API calls and hit up the [Azure orchestrator API]({% post_url /thoughts/2023-12-06-azure-cloud-os %}#cloud-operating-system), so they're all more or less doing the same thing. In fact, the portal is doing the same thing, just with a colorful interface.
+Behind the scenes, these command line tools just convert the commands to REST API calls and hit up the [Azure orchestrator API]({% post_url /thoughts/2023-12-29-azure-cloud-os %}#cloud-operating-system), so they're all more or less doing the same thing. In fact, the portal is doing the same thing, just with a colorful interface.
 
 ### Azure CLI
 
