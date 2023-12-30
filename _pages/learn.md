@@ -24,6 +24,9 @@ feature_row:
 ---
 There are a lot of services available in the cloud, so I've broken our training into broad categories on this page. But there's other ways to view this content if you check the links below.
 
+{% comment %}
+Include feature_row when more content is available.
 {% include feature_row %}
+{% endcomment %}
 
 # All Services
