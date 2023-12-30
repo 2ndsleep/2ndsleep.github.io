@@ -22,11 +22,14 @@ feature_row:
     btn_label: All Posts
     btn_class: btn--info
 ---
-There are a lot of services available in the cloud, so I've broken our training into broad categories on this page. But there's other ways to view this content if you check the links below.
+We're just getting started on our journey, so we'll begin with the basics. But check back in as we add more content to build out {% include reference.html item='fake_company' %}!
 
 {% comment %}
-Include feature_row when more content is available.
+Add everything below this line when more content is available.
+---
+There are a lot of services available in the cloud, so I've broken our training into broad categories on this page. But there's other ways to view this content if you check the links below.
+
 {% include feature_row %}
-{% endcomment %}
 
 # All Services
+{% endcomment %}
