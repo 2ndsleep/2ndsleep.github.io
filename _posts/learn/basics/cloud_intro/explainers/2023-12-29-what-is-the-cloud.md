@@ -15,6 +15,8 @@ This is the history of the cloud according to Blaine, pulled from my head. Leave
 
 The cloud has its origins in something called **virtualization**. In the old days, companies would build datacenters in their office basements with many physical servers running. The best practice was (and still is) for each single server to have a single purpose. So if you have a physical server that is a database server, all that server would be is a database server.
 
+{% include svg.html path="svg/physical-servers.svg" caption="And that's all they'll ever be 😢" %}
+
 If that seems wasteful, well it kind of is, but there are at least two good reasons to only install one workload on a server. You can count on the performance to be a little more consistent. If you have a database and web host installed on the same server and you suddenly get a lot of unexpected web traffic, the CPU might get hit hard serving web content which in turn will cause your database to be slow. There is also a security concern. If your web server gets hacked, that hacker probably has access to your database. Separating your workloads on different servers makes it less likely that a hacker can get to all your services.
 {: .notice--info}
 
@@ -26,9 +28,16 @@ That's where virtualization comes in. Some smart people thought, wouldn't it be 
 - **Memory**: The physical server carves out a section of the physical memory that is exclusive for each virtual server.
 - **Storage**: Like memory, the physical server allocates disk space that is exclusive for each virtual server. In its simplest form, the physical server creates a single file on its local disk for each virtual server's virtual hard drive.
 
-{% include svg.html path="svg/virtualization.svg" caption="A crude representation of virtualization" %}
+{% capture os_attribution %}
+{% include attribution.html title='Windows logo' image_link='https://commons.wikimedia.org/wiki/File:Font_Awesome_5_brands_windows.svg' author='Font Awesome' author_link='https://fontawesome.com/' license='Creative Commons Attribution 4.0 International' license_link='https://creativecommons.org/licenses/by/4.0/deed.en' %}
+<br />{% include attribution.html title='Linux logo' image_link='https://commons.wikimedia.org/wiki/File:Linux_Logo_in_Linux_Libertine_Font.svg' author='Linux Libertine (by Philipp H. Poll)' license='Creative Commons Attribution-Share Alike 3.0 Unported' license_link='https://creativecommons.org/licenses/by-sa/3.0/deed.en' %}
+{% endcapture %}
+
+{% include svg.html path="svg/virtualization.svg" caption="A crude representation of virtualization" attribution=os_attribution %}
 
 From the point of view of each virtual server, it thinks it's getting 100% of everything that's been allocated. So it gets 100% of a virtual processor, 100% of some virtual memory, and 100% of its virtual disk drive. The virtual server doesn't know it's actually just getting pieces of the physical server. In fact, it doesn't know that it's virtual. It just thinks it's a server.
+
+Also, the virtual server is isolated by default from the physical server and from the other virtual servers. Just like in the physical world, the virtual servers can only talk to the physical server or the other virtual servers through a (virtual) network connection.
 
 Yes, this is all grossly oversimplified. Storage is usually located on separate hardware known as a storage area network (SAN). Processors can be allocated directly to virtual servers. The virtual server can be aware that it's virtual. There's also tons of other things, like keyboard/mouse input, network cards, displays, etc. For a little more in-depth on virtualization, see [this video](https://www.youtube.com/watch?v=FZR0rG3HKIk).
 {: .notice--info}

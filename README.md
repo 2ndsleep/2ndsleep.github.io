@@ -112,13 +112,13 @@ Service category pages, service pages, and posts can be organized into subfolder
 
 The Minimal Mistakes theme can be overridden by modifying one of two files.
 
-The simplest way to make changes is to set custom values for variables in the [minimal-mistakes-variables.scss](/_sass/minimal-mistakes-variables.scss) file. This will override the default values in the [_variables.scss](https://github.com/mmistakes/minimal-mistakes/blob/master/_sass/minimal-mistakes/_variables.scss) file of the theme.
+The simplest way to make changes is to set custom values for variables in the [*minimal-mistakes-variables.scss*](/_sass/minimal-mistakes-variables.scss) file. This will override the default values in the [*_variables.scss*](https://github.com/mmistakes/minimal-mistakes/blob/master/_sass/minimal-mistakes/_variables.scss) file of the theme.
 
-The [minimal-mistakes-overrides.scss](/_sass/minimal-mistakes-overrides.scss) is imported after the theme SASS is imported. You can specify SASS content that will take precedence over the theme's SASS.
+The [*minimal-mistakes-overrides.scss*](/_sass/minimal-mistakes-overrides.scss) is imported after the theme SASS is imported. You can specify SASS content that will take precedence over the theme's SASS.
 
 ### Render Folder Structure
 
-Use the `filesystem.html` include to render a folder structure with file/folder emojis. This include requires the folder structure to defined by Front Matter on the page, as so:
+Use the [*filesystem.html*](/_includes/filesystem.html) include to render a folder structure with file/folder emojis. This include requires the folder structure to defined by Front Matter on the page, as so:
 
 ``` yaml
 my_file_structure:
@@ -154,7 +154,6 @@ my_file_structure:
       - name: subfolder2
 ```
 
-
 ### SVG Drawings
 
 SVG drawings made by Inkscape will have a leading prolog that will get rendered as escaped HTML when using the `include` Liquid tag. This prolog looks like this.
@@ -163,15 +162,47 @@ SVG drawings made by Inkscape will have a leading prolog that will get rendered 
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 ```
 
-As special include file of `svg.html` will properly render an embedded SVG file by removing the prolog if it exists. The syntax for using this include file is as follows.
+The [*svg.html*](/_includes/svg.html) include will properly render an embedded SVG file by removing the prolog if it exists. The syntax for using this include file is as follows.
 
+``` liquid
+{% include svg.html path="svg_file_render.svg" caption="Here's a description of this image" attribution="This image is used by the [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.en)." %}
 ```
-{% include svg.html path="svg_file_render.svg" %}
+
+The `caption` and `attribution` parameters will process markdown, and the `attribution` value will be surrounded by the `<small></small>` HTML tag.
+
+### Image Attribution
+
+You can include image attribution using the *attribution.html* include, which supports the following parameters.
+
+|Parameter|Required|Description|
+|---------|--------|-----------|
+|title|Yes|Name or title of the image|
+|image_link|No|Link to the image file|
+|quote_title|No|If this is [truthy](https://shopify.github.io/liquid/basics/truthy-and-falsy/), the title is surrounded by quotes|
+|author|Yes|Name of the author|
+|author_link|No|Link to author profile|
+|license|Yes|Name of the image's license|
+|license_link|Yes|Link to license|
+
+This include can be captured to a variable that can then be used to pass to the caption for the image. The *svg.html* include has the `attribution` parameter (see [SVG Drawings](#svg-drawings)). For the [*figure*](https://mmistakes.github.io/minimal-mistakes/docs/helpers/#figure) include, you will need to add the attribution to the `caption` parameter.
+
+Here is a full example.
+
+``` liquid
+{% capture os_attribution %}
+{% include attribution.html title='Windows logo' image_link='https://commons.wikimedia.org/wiki/File:Font_Awesome_5_brands_windows.svg' author='Font Awesome' author_link='https://fontawesome.com/' license='Creative Commons Attribution 4.0 International' license_link='https://creativecommons.org/licenses/by/4.0/deed.en' %}
+<br />{% include attribution.html title='Linux logo' image_link='https://commons.wikimedia.org/wiki/File:Linux_Logo_in_Linux_Libertine_Font.svg' author='Linux Libertine (by Philipp H. Poll)' license='Creative Commons Attribution-Share Alike 3.0 Unported' license_link='https://creativecommons.org/licenses/by-sa/3.0/deed.en' %}
+{% endcapture %}
+
+{% include svg.html path="svg/virtualization.svg" caption="A crude representation of virtualization" attribution=os_attribution %}
+
+{% assign figure_caption="A crude representation of virtualization<br /><small>" | append: os_attribution | append: "</small>" %}
+{% include figure image_path="assets/svg/virtualization.svg" alt="virtualization" caption=figure_caption %}
 ```
 
 ### Breadcrumbs
 
-The breadcrumbs feature has been customized by the [breadcrumbs.html](/_includes/breadcrumbs.html) include to only show breadcrumbs for service categories, services, and related posts. Set the following items in the `_config.yml` file to customize breadcrumbs.
+The breadcrumbs feature has been customized by the [*breadcrumbs.html*](/_includes/breadcrumbs.html) include to only show breadcrumbs for service categories, services, and related posts. Set the following items in the *_config.yml* file to customize breadcrumbs.
 
 - `breadcrumbs`: Set to `true` to enable breadcrumbs.
 - `breadcrumb_home_label`: Set the text to appear as the root of the breadcrumb chain.

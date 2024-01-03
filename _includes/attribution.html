@@ -1,0 +1,12 @@
+{% assign title = include.title %}
+{% if include.image_link %}
+  {% assign title = title | prepend: "[" | append: "](" | append: include.image_link | append: ")" %}
+{% endif %}
+{% if include.quote_title %}
+  {% assign title = title | prepend: '"' | append: '"' %}
+{% endif %}
+{% assign author = include.author %}
+{% if include.author_link %}
+  {% assign author = author | prepend: "[" | append: "](" | append: include.author_link | append: ")" %}
+{% endif %}
+{{ title }} by {{ author }}, licensed under [{{ include.license }}]({{ include.license_link }})

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="113mm"
+   height="58mm"
+   viewBox="0 0 113 58"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.1 (91b66b0, 2023-11-16)"
+   sodipodi:docname="physical-servers.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0697516"
+     inkscape:cx="194.90506"
+     inkscape:cy="121.05614"
+     inkscape:window-width="1120"
+     inkscape:window-height="732"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1"
+       transform="translate(-79.49704,-110.82766)">
+      <rect
+         style="opacity:0.997;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.110627;stroke-miterlimit:4;stroke-dasharray:0.221254, 0.221254;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect833"
+         width="16.000765"
+         height="40.861584"
+         x="90.278259"
+         y="113.24167" />
+      <rect
+         style="opacity:0.997;fill:#e3e3e3;fill-opacity:1;stroke:none;stroke-width:0.252829;stroke-miterlimit:4;stroke-dasharray:0.505659, 0.505659;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2044"
+         width="2.5390604"
+         height="9.4880695"
+         x="101.22586"
+         y="138.95027" />
+      <rect
+         style="opacity:0.997;fill:#c92121;fill-opacity:1;stroke:#cddffa;stroke-width:0.106;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2046"
+         width="3.9404869"
+         height="1.3120286"
+         x="90.275917"
+         y="131.21126" />
+      <ellipse
+         style="opacity:0.997;fill:#042352;fill-opacity:1;stroke:#cddffa;stroke-width:0.15459;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="path2048"
+         cx="102.47681"
+         cy="116.6002"
+         rx="1.3944569"
+         ry="1.3428103" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="18.634039"
+       y="49.794258"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="18.634039"
+         y="49.794258">I'm a physical</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="18.634039"
+         y="55.085922"
+         id="tspan2">database server</tspan></text>
+    <g
+       id="g4"
+       transform="translate(-38.19267,-110.82766)">
+      <rect
+         style="opacity:0.997;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.110627;stroke-miterlimit:4;stroke-dasharray:0.221254, 0.221254;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2"
+         width="16.000765"
+         height="40.861584"
+         x="90.278259"
+         y="113.24167" />
+      <rect
+         style="opacity:0.997;fill:#e3e3e3;fill-opacity:1;stroke:none;stroke-width:0.252829;stroke-miterlimit:4;stroke-dasharray:0.505659, 0.505659;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect3"
+         width="2.5390604"
+         height="9.4880695"
+         x="101.22586"
+         y="138.95027" />
+      <rect
+         style="opacity:0.997;fill:#c92121;fill-opacity:1;stroke:#cddffa;stroke-width:0.106;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4"
+         width="3.9404869"
+         height="1.3120286"
+         x="90.275917"
+         y="131.21126" />
+      <ellipse
+         style="opacity:0.997;fill:#042352;fill-opacity:1;stroke:#cddffa;stroke-width:0.15459;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="ellipse4"
+         cx="102.47681"
+         cy="116.6002"
+         rx="1.3944569"
+         ry="1.3428103" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="59.938408"
+       y="49.794258"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="59.938408"
+         y="49.794258">I'm a physical</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="59.938408"
+         y="55.085922"
+         id="tspan5">web server</tspan></text>
+    <g
+       id="g7"
+       transform="translate(-2.2829486,-110.82766)">
+      <rect
+         style="opacity:0.997;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.110627;stroke-miterlimit:4;stroke-dasharray:0.221254, 0.221254;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5"
+         width="16.000765"
+         height="40.861584"
+         x="90.278259"
+         y="113.24167" />
+      <rect
+         style="opacity:0.997;fill:#e3e3e3;fill-opacity:1;stroke:none;stroke-width:0.252829;stroke-miterlimit:4;stroke-dasharray:0.505659, 0.505659;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect6"
+         width="2.5390604"
+         height="9.4880695"
+         x="101.22586"
+         y="138.95027" />
+      <rect
+         style="opacity:0.997;fill:#c92121;fill-opacity:1;stroke:#cddffa;stroke-width:0.106;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect7"
+         width="3.9404869"
+         height="1.3120286"
+         x="90.275917"
+         y="131.21126" />
+      <ellipse
+         style="opacity:0.997;fill:#042352;fill-opacity:1;stroke:#cddffa;stroke-width:0.15459;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="ellipse7"
+         cx="102.47681"
+         cy="116.6002"
+         rx="1.3944569"
+         ry="1.3428103" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="95.848129"
+       y="49.794258"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="95.848129"
+         y="49.794258">I'm a physical</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="95.848129"
+         y="55.085922"
+         id="tspan8">API server</tspan></text>
+  </g>
+</svg>
