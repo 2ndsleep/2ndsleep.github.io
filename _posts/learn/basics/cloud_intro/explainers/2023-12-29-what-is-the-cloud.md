@@ -35,6 +35,8 @@ That's where virtualization comes in. Some smart people thought, wouldn't it be 
 
 From the point of view of each virtual server, it thinks it's getting 100% of everything that's been allocated. So it gets 100% of a virtual processor, 100% of some virtual memory, and 100% of its virtual disk drive. The virtual server doesn't know it's actually just getting pieces of the physical server. In fact, it doesn't know that it's virtual. It just thinks it's a server.
 
+Also, the virtual server is isolated by default from the physical server and from the other virtual servers. Just like in the physical world, the virtual servers can only talk to the physical server or the other virtual servers through a (virtual) network connection.
+
 Yes, this is all grossly oversimplified. Storage is usually located on separate hardware known as a storage area network (SAN). Processors can be allocated directly to virtual servers. The virtual server can be aware that it's virtual. There's also tons of other things, like keyboard/mouse input, network cards, displays, etc. For a little more in-depth on virtualization, see [this video](https://www.youtube.com/watch?v=FZR0rG3HKIk).
 {: .notice--info}
 
