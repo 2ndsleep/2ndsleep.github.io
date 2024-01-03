@@ -3,6 +3,7 @@ title: '"as a Service"'
 categories: basics cloud_intro explainer
 sort_order: 2
 description: Understanding the different types of cloud services will help you think clearly
+tags: iaas paas sass sql pizza
 ---
 As you start your cloud journey, you've probably come across a bunch of "as a service" terms, like the previously mentioned [infrastructure as a service]({% post_url /learn/basics/cloud_intro/explainers/2023-12-29-what-is-the-cloud %}#infrastructure-as-a-service). When you begin, especially if you are migrating from an on-premises environment, thinking in terms of these "as a service" types will keep you mentally organized.
 

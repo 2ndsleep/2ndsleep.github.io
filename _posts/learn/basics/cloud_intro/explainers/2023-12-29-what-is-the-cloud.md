@@ -3,6 +3,7 @@ title: What is the Cloud?
 categories: basics cloud_intro explainer
 sort_order: 1
 description: A quick history and answering the question you were afraid to ask
+tags: virtualization vm azure cloud aws google iaas
 ---
 If you don't really know what "the cloud" means, don't feel bad. You're not alone. There are a lot of different ways to think of what the cloud is. Kind of like "blockchain" or "AI," it can both be used as a meaningless word by marketing dummies or refer to a very real thing.
 <!--more-->
