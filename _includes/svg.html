@@ -28,6 +28,9 @@ To use this include for adding SVG images, use this in your Jekyll files:
   {%- if include.caption -%}
     <figcaption>
       {{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}
+      {%- if include.attribution -%}
+        <br /><small>{{ include.attribution | markdownify | remove: "<p>" | remove: "</p>" }}</small>
+      {%- endif -%}
     </figcaption>
   {%- endif -%}
 </figure>

@@ -26,7 +26,12 @@ That's where virtualization comes in. Some smart people thought, wouldn't it be 
 - **Memory**: The physical server carves out a section of the physical memory that is exclusive for each virtual server.
 - **Storage**: Like memory, the physical server allocates disk space that is exclusive for each virtual server. In its simplest form, the physical server creates a single file on its local disk for each virtual server's virtual hard drive.
 
-{% include svg.html path="svg/virtualization.svg" caption="A crude representation of virtualization" %}
+{% capture os_attribution %}
+{% include attribution.html title='Windows logo' image_link='https://commons.wikimedia.org/wiki/File:Font_Awesome_5_brands_windows.svg' author='Font Awesome' author_link='https://fontawesome.com/' license='Creative Commons Attribution 4.0 International' license_link='https://creativecommons.org/licenses/by/4.0/deed.en' %}
+<br />{% include attribution.html title='Linux logo' image_link='https://commons.wikimedia.org/wiki/File:Linux_Logo_in_Linux_Libertine_Font.svg' author='Linux Libertine (by Philipp H. Poll)' license='Creative Commons Attribution-Share Alike 3.0 Unported' license_link='https://creativecommons.org/licenses/by-sa/3.0/deed.en' %}
+{% endcapture %}
+
+{% include svg.html path="svg/virtualization.svg" caption="A crude representation of virtualization" attribution=os_attribution %}
 
 From the point of view of each virtual server, it thinks it's getting 100% of everything that's been allocated. So it gets 100% of a virtual processor, 100% of some virtual memory, and 100% of its virtual disk drive. The virtual server doesn't know it's actually just getting pieces of the physical server. In fact, it doesn't know that it's virtual. It just thinks it's a server.
 
