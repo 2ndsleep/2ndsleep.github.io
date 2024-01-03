@@ -3,13 +3,17 @@ title: '"as a Service"'
 categories: basics cloud_intro explainer
 sort_order: 2
 description: Understanding the different types of cloud services will help you think clearly
-tags: iaas paas sass sql pizza
+tags: iaas paas sass sql-server pizza
 ---
 As you start your cloud journey, you've probably come across a bunch of "as a service" terms, like the previously mentioned [infrastructure as a service]({% post_url /learn/basics/cloud_intro/explainers/2023-12-29-what-is-the-cloud %}#infrastructure-as-a-service). When you begin, especially if you are migrating from an on-premises environment, thinking in terms of these "as a service" types will keep you mentally organized.
 
 The three main "as a service's's's" are **infrastructure as a service**, **platform as a service**, and **software as a service**. These terms are abbreviated as **IaaS**, **PaaS**, and **SaaS**.<!--more--> In short, these terms refer to how much in the weeds you are with your infrastructure and how much control you have. So if your organization's email is hosted on a Microsoft Exchange server that you have running on a virtual machine, you're using IaaS. If you use Microsoft 365 for your email, you're using SaaS.
 
-{% include svg.html path="svg/iaas-paas.svg" caption="On-premises, Iaas, PaaS examples of SQL Server<br /><small>[physical server image](https://commons.wikimedia.org/wiki/File:Generic_Server_Icon.svg) reused under [Attribution-Share Alike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/deed.en); [physical router image](https://commons.wikimedia.org/wiki/File:Router.svg) reused under [Attribution-Share Alike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/deed.en)</small>" %}
+{% capture router_attribution %}
+{% include attribution.html title='physical router image' image_link='https://commons.wikimedia.org/wiki/File:Router.svg' author='George Shuklin' author_link='https://commons.wikimedia.org/wiki/User:George_Shuklin' license='Creative Commons Attribution-Share Alike 3.0 Unported' license_link='https://creativecommons.org/licenses/by-sa/3.0/deed.en' %}
+{% endcapture %}
+
+{% include svg.html path="svg/iaas-paas.svg" caption="On-premises, Iaas, PaaS examples of SQL Server" attribution=router_attribution %}
 
 There are more "as a service" things, depending on whom you ask. But I'm limiting it to these three, because otherwise where does it end?! I think other aaS's really fall into one of the broader categories of IaaS, PaaS, or SaaS, anyway.
 {: .notice--info}
@@ -26,11 +30,11 @@ The drawbacks are exactly the same as the benefits. In the SQL Server example, y
 
 ## Platform as a Service (PaaS)
 
-Platform as a service gets rid of the VM management and simply presents the service you want to manage. So let's take the SQL Server example in the context of a small, scrappy started named {{ site.fake_company_name }}. This company needs a SQL Server, but the engineering team only consists of two developers. Provisioning a VM, installing SQL Server, configuring the Availability Groups, and creating certificates to encrypt the database is a lot of work. Learning how to do this isn't exactly a useful endeavor for the developers. All they need is the SQL Server.
+Platform as a service gets rid of the VM management and simply presents the service you want to manage. So let's take the SQL Server example in the context of a small, scrappy startup named {% include reference.html item='fake_company' %}. This company needs a SQL Server, but the engineering team only consists of two developers. Provisioning a VM, installing SQL Server, configuring the Availability Groups, and creating certificates to encrypt the database is a lot of work. Learning how to do this isn't exactly a useful endeavor for the developers. All they need is the SQL Server.
 
-A platform as a service SQL Server offering would be just a SQL Server but without a VM that you can actually log into. For our two developers, this is fantastic! All they care about is a database that they can read and write to. They don't want to be patching VMs every week, because that's not going to move their work forward.
+A platform as a service SQL Server offering would be a SQL Server but without a VM that you can actually log into. For our two developers, this is fantastic! All they care about is a database that they can read and write to. They don't want to be patching VMs every week, because that's not going to move their work forward.
 
-In most cases, a platform as a service product is that product installed on a VM behind the scenes, but the VM is not exposed to the user. In other cases, it may be more of a "fabric," meaning that it may be a bunch of services working together to expose only the service you're interested in. So in the SQL Server example, it may be a bunch of compute services working with a large storage service that represents a gigantic shared SQL service used by several customers that can securely carve out a single database just for you to connect to. The developer shouldn't need to know or care to know how it all works, and that's the point. They just get the database and they're happy campers.
+Behind the scenes in most cases, a platform as a service product is simply that product installed on a VM but without the VM being exposed to the user. In other cases, it may be more of a "fabric," meaning that it may be a bunch of services working together to expose only the service you're interested in. So in the SQL Server example, it may be a bunch of compute services working with a large storage service that represents a gigantic shared SQL service used by several customers that can securely carve out a single database just for you to connect to. The developer shouldn't need to know or care to know how it all works, and that's the point. They just get the database and they're happy campers.
 
 ## IaaS vs. PaaS
 
@@ -40,7 +44,7 @@ Let's stick with the SQL Server example and explore the Azure offerings, and let
 
 To help - or more likely confuse - here is diagram from Microsoft's docs showing their PaaS availability for Azure SQL:
 
-{% include figure image_path="https://learn.microsoft.com/en-us/azure/azure-sql/database/media/high-availability-sla/general-purpose-service-tier.png?view=azuresql-db" caption="Under the hood for Azure SQL PaaS offering" alt="Azure SQL availability" %}
+{% include figure image_path="https://learn.microsoft.com/en-us/azure/azure-sql/database/media/high-availability-sla/general-purpose-service-tier.png?view=azuresql-db" caption="Under the hood for Azure SQL PaaS offering" alt="Azure SQL availability" class="half" %}
 
 Now let's dig into the details slightly. With PaaS, Azure is going to handle high availability by giving you [four nodes](https://learn.microsoft.com/en-us/azure/azure-sql/database/high-availability-sla?view=azuresql-db&tabs=azure-powershell#general-purpose-service-tier-zone-redundant-availability) (think of this as four SQL Server VMs) as shown by the primary replica and three failover replicas. So if one of the nodes stops working, one of the other three will pick up the load. For most people, this will be more than enough. But let's say your CTO is a complete freak and insists you have ten nodes. Well, you don't have that kind of control with PaaS. You're going to have to install SQL Server on VMs, therefore going the IaaS route.
 
