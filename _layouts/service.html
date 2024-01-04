@@ -24,3 +24,11 @@ layout: single
     {{ procedure.description | markdownify }}
   {% endfor %}
 {% endif %}
+
+{% unless service_posts.size > 0 %}
+<hr />
+
+<div class="text-center notice--info">
+  Looks like we don't have any posts for this service yet, but check back later for what is sure to be some grade-A content!
+</div>
+{% endunless %}
