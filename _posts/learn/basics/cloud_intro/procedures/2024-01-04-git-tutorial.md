@@ -3,6 +3,7 @@ title: Git Tutorial
 categories: basics cloud_intro procedure
 sort_order: 2
 description: A link to Git tutorials
+tags: git version-control source-control
 ---
 There's already a ton of Git tutorials out there, so I'm just going to point you to them.<!--more--> This will be another brief post.
 
