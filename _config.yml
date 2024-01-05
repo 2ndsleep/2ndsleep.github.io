@@ -67,8 +67,8 @@ defaults:
         provider: "giscus"
         giscus:
           repo_id          : "MDEwOlJlcG9zaXRvcnkyNzA2Nzc5MzE="
-          category_name    : "General"
-          category_id      : "DIC_kwDOECI3q84CcORI"
+          category_name    : "Blog Comments"
+          category_id      : "DIC_kwDOECI3q84CcOVw"
           discussion_term  : "og:title"
           reactions_enabled: 1
           theme            : "light"
