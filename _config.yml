@@ -37,6 +37,9 @@ breadcrumbs: true
 breadcrumb_home_url: /learn
 breadcrumb_home_label: Learn
 
+comments:
+  provider: "giscus"
+
 defaults:
   - scope:
       path: ""
