@@ -39,13 +39,6 @@ breadcrumb_home_label: Learn
 
 comments:
   provider: "giscus"
-  giscus:
-    repo_id          : "MDEwOlJlcG9zaXRvcnkyNzA2Nzc5MzE="
-    category_name    : "Q&A"
-    category_id      : "DIC_kwDOECI3q84CcORJ"
-    discussion_term  : "og:title"
-    reactions_enabled: 1
-    theme            : "noborder_light"
 
 defaults:
   - scope:
@@ -70,6 +63,15 @@ defaults:
       author_profile: true
       toc_icon: cloud
       toc_sticky: true
+      comments:
+        provider: "giscus"
+        giscus:
+          repo_id          : "MDEwOlJlcG9zaXRvcnkyNzA2Nzc5MzE="
+          category_name    : "General"
+          category_id      : "DIC_kwDOECI3q84CcORI"
+          discussion_term  : "og:title"
+          reactions_enabled: 1
+          theme            : "light"
   - scope:
       path: "*/learn/*"
       type: posts
