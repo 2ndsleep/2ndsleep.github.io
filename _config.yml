@@ -81,3 +81,4 @@ defaults:
 plugins:
   - jekyll-include-cache
   - jemoji
+  - jekyll-sitemap
