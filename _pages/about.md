@@ -36,7 +36,7 @@ Oh, I'm flattered you asked. My name is Blaine Perry, and I'm just a humble clou
 
 To make this feel somewhat realistic, all the training content on here is part of creating a fictional company called {{ site.fake_company_name }}. {{ site.fake_company_name }} is a hot new startup that will recommend the ideal place you should live based on your preferences. I'll be building the platform infrastructure from scratch to support this fake company.
 
-The blog entries progress with the development of {{ site.fake_company_name }}, so depending on which procedure you choose, you'll see an example for a different point in time in the web development. I have this idea half-baked at the moment, so this project is a bit of an experiment. The goal is to demonstrate the various cloud services which will evolve as {{ site.fake_company_name }} progresses, and you'll see me make mistakes and correct them just like in real life.
+The blog entries progress with the development of {{ site.fake_company_name }}, so depending on which procedure you choose, you'll see an example for a different point in time in the web development. I have this idea half-baked at the moment, so this project is a bit of an experiment. The goal is to demonstrate the various cloud services which will evolve as {{ site.fake_company_name }} progresses, and you'll see me make mistakes and correct them just like in real life. To see what I'm planning for the evolution of {{ site.fake_company_name }}, see my [roadmap](https://github.com/orgs/2ndsleep/projects/2).
 
 ## Blog Organization
 
