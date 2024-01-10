@@ -28,7 +28,7 @@ I'm not trying to rewrite the existing documentation, so you'll see a lot of lin
 
 ## Who Am I?
 
-Oh, I'm flattered you asked. My name is Blaine Perry, and I'm just a humble cloud engineer. I've worked for large companies, small companies, startups, non-profits, for-profits, not-for-profits, and sometimes-for-profits. I've used Azure since 2014 and want you to learn the things I've learned and avoid the problems I've encountered. But this site isn't about me, it's about *you* (unless you want to [hire me](/contact), in which case it's definitely about me).
+Oh, I'm flattered you asked. My name is Blaine Perry, and I'm just a humble cloud engineer. I've worked for large companies, small companies, startups, non-profits, for-profits, not-for-profits, and sometimes-for-profits. I've used Azure since 2014 and want you to learn the things I've learned and avoid the problems I've encountered. But this site isn't about me, it's about *you* (unless you want to [hire me]({% link _pages/contact.md %}), in which case it's definitely about me).
 
 ## {{ site.fake_company_name }}
 
@@ -48,15 +48,15 @@ Learn / Service Category / Service / Post
 
 ### Services
 
-The main unit of organization is a cloud **service**. This is usually a distinct cloud "thing" that I think is worth learning, like virtual machines. It will usually be a single product but may be a combination of products that work together. Since there will be a lot of services, they will be grouped into broader categories, that I'm rationally calling **service categories**, which you'll see when you drop into the [Learn](/learn) page.
+The main unit of organization is a cloud **service**. This is usually a distinct cloud "thing" that I think is worth learning, like virtual machines. It will usually be a single product but may be a combination of products that work together. Since there will be a lot of services, they will be grouped into broader categories, that I'm rationally calling **service categories**, which you'll see when you drop into the [Learn]({% link _pages/learn.md %}) page.
 
 ### Posts
 
-Each service's page will have two different types of posts: **explainers** and **procedures**. Explainers tell you how the service works in plain English. You can skip the explainers if you already know the topic pretty well. The procedures show you how to actually deploy the service using a DevOps approach. There's a third type of post that aren't necessarily related to any service, but are just my [lunatic ramblings](/thoughts).
+Each service's page will have two different types of posts: **explainers** and **procedures**. Explainers tell you how the service works in plain English. You can skip the explainers if you already know the topic pretty well. The procedures show you how to actually deploy the service using a DevOps approach. There's a third type of post that aren't necessarily related to any service, but are just my [lunatic ramblings]({% link _pages/thoughts.md %}).
 
 ### Guided Tour
 
-The [Learn](/learn) page lists all the service categories, but since I'm building out the fake {{ site.fake_company_name }} infrastructure from scratch, you can follow along in the [Guided Tour](/guided). This will present the services in the order that they would be performed in real life. This is great if you're starting out and want to try to do the same thing at home.
+The [Learn]({% link _pages/learn.md %}) page lists all the service categories, but since I'm building out the fake {{ site.fake_company_name }} infrastructure from scratch, you can follow along in the [Guided Tour]({% link _pages/guided.md %}). This will present the services in the order that they would be performed in real life. This is great if you're starting out and want to try to do the same thing at home.
 
 ### Tags
 
@@ -64,4 +64,4 @@ Finally, if you want to see the posts organized by tags, go [here]({% link _page
 
 ## Jump In!
 
-Ready to get started? [Start learning](/learn) now!
+Ready to get started? [Start learning]({% link _pages/learn.md %}) now!
