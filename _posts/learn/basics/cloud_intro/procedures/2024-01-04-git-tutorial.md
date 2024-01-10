@@ -23,11 +23,15 @@ You should see output similar to `git version 2.43.0`. If not, follow [these ste
 
 ## Starter
 
-Head over to the [Git Immersion](https://gitimmersion.com) site for an interactive Git tutorial. This tutorial is easy to follow with a pretty interface. It covers a lot of things, but if you took about 15 minutes each day, you could knock it out in about week or two.
+The **Git Immersion** site has an easy-to-follow tutorial with a pretty interface. It covers a lot of things, but if you took about 15 minutes each day, you could knock it out in about week or two.
+
+[Git Immersion](https://gitimmersion.com){: .btn .btn--info}
 
 ## Intermediate
 
-The official Git documentation site has the short and sweet [gittutorial](https://git-scm.com/docs/gittutorial), which I actually find to be a bit difficult. Nevertheless, it covers the basics and is a solid tutorial.
+The official Git documentation site has the short and sweet **gittutorial**, which I actually find to be a bit difficult. Nevertheless, it covers the basics and is a solid tutorial.
+
+[gittutorial](https://git-scm.com/docs/gittutorial){: .btn .btn--info}
 
 There are a few things with this tutorial that can be confusing for beginners, so here's some pointers.
 
@@ -43,4 +47,6 @@ brew install git-gui
 
 ## Challenging
 
-Finally and optionally, if you've got the guts, try the [Learn Git Branching](https://learngitbranching.js.org/) interactive tutorial. This starts out really easy and gets really hard really fast, for real.
+Finally and optionally, if you've got the guts, try the **Learn Git Branching** interactive tutorial. This starts out really easy and gets really hard really fast, for real.
+
+[Learn Git Branching](https://learngitbranching.js.org/){: .btn .btn--info}
