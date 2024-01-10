@@ -58,6 +58,10 @@ Each service's page will have two different types of posts: **explainers** and *
 
 The [Learn](/learn) page lists all the service categories, but since I'm building out the fake {{ site.fake_company_name }} infrastructure from scratch, you can follow along in the [Guided Tour](/guided). This will present the services in the order that they would be performed in real life. This is great if you're starting out and want to try to do the same thing at home.
 
+### Tags
+
+Finally, if you want to see the posts organized by tags, go [here]({% link _pages/tags.md %}).
+
 ## Jump In!
 
 Ready to get started? [Start learning](/learn) now!
