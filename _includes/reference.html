@@ -7,4 +7,10 @@
     [{{ include.anchor_text | default: 'VS Code' }}](https://code.visualstudio.com/)
   {%- when 'policy' -%}
     [{{ include.anchor_text | default: 'Azure Policy' }}](https://learn.microsoft.com/en-us/azure/governance/policy/overview)
+  {%- when 'lock' -%}
+    [{{ include.anchor_text | default: 'resource lock' }}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json)
+  {%- when 'log_analytics' -%}
+    [{{ include.anchor_text | default: 'Log Analytics' }}](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview)
+  {%- when 'tags' -%}
+    [{{ include.anchor_text | default: 'tags' }}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources)
 {%- endcase -%}
