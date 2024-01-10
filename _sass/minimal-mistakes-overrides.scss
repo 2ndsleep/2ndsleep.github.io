@@ -27,3 +27,50 @@
 .toc__menu {
     font-size: 1em;
 }
+
+// Override notice link color because the contrast isn't high enough.
+@mixin notice($notice-color) {
+  a {
+    color: mix(#000, $notice-color, 40%);
+
+    &:hover {
+      color: mix(#000, $notice-color, 85%);
+    }
+  }
+}
+
+/* Default notice */
+
+.notice {
+  @include notice($light-gray);
+}
+  
+  /* Primary notice */
+  
+.notice--primary {
+  @include notice($primary-color);
+}
+
+/* Info notice */
+
+.notice--info {
+  @include notice($info-color);
+}
+
+/* Warning notice */
+
+.notice--warning {
+  @include notice($warning-color);
+}
+
+/* Success notice */
+
+.notice--success {
+  @include notice($success-color);
+}
+
+/* Danger notice */
+
+.notice--danger {
+  @include notice($danger-color);
+}
