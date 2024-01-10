@@ -1,8 +1,9 @@
 ---
 title: Landing Zones
 categories: basics azure_intro explainer
-sort_order: 4
+sort_order: 5
 description: Configure your entire Azure environment automatically
+tags: landing-zone management-group policy rbac
 ---
 First, I'm going to make fun of landing zones, because I didn't understand what in god's name they were even after carefully reading the documentation. Try it yourself. Go to [What is an Azure landing zone?](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/), take five minutes to read the page, and then turn to the person or animal closest to you and see if you can faithfully describe it to them. You can't do it! Especially if you're talking to an animal because they don't speak human languages... [yet](https://www.popularmechanics.com/science/animals/a42689511/humans-could-decode-animal-language/).
 
@@ -18,11 +19,11 @@ Out of fairness, [Google](https://cloud.google.com/architecture/landing-zones) i
 
 A cloud landing zone is some kind of location where you put your cloud resources that will ensure your resources will be configured the way you want them. It differs for each cloud provider, but in Azure a landing zone is a subscription. This subscription has configurations applied to it so that your resources will automatically have the settings, features, or restrictions that you want. Each landing zone is a different subscription that may have different configurations applied to it.
 
-The goal here is to ensure that your resources are configured the way you want without having to remember to configure them or to make sure that someone doesn't make a change that you don't want. Here are some examples of what your landing zone may do.
+The goal here is to ensure that your resources are configured the way you want without having to remember to configure them individually or to make sure that someone doesn't make a change that you don't want. Here are some examples of what your landing zone may do.
 
-- Always add a shutdown schedule to your VMs. Perhaps you would apply this to a development subscription where there's no need to run the VMs overnight. You can enforce a shutdown schedule to be applied to the VMs so you don't have to remind your developers to shut them down each night, therefore saving :moneybag:.
-- Apply a delete lock to all your production resources to make sure someone doesn't accidentally delete them.
-- Make sure VM diagnostics are always being sent to a Log Analytics workspace to help with troubleshooting.
+- Always add a shutdown schedule to your VMs. Perhaps you would apply this to a development subscription where there's no need to run the VMs overnight. You can enforce a shutdown schedule to be applied to the VMs so you don't have to remind your developers to shut them down each night, therefore saving :moneybag:. Surely your employer will recognize that and give you a bonus. Won't they?? Won't they??!!
+- Apply a {% include reference.html item="lock" anchor_text="delete lock" %} to all your production resources to make sure someone doesn't accidentally delete them.
+- Make sure VM diagnostics are always being sent to a {% include reference.html item="log_analytics" %} workspace to help with troubleshooting.
 
 Sure, you could do these manually, but that's a lot of work when you're managing a lot resources. And are you going to remember to do this every time you deploy a new resource? Also, what if a developer makes a change temporarily and forgets to set it back? The landing zone will make sure that these items can't be changed or reset it back to a default state if a change is made.
 
@@ -33,13 +34,13 @@ I had a hard time wrapping my head around landing zones at first because I just 
 
 ## How Does a Landing Zone Work?
 
-The reason I said the subscription has "configurations applied" rather than "is configured" is that there's not a lot of configuration that can be done to a subscription itself. The way you configure a landing zone is to assign certain things at a subscription level or above the subscription at the management group level. Here are the "things" you can configure to make the landing zone work the way you want it to.
+The reason I said the subscription has "configurations applied" rather than "is configured" is that there's not a lot of settings to change on a subscription itself. The way you configure a landing zone is to assign certain things at a subscription level or above the subscription at the management group level. Here are the "things" you can configure to make the landing zone work the way you want it to.
 
 - Management Groups
 - Policies
 - Role-based access (RBAC)
 
-This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /learn/basics/azure_intro/explainers/2024-12-11-azure-hierarchy %}).
+This section will make more sense if you're familiar with my posts about the [Azure Cloud Structure]({% post_url /learn/basics/azure_intro/explainers/2024-01-12-azure-hierarchy %}).
 {: .notice--info}
 
 ### Management Groups
@@ -55,10 +56,10 @@ The image above is Microsoft's recommended landing zone organization. There's a 
 
 Each subscription that is a member of the **Online** or **Corp** management group will be an actual landing zone. You can apply configurations at each level to ensure the each landing zone is configured the way you want it. When you configure something at a management group level, all management groups or subscriptions below that will inherit the configurations. Here's a simple example of what you may want to do at each level.
 
-|Management Level|Type|Configuration|
+|Management Group or Subscription Name|Type|Configuration|
 |----------------|----|-------------|
 |Landing zones|management group|Enforce VMs are backed up|
-|Online|management group|Prevent IP forwarding (VMs can't act like a router)|
+|Online|management group|Prevent IP forwarding (VMs can't act like routers)|
 |Corp|management group|Prevent inbound network access from the internet|
 |Landing zone A1|subscription|Add delete lock to all resources|
 |Landing zone A2|subscription|Shutdown VMs after 7 pm|
@@ -71,9 +72,9 @@ Up until now, I've used this vague term of "configurations" to describe how you 
 
 The main way these configurations are made are through {% include reference.html item='policy' %}. Policies allow you to enforce settings that you want on your landing zones. Policies can be assigned to management groups, subscriptions, resource groups, or resources, but for the purposes of landing zones you'll only be interested in assigning them to management groups or subscriptions.
 
-This post has had a bunch of policy examples so far masquerading as "configurations," and these have been focused on configuring resources. But you can do other things, like limiting what resources can be deployed, restricting which regions you can deploy resources, and enforcing your resource [tag](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources) management.
+This post so far has had a bunch of policy examples that I called "configurations," and these have been focused on configuring resources. But you can do other things, like limiting what resources can be deployed, restricting which regions you can deploy resources, and enforcing your resource {% include reference.html item="tags" anchor_text="tag" %} management.
 
-It's worth noting that policies aren't squarely in the security realm, but are often used to achieve security purposes. For example, a policy to ensure that every resource has a `CostCenter` tag isn't much of a security concern, but a policy to prevent RDP access form the internet to your Windows VMs sure is. So it depends on the individual policy as to whether it's a security measure.
+It's worth noting that policies aren't squarely in the security realm but are often used for security purposes. For example, a policy to ensure that every resource has a `CostCenter` tag isn't much of a security concern, but a policy to prevent RDP access form the internet to your Windows VMs sure is. So it depends on the individual policy as to whether it's a security measure.
 
 #### RBAC
 
@@ -81,7 +82,7 @@ I'm going to talk about role-based access control (RBAC) in a future post, but i
 
 ## How Do I Create a Landing Zone?
 
-Landing zones can be created manually by configuring Azure policies, RBAC, and management groups yourself. But Microsoft offers a couple of ways to deploy their recommended landing zone configurations [automatically]({% post_url /learn/basics/azure_intro/procedures/2024-12-11-create-landing-zones %}).
+Landing zones can be created manually by configuring Azure policies, RBAC, and management groups yourself. But Microsoft offers a couple of ways to deploy their recommended landing zone configurations [automatically]({% post_url /learn/basics/azure_intro/procedures/2024-01-20-create-landing-zones %}).
 
 ## Should You Use a Landing Zone?
 
@@ -97,7 +98,7 @@ Notice how the subscriptions that you currently have aren't in there. Any subscr
 
 You can then start migrating resources to landing zones one-by-one. Or if you think you're ready to take the leap, you can move your existing subscriptions to either the **Corp** or **Online** management group (which takes only a few seconds). The landing zone accelerator will also give you the option to move your existing subscriptions under these management groups, but you'll want to make sure that you're ready for that. For example, if the landing zone will prevent IP forwarding and you have a virtual router (AKA network virtual appliance, AKA NVA) in your subscription, then that router won't work anymore. You'll either have to disable that IP forwarding policy or rethink your architecture.
 
-Oh, and if you're not using landing zones or choose not to, no shame. I don't have hard numbers, but I'm going to assume that most organizations only use landing zones when they bring in consultants. When you sign up for Azure, you'll start getting a bunch of "getting started" emails about creating various resources. One of those emails will be encouraging you to use landing zones, but it will send you to Microsoft's inscrutable documentation at which point you'll probably close the browser in anguish. I think Microsoft could do a much better job of explaining this very valuable tool, so I hope this post helps in that effort.
+Oh, and if you're not using landing zones or choose not to, no shame. I don't have hard numbers, but I'm going to assume that most organizations only use landing zones when they bring in consultants. When you sign up for Azure, you'll start getting a bunch of "getting started" emails about creating various resources. One of those emails will be encouraging you to use landing zones, but it will direct you to Microsoft's inscrutable documentation at which point you'll probably close the browser in anguish. I think Microsoft could do a much better job of explaining this very valuable tool, so I hope this post helps in that effort.
 
 ## Microsoft's Secret Documentation
 

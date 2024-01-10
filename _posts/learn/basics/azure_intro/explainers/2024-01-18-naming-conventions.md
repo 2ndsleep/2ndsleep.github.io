@@ -1,8 +1,9 @@
 ---
 title: Naming Conventions
 categories: basics azure_intro explainer
-sort_order: 3
+sort_order: 4
 description: Possibly the most singularly important part of your job
+tags: naming-convention tag
 ---
 Spend some time thinking about how you will name your resources and you'll be thankful. This sounds trivial, but it is perhaps the most important thing you'll do.
 <!--more-->
@@ -11,7 +12,7 @@ Spend some time thinking about how you will name your resources and you'll be th
 
 First, let's get some terms out of the way. **Naming** is exactly what you think it is: what you name your Azure resources.
 
-Azure resources allow you to apply [**tags**](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources). These are simply name-value pairs of whatever the frick you want. Here's some tagging examples.
+Azure resources allow you to apply **{% include reference.html item="tags" %}**. These are simply name-value pairs of whatever the frick you want. Here's some tagging examples.
 
 |Tag Name|Value|
 |--------|-----|
@@ -22,7 +23,7 @@ Azure resources allow you to apply [**tags**](https://learn.microsoft.com/en-us/
 You can then use those tags to do the following things:
 
 - Search for resources that have specific tag values. For example, find all the staging resources.
-- Apply policies to resources. For example, you could have a policy that adds a [delete lock](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json) on all your production resources so someone doesn't accidentally delete those resources.
+- Apply policies to resources. For example, you could have a policy that adds a {% include reference.html item="lock" anchor_text="delete lock" %} on all your production resources so someone doesn't accidentally delete those resources.
 - Run billing reports. For example, you can see how much the Engineering department is spending on Azure resources and then go yell at them.
 
 ## Define a Naming & Tagging Convention
@@ -67,7 +68,7 @@ The first thing you may notice is that a lot of items are shortened. The main re
 |--------|----|
 |Database|sqldat|
 |Web API|webapi|
-|Front-End|userui|
+|Front-End|frntui|
 
 |Environment|Code|
 |-----------|----|
@@ -86,7 +87,7 @@ The **instance** segment can be a free-form value, but will generally be a numbe
 {{ site.fake_company_code }}-webapi-prd-inventory1
 ```
 
-Earlier I gave an example of a script that would parse the resource name based on the length of each segment. You may think that it doesn't matter what the length of the segments are because you could just break things apart by the dashes. But you run into two problems here. One is that you may want to use dashes in the codes. But the bigger problem is that not all resources allow the same type of characters. In fact, a storage account name cannot contain dashes. So you may need a separate naming convention for different resource types. For storage accounts, we'll make ours the same convention, but without dashes. This is where the fixed-length nature of the segments is important.
+Earlier I gave an example of a script that would parse the resource name based on the length of each segment. You may think that it doesn't matter what the length of the segments are because you could just break things apart by the dashes. But you run into two problems here. One is that you may want to use dashes in the codes (like `wb-api` instead of `webapi`). But the bigger problem is that not all resources allow the same type of characters. In fact, a storage account name cannot contain dashes. So you may need a separate naming convention for different resource types. For storage accounts, we'll make ours the same convention, but without dashes. This is where the fixed-length nature of the segments is important.
 
 Here's an example storage account name:
 
