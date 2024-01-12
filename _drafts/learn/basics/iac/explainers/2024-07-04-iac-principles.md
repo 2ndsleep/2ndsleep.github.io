@@ -170,4 +170,7 @@ resource "azurerm_linux_virtual_machine" "badass" {
 }
 {% endhighlight %}
 
-As you can see, we created a loop in the example above that created two identical VMs, but with different names, virtual network interfaces, and disk sizes. Now let's suppose we want to upgrade both of our VMs to use premium disks, we could change line 31 to `storage_account_type = "Premium_LRS"` and redeploy the configuration.
+Don't worry if you don't understand what's going on line-by-line here, because we'll go over these things slowly in future posts.
+{: .notice--info}
+
+As you can see, we first created a local variable that defined the properties that were unique to each VM. Then we used a loop to create two identical VMs, but with different names, virtual network interfaces, and disk sizes. Now let's suppose we want to upgrade both of our VMs to use premium disks, we could change line 31 to `storage_account_type = "Premium_LRS"` and redeploy the configuration.
