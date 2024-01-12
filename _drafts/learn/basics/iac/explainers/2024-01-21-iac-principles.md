@@ -8,7 +8,7 @@ Some people say platform infrastructure folks are really developers. Others say 
 
 ## Declarative Code
 
-Declarative code sounds like one of those fancy terms, but is a pretty simple concept. Usually when you think of code, you think of **imperative** code. Imperative code is code that performs a bunch of logic and calculations to produce a result. It's an instruction set of "how" something should be done. It's pretty much what comes to mind when you picture code like JavaScript, Python, or C#.
+**Declarative code** sounds like one of those fancy terms, but is a pretty simple concept. Usually when you think of code, you think of **imperative** code. Imperative code is code that performs a bunch of logic and calculations to produce a result. It's an instruction set of "how" something should be done. It's pretty much what comes to mind when you picture code like JavaScript, Python, or C#.
 
 Declarative code on the other hand describes "what" something should look like. But it doesn't care how it's done. HTML is declarative, and infrastructure as code like Terraform is declarative. Terraform code will simply say "we want a VM with 16 GB of memory and 2 vCPUs." That code is passed on to another process that will "make it so." Declarative code often is expected to be idempotent, as described in the next section.
 
