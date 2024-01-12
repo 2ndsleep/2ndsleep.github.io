@@ -82,7 +82,7 @@ I'm going to talk about role-based access control (RBAC) in a future post, but i
 
 ## How Do I Create a Landing Zone?
 
-Landing zones can be created manually by configuring Azure policies, RBAC, and management groups yourself. But Microsoft offers a couple of ways to deploy their recommended landing zone configurations [automatically]({% post_url /learn/basics/azure_intro/procedures/2024-01-20-create-landing-zones %}).
+Landing zones can be created manually by configuring Azure policies, RBAC, and management groups yourself. But Microsoft offers a couple of ways to deploy their recommended landing zone configurations [automatically]({% post_url /learn/basics/azure_intro/procedures/2024-01-12-create-landing-zones %}).
 
 ## Should You Use a Landing Zone?
 

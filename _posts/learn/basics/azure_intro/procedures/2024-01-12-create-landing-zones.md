@@ -5,7 +5,7 @@ sort_order: 2
 description: Optionally create a landing zone
 tags: landing-zone blueprint azure-cli
 ---
-You can manually make a [landing zone]({% post_url /learn/basics/azure_intro/explainers/2024-01-20-landing-zones %}) if you want. Create all your subscriptions and, optionally, management groups, and then assign RBAC and policies on those subscriptions and management groups. You can even do it using infrastructure as code.
+You can manually make a [landing zone]({% post_url /learn/basics/azure_intro/explainers/2024-01-12-landing-zones %}) if you want. Create all your subscriptions and, optionally, management groups, and then assign RBAC and policies on those subscriptions and management groups. You can even do it using infrastructure as code.
 
 But there's a much easier way to do this, which is by using one of Microsoft's [automated landing zone implementations](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options).<!--more--> There are a couple of different flavors for automatically deploying landing zones that are for different use cases and can be broken down into two broad categories: [**enterprise scale**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/) and [**start small and expand**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/migrate-landing-zone). If you're a small organization, you'd think that the **start small and expand** option would be for you, but that's not necessarily the case, as this box :point_down: explains.
 
