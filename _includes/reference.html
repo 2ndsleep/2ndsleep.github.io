@@ -4,7 +4,7 @@
   {%- when 'azure_cli' -%}
     [{{ include.anchor_text | default: 'Azure CLI' }}](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
   {%- when 'vscode' -%}
-    [{{ include.anchor_text | default: 'VS Code' }}](https://code.visualstudio.com/)
+    [{{ include.anchor_text | default: 'VS Code' }}]({%- post_url /learn/basics/iac/procedures/2024-01-21-vscode -%})
   {%- when 'policy' -%}
     [{{ include.anchor_text | default: 'Azure Policy' }}](https://learn.microsoft.com/en-us/azure/governance/policy/overview)
   {%- when 'lock' -%}
