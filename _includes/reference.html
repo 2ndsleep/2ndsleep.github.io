@@ -13,4 +13,8 @@
     [{{ include.anchor_text | default: 'Log Analytics' }}](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview)
   {%- when 'tags' -%}
     [{{ include.anchor_text | default: 'tags' }}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources)
+  {%- when 'storage_account' -%}
+    [{{ include.anchor_text | default: 'storage account' }}](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+  {%- when 'key_vault' -%}
+    [{{ include.anchor_text | default: 'Key Vault' }}](https://learn.microsoft.com/en-us/azure/key-vault/general/overview)
 {%- endcase -%}
