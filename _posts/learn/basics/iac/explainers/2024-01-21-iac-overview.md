@@ -44,9 +44,13 @@ The Azure portal is a great product, and I use it almost every day. It is partic
 
 The portal is not designed for deploying resources at scale. IaC let's you define your resources one time and then deploy them all at once.
 
+{% include svg.html path="svg/iac-scale.svg" caption="Deploy and manage lots of resources quickly at once." alt="IaC at scale" %}
+
 ### Fewer Errors
 
 In the example above about creating 20 identical VMs, you're probably going to make a mistake filling out all those boxes in the portal. With IaC, there are fewer errors because you're not re-typing everything again; you're only specifying the things that are different per resource. So if you're deploying 20 identical VMs, the code will be the same for each VM, except for the hostname.
+
+{% include svg.html path="svg/iac-error-reduction.svg" caption="You can get all your ducks in a row with IaC." alt="Reduce errors with IaC" %}
 
 ### Known State & Repeatability
 
@@ -54,17 +58,24 @@ IaC enforces the idea that your resources should have a default, known state. Fo
 
 This means that you can run your IaC over and over again and always expect the same result. So if you have an [App Service](https://learn.microsoft.com/en-us/azure/app-service/overview) and want to have a backup App Service in another region, you can run the same IaC in a different region and know that those Web Apps will be configured exactly the same way. At least until some cowboy goes in and starts changing the settings on your web app. But if they do, you can *re-run* the IaC and restore everything to a known state.
 
+{% capture cowboy_attribution %}
+{% include attribution.html title="Cowboy Hat Face" image_link="https://commons.wikimedia.org/wiki/File:078-cowboy-hat-face.svg" author="Vincent Le Moign" license="Creative Commons Attribution 4.0 International" license_link="https://creativecommons.org/licenses/by/4.0/deed.en" %}
+{% endcapture %}
+
+{% include svg.html path="svg/iac-known-state.svg" caption="Restore your resource back to known state after a cowboy screws things up." alt="Restore known state" attribution=cowboy_attribution %}
+
 This approach has a mantra of treating your resources like "cattle not pets," and can require a shift in thinking, depending on how you've worked in the past and depending on if you've ever had a pet cow. The idea is that no single resource is precious. If you've designed things correctly and have proper backups of your data, then your infrastructure can get wiped out and you simply re-run your IaC and restore your data, and you'll be back in operation. By the way, this idea of running a task over and over and getting the same result is known as [**idempotency**]({% post_url /learn/basics/iac/explainers/2024-01-21-iac-principles %}#idempotency).
 
 ### Self-Documenting
 
-A lot of times you create resources in the cloud and forget how you did it or even why you did it. Since IaC is code, it inherently documents how the resources are created and in which order. And since it's stored in a repository, you can add README files where you can document weird little nuances of why things work a certain way instead of stashing in random Google docs or OneNote notebooks.
+A lot of times you create resources in the cloud and forget how you did it or even why you did it. Since IaC is code, it inherently documents how the resources are created and in which order. And since it's stored in a repository, you can add README files where you can document weird little nuances of why things work a certain way instead of stashing it in random Google docs or OneNote notebooks that no one will read.
 
 ## IaC Tools
 
 There are tons of IaC tools you can use to manage your environment, but I'll highlight two major ones for Azure. The first is **ARM templates** and its sister tool **Bicep**. These are IaC tools created by Microsoft specifically for managing Azure. The second is **Terraform**. This is a product created by Hashicorp that can manage multiple cloud providers, including Azure, AWS, and Google Cloud Platform (GCP).
 
 Behind the scenes, these tools simply convert the IaC definitions to REST API calls to the [Azure orchestrator]({% post_url /thoughts/2023-12-29-azure-cloud-os %}#cloud-operating-system) which makes the changes to the resources.
+{: .notice--info}
 
 Both of these products are IaC tools and they are both fantastic. I like both of them a lot and wrestled with which one I'd use for {% include reference.html item='fake_company' %} but eventually settled on using Terraform for reasons I'll explain in a future post. I even considered using examples of both, but I thought that would be way too much work. I'll still do a quick explainer of ARM templates and Bicep.
 
