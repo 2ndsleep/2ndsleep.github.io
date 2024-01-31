@@ -3,6 +3,38 @@ title: Terraform
 categories: basics iac explainer
 sort_order: 3
 description: Terraform can be used to manage Azure and more!
+folder_tf:
+  - name: web-api (working directory)
+    children:
+      - name: .terraform (providers and other Terraform stuff)
+      - name: main.tf (configuration file)
+        type: file
+folder_tfstate:
+  - name: web-api
+    children:
+      - name: .terraform
+      - name: main.tf
+        type: file
+      - name: terraform.tfstate
+        type: file
+folder_tf_workspaces:
+  - name: web-api
+    children:
+      - name: .terraform
+      - name: terraform.tfstate.d
+        children:
+          - name: workspace1
+            children:
+              - name: terraform.tfstate
+                type: file
+          - name: workspace2
+            children:
+              - name: terraform.tfstate
+                type: file
+      - name: main.tf
+        type: file
+      - name: terraform.tfstate (default workspace state file)
+        type: file
 folder_tf_env:
   - name: terraform-configs
     children:
@@ -42,12 +74,12 @@ folder_tf_env_with_module:
               - name: main.tf (references module)
                 type: file
 ---
-[**Terraform**](https://www.terraform.io/) is an open-source IaC tool created by Hashicorp. You can write Terraform files to manage a number of cloud resources, including Azure, AWS, GCP, Oracle Cloud, and Alibaba Cloud.<!--more--> You can also use it manage public SaaS products, like Salesforce and Google Workspace or private clouds like VMware vSphere. Or even internal services, like Kubernetes, Helm, or TLS certificates. Shit man, you can even use it to manage Terraform itself!
+[**Terraform**](https://www.terraform.io/) is an open-source infrastructure as code (IaC) tool created by Hashicorp. You can write Terraform files to manage a number of cloud resources, including Azure, AWS, GCP, Oracle Cloud, and Alibaba Cloud.<!--more--> You can also use it to manage public [SaaS]({% post_url /learn/basics/cloud_intro/explainers/2024-01-02-as-a-service %}#software-as-a-service-saas) products, like Salesforce and Google Workspace or private clouds like VMware vSphere. Or even internal services, like Kubernetes, Helm, or TLS certificates. Shit man, you can even use it to manage Terraform itself!
 
-This blog will be using Terraform as the IaC solution. Here's why:
+I'll be using Terraform as the IaC solution in this blog. Here's why:
 
-- Terraform can manage more than just Azure resources. It can also manage Entra ID, which Azure's native IaC tools can't fully manage since its technically a different product from the rest of Azure.
-- Terraform can manage more cloud providers than just Azure. We'll dip into a few cross-cloud scenarios, so Terraform will be helpful there.
+- Terraform can manage more than just Azure resources. It can also manage Entra ID, which Azure's native IaC tools can't fully manage since it's technically a different product from the rest of Azure.
+- Terraform can manage more cloud providers than just Azure. We'll dip into a few multi-cloud scenarios, so Terraform will be helpful there.
 - Terraform has a product called Terraform Cloud that will give us a detailed view of our deployments.
 - Terraform is a little easier to read and understand than ARM templates or Bicep.
 
@@ -58,7 +90,9 @@ Please note that the examples in this post won't really work and are more for a 
 
 ## Terraform Overview
 
-Conceptually, you can think of Terraform in two ways. First, it is a [declarative]({% post_url /learn/basics/iac/explainers/2024-01-21-iac-principles %}#declarative-code) language that is used to define your resources. However, Terraform doesn't intrinsically know about any resources, so secondly, it uses **providers** that tell Terraform how to manage the cloud resources. When you write your Terraform files, the first thing you'll do is list the providers you'll be using. Since we'll be using Azure, we'll be using a lot of the `azurerm` provider. Here's an example of a Terraform file.
+Conceptually, there are two important pillars of Terraform. First, it is a [declarative]({% post_url /learn/basics/iac/explainers/2024-01-21-iac-principles %}#declarative-code) language that is used to define your resources. However, Terraform doesn't intrinsically know about any resources, so secondly, it uses **providers** that tell Terraform how to manage the cloud resources. When you write your Terraform files, the first thing you'll do is specify the providers you'll be using. Since we'll be using Azure, we'll be using a lot of the `azurerm` provider. In that case, the `azurerm` provider will tell Terraform how to do things like create a resource group or deploy a virtual machine which Terraform doesn't know by itself.
+
+Here's an example of a Terraform file.
 
 ``` terraform
 terraform {
@@ -106,16 +140,29 @@ resource "azurerm_resource_group" "rg" {
 
 The file above is known as a Terraform **configuration**. Each configuration has an associated **backend** where it stores metadata related to that configuration, most importantly the provider files and the **state**.
 
-Let's go through that more slowly. When you author in your configuration on your laptop and you're ready to test it out, the first thing you'll need to do is initialize the configuration using the `terraform init` command. This will download all the binaries for the providers (the files that make the providers work) to the hidden `.terraform` folder.
+Let's go through that more slowly. When you author in your configuration on your laptop and you're ready to test it out, the first thing you'll need to do is initialize the configuration using the `terraform init` command. This will download all the binaries for the providers (the files that make the providers work) to the hidden *.terraform* folder.
 
-Initializing the configuration also creates an empty state file named `terraform.tfstate`. The state file contains all the information about the resources you've deployed. As you make changes to your configuration and deploy them, the state file will be updated with those changes. You can have multiple state files which some people do for testing different environments (e.g., development, test, production). You do this by creating multiple **workspaces** for your configuration.
+All of these files are located in a folder known as the Terraform **working directory**. Before you initialize the configuration, the only file in your working directory will be the configuration file. You type your Terraform commands while in the working directory.
+
+{% include filesystem.html id="folder_tf" %}
+
+Typically, your Terraform configuration will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainer/2024-01-12-azure-hierarchy %}#resource-groups).
+{: .notice--info}
+
+The first time you deploy your configuration, Terraform will create a file named *terraform.tfstate*. This is called the **state file** and contains all the information about the resources you've deployed. As you make changes to your configuration and deploy them, the state file will be updated with those changes.
+
+{% include filesystem.html id="folder_tfstate" %}
+
+You can have multiple state files which some people do for testing different environments (e.g., development, test, production). You do this by creating multiple **workspaces** for your configuration. When you first initialize your working directory, a default workspace named *default* is created using the aforementioned *terraform.tfstate* file whereas other workspaces will be in the *terraform.tfstate.d* directory.
+
+{% include filesystem.html id="folder_tf_workspaces" %}
 
 Unless you specified differently, your backend location will be `local` which is the same directory as your configuration and is why all these files will be created locally. This isn't very shareable and doesn't fly when you're working on a team, so you can change your backend to be a remote location or use the Terraform Cloud service.
 
 The state file is a plain text JSON file. As you'll see, you often need to pass secrets (passwords) to Terraform in your deployments, which are going to be stored in your state file. That's a concern when you're using and unsecure location for your state files.
 {: .notice--info}
 
-Even though they are all technically different, when you first initialize your configuration there is a 1:1 relationship between your configuration, backend, state file, and workspace. Terraform files end with the `.tf` extension. One kinda cool thing about Terraform is that you can split up your configuration into as many files as you want and all the files will be aggregated together to make the configuration. So the in the example above, you could split the configuration into two files.
+Even though they are all technically different, when you first initialize your configuration there is a 1:1 relationship between your working directory, backend, state file, and workspace. Terraform configuration files end with the *.tf* extension. One kinda cool thing about Terraform is that you can split up your configuration into as many files as you want and all the files will be aggregated together to make the configuration. So the in the example above, you could split the configuration into two files.
 
 **base.tf**
 
