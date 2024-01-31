@@ -29,7 +29,7 @@ This is saying that you want a VM named `jumpbox` running Windows Server with 4 
 
 {% include svg.html path="svg/iac-overview.svg" caption="Run your IaC file through a provisioning service and out pops your resource!" alt="IaC overview" %}
 
-This type of code is called [**declarative**]({% post_url /learn/basics/iac/explainers/2024-01-21-iac-principles %}#declarative-code) code because you are declaring what you what your resource should look like. You're not saying how it should be created, you're simply saying you want a VM with all those properties. You don't know how it gets created and you don't care.
+This type of code is called [**declarative**]({% post_url /learn/basics/iac/explainers/2024-01-31-iac-principles %}#declarative-code) code because you are declaring what you what your resource should look like. You're not saying how it should be created, you're simply saying you want a VM with all those properties. You don't know how it gets created and you don't care.
 
 The above example is fake using some half-ass YAML structure that I made up, so it won't work in real life. Most IaC will use JSON or a JSON-like format.
 {: .notice--info}
@@ -64,7 +64,7 @@ This means that you can run your IaC over and over again and always expect the s
 
 {% include svg.html path="svg/iac-known-state.svg" caption="Restore your resource back to known state after a cowboy screws things up." alt="Restore known state" attribution=cowboy_attribution %}
 
-This approach has a mantra of treating your resources like "cattle not pets," and can require a shift in thinking, depending on how you've worked in the past and depending on if you've ever had a pet cow. The idea is that no single resource is precious. If you've designed things correctly and have proper backups of your data, then your infrastructure can get wiped out and you simply re-run your IaC and restore your data, and you'll be back in operation. By the way, this idea of running a task over and over and getting the same result is known as [**idempotency**]({% post_url /learn/basics/iac/explainers/2024-01-21-iac-principles %}#idempotency).
+This approach has a mantra of treating your resources like "cattle not pets," and can require a shift in thinking, depending on how you've worked in the past and depending on if you've ever had a pet cow. The idea is that no single resource is precious. If you've designed things correctly and have proper backups of your data, then your infrastructure can get wiped out and you simply re-run your IaC and restore your data, and you'll be back in operation. By the way, this idea of running a task over and over and getting the same result is known as [**idempotency**]({% post_url /learn/basics/iac/explainers/2024-01-31-iac-principles %}#idempotency).
 
 ### Self-Documenting
 
