@@ -4,7 +4,7 @@ categories: basics iac explainer
 sort_order: 4
 description: Here are some basic concepts to help you write code better
 ---
-Some people say platform infrastructure folks are really developers. Others say platform folks are mere humans and should not be allowed to make eye contact with developers. I have [opinions](/thoughts/thinking-like-a-developer), but no matter what you think, there are some ~~coding~~ universal practices that will help you in your platform role.<!--more-->
+Some people say platform infrastructure folks are really developers. Others say platform folks are mere humans and should not be allowed to make eye contact with developers. I have [opinions]({% post_url /thoughts/2024-01-31-thinking-like-a-developer %}), but no matter what you think, there are some ~~coding~~ universal practices that will help you in your platform role.<!--more-->
 
 ## Declarative Code
 
