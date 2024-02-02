@@ -160,6 +160,8 @@ Modern authentication methods like OAuth2 have allowed new patterns to emerge. O
 
 {% include svg.html path="svg/web-public-api.svg" caption="Client-side rendering accessing API" %}
 
+This diagram looks so much more complicated than the first one, so why would this be preferred? Well, in larger organizations, you have front-end developers, back-end developers, and designers. When you're using server-side rendering, these roles are kind of all smooshed together. You can get software engineers that create very ugly interfaces or designers that don't know how to effectively write code. These two roles will have to collaborate which can cause delays and arguments. This at least moves the back-end developers to their own role. It's easier to find a front-end developer who has design skills than it is to find a full-stack developer. The back-end team can focus on the APIs that provide data and the front-end team can make it look pretty.
+
 Going back to our bank example, if we wanted to use the client-side rendering instead of server-side rendering to populate the data, it would look something like this. The script on line 4 will contain all the logic to call the web API and then populate the *user-name* and *current-balance* elements on lines 7 and 8.
 
 {% highlight html linenos %}
