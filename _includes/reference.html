@@ -17,4 +17,6 @@
     [{{ include.anchor_text | default: 'storage account' }}](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
   {%- when 'key_vault' -%}
     [{{ include.anchor_text | default: 'Key Vault' }}](https://learn.microsoft.com/en-us/azure/key-vault/general/overview)
+  {%- when 'functions' -%}
+  [{{ include.anchor_text | default: 'Azure Functions' }}](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)
 {%- endcase -%}
