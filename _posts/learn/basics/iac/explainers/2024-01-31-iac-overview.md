@@ -79,6 +79,10 @@ Behind the scenes, these tools simply convert the IaC definitions to REST API ca
 
 Both of these products are IaC tools and they are both fantastic. I like both of them a lot and wrestled with which one I'd use for {% include reference.html item='fake_company' %} but eventually settled on using Terraform for reasons I'll explain in a future post. I even considered using examples of both, but I thought that would be way too much work. I'll still do a quick explainer of ARM templates and Bicep.
 
+## GitHub
+
+You could save all of your IaC files on your laptop, but this isn't 1995. You'll want to store your files some place that's backed up and where your collaborators and Terraform can access them. We've already talked about [Git]({% post_url /learn/basics/cloud_intro/explainers/2024-01-04-git %}), so let's assume you're using that as your version control. The next step is to synchronize your IaC files with a remote Git repository, and we'll be using GitHub for that.
+
 ## Authoring
 
 You'll also want some type of application to write your IaC files. As I mentioned, these are text files, so you can use something as simple as Windows Notepad. But opening a ton of Notepad windows is a dumb way to work and you'd be dumb to do that, dummy. Instead, you should use something that will help you keep your files organized and highlight the text with pretty colors so it's easier to navigate.
