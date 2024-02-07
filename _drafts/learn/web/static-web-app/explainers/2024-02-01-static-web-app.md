@@ -20,3 +20,4 @@ This is especially useful if you're a platform infrastructure engineer who is de
 What is SWA
 VS other offerings
 Development dependency
+gitignore
