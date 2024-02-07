@@ -26,14 +26,14 @@ Let's look at what we downloaded. I mean, you're about to run this on your local
 
 1. Launch VS Code.
 1. Click **File > Close Workspace**. If you don't see the Close Workspace option, it means you don't have a workspace open and you can move on to the next step.
-1. Click **File > Add Folder to Workspace** and navigate to the *scramoose-web-public* folder you downloaded in the previous section. Click on the *scramoose-web-public* folder without going *into* the folder and then click the **Add** button.
+1. Click **File > Add Folder to Workspace** and navigate to the *scramoose-web-public* folder you downloaded in the previous section. Click on the *scramoose-web-public* folder without going into the folder itself and then click the **Add** button.
 1. Click **Yes** if it asks you if you trust this folder. Unless you don't trust it, in which case I'm sorry I haven't gained your trust, although I commend your vigilance!
 1. Click **File > Save Workspace As** and then save this workspace as *scramoose-web-public* in a folder of your choosing (I like to create a *workspaces* folder below my home folder).
 
 Now you have a workspace named **scramoose-web-public** that contains the *scramoose-web-public* folder. Start digging around that folder. You find two items worth pointing out:
 
 - The *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
-- The *.gitignore* file tells Git that we don't want to check in certain files because they won't be part of our production site. We'll talk about this in a later post.
+- The *.gitignore* file tells Git that we don't want to check in certain files because they won't be part of our production site.
 
 ## Run App Locally
 
@@ -121,7 +121,7 @@ Execute the following command to start your app locally.
 ./node_modules/.bin/swa start
 ```
 
-You'll see the following output warning you that you're running locally and your shit may not look like it does in Azure, and that you can access the site at `http://localhost:4280`.
+You'll see the following output warning you that you're running locally and your site may not look exactly like it does in Azure, and that you can access the site at `http://localhost:4280`.
 
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
@@ -145,16 +145,64 @@ Using configuration "scramoose-web-public" from file:
 
 Type `http://localhost:4280` in your web browser and behold our crappy site!
 
-{% include figure image_path="/assets/images/posts/static-web-app-initial.png" caption="Ah jeez, this is embarrassing." %}
+{% include figure image_path="/assets/images/posts/static-web-app-initial.png" caption="Ah jeez, this is embarrassing." alt="basic public Scramoose site" %}
 
 ## Create Git Repository
 
-Now that we got this working, we should probably create a Git repository for our source code. We're going to start messing around with our app and if we fuck it all up, we'll want to revert back. Run this:
+Now that we got this working, we should probably create a Git repository for our source code. We're going to start messing around with our app and if we mess it all up, we'll want to revert back.
+
+If you cloned this from my GitHub repo, then it will have all my commit history in it and will point to my repo as a remote. There are two ways handle this. The easiest way is to delete the hidden *.git* folder before you initialize your repo which will blow away anything related to my repo on your local computer. The second option is to run `git remote rm origin`, which will stop pointing to my remote but retain all my commit history.
+{: .notice--info}
+
+Run this to initialize your local repository:
 
 ``` bash
 git init
 ```
 
+You should see output similar to this:
 
+```
+Initialized empty Git repository in /Users/scramoose/Projects/scramoose-web-public/.git
+```
 
 ## Update App
+
+The point of all this is make changes locally before you push out your changes to GitHub and, subsequently, your Azure Static Web App instance. So let's make some changes to our site and see if we like it.
+
+If you closed VS Code or stopped the local emulator, you can start it up by running the SWA start command again: `./node_modules/.bin/swa start`
+{: .notice--info}
+
+Now open the *src/index.html* file in VS Code and change the content as you see fit. For example, maybe you want to solicit investors to our new site, so you add the following on line 12.
+
+``` html
+<p>Interested in investing? Email us at bad-decisions@scramoose.dev.</p>
+```
+
+The whole *index.html* file would look like this:
+
+{% highlight html linenos %}
+<html>
+    <head>
+        <title>Scramoose</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+
+    <body>
+        <img src="/images/scramoose_banner.png" id="banner" />
+
+        <div id="main-content">
+            <p>Scramoose is just getting started. Check back later when this becomes the best site on the internet!</p>
+            <p>Interested in investing? Email us at bad-decisions@scramoose.dev.</p>
+        </div>
+
+        <footer>This is a demo site inspired by the <a href="https://www.secondsleep.io">Second Sleep</a> project.</footer>
+    </body>
+</html>
+{% endhighlight %}
+
+Now refresh your web browser (or go to `http://localhost:4280` if you closed it), and you'll see your changes! You don't need restart SWA; changes are reflected upon refresh.
+
+{% include figure image_path="/assets/images/posts/static-web-app-update-1.png" caption="Ah, that's better." alt="updated public Scramoose site" %}
+
+Keep updating until you're satisfied with the site. When you're finished, hit `Ctrl+C` on the terminal to stop the SWA app.
