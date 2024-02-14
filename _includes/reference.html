@@ -15,6 +15,8 @@
     [{{ include.anchor_text | default: 'tags' }}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources)
   {%- when 'storage_account' -%}
     [{{ include.anchor_text | default: 'storage account' }}](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+  {%- when 'blob_storage' -%}
+    [{{ include.anchor_text | default: 'blob storage' }}](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview)
   {%- when 'key_vault' -%}
     [{{ include.anchor_text | default: 'Key Vault' }}](https://learn.microsoft.com/en-us/azure/key-vault/general/overview)
   {%- when 'functions' -%}

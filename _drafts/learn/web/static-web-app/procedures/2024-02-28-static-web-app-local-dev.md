@@ -1,23 +1,25 @@
 ---
 title: Static Web App Local Development
 categories: web static-web-app procedure
-sort_order: 1
+sort_order: 2
 description: Before you deploy your website, make sure it looks right by editing it on your local computer.
 ---
+{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+
 Before we deploy our website to Azure, we want to make sure it looks right. We can do this by developing the app locally on our laptop. As you might guess, this part won't involve Azure at all.<!--more-->
 
-If you're purely a platform infrastructure engineer then this won't be something you do much, if ever, but it's still nice to know what your front-end colleagues are up to, those little pip-squeaks.
+If you're purely a platform infrastructure engineer then this won't be something you do much, if ever, but it's still nice to know what your front-end developer friends are up to, those little pip-squeaks.
 {: .notice--info}
 
 ## Get Static Website Content
 
-We were desperate so we paid $15 to the first web designer we could find to make a landing page for {% include reference.html item='fake_company' %}. They spent four minutes on it and pushed the content to our [scramoose-web-public](https://github.com/2ndsleep/scramoose-web-public) repository. The version we want was tagged as [web/static-web-app/initial-public-site](https://github.com/2ndsleep/scramoose-web-public/releases/tag/web%2Fstatic-web-app%2Finitial-public-site), and you can download a .zip of the web content by clicking on the button below.
+We were desperate so we paid $15 to the first web designer we could find to make a landing page for {% include reference.html item='fake_company' %}. They spent four minutes on it and pushed the content to our [{{ fake_company_name_lower }}-web-public](https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public) repository. The version we want was tagged as [web/static-web-app/initial-public-site](https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public/releases/tag/web%2Fstatic-web-app%2Finitial-public-site), and you can download a .zip of the web content by clicking on the button below.
 
-[Download Scramoose Website](https://github.com/2ndsleep/scramoose-web-public/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
+[Download {{ site.fake_company_name }} Website](https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
 
-Extract this .zip file to a folder where you prefer to do your work. The extracted contents will be a single folder named *scramoose-web-public-web-static-web-app*. Rename that folder to *scramoose-web-public* just to make the name less dumb.
+Extract this .zip file to a folder where you prefer to do your work. The extracted contents will be a single folder named *{{ fake_company_name_lower }}-web-public-web-static-web-app*. Rename that folder to *{{ fake_company_name_lower }}-web-public* just to make the name less dumb.
 
-If you're already comfortable with Git, you can also clone this tag by using the following command: `git clone https://github.com/2ndsleep/scramoose-web-public.git --branch web/static-web-app/initial-public-site --single-branch`
+If you're already comfortable with Git, you can also clone this tag by using the following command: `git clone https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public.git --branch web/static-web-app/initial-public-site --single-branch`
 {: .notice--info}
 
 ## Open Repository in VS Code
@@ -26,11 +28,11 @@ Let's look at what we downloaded. I mean, you're about to run this on your local
 
 1. Launch VS Code.
 1. Click **File > Close Workspace**. If you don't see the Close Workspace option, it means you don't have a workspace open and you can move on to the next step.
-1. Click **File > Add Folder to Workspace** and navigate to the *scramoose-web-public* folder you downloaded in the previous section. Click on the *scramoose-web-public* folder without going into the folder itself and then click the **Add** button.
+1. Click **File > Add Folder to Workspace** and navigate to the *{{ fake_company_name_lower }}-web-public* folder you downloaded in the previous section. Click on the *{{ fake_company_name_lower }}-web-public* folder without going into the folder itself and then click the **Add** button.
 1. Click **Yes** if it asks you if you trust this folder. Unless you don't trust it, in which case I'm sorry I haven't gained your trust, although I commend your vigilance!
-1. Click **File > Save Workspace As** and then save this workspace as *scramoose-web-public* in a folder of your choosing (I like to create a *workspaces* folder below my home folder).
+1. Click **File > Save Workspace As** and then save this workspace as *{{ fake_company_name_lower }}-web-public* in a folder of your choosing (I like to create a *workspaces* folder below my home folder).
 
-Now you have a workspace named **scramoose-web-public** that contains the *scramoose-web-public* folder. Start digging around that folder. You find two items worth pointing out:
+Now you have a workspace named **{{ fake_company_name_lower }}-web-public** that contains the *{{ fake_company_name_lower }}-web-public* folder. Start digging around that folder. You find two items worth pointing out:
 
 - The *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
 - The *.gitignore* file tells Git that we don't want to check in certain files because they won't be part of our production site.
@@ -46,7 +48,7 @@ Here are the basics steps we'll be doing.
 1. Configure SWA.
 1. Run our website locally using SWA.
 
-All these commands are assumed to be run from a command console (aka, terminal) from within the *scramoose-web-public* folder. One cool thing about VS Code is that it includes a terminal and will drop you automatically into the *scramoose-web-public* folder. If you don't see the terminal when you start VS Code, you can start it by clicking **View > Terminal** or by typing `Ctrl+`` (backtick).
+All these commands are assumed to be run from a command console (aka, terminal) from within the *{{ fake_company_name_lower }}-web-public* folder. One cool thing about VS Code is that it includes a terminal and will drop you automatically into the *{{ fake_company_name_lower }}-web-public* folder. If you don't see the terminal when you start VS Code, you can start it by clicking **View > Terminal** or by typing `` Ctrl+` `` (backtick).
 
 ### Install Node.js
 
@@ -83,7 +85,7 @@ The SWA app will step you through the configuration process.
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-? Choose a configuration name: › scramoose-web-public
+? Choose a configuration name: › {{ fake_company_name_lower }}-web-public
 ```
 
 Press `Enter` to accept the default configuration name.
@@ -91,7 +93,7 @@ Press `Enter` to accept the default configuration name.
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-✔ Choose a configuration name: … scramoose-web-public
+✔ Choose a configuration name: … {{ fake_company_name_lower }}-web-public
 
 Detected configuration for your app:
 - Framework(s): Static HTML
@@ -126,8 +128,8 @@ You'll see the following output warning you that you're running locally and your
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-Using configuration "scramoose-web-public" from file:
-  /Users/scramoose/Projects/scramoose-web-public/swa-cli.config.json
+Using configuration "{{ fake_company_name_lower }}-web-public" from file:
+  /Users/{{ fake_company_name_lower }}/Projects/{{ fake_company_name_lower }}-web-public/swa-cli.config.json
 
 ***********************************************************************
 * WARNING: This emulator may not match the cloud environment exactly. *
@@ -136,7 +138,7 @@ Using configuration "scramoose-web-public" from file:
 
 [swa] 
 [swa] Serving static content:
-[swa]   /Users/scramoose/Projects/scramoose-web-public/src
+[swa]   /Users/{{ fake_company_name_lower }}/Projects/{{ fake_company_name_lower }}-web-public/src
 [swa] 
 [swa] Azure Static Web Apps emulator started at http://localhost:4280. Press CTRL+C to exit.
 [swa] 
@@ -145,4 +147,4 @@ Using configuration "scramoose-web-public" from file:
 
 Type `http://localhost:4280` in your web browser and behold our crappy site!
 
-{% include figure image_path="/assets/images/posts/static-web-app-initial.png" caption="Ah jeez, this is embarrassing." alt="basic public Scramoose site" %}
+{% include figure image_path="/assets/images/posts/static-web-app-initial.png" caption="Ah jeez, this is embarrassing." alt="basic public site" %}

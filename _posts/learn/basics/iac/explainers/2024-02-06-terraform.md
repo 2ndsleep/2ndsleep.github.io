@@ -161,7 +161,7 @@ You can have multiple state files which some people do for testing different env
 
 Unless you specified differently, your backend location will be `local` which is your working directory and is why all the state files will be created locally. This isn't very shareable and doesn't fly when you're working on a team, so you can change your backend to be a remote location or use the Terraform Cloud service.
 
-The state file is a plain text JSON file. As you'll see, you often need to pass secrets (passwords) to Terraform in your deployments, which are going to be stored in your state file. That's a concern when you're using and unsecure location for your state files.
+The state file is a plain text JSON file. As you'll see, you often need to pass secrets (passwords) to Terraform in your deployments, which are going to be stored in your state file. That's a concern when you're using an unsecure location for your state files.
 {: .notice--info}
 
 Even though they are all technically different, when you first initialize your configuration there is a 1:1 relationship between your working directory, backend, state file, and workspace.

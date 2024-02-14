@@ -347,7 +347,7 @@ You'll see output like this. Paste that URL into your browser and behold!
 
 {% highlight output %}
 {
-  "url": "witty-pond-0f155410f.4.azurestaticapps.net"
+  "url": "witty-pond-0f141550f.4.azurestaticapps.net"
 }
 {% endhighlight %}
 

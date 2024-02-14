@@ -49,7 +49,7 @@ In this example, the *customer-data.php* file contains the `get_customer_name` a
 <html>
     <head><title>Your Balance</title></head>
     <body>
-        <p>Hello Ximena!</p>
+        <p>Hello {{ site.fake_username }}!</p>
         <p>Your balance is $4.85.</p>
     </body>
 </html>
@@ -183,4 +183,4 @@ Finally, I want to point out that this isn't a one way or the other type of thin
 
 So why did I write this post? Just for the SEO rankings? Yeah, mainly. But less cynically, I wanted to relay this back to our {% include reference.html item='fake_company' %} project. This post is part of the [Static Web App]({% link _services/web/static-web-app.md %}) service. When I first started poking around Static Web Apps, I noticed that it included an API backend as part of the service. If you're like me, that's confusing because you assume that the "static" part of Static Web App implies that there's no server-side business.
 
-But lo! Azure throws in a free API backend as part of its Static Web App product. That's because they know you might be using this as part of your modern web application architecture since you're a modern girl. Now, that free API backend uses {% include reference.html item='functions' %}, which you may or may not love. If you love not or perhaps even HATE Azure Functions, you can use whatever API you feel like paying for.
+But lo! Azure throws in a free API backend as part of its Static Web App product. That's because they know you might be using this as part of your modern web application architecture since you're a modern woman. Now, that free API backend uses {% include reference.html item='functions' %}, which you may or may not love. If you love not or perhaps even HATE Azure Functions, you can use whatever API you feel like paying for.

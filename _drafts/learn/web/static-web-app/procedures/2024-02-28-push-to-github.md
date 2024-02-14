@@ -1,9 +1,11 @@
 ---
 title: Push Static Web App Project to GitHub
 categories: web static-web-app procedure
-sort_order: 2
+sort_order: 3
 description: Now that we have our code, let's push it to our own GitHub repo.
 ---
+{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+
 ## Set Up Version Control
 
 Now that we got this working, we should probably create a Git repository for our source code and push it up to GitHub. We're going to start messing around with our app and if we mess it all up, we'll want to revert back.
@@ -24,7 +26,7 @@ git init
 You should see output similar to this:
 
 ```
-Initialized empty Git repository in /Users/scramoose/Projects/scramoose-web-public/.git
+Initialized empty Git repository in /Users/{{ site.fake_username | downcase }}/Projects/{{ fake_company_name_lower }}-web-public/.git
 ```
 
 ### Push to GitHub
@@ -39,7 +41,7 @@ If you closed VS Code or stopped the local emulator, you can start it up by runn
 Now open the *src/index.html* file in VS Code and change the content as you see fit. For example, maybe you want to solicit investors to our new site, so you add the following on line 12.
 
 ``` html
-<p>Interested in investing? Email us at bad-decisions@scramoose.dev.</p>
+<p>Interested in investing? Email us at bad-decisions@{{ fake_company_name_lower }}.dev.</p>
 ```
 
 The whole *index.html* file would look like this:
@@ -47,16 +49,16 @@ The whole *index.html* file would look like this:
 {% highlight html linenos %}
 <html>
     <head>
-        <title>Scramoose</title>
+        <title>{{ site.fake_company_name }}</title>
         <link rel="stylesheet" href="/css/main.css" />
     </head>
 
     <body>
-        <img src="/images/scramoose_banner.png" id="banner" />
+        <img src="/images/{{ fake_company_name_lower }}_banner.png" id="banner" />
 
         <div id="main-content">
-            <p>Scramoose is just getting started. Check back later when this becomes the best site on the internet!</p>
-            <p>Interested in investing? Email us at bad-decisions@scramoose.dev.</p>
+            <p>{{ site.fake_company_name }} is just getting started. Check back later when this becomes the best site on the internet!</p>
+            <p>Interested in investing? Email us at bad-decisions@{{ fake_company_name_lower }}.dev.</p>
         </div>
 
         <footer>This is a demo site inspired by the <a href="https://www.secondsleep.io">Second Sleep</a> project.</footer>
@@ -66,6 +68,6 @@ The whole *index.html* file would look like this:
 
 Now refresh your web browser (or go to `http://localhost:4280` if you closed it), and you'll see your changes! You don't need restart SWA; changes are reflected upon refresh.
 
-{% include figure image_path="/assets/images/posts/static-web-app-update-1.png" caption="Ah, that's better." alt="updated public Scramoose site" %}
+{% include figure image_path="/assets/images/posts/static-web-app-update-1.png" caption="Ah, that's better." alt="updated public website" %}
 
 Keep updating until you're satisfied with the site. When you're finished, hit `Ctrl+C` on the terminal to stop the SWA app.
