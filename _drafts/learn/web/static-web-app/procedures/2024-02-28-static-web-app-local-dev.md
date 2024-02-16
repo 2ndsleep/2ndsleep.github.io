@@ -13,14 +13,11 @@ If you're purely a platform infrastructure engineer then this won't be something
 
 ## Get Static Website Content
 
-We were desperate so we paid $15 to the first web designer we could find to make a landing page for {% include reference.html item='fake_company' %}. They spent four minutes on it and pushed the content to our [{{ fake_company_name_lower }}-web-public](https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public) repository. The version we want was tagged as [web/static-web-app/initial-public-site](https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public/releases/tag/web%2Fstatic-web-app%2Finitial-public-site), and you can download a .zip of the web content by clicking on the button below.
+We were desperate so we paid $15 to the first web designer we could find to make a landing page for {% include reference.html item='fake_company' %}. They spent four minutes on it and then emailed a .zip of it to us. You can download a .zip of the web content by clicking on the button below.
 
 [Download {{ site.fake_company_name }} Website](https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
 
 Extract this .zip file to a folder where you prefer to do your work. The extracted contents will be a single folder named *{{ fake_company_name_lower }}-web-public-web-static-web-app*. Rename that folder to *{{ fake_company_name_lower }}-web-public* just to make the name less dumb.
-
-If you're already comfortable with Git, you can also clone this tag by using the following command: `git clone https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public.git --branch web/static-web-app/initial-public-site --single-branch`
-{: .notice--info}
 
 ## Open Repository in VS Code
 
@@ -29,13 +26,10 @@ Let's look at what we downloaded. I mean, you're about to run this on your local
 1. Launch VS Code.
 1. Click **File > Close Workspace**. If you don't see the Close Workspace option, it means you don't have a workspace open and you can move on to the next step.
 1. Click **File > Add Folder to Workspace** and navigate to the *{{ fake_company_name_lower }}-web-public* folder you downloaded in the previous section. Click on the *{{ fake_company_name_lower }}-web-public* folder without going into the folder itself and then click the **Add** button.
-1. Click **Yes** if it asks you if you trust this folder. Unless you don't trust it, in which case I'm sorry I haven't gained your trust, although I commend your vigilance!
+1. Click **Yes** if it asks you if you trust this folder. Unless you don't trust it, in which case I'm sorry I haven't gained your trust (although I commend your vigilance!).
 1. Click **File > Save Workspace As** and then save this workspace as *{{ fake_company_name_lower }}-web-public* in a folder of your choosing (I like to create a *workspaces* folder below my home folder).
 
-Now you have a workspace named **{{ fake_company_name_lower }}-web-public** that contains the *{{ fake_company_name_lower }}-web-public* folder. Start digging around that folder. You find two items worth pointing out:
-
-- The *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
-- The *.gitignore* file tells Git that we don't want to check in certain files because they won't be part of our production site.
+Now you have a workspace named **{{ fake_company_name_lower }}-web-public** that contains the *{{ fake_company_name_lower }}-web-public* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
 
 ## Run App Locally
 
@@ -67,7 +61,7 @@ Run the following command to install the static-web-app-cli Node.js app.
 npm install -D @azure/static-web-apps-cli
 ```
 
-Since SWA is installed as a development dependency, you must run the `swa` command from the *node_modules* folder in the steps below, which is different from what is shown in Microsoft's [examples](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#get-started).
+Since SWA is installed as a [development dependency]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Node Dependencies' | slugify }}), you must run the `swa` command from the *node_modules* folder in the steps below, which is different from what is shown in Microsoft's [examples](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#get-started).
 {: .notice--info}
 
 ### Configure SWA
@@ -148,3 +142,5 @@ Using configuration "{{ fake_company_name_lower }}-web-public" from file:
 Type `http://localhost:4280` in your web browser and behold our crappy site!
 
 {% include figure image_path="/assets/images/posts/static-web-app-initial.png" caption="Ah jeez, this is embarrassing." alt="basic public site" %}
+
+As discussed, we'll be deploying this to code to our Static Web App from GitHub, so in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-push-to-github %}) we'll push our code to GitHub.

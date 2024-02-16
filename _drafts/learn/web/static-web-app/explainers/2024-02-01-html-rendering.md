@@ -49,7 +49,7 @@ In this example, the *customer-data.php* file contains the `get_customer_name` a
 <html>
     <head><title>Your Balance</title></head>
     <body>
-        <p>Hello {{ site.fake_username }}!</p>
+        <p>Hello {{ site.fake_username | capitalize }}!</p>
         <p>Your balance is $4.85.</p>
     </body>
 </html>

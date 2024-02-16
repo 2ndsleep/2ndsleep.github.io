@@ -3,6 +3,16 @@ title: Deploy Static Web App
 categories: web static-web-app procedure
 sort_order: 1
 description: Our first real thing! Let's deploy a Static Web App resource with Terraform.
+infrastructure_filesystem:
+  - name: $HOME (my home folder)
+    children:
+      - name: Projects
+        children:
+          - name: scramoose-infrastructure
+            children:
+              - name: terraform
+                children:
+                  - name: public-web-site-swa
 ---
 {% assign swa_working_dir = 'public-web-site-swa' %}
 
@@ -18,46 +28,32 @@ To do this procedure, you'll need to have already performed the following items.
 - [Install Azure CLI]({% post_url /learn/basics/azure_intro/procedures/2024-01-14-azure-command-line-tools %})
 - [Install VS Code]({% post_url /learn/basics/iac/procedures/2024-01-31-vscode %})
 - [Install Terraform]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %})
+- [Create GitHub infrastructure repository]({% post_url /learn/basics/iac/procedures/2024-02-07-github %})
 
-## Log Into Azure
+## Configure Authentication
 
-Before proceeding, read about [cloud vs CLI](#). This is an important thing to know because we're doing things a little differently for this deployment than we will be doing in future posts.
-
-Okay, now that you've read that post and you're not just pounding out commands like an asshole, we can move on. Type the following to log into your Azure environment.
-
-``` shell
-az login
-```
-
-This will open a web browser where you can log into Azure. After you successfully authenticate, you'll see your subscription listed in the output.
-
-{% highlight output %}
-[
-  {
-    "cloudName": "AzureCloud",
-    "homeTenantId": "{{ site.fake_tenant_guid }}",
-    "id": "{{ site.fake_subscription_guid }}",
-    "isDefault": true,
-    "managedByTenants": [],
-    "name": "{{ site.fake_company_name }}",
-    "state": "Enabled",
-    "tenantId": "{{ site.fake_tenant_guid }}",
-    "user": {
-      "name": "{{ site.fake_username | downcase }}@scramoose.dev",
-      "type": "user"
-    }
-  }
-]
-{% endhighlight %}
-
-If you've created multiple subscriptions, you'll see more than one listed. Check to see which one is set to `"isDefault": true`. That will be the one where we'll be deploying our resources. To change the default subscription, use the `az account set --subscription "Subscription Name"` command. See [this](https://learn.microsoft.com/en-us/cli/azure/manage-azure-subscriptions-azure-cli?tabs=bash) for more help managing your subscriptions.
+Before proceeding, read about how we're [*not* using Terraform Cloud]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Terraform vs. Terraform Cloud' | slugify }}) right now. This is an important thing to know because we're doing things a little differently for this deployment than we will be doing in future posts and is why logging in through the Azure CLI is necessary.
 {: .notice--info}
+
+We're going to create a service principal in Azure that will be used by Terraform to gain access to Azure in order to deploy our Static Web App resource. This is really just to be a rehash of the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step of the [Terraform Tutorial]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %}) that you may have already performed, so I'll provide links to that tutorial with some additional commentary.
+
+- First, follow the steps to log into Azure and set your subscription in the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step.
+- Next, [create a service principal](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#create-a-service-principal). If you've already done that and saved the password in a secure location, you can skip this. If you don't know the password, you can create a new service principal (you may want to delete the old one for housekeeping purposes, if no one is using it). If you don't remember the app ID, you can find it in the Azure portal by searching for and selecting **App registrations**. You may need to select the **All application** tab if you don't see it listed.
+- Finally, [set your environment variables](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#set-your-environment-variables).
 
 ## Terraform
 
 Time to define our Static Web App resource using Terraform. Let's get to it!
 
-But before we get to it, let's get away from it for a quick word about our folder structure. All our Terraform files will be known as a **configuration** and they all need to be stored in the same folder known as a **working directory**. You can create this directory wherever you want on your local computer. Check the {% include reference.html item='infrastructure_repo' %} repository for inspiration on how to structure your IaC files (there's no right way). For more information, see my post about [how Terraform works]({% post_url /learn/basics/iac/explainers/2024-02-06-terraform %}#how-terraform-works).
+### Folder Structure
+
+But before we get to it, let's get away from it for a quick chat our folder structure. All our Terraform files will collectively be known as a **configuration** and they all need to be stored in the same folder known as a **working directory**. You can create this directory wherever you want on your local computer. Here's how I'm structuring my folders. You can do the same to make it easier to following along.
+
+{% include filesystem.html id="infrastructure_filesystem" %}
+
+The *$HOME* folder is your user profile folder, which will be *\Users\{{ site.fake_username }}* in Windows and */Users/{{ site.fake_username }}* in macOS and Linux (assuming your username is {{ site.fake_username }}). I put all my repositories in the *Projects* subfolder which exists by default in macOS but you can create it in Windows or Linux. Finally, you'll need to create a folder named *{{ site.fake_company_name | downcase }}-infrastructure*. This will be the working directory where you'll put all your Terraform configuration files.
+
+Check the {% include reference.html item='infrastructure_repo' %} repository for inspiration on how to structure your IaC files (there's no right way). For more information, see my post about [how Terraform works]({% post_url /learn/basics/iac/explainers/2024-02-06-terraform %}#how-terraform-works).
 {: .notice--info}
 
 ### Terraform Settings
@@ -389,4 +385,4 @@ Note that Terraform detects that your code won't actually change the resources. 
 
 That's it! You haven't really done anything worth showing your family, not that they'd understand what we do anyway. But you've grown as a person, and isn't that better than any adulation you could receive from your loved ones? (Answer: no, it's not better.)
 
-Oh, it looks like our web designer finished the website. We'll deploy that to this new Static Web App in the next post.
+Oh, it looks like our web designer finished the website. We'll deploy that to this new Static Web App in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}).

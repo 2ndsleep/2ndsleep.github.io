@@ -3,31 +3,53 @@ title: Push Static Web App Project to GitHub
 categories: web static-web-app procedure
 sort_order: 3
 description: Now that we have our code, let's push it to our own GitHub repo.
+excerpt: Now that we got our site working locally, we should probably create a Git repository for our source code and push it up to GitHub. We're going to start screwing around with our app and if we mess it all up, we'll want to revert back.
 ---
 {% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign infrastructure_repo = '-infrastucture' | prepend: fake_company_name_lower %}
+{% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
 
-## Set Up Version Control
+If you've been following along with the procedures in this service so far, you've created a new [Static Web App resource with Terraform]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}) and run the static website on your [local computer]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}). Now that we got our site working locally, we should probably create a Git repository for our source code and push it up to GitHub. We're going to start screwing around with our app and if we mess it all up, we'll want to revert back.
 
-Now that we got this working, we should probably create a Git repository for our source code and push it up to GitHub. We're going to start messing around with our app and if we mess it all up, we'll want to revert back.
+Here's how this is going to work overall.
 
-### Create Local Git Repository
+- Create the repository locally
+- Create a new repository in GitHub
+- Make a change to our code and push those changes up to GitHub
 
-The first step is to initialize Git on our local project so that we can start tracking changes.
+We actually have two repos that we'll be doing this with. If you recall, there are two things we're doing here: deploying the Static Web App resource to azure (infrastructure) and deploying the website code that our designer created (application). And since we have two repositories, I can demonstrate two different ways to do this. The hard way with the `git` command and the easy way using VS Code.
 
-If you cloned this from my GitHub repo, then it will have all my commit history in it and will point to my repo as a remote. There are two ways handle this. The easiest way is to delete the hidden *.git* folder before you initialize your repo which will blow away anything related to my repo on your local computer. The second option is to run `git remote rm origin`, which will stop pointing to my remote but retain all my commit history.
-{: .notice--info}
+## Create a GitHub Repository
+
+The first we're going to do is create a new repository in GitHub. If you've been following the [guided tour]({% link _pages/guided.md %}), you've already created your [infrastructure repository]({% post_url /learn/basics/iac/procedures/2024-02-07-github %}), but if you haven't do that now.
+
+We also need a repo for the static website. Follow the same steps to [create a GitHub repository] as you did for the infrastructure repository, but name it **{{ web_public_repo }}** and leave the **Add .gitignore** option set to `None`.
+
+## Create Local Git Repository
+
+In order to push our local changes up to GitHub, we need to "git-erize" our local repositories. We'll also want to add a *.gitignore* file to exclude some files from being tracked and pushed up to GitHub.
+
+### Initialize Repositories
+
+The first step is to initialize Git on our local project so that we can start tracking changes. In a console or the VS Code terminal, run the following command for both the **{{ infrastructure_repo }}** and **{{ web_public_repo }}** repos.
 
 Run this to initialize your local repository:
 
-``` bash
+``` shell
 git init
 ```
 
 You should see output similar to this:
 
-```
-Initialized empty Git repository in /Users/{{ site.fake_username | downcase }}/Projects/{{ fake_company_name_lower }}-web-public/.git
-```
+{% highlight output %}
+Initialized empty Git repository in /Users/{{ site.fake_username }}/Projects/{{ fake_company_name_lower }}-web-public/.git
+{% endhighlight %}
+
+### Create .gitignore Files
+
+We want to make sure we have [*.gitignore*]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ '.gitignore' | slugify }}) files for each of repos.
+
+For our {{ infrastructure_repo }} folder
 
 ### Push to GitHub
 
