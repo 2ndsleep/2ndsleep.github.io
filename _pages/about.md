@@ -32,11 +32,18 @@ Oh, I'm flattered you asked. My name is Blaine Perry, and I'm just a humble clou
 
 ## {{ site.fake_company_name }}
 
-![{{ site.fake_company_name }} logo](/assets/images/logos/scramoose/scramoose_banner.png)
+![{{ site.fake_company_name }} logo](/assets/images/logos/fake-company/fake-company-banner.png)
 
 To make this feel somewhat realistic, all the training content on here is part of creating a fictional company called {{ site.fake_company_name }}. {{ site.fake_company_name }} is a hot new startup that will recommend the ideal place you should live based on your preferences. I'll be building the platform infrastructure from scratch to support this fake company.
 
 The blog entries progress with the development of {{ site.fake_company_name }}, so depending on which procedure you choose, you'll see an example for a different point in time in the web development. I have this idea half-baked at the moment, so this project is a bit of an experiment. The goal is to demonstrate the various cloud services which will evolve as {{ site.fake_company_name }} progresses, and you'll see me make mistakes and correct them just like in real life. To see what I'm planning for the evolution of {{ site.fake_company_name }}, see my [roadmap](https://github.com/orgs/2ndsleep/projects/2).
+
+{% assign engineer_name = site.fake_username | capitalize %}
+
+{{ site.fake_company_name }} hired one engineer to do all the work. {{ engineer_name }} has extensive DevOps experience and is constantly sharpening her engineering skills since there's always something new to learn in this godforsaken industry and it never stops and she thinks maybe one day she'll come up for air and be able to move forward on her work, but then no!, there's another hot new framework she needs to learn or else she'll look like an idiot. Anyway, {{ site.fake_company_name }} pays her well enough and has dangled the stock options carrot, so she's going to stick around for now.
+
+{% assign engineer_profile_caption = "Our fake engineer, " | append: engineer_name %}
+{% include figure image_path="/assets/images/pages/ximena-profile.jpeg" caption=engineer_profile_caption alt="company engineer" class="third" %}
 
 ## Blog Organization
 
