@@ -23,6 +23,7 @@ fake_company_code: scrm
 fake_subscription_guid: c36ff944-4355-4514-95c1-d43921b3d46c
 fake_tenant_guid: fd67a800-3cb5-4f83-a547-f858b4245976
 fake_username: ximena
+fake_company_domain: scramoose.dev
 permalink: /:categories/:title
 
 collections:
