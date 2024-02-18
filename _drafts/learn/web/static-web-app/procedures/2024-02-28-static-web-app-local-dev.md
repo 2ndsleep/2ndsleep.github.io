@@ -1,10 +1,12 @@
 ---
 title: Static Web App Local Development
 categories: web static-web-app procedure
-sort_order: 2
+sort_order: 3
 description: Before you deploy your website, make sure it looks right by editing it on your local computer.
 ---
 {% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
+{% assign infrastructure_repo = '-infrastructure' | prepend: fake_company_name_lower %}
 
 Before we deploy our website to Azure, we want to make sure it looks right. We can do this by developing the app locally on our laptop. As you might guess, this part won't involve Azure at all.<!--more-->
 
@@ -15,25 +17,17 @@ If you're purely a platform infrastructure engineer then this won't be something
 
 We were desperate so we paid $15 to the first web designer we could find to make a landing page for {% include reference.html item='fake_company' %}. They spent four minutes on it and then emailed a .zip of it to us. You can download a .zip of the web content by clicking on the button below.
 
-[Download {{ site.fake_company_name }} Website](https://github.com/2ndsleep/{{ fake_company_name_lower }}-web-public/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
+[Download {{ site.fake_company_name }} Website](https://github.com/2ndsleep/{{ web_public_repo }}/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
 
-Extract this .zip file to a folder where you prefer to do your work. The extracted contents will be a single folder named *{{ fake_company_name_lower }}-web-public-web-static-web-app*. Rename that folder to *{{ fake_company_name_lower }}-web-public* just to make the name less dumb.
+Extract this .zip file to a temporary location and then copy the files to the *{{ web_public_repo }}* repository on your local computer that you cloned in the [first post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}) of this project.
 
-## Open Repository in VS Code
+Now open VS Code and check the *{{ web_public_repo }}* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
 
-Let's look at what we downloaded. I mean, you're about to run this on your local computer so you should take a look to make sure you didn't just download something nasty. And this is the perfect excuse to get your comfortable with VS Code!
-
-1. Launch VS Code.
-1. Click **File > Close Workspace**. If you don't see the Close Workspace option, it means you don't have a workspace open and you can move on to the next step.
-1. Click **File > Add Folder to Workspace** and navigate to the *{{ fake_company_name_lower }}-web-public* folder you downloaded in the previous section. Click on the *{{ fake_company_name_lower }}-web-public* folder without going into the folder itself and then click the **Add** button.
-1. Click **Yes** if it asks you if you trust this folder. Unless you don't trust it, in which case I'm sorry I haven't gained your trust (although I commend your vigilance!).
-1. Click **File > Save Workspace As** and then save this workspace as *{{ fake_company_name_lower }}-web-public* in a folder of your choosing (I like to create a *workspaces* folder below my home folder).
-
-Now you have a workspace named **{{ fake_company_name_lower }}-web-public** that contains the *{{ fake_company_name_lower }}-web-public* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
+{% include figure image_path="/assets/images/posts/vscode-web-public-contents.png" caption="VS Code Explorer view after adding website contents" alt="VS Code Explorer view after adding website contents" %}
 
 ## Run App Locally
 
-Now that you have the website project added to VS Code, we can run it locally! Microsoft has a page that explains exactly how to [set up your local development environment](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development) so make sure you check it out, but I'm going to streamline the instructions for our purposes.
+Now that you have the website project added to VS Code, we can run it locally. Microsoft has a page that explains exactly how to [set up your local development environment](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development) so make sure you check it out, but I'm going to streamline the instructions for our purposes.
 
 Here are the basics steps we'll be doing.
 
@@ -42,7 +36,7 @@ Here are the basics steps we'll be doing.
 1. Configure SWA.
 1. Run our website locally using SWA.
 
-All these commands are assumed to be run from a command console (aka, terminal) from within the *{{ fake_company_name_lower }}-web-public* folder. One cool thing about VS Code is that it includes a terminal and will drop you automatically into the *{{ fake_company_name_lower }}-web-public* folder. If you don't see the terminal when you start VS Code, you can start it by clicking **View > Terminal** or by typing `` Ctrl+` `` (backtick).
+All these commands are assumed to be run from a command console (aka, terminal) from within the *{{ web_public_repo }}* folder. One cool thing about VS Code is that it includes a terminal and will drop you automatically into the *{{ web_public_repo }}* folder. If you don't see the terminal when you start VS Code, you can start it by clicking **View > Terminal** or by typing `` Ctrl+` `` (backtick).
 
 ### Install Node.js
 
@@ -53,9 +47,36 @@ There are two ways to install Node.js. The most official way is to download the 
 [Download Node.js Installer](https://nodejs.org/en){: .btn .btn--info}
 [Install Node.js with Package Manager](https://nodejs.org/en/download/package-manager){: .btn .btn--info}
 
+### Create .gitignore File
+
+We're about to add a bunch of files to our repository that are used for running the app locally. However, we don't need these files for production, so we don't want to add them to our repo. We just want them to stay on our local computer, so we need to create a [*.gitignore*]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ '.gitignore' | slugify }}) to exclude all these files.
+
+Right-click on the root of the **{{ web_public_repo }}** folder in VS Code and select **New File**, name it *.gitignore* (yes, the file starts with a `.`), add the following text, and then save the file.
+
+```
+node_modules
+package-lock.json
+package.json
+swa-cli.config.json
+```
+
+### Open Terminal in {{ web_public_repo }} Folder
+
+If you were following along in the [last post]({% post_url /learn/web/static-web-app/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ infrastructure_repo }}. We need to switch over to the {{ web_public_repo }} folder now since we're working on the actual web content. You have a few options to do that.
+
+- Type `cd ~/Projects/{{ web_public_repo }}` in the terminal.
+- Delete the current terminal by clicking the teeny, tiny trash can icon at the top of your terminal and opening a new terminal in the *{{ web_public_repo }}* folder by right-clicking on the **{{ web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
+- Starting a second terminal by...
+  - right-clicking on the **{{ web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
+  - if you still have the *.gitignore* file open from the previous section, just clicking on the teeny, tiny plus sign at the top of your current terminal and selecting **{{ web_public_repo }}** from the dropdown which will create a new terminal starting in the *{{ web_public_repo }}* folder.
+
+I'm going with the last option because I can then switch back to the {{ infrastructure_repo }} terminal if I need to.
+
+{% include figure image_path="/assets/images/posts/vscode-new-terminal.png" caption="Wow, two terminals!" alt="second terminal in VS Code" %}
+
 ### Install SWA
 
-Run the following command to install the static-web-app-cli Node.js app.
+Double-check that you're terminal is in the *{{ web_public_repo }}* folder and run the following command to install the static-web-app-cli Node.js app.
 
 ``` bash
 npm install -D @azure/static-web-apps-cli
@@ -63,6 +84,8 @@ npm install -D @azure/static-web-apps-cli
 
 Since SWA is installed as a [development dependency]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Node Dependencies' | slugify }}), you must run the `swa` command from the *node_modules* folder in the steps below, which is different from what is shown in Microsoft's [examples](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#get-started).
 {: .notice--info}
+
+{% include figure image_path="/assets/images/posts/vscode-install-swa-cli.png" caption="Your VS Code instance should look like this after installing the SWA CLI. Notice that all of the files related to our NPM packages have been added to *.gitignore* and are therefore greyed out." alt="VS Code after install the SWA CLI" %}
 
 ### Configure SWA
 
@@ -79,7 +102,7 @@ The SWA app will step you through the configuration process.
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-? Choose a configuration name: › {{ fake_company_name_lower }}-web-public
+? Choose a configuration name: › {{ web_public_repo }}
 ```
 
 Press `Enter` to accept the default configuration name.
@@ -87,7 +110,7 @@ Press `Enter` to accept the default configuration name.
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-✔ Choose a configuration name: … {{ fake_company_name_lower }}-web-public
+✔ Choose a configuration name: … {{ web_public_repo }}
 
 Detected configuration for your app:
 - Framework(s): Static HTML
@@ -122,8 +145,8 @@ You'll see the following output warning you that you're running locally and your
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-Using configuration "{{ fake_company_name_lower }}-web-public" from file:
-  /Users/{{ fake_company_name_lower }}/Projects/{{ fake_company_name_lower }}-web-public/swa-cli.config.json
+Using configuration "{{ web_public_repo }}" from file:
+  /home/{{ site.fake_username }}/Projects/{{ web_public_repo }}/swa-cli.config.json
 
 ***********************************************************************
 * WARNING: This emulator may not match the cloud environment exactly. *
@@ -132,7 +155,7 @@ Using configuration "{{ fake_company_name_lower }}-web-public" from file:
 
 [swa] 
 [swa] Serving static content:
-[swa]   /Users/{{ fake_company_name_lower }}/Projects/{{ fake_company_name_lower }}-web-public/src
+[swa]   /home/{{ site.fake_username }}/Projects/{{ web_public_repo }}/src
 [swa] 
 [swa] Azure Static Web Apps emulator started at http://localhost:4280. Press CTRL+C to exit.
 [swa] 
@@ -141,6 +164,6 @@ Using configuration "{{ fake_company_name_lower }}-web-public" from file:
 
 Type `http://localhost:4280` in your web browser and behold our crappy site!
 
-{% include figure image_path="/assets/images/posts/static-web-app-initial.png" caption="Ah jeez, this is embarrassing." alt="basic public site" %}
+{% include figure image_path="/assets/images/posts/swa-local-test.png" caption="Ah jeez, this is embarrassing." alt="basic public site" %}
 
 As discussed, we'll be deploying this to code to our Static Web App from GitHub, so in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-push-to-github %}) we'll push our code to GitHub.

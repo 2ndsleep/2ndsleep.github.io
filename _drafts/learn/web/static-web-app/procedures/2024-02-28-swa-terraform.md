@@ -1,8 +1,15 @@
 ---
 title: Deploy Static Web App
 categories: web static-web-app procedure
-sort_order: 1
+sort_order: 2
 description: Our first real thing! Let's deploy a Static Web App resource with Terraform.
+projects_folder:
+  - name: $HOME (my home folder)
+    children:
+      - name: Projects
+        children:
+          - name: scramoose-infrastructure
+          - name: scramoose-web-public
 infrastructure_filesystem:
   - name: $HOME (my home folder)
     children:
@@ -14,6 +21,8 @@ infrastructure_filesystem:
                 children:
                   - name: public-web-site-swa
 ---
+{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign infrastructure_repo = '-infrastucture' | prepend: fake_company_name_lower %}
 {% assign swa_working_dir = 'public-web-site-swa' %}
 
 If you've been following along with the [guided tour]({% link _pages/guided.md %}), you know everything up to now has just been pillow talk. Well, it's time to get down and dirty as we use Terraform to deploy a resource.<!--more--> And that resource will be an empty Azure Static Web App!
@@ -26,13 +35,12 @@ To do this procedure, you'll need to have already performed the following items.
 
 - [Create Azure account]({% post_url /learn/basics/cloud_intro/procedures/2024-01-10-cloud-sign-up %})
 - [Install Azure CLI]({% post_url /learn/basics/azure_intro/procedures/2024-01-14-azure-command-line-tools %})
-- [Install VS Code]({% post_url /learn/basics/iac/procedures/2024-01-31-vscode %})
 - [Install Terraform]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %})
-- [Create GitHub infrastructure repository]({% post_url /learn/basics/iac/procedures/2024-02-07-github %})
+- [Create and clone repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %})
 
 ## Configure Authentication
 
-Before proceeding, read about how we're [*not* using Terraform Cloud]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Terraform vs. Terraform Cloud' | slugify }}) right now. This is an important thing to know because we're doing things a little differently for this deployment than we will be doing in future posts and is why logging in through the Azure CLI is necessary.
+Before proceeding, read about how we're [*not* using Terraform Cloud]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Terraform vs. Terraform Cloud' | slugify }}) right now. This is an important thing to know because we're doing things a little differently for this deployment than we will be doing in future posts which is why logging in through the Azure CLI is necessary.
 {: .notice--info}
 
 We're going to create a service principal in Azure that will be used by Terraform to gain access to Azure in order to deploy our Static Web App resource. This is really just to be a rehash of the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step of the [Terraform Tutorial]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %}) that you may have already performed, so I'll provide links to that tutorial with some additional commentary.
@@ -45,20 +53,23 @@ We're going to create a service principal in Azure that will be used by Terrafor
 
 Time to define our Static Web App resource using Terraform. Let's get to it!
 
-### Folder Structure
+In our [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) we create new repositories in GitHub and cloned them to our local computer. The folder structure should look like this on your computer.
 
-But before we get to it, let's get away from it for a quick chat our folder structure. All our Terraform files will collectively be known as a **configuration** and they all need to be stored in the same folder known as a **working directory**. You can create this directory wherever you want on your local computer. Here's how I'm structuring my folders. You can do the same to make it easier to following along.
+{% include filesystem.html id="projects_folder" %}
+
+We'll be working in the **{{ infrastructure_repo }}** repository for this post. This will be the first resource we manage with Terraform, so let's create a new [working directory]({% post_url /learn/basics/iac/explainers/2024-02-06-terraform %}#how-terraform-works) for this. First, let's create a new folder for all our Terraform configurations called, well, *terraform*. Below that, let's create the working directory called *{{ swa_working_dir }}*. 
 
 {% include filesystem.html id="infrastructure_filesystem" %}
 
-The *$HOME* folder is your user profile folder, which will be *\Users\{{ site.fake_username }}* in Windows and */Users/{{ site.fake_username }}* in macOS and Linux (assuming your username is {{ site.fake_username }}). I put all my repositories in the *Projects* subfolder which exists by default in macOS but you can create it in Windows or Linux. Finally, you'll need to create a folder named *{{ site.fake_company_name | downcase }}-infrastructure*. This will be the working directory where you'll put all your Terraform configuration files.
+Check the {% include reference.html item='infrastructure_repo' %} repository for inspiration on how to structure your IaC files. There's no right way, and my instructions above are merely a suggestion.
+{: .notice--info}
 
-Check the {% include reference.html item='infrastructure_repo' %} repository for inspiration on how to structure your IaC files (there's no right way). For more information, see my post about [how Terraform works]({% post_url /learn/basics/iac/explainers/2024-02-06-terraform %}#how-terraform-works).
+Just in case you were afraid to ask, you can create new files and folders in VS Code by right-clicking on a parent folder in the Explorer ![VS Code Explorer icon](/assets/images/posts/vscode-explorer-icon.png) view and selecting **New File** or **New Folder**. 
 {: .notice--info}
 
 ### Terraform Settings
 
-Let's create our first Terraform file. We'll call this file *base.tf* and it will contain the settings for our Terraform configuration. Create a new file in VS Code named *base.tf* and add the following code.
+Let's create our first Terraform file. We'll call this file *base.tf* and it will contain the settings for our Terraform configuration. Create a new file in VS Code named *base.tf* in the *{{ swa_working_dir }}* folder and add the following code.
 
 {% highlight terraform linenos %}
 terraform {
@@ -85,7 +96,7 @@ Great job! You've written a Terraform file that tells Terraform the following:
 
 Now we need to initialize our Terraform working directory which will download all our providers to the *.terraform* folder. It will also create a [dependency lock file](https://developer.hashicorp.com/terraform/language/files/dependency-lock) named *terraform.lock.hcl*. Some providers may depend on each other and this is how Terraform keeps track of that.
 
-Start a terminal in VS Code (**View > Terminal** or `` Ctrl+` ``) and `cd` into the *{{ swa_working_dir }}* folder. Type the following to initialize the working directory.
+Start a terminal in VS Code (**View > Terminal** or `` Ctrl+` ``) and `cd` into the *terraform/{{ swa_working_dir }}* folder. Type the following to initialize the working directory.
 
 ``` shell
 terraform init
@@ -117,6 +128,8 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 {% endhighlight %}
 
+{% include figure image_path="/assets/images/posts/vscode-terraform-init.png" caption="Here's what your VS Code interface might look like now." alt="VS Code terraform init example" %}
+
 ### Create Resource Group
 
 The rest of our Terraform configuration will be in separate file called *main.tf*. Since the Terraform configuration in *base.tf* isn't all that interesting and won't change much, it's nice to see the real meat-n-potatoes in a single file. Create your *main.tf* file in your working directory.
@@ -127,7 +140,7 @@ We'll need a resource group where the Static Web App will live, so let's define 
 resource "azurerm_resource_group" "public_site" {
   name = "{{ site.fake_company_code }}-webpub-prd-1"
   location = "East US 2"
-} 
+}
 ```
 
 Now run this command to make sure you pasted/typed it correctly.
@@ -201,7 +214,7 @@ Do you want to perform these actions?
 
 Terraform runs the plan one last time and then asks you if you're double sure you want to do this. They even make you type out `yes` fully like a third-grader. But that's fine because it makes you think about what you're doing. Type Y-E-S and then shakily hit the Enter key.
 
-What have you done??!! Did you just fuck up your whole Azure environment?? Don't worry, you're fine! Yes, just like anything in tech, you can screw up things royally but creating a resource group is one of the most harmless things you can do in Azure, so take a breath, you're good.
+What have you done??!! Did you just mess up your whole Azure environment?? Don't worry, you're fine! Yes, just like anything in tech, you can screw up things royally but creating a resource group is one of the most harmless things you can do in Azure, so take a breath, you're good.
 {: .notice--info}
 
 {% highlight output %}
@@ -213,7 +226,11 @@ azurerm_resource_group.public_site: Creation complete after 1s [id=/subscription
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 {% endhighlight %}
 
+{% include figure image_path="/assets/images/posts/portal-resource-group.png" caption="It may take a minute or two for your resource group to appear in the portal." alt="resource group in Azure portal" %}
+
 You should see your new resource group in the Azure portal within the next couple of minutes. You will also notice a new file in your Terraform working directory named *terraform.tfstate*. Go ahead and take a peek at it. It will have the definition of the resource group we just created.
+
+{% include figure image_path="/assets/images/posts/vscode-terraform-apply.png" caption="Your VS Code interface should look more or less like this now." alt="VS Code after terraform apply" %}
 
 ### Create Static Web App
 
@@ -319,11 +336,14 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 Draw your attention to the penultimate line: `azurerm_static_site.public_site: Creation complete after 2s`. Completed after two seconds! That's way less time than it would take to type and click this all in the portal. Arguably it took more time to create the Terraform code, but consider if you had to deploy this another ten times. Now that you have the Terraform code, you only have to change the resource group name and/or the Static Web App resource name.
 {: .notice--info}
 
+{% include figure image_path="/assets/images/posts/portal-resource-group-swa-resource.png" caption="Click on your resource group to see the new Static Web App resource you created." alt="Static Web App resource inside resource group" %}
+
 ## Admire Our Work
 
 You did it! You deployed your first Azure resource. {% include reference.html item='fake_company' %} is well on its way to success. Sure, [90% of startups fail](https://www.embroker.com/blog/startup-statistics/), but {{ site.fake_company_name }} isn't just about making money. It's about changing the world and all that bullshit.
 
 Microsoft generates a random URL and puts a temporary website up there for you automatically, so let's take a look at it. There are multiple ways to discover the URL, but here are a few options.
+
 
 ### Get URL from Portal
 
@@ -383,6 +403,10 @@ static_site_hostname = "witty-pond-0f141550f.4.azurestaticapps.net"
 Note that Terraform detects that your code won't actually change the resources. After you type `yes`, you'll see that 0 resources were added, changed, or destroyed. That's nice to know. But if you take a peek at your *terraform.tfstate* file, you'll see a new entry for the output, because Terraform tracks output values in the state.
 {: .notice--info}
 
+## What Now?
+
 That's it! You haven't really done anything worth showing your family, not that they'd understand what we do anyway. But you've grown as a person, and isn't that better than any adulation you could receive from your loved ones? (Answer: no, it's not better.)
 
-Oh, it looks like our web designer finished the website. We'll deploy that to this new Static Web App in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}).
+Remember, we've only deployed the infrastructure (that is, the Static Web App Azure resource) which is why you'll see a [temporary site]({% post_url /learn/web/static-web-app/explainers/2024-02-01-static-web-app %}#{{ 'How Do I Upload My Web Content to This Site?' | slugify }}) at the URL. We're still waiting for our web designer get back to us.
+
+Oh, and it looks like our web designer just finished the website. We'll deploy that to this new Static Web App in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}).
