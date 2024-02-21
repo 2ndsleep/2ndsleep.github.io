@@ -40,7 +40,7 @@ The blog entries progress with the development of {{ site.fake_company_name }}, 
 
 {% assign engineer_name = site.fake_username | capitalize %}
 
-![{{ engineer_name }}](/assets/images/pages/fake-engineer-profile.jpeg){: .align-right} {{ site.fake_company_name }} hired one engineer to do all the work. {{ engineer_name }} has extensive DevOps experience and is constantly sharpening her engineering skills since there's always something new to learn in this godforsaken industry and it never stops and she thinks maybe one day she'll come up for air and be able to move forward on her work, but then no!, there's another hot new framework she needs to learn or else she'll look like an idiot. Anyway, {{ site.fake_company_name }} pays her well enough and has dangled the stock options carrot, so she's going to stick around for now.
+![{{ engineer_name }}](/assets/images/pages/fake-engineer-profile.jpeg){: .align-right} {{ site.fake_company_name }} hired one engineer to do all the work. {{ engineer_name }} has extensive DevOps experience and is constantly sharpening her engineering skills since there's always something new to learn in this godforsaken industry and it never stops and she thinks maybe one day she'll come up for air and be able to move forward on her work, but then no!, there's another hot new framework she needs to learn or else she'll look like an idiot. Anyway, {{ site.fake_company_name }} pays her really well and has dangled the stock options carrot, so she's going to stick around for now.
 
 ## Blog Organization
 
