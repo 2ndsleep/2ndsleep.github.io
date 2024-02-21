@@ -166,4 +166,26 @@ Type `http://localhost:4280` in your web browser and behold our crappy site!
 
 {% include figure image_path="/assets/images/posts/swa-local-test.png" caption="Ah jeez, this is embarrassing." alt="basic public site" %}
 
+## Fix Typos
+
+As you recall, we hired a very inexpensive web designer who through something together as quickly as they could and possibly while drunk. What they gave us had a ton of typos, so we need to fix that.
+
+The point of all this is make changes locally before you push out your changes to GitHub and, subsequently, your Azure Static Web App instance. So let's make some changes to our site and see if we like it.
+
+If you closed VS Code or stopped the local emulator, you can start it up by running the SWA start command again: `./node_modules/.bin/swa start`
+{: .notice--info}
+
+Make the following changes to *index.html* and save the file.
+
+{% highlight html linenos %}
+<!--TO DO-->
+{% endhighlight %}
+
+Now refresh the page (or navigate to `http://localhost:4280` if you closed the browser) and see your changes!
+
+Notice how you don't need to rebuild anything or restart the SWA CLI. Since this is static HTML, the changes are immediately reflected.
+{: .notice--info}
+
+## Next Steps
+
 As discussed, we'll be deploying this to code to our Static Web App from GitHub, so in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-push-to-github %}) we'll push our code to GitHub.
