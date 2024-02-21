@@ -22,7 +22,7 @@ Good question. Azure has [several options](#{{ 'What Other Web Solutions Does Az
 - It supports HTTPS and we want to look professional here, folks.
 - We're not deploying a container, so we need an solution that supports containerless.
 - We don't need (that is, we're not willing to pay for) high-availability at this time.
-- We're deploying a static website and don't need the complexity of the other offerings (I mean, this one *does* have "static" in the name).
+- We're deploying a static website and don't need the complexity of the other offerings (I mean, Static Web App *does* have "static" in the name).
 
 ## How Do I Upload My Web Content to This Site?
 
@@ -36,13 +36,12 @@ Here's a high-level overview of what we'll be doing:
 1. Push our website code to a new GitHub repository (application)
 1. Deploy our application code from GitHub to the Static Web App (CI/CD)
 1. Update our application code and redeploy (general DevOps)
-1. Add a custom domain for the Static Web App (infrastructure)
 
 You'll notice that we'll deploy the website code after we create the Static Web App resource. So you may be wondering what is on that website before we deploy our app to it. Azure puts up a temporary website that looks something like this:
 
-{% include figure image_path="/assets/images/posts/static-web-app-temp-page.png" caption="This is the default Static Web App site as of 2024. If you're customers see this, they'll know you're an amateur." alt="initial temporary Azure Static Web App website" %}
+{% include figure image_path="/assets/images/posts/static-web-app-temp-page.png" caption="This is the default Static Web App site as of 2024. If your customers see this, they'll know you're an amateur." alt="initial temporary Azure Static Web App website" %}
 
-You may also be wondering what the URL is for this site is. Well, Microsoft makes one up for you as a subdomain of the **azurestaticapps.net**. That's why this example has the silly URL of **witty-pond-0f141550f.4.azurestaticapps.net**. You can't change that, but you can add your own custom domain that you own, which we'll do in step 5. That way we won't have to put "Visit us at witty-pond-0f141550f.4.azurestaticapps.net!" in our email signature.
+You may also be wondering what the URL is for this site is. Well, Microsoft makes one up for you as a subdomain of **azurestaticapps.net**. That's why this example has the silly URL of **witty-pond-0f141550f.4.azurestaticapps.net**. You can't change that, but you can add your own custom domain that you own, which we'll do in the next service, so stay tuned.
 
 ## What Other Web Solutions Does Azure Have?
 
