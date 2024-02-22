@@ -4,13 +4,13 @@ categories: web static-web-app procedure
 sort_order: 5
 description: We need to make some changes to our web app.
 ---
-{% assign engineer_name = site.fake_username | capitalize %}
-{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign engineer_name = site.data.fake.engineer_username | capitalize %}
+{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
 {% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
 {% assign branch_name = 'solicit-investors' %}
-{% assign engineer_github_account = site.fake_company_name | append: site.fake_username %}
+{% assign engineer_github_account = site.data.fake.company_name | append: site.data.fake.engineer_username %}
 
-{{ site.fake_ceo_name }}, the CEO of {% include reference.html item='fake_company' %} - a real ideas guy (trust fund kid) - had the brilliant notion of trying to solicit investors in the company, even though we don't have a product yet. But hey, why should the lack of a product [stop entrepreneurship](https://www.alexanderjarvis.com/25-startups-that-raised-without-a-product/)? He's asked that we add an email address where people can inquire about investing. So sure, let's do that.<!--more-->
+{{ site.data.fake.ceo_name }}, the CEO of {% include reference.html item='fake_company' %} - a real ideas guy (trust fund kid) - had the brilliant notion of trying to solicit investors in the company, even though we don't have a product yet. But hey, why should the lack of a product [stop entrepreneurship](https://www.alexanderjarvis.com/25-startups-that-raised-without-a-product/)? He's asked that we add an email address where people can inquire about investing. So sure, let's do that.<!--more-->
 
 ## Make Changes Locally
 
@@ -44,7 +44,7 @@ Run the following command to start up the Static Web App emulator on your local 
 Now open the *src/index.html* file in VS Code and add the following on line 12.
 
 ``` html
-<p>Interested in investing? Email us at bad-decisions@{{ site.fake_company_domain }}.</p>
+<p>Interested in investing? Email us at bad-decisions@{{ site.data.fake.company_domain }}.</p>
 ```
 
 The whole *index.html* file would look like this:
@@ -52,7 +52,7 @@ The whole *index.html* file would look like this:
 {% highlight html linenos %}
 <html>
     <head>
-        <title>{{ site.fake_company_name }}</title>
+        <title>{{ site.data.fake.company_name }}</title>
         <link rel="stylesheet" href="/css/main.css" />
     </head>
 
@@ -60,7 +60,7 @@ The whole *index.html* file would look like this:
         <img src="/images/{{ fake_company_name_lower }}_banner.png" id="banner" />
 
         <div id="main-content">
-            <p>{{ site.fake_company_name }} is just getting started. Check back later when this becomes the best site on the internet!</p>
+            <p>{{ site.data.fake.company_name }} is just getting started. Check back later when this becomes the best site on the internet!</p>
             <p>Interested in investing? Email us at bad-decisions@{{ fake_company_domain }}.</p>
         </div>
 
@@ -148,20 +148,20 @@ The `push:` part says to run the workflow when we merge with the main branch, wh
 
 Our Static Web App resource is aware of these PRs and will automatically create a separate preview website just for us to review the change we're about to merge.
 
-1. Go to the **{{ site.fake_company_code }}-webpub-prd-1** resource in the [Azure portal](https://portal.azure.com).
+1. Go to the **{{ site.data.fake.company_code }}-webpub-prd-1** resource in the [Azure portal](https://portal.azure.com).
 1. Click on the **Environments** blade.
 1. You'll see your PR listed under the **Preview environments** section. Click on the **Browse** button to open our changes in a browser. You can send this link to your stakeholders to make sure they approve of the changes that are about to be made.
 
 You'll also see this link on the PR page in GitHub if you wait long enough to let the workflow finish whereupon the github-actions bot will leave a comment with a link to the preview URL.
 {: .notice--info}
 
-In our scenario, {{ engineer_name }} sent the link to {{ site.fake_ceo_name }} and he sent an email back while he was paragliding with the body of :thumbsup:, so {{ engineer_name }} moved on to the next step.
+In our scenario, {{ engineer_name }} sent the link to {{ site.data.fake.ceo_name }} and he sent an email back while he was paragliding with the body of :thumbsup:, so {{ engineer_name }} moved on to the next step.
 
 Back at the PR in GitHub, click on the **Merge pull request** button followed by the **Confirm merge** button.
 
 If you're quick enough to navigate over to the **Actions** tab in your {{ web_public_repo }} repo you'll see two workflows in progress. The first is a new run of the workflow to deploy the website content from our main branch (which has just been updated by the merge) to the Static Web App. When that finishes, the main URL of the Static Web App will have that text about investors.
 
-The second workflow is actually the PR workflow run that kicked off when we created the PR. There is a second job in the workflow defined by `close_pull_request_job:` that is skipped when changes are made to the main branch. But that job is run when the PR is completed. The job deletes that preview environment from our Static Web App. If you view the **Environments** blade of the **{{ site.fake_company_code }}-webpub-prd-1** resource in the Azure portal, you'll see that the environment has been deleted.
+The second workflow is actually the PR workflow run that kicked off when we created the PR. There is a second job in the workflow defined by `close_pull_request_job:` that is skipped when changes are made to the main branch. But that job is run when the PR is completed. The job deletes that preview environment from our Static Web App. If you view the **Environments** blade of the **{{ site.data.fake.company_code }}-webpub-prd-1** resource in the Azure portal, you'll see that the environment has been deleted.
 
 ## Delete Your Branches
 

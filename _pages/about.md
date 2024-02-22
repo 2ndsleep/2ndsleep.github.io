@@ -30,19 +30,19 @@ I'm not trying to rewrite the existing documentation, so you'll see a lot of lin
 
 Oh, I'm flattered you asked. My name is Blaine Perry, and I'm just a humble cloud engineer. I've worked for large companies, small companies, startups, non-profits, for-profits, not-for-profits, and sometimes-for-profits. I've used Azure since 2014 and want you to learn the things I've learned and avoid the problems I've encountered. But this site isn't about me, it's about *you* (unless you want to [hire me]({% link _pages/contact.md %}), in which case it's definitely about me).
 
-## {{ site.fake_company_name }}
+## {{ site.data.fake.company_name }}
 
-![{{ site.fake_company_name }} logo](/assets/images/logos/fake-company/fake-company-banner.png)
+![{{ site.data.fake.company_name }} logo](/assets/images/logos/fake-company/fake-company-banner.png)
 
-To make this feel somewhat realistic, all the training content on here is part of creating a fictional company called {{ site.fake_company_name }}. {{ site.fake_company_name }} is a hot new startup that will recommend the ideal place you should live based on your preferences. I'll be building the platform infrastructure from scratch to support this fake company.
+To make this feel somewhat realistic, all the training content on here is part of creating a fictional company called {{ site.data.fake.company_name }}. {{ site.data.fake.company_name }} is a hot new startup that will recommend the ideal place you should live based on your preferences. I'll be building the platform infrastructure from scratch to support this fake company.
 
-The blog entries progress with the development of {{ site.fake_company_name }}, so depending on which procedure you choose, you'll see an example for a different point in time in the web development. I have this idea half-baked at the moment, so this project is a bit of an experiment. The goal is to demonstrate the various cloud services which will evolve as {{ site.fake_company_name }} progresses, and you'll see me make mistakes and correct them just like in real life. To see what I'm planning for the evolution of {{ site.fake_company_name }}, see my [roadmap](https://github.com/orgs/2ndsleep/projects/2).
+The blog entries progress with the development of {{ site.data.fake.company_name }}, so depending on which procedure you choose, you'll see an example for a different point in time in the web development. I have this idea half-baked at the moment, so this project is a bit of an experiment. The goal is to demonstrate the various cloud services which will evolve as {{ site.data.fake.company_name }} progresses, and you'll see me make mistakes and correct them just like in real life. To see what I'm planning for the evolution of {{ site.data.fake.company_name }}, see my [roadmap](https://github.com/orgs/2ndsleep/projects/2).
 
-{% assign engineer_name = site.fake_username | capitalize %}
+{% assign engineer_name = site.data.fake.engineer_username | capitalize %}
 
-![{{ engineer_name }}](/assets/images/pages/fake-engineer-profile.jpeg){: .align-left} {{ site.fake_company_name }} hired one engineer to do all the work. {{ engineer_name }} has extensive DevOps experience and is constantly sharpening her engineering skills since there's always something new to learn in this godforsaken industry and it never stops and she thinks maybe one day she'll come up for air and be able to move forward on her work, but then no!, there's another hot new framework she needs to learn or else she'll look like an idiot. Anyway, {{ site.fake_company_name }} pays her really well and has dangled the stock options carrot, so she's going to stick around for now.
+![{{ engineer_name }}](/assets/images/pages/fake-engineer-profile.jpeg){: .align-left} {{ site.data.fake.company_name }} hired one engineer to do all the work. {{ engineer_name }} has extensive DevOps experience and is constantly sharpening her engineering skills since there's always something new to learn in this godforsaken industry and it never stops and she thinks maybe one day she'll come up for air and be able to move forward on her work, but then no!, there's another hot new framework she needs to learn or else she'll look like an idiot. Anyway, {{ site.data.fake.company_name }} pays her really well and has dangled the stock options carrot, so she's going to stick around for now.
 
-![{{ engineer_name }}](/assets/images/pages/fake-company-founder.jpeg){: .align-right} {{ site.fake_company_name }} is run by founder and CEO {{ site.fake_ceo_name }} Bellingsworth. He's made his money through hard work and grit by keeping his nose to the grindstone and his eye on the ball. Oh, and his father is a big name in private equity. {{ site.fake_ceo_name }} occasionally has a good idea, and the staff always laughs at his jokes.
+![{{ engineer_name }}](/assets/images/pages/fake-company-founder.jpeg){: .align-right} {{ site.data.fake.company_name }} is run by founder and CEO {{ site.data.fake.ceo_name }} Bellingsworth. He's made his money through hard work and grit by keeping his nose to the grindstone and his eye on the ball. Oh, and his father is a big name in private equity. {{ site.data.fake.ceo_name }} occasionally has a good idea, and the staff always laughs at his jokes.
 
 ## Blog Organization
 
@@ -62,7 +62,7 @@ Each service's page will have two different types of posts: **explainers** and *
 
 ### Guided Tour
 
-The [Learn]({% link _pages/learn.md %}) page lists all the service categories, but since I'm building out the fake {{ site.fake_company_name }} infrastructure from scratch, you can follow along in the [Guided Tour]({% link _pages/guided.md %}). This will present the services in the order that they would be performed in real life. This is great if you're starting out and want to try to do the same thing at home.
+The [Learn]({% link _pages/learn.md %}) page lists all the service categories, but since I'm building out the fake {{ site.data.fake.company_name }} infrastructure from scratch, you can follow along in the [Guided Tour]({% link _pages/guided.md %}). This will present the services in the order that they would be performed in real life. This is great if you're starting out and want to try to do the same thing at home.
 
 ### Tags
 

@@ -4,7 +4,7 @@ categories: web static-web-app procedure
 sort_order: 5
 description: Let's create a GitHub Actions workflow to push our website code to our Azure Static Web App resource. 
 ---
-{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
 {% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
 
 Now it's time to deploy our website to our Static Web App resource using GitHub Actions.<!--more--> If you've been following along, so far we've done the following:
@@ -22,7 +22,7 @@ We're going to create a GitHub Actions workflow in the next section, but first w
 
 For this one-time task, the easiest way is to get the token from the portal.
 
-1. Go to the [Azure portal](https://portal.azure.com) and find your Static Web App resource in the **{{ site.fake_company_code }}-webpub-prd-1** resource group.
+1. Go to the [Azure portal](https://portal.azure.com) and find your Static Web App resource in the **{{ site.data.fake.company_code }}-webpub-prd-1** resource group.
 1. In the overview blade for the Static Web App, click the **Manage deployment token** button at the top. ![Managing deployment token](https://learn.microsoft.com/en-us/azure/static-web-apps/media/deployment-token-management/manage-deployment-token-button.png).
 1. Click the button to copy ![copy icon](/assets/images/posts/azure-copy-icon.png) the token.
 

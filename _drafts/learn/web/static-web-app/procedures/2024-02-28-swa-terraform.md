@@ -21,7 +21,7 @@ infrastructure_filesystem:
                 children:
                   - name: public-web-site-swa
 ---
-{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
 {% assign infrastructure_repo = '-infrastucture' | prepend: fake_company_name_lower %}
 {% assign swa_working_dir = 'public-web-site-swa' %}
 
@@ -138,7 +138,7 @@ We'll need a resource group where the Static Web App will live, so let's define 
 
 ``` terraform
 resource "azurerm_resource_group" "public_site" {
-  name = "{{ site.fake_company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
   location = "East US 2"
 }
 ```
@@ -174,7 +174,7 @@ Terraform will perform the following actions:
   + resource "azurerm_resource_group" "public_site" {
       + id       = (known after apply)
       + location = "eastus2"
-      + name     = "{{ site.fake_company_code }}-webpub-prd-1"
+      + name     = "{{ site.data.fake.company_code }}-webpub-prd-1"
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -200,7 +200,7 @@ Terraform will perform the following actions:
   + resource "azurerm_resource_group" "public_site" {
       + id       = (known after apply)
       + location = "eastus2"
-      + name     = "{{ site.fake_company_code }}-webpub-prd-1"
+      + name     = "{{ site.data.fake.company_code }}-webpub-prd-1"
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -221,7 +221,7 @@ What have you done??!! Did you just mess up your whole Azure environment?? Don't
   Enter a value: yes
 
 azurerm_resource_group.public_site: Creating...
-azurerm_resource_group.public_site: Creation complete after 1s [id=/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Creation complete after 1s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 {% endhighlight %}
@@ -238,7 +238,7 @@ Now we're going to add the definition for our Static Web App and do this all ove
 
 ``` terraform
 resource "azurerm_static_site" "public_site" {
-  name = "{{ site.fake_company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
   resource_group_name = azurerm_resource_group.public_site.name
   location = azurerm_resource_group.public_site.location
 }
@@ -253,12 +253,12 @@ Now your whole *main.tf* file should look like this:
 
 ``` terraform
 resource "azurerm_resource_group" "public_site" {
-  name = "{{ site.fake_company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
   location = "East US 2"
 }
 
 resource "azurerm_static_site" "public_site" {
-  name = "{{ site.fake_company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
   resource_group_name = azurerm_resource_group.public_site.name
   location = azurerm_resource_group.public_site.location
 }
@@ -271,7 +271,7 @@ terraform plan
 ```
 
 {% highlight output %}
-azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -284,8 +284,8 @@ Terraform will perform the following actions:
       + default_host_name   = (known after apply)
       + id                  = (known after apply)
       + location            = "eastus2"
-      + name                = "{{ site.fake_company_code }}-webpub-prd-1"
-      + resource_group_name = "{{ site.fake_company_code }}-webpub-prd-1"
+      + name                = "{{ site.data.fake.company_code }}-webpub-prd-1"
+      + resource_group_name = "{{ site.data.fake.company_code }}-webpub-prd-1"
       + sku_size            = "Free"
       + sku_tier            = "Free"
     }
@@ -300,7 +300,7 @@ terraform apply
 ```
 
 {% highlight output %}
-azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -313,8 +313,8 @@ Terraform will perform the following actions:
       + default_host_name   = (known after apply)
       + id                  = (known after apply)
       + location            = "eastus2"
-      + name                = "{{ site.fake_company_code }}-webpub-prd-1"
-      + resource_group_name = "{{ site.fake_company_code }}-webpub-prd-1"
+      + name                = "{{ site.data.fake.company_code }}-webpub-prd-1"
+      + resource_group_name = "{{ site.data.fake.company_code }}-webpub-prd-1"
       + sku_size            = "Free"
       + sku_tier            = "Free"
     }
@@ -328,7 +328,7 @@ Do you want to perform these actions?
   Enter a value: yes
 
 azurerm_static_site.public_site: Creating...
-azurerm_static_site.public_site: Creation complete after 2s [id=/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.fake_company_code }}-webpub-prd-1]
+azurerm_static_site.public_site: Creation complete after 2s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-webpub-prd-1]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 {% endhighlight  %}
@@ -340,7 +340,7 @@ Draw your attention to the penultimate line: `azurerm_static_site.public_site: C
 
 ## Admire Our Work
 
-You did it! You deployed your first Azure resource. {% include reference.html item='fake_company' %} is well on its way to success. Sure, [90% of startups fail](https://www.embroker.com/blog/startup-statistics/), but {{ site.fake_company_name }} isn't just about making money. It's about changing the world and all that bullshit.
+You did it! You deployed your first Azure resource. {% include reference.html item='fake_company' %} is well on its way to success. Sure, [90% of startups fail](https://www.embroker.com/blog/startup-statistics/), but {{ site.data.fake.company_name }} isn't just about making money. It's about changing the world and all that bullshit.
 
 Microsoft generates a random URL and puts a temporary website up there for you automatically, so let's take a look at it. There are multiple ways to discover the URL, but here are a few options.
 
@@ -356,7 +356,7 @@ The URL for the Static Web App will be displayed on the overview blade for the S
 Run the following Azure CLI command to find the URL.
 
 ``` shell
-az staticwebapp show --name {{ site.fake_company_code }}-webpub-prd-1 --query "{url:defaultHostname}" 
+az staticwebapp show --name {{ site.data.fake.company_code }}-webpub-prd-1 --query "{url:defaultHostname}" 
 ```
 
 You'll see output like this. Paste that URL into your browser and behold!
@@ -378,8 +378,8 @@ output "static_site_hostname" {
 ```
 
 {% highlight output %}
-azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-webpub-prd-1]
-azurerm_static_site.public_site: Refreshing state... [id=/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.fake_company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
+azurerm_static_site.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-webpub-prd-1]
 
 Changes to Outputs:
   + static_site_hostname = "witty-pond-0f141550f.4.azurestaticapps.net"

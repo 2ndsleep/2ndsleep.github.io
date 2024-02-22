@@ -12,7 +12,7 @@ projects_folder:
           - name: repository-2
           - name: repository-3
 ---
-{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
 {% assign infrastructure_repo = '-infrastucture' | prepend: fake_company_name_lower %}
 {% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
 
@@ -27,7 +27,7 @@ Although not absolutely required, it's nice to decide where you're going to put 
 
 {% include filesystem.html id="projects_folder" %}
 
-The *$HOME* folder is your user profile folder, which will be *\Users\{{ site.fake_username }}* in Windows and */Users/{{ site.fake_username }}* in macOS and Linux (assuming your username is {{ site.fake_username }}). I put all my repositories in the *Projects* subfolder which exists by default in macOS but you can create it in Windows or Linux.
+The *$HOME* folder is your user profile folder, which will be *\Users\{{ site.data.fake.engineer_username }}* in Windows and */Users/{{ site.data.fake.engineer_username }}* in macOS and Linux (assuming your username is {{ site.data.fake.engineer_username }}). I put all my repositories in the *Projects* subfolder which exists by default in macOS but you can create it in Windows or Linux.
 
 We're not going to create our repository folders quite yet. That will happen automatically when we clone them from GitHub.
 {: .notice--info}
@@ -68,7 +68,7 @@ Let's clone our {{ infrastructure_repo }} with the command line.
 1. Copy the URL of your repository and then type `git clone <URL of your repo>` as described [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).<br />![Clone GitHub repo with command line](/assets/images/posts/vscode-git-clone-cli.png)
 1. You will be prompted by VS Code to sign into GitHub. Click **Allow** which will launch a web browser where you can log into GitHub. After successfully logging in, you'll be directed back to VS Code where the clone process will continue. *You will not be prompted to log in if you made your repo public or if you have already authenticated to GitHub from the `git` command line.*<br />![GitHub authentication prompt](/assets/images/posts/vscode-git-auth-prompt.png)
 
-Your repository should now be cloned into a subfolder of your *Projects* folder, for example */Users/{{ site.fake_username }}/Projects/{{ infrastructure_repo }}*.
+Your repository should now be cloned into a subfolder of your *Projects* folder, for example */Users/{{ site.data.fake.engineer_username }}/Projects/{{ infrastructure_repo }}*.
 
 ### Clone with VS Code
 

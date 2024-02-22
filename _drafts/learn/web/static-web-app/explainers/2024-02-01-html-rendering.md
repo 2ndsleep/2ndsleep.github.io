@@ -13,10 +13,10 @@ Even if you're starting out in your IT career, you probably are at least aware t
 ``` html
 <html>
     <head>
-        <title>{{ site.fake_company_name }}</title>
+        <title>{{ site.data.fake.company_name }}</title>
     </head>
     <body>
-        <p>Welcome to {{ site.fake_company_name }}!</p>
+        <p>Welcome to {{ site.data.fake.company_name }}!</p>
     </body>
 </html>
 ```
@@ -49,7 +49,7 @@ In this example, the *customer-data.php* file contains the `get_customer_name` a
 <html>
     <head><title>Your Balance</title></head>
     <body>
-        <p>Hello {{ site.fake_username | capitalize }}!</p>
+        <p>Hello {{ site.data.fake.engineer_username | capitalize }}!</p>
         <p>Your balance is $4.85.</p>
     </body>
 </html>

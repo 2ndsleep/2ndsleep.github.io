@@ -5,7 +5,7 @@ sort_order: 4
 description: Now that we have our starter code, let's push it to our own GitHub repo.
 excerpt: Now that we've made some changes, we should push those changes up to GitHub in case our laptop craps out. We're also going to start screwing around with our app and if we mess it all up, we'll want to revert back.
 ---
-{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
 {% assign infrastructure_repo = '-infrastucture' | prepend: fake_company_name_lower %}
 {% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
 
@@ -97,8 +97,8 @@ Omit --global to set the identity only in this repository.
 If you get this and it's your first time using Git, this is expected. Git wants to know who you are so that your team knows who did what. If you did get this, run the commands just like it said.
 
 ``` shell
-git config --global user.email "{{ site.fake_username }}@{{ site.fake_company_domain }}"
-git config --global user.name "{{ site.fake_username | capitalize }}"
+git config --global user.email "{{ site.data.fake.engineer_username }}@{{ site.data.fake.company_domain }}"
+git config --global user.name "{{ site.data.fake.engineer_username | capitalize }}"
 ```
 
 Now that we're past that, run the same commit message again. If you didn't have that problem, you don't have to run this command again. (But if you do accidentally run this again, you'll get a friendly message that there's nothing to commit.)

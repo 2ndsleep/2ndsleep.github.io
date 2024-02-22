@@ -1,6 +1,6 @@
 {%- case include.item -%}
   {%- when 'fake_company' -%}
-    [{{ include.anchor_text | default: site.fake_company_name }}]({%- link _pages/about.md -%}#{{ site.fake_company_name | slugify }})
+    [{{ include.anchor_text | default: site.data.fake.company_name }}]({%- link _pages/about.md -%}#{{ site.data.fake.company_name | slugify }})
   {%- when 'azure_cli' -%}
     [{{ include.anchor_text | default: 'Azure CLI' }}](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
   {%- when 'vscode' -%}

@@ -50,17 +50,17 @@ With those justifications, here's what I've settled on.
 organization-workload-environment-instance
 ```
 
-So if you work for a company named **{{ site.fake_company_name }}** and you're deploying the **Web API** product in **production**, you may name it this:
+So if you work for a company named **{{ site.data.fake.company_name }}** and you're deploying the **Web API** product in **production**, you may name it this:
 
 ```
-{{ site.fake_company_code }}-webapi-prd-1
+{{ site.data.fake.company_code }}-webapi-prd-1
 ```
 
 The first thing you may notice is that a lot of items are shortened. The main reason is to save space so that they names aren't super long which can be particularly difficult if you're working on the command line. But another reason you might want to do this is because you want each segment to have a pre-determined length. This is convenient because you may want to run a script to get all the resources that are associated with, say, a particular workload. If all the resources have a known length, the script could know to grab characters 7-12 for the workload. To help with this, you'll probably want to document a list of codes that will be used for each segment, perhaps as such:
 
 |Organization|Code|
 |------------|----|
-|{{ site.fake_company_name }}|{{ site.fake_company_code }}|
+|{{ site.data.fake.company_name }}|{{ site.data.fake.company_code }}|
 |AdventureWorks|adwk|
 |Datum|datm|
 
@@ -83,8 +83,8 @@ Coming up with acronyms is hard.
 The **instance** segment can be a free-form value, but will generally be a number that is incremented. You may want to supply additional information if necessary. Suppose we have two APIs: one for billing and one for inventory. Then you might name them the following:
 
 ```
-{{ site.fake_company_code }}-webapi-prd-billing1
-{{ site.fake_company_code }}-webapi-prd-inventory1
+{{ site.data.fake.company_code }}-webapi-prd-billing1
+{{ site.data.fake.company_code }}-webapi-prd-inventory1
 ```
 
 Earlier I gave an example of a script that would parse the resource name based on the length of each segment. You may think that it doesn't matter what the length of the segments are because you could just break things apart by the dashes. But you run into two problems here. One is that you may want to use dashes in the codes (like `wb-api` instead of `webapi`). But the bigger problem is that not all resources allow the same type of characters. In fact, a storage account name cannot contain dashes. So you may need a separate naming convention for different resource types. For storage accounts, we'll make ours the same convention, but without dashes. This is where the fixed-length nature of the segments is important.
@@ -92,7 +92,7 @@ Earlier I gave an example of a script that would parse the resource name based o
 Here's an example storage account name:
 
 ```
-{{ site.fake_company_code }}webapiprd1
+{{ site.data.fake.company_code }}webapiprd1
 ```
 
 Here's another wrinkle. Unlike most resources, storage account names need to be globally unique. That means that no one else in the planet can use the same storage account name as you. Adding the organization name to the beginning will make it more likely that your name will be unique.

@@ -4,7 +4,7 @@ categories: web static-web-app procedure
 sort_order: 3
 description: Before you deploy your website, make sure it looks right by editing it on your local computer.
 ---
-{% assign fake_company_name_lower = site.fake_company_name | downcase %}
+{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
 {% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
 {% assign infrastructure_repo = '-infrastructure' | prepend: fake_company_name_lower %}
 
@@ -17,7 +17,7 @@ If you're purely a platform infrastructure engineer then this won't be something
 
 We were desperate so we paid $15 to the first web designer we could find to make a landing page for {% include reference.html item='fake_company' %}. They spent four minutes on it and then emailed a .zip of it to us. You can download a .zip of the web content by clicking on the button below.
 
-[Download {{ site.fake_company_name }} Website](https://github.com/2ndsleep/{{ web_public_repo }}/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
+[Download {{ site.data.fake.company_name }} Website](https://github.com/2ndsleep/{{ web_public_repo }}/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
 
 Extract this .zip file to a temporary location and then copy the files to the *{{ web_public_repo }}* repository on your local computer that you cloned in the [first post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}) of this project.
 
@@ -146,7 +146,7 @@ You'll see the following output warning you that you're running locally and your
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
 Using configuration "{{ web_public_repo }}" from file:
-  /home/{{ site.fake_username }}/Projects/{{ web_public_repo }}/swa-cli.config.json
+  /home/{{ site.data.fake.engineer_username }}/Projects/{{ web_public_repo }}/swa-cli.config.json
 
 ***********************************************************************
 * WARNING: This emulator may not match the cloud environment exactly. *
@@ -155,7 +155,7 @@ Using configuration "{{ web_public_repo }}" from file:
 
 [swa] 
 [swa] Serving static content:
-[swa]   /home/{{ site.fake_username }}/Projects/{{ web_public_repo }}/src
+[swa]   /home/{{ site.data.fake.engineer_username }}/Projects/{{ web_public_repo }}/src
 [swa] 
 [swa] Azure Static Web Apps emulator started at http://localhost:4280. Press CTRL+C to exit.
 [swa] 

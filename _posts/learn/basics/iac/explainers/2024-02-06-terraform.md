@@ -111,7 +111,7 @@ provider "azurerm" {
 }
 ```
 
-If you deploy this code, literally nothing will happen to Azure. You're just telling Terraform to import the `azurerm` provider because you plan to do something in Azure. If you wanted to create a resource group named **{{ site.fake_company_code }}-monitr-inf**, you could add the `azurerm_resource_group` resource definition.
+If you deploy this code, literally nothing will happen to Azure. You're just telling Terraform to import the `azurerm` provider because you plan to do something in Azure. If you wanted to create a resource group named **{{ site.data.fake.company_code }}-monitr-inf**, you could add the `azurerm_resource_group` resource definition.
 
 ``` terraform
 # Configure the Azure provider
@@ -131,7 +131,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "{{ site.fake_company_code }}-monitr-inf"
+  name     = "{{ site.data.fake.company_code }}-monitr-inf"
   location = "westus2"
 }
 ```
@@ -192,7 +192,7 @@ provider "azurerm" {
 
 ``` terraform
 resource "azurerm_resource_group" "rg" {
-  name     = "{{ site.fake_company_code }}-monitr-inf"
+  name     = "{{ site.data.fake.company_code }}-monitr-inf"
   location = "westus2"
 }
 ```
