@@ -22,7 +22,7 @@
   {%- when 'functions' -%}
     [{{ include.anchor_text | default: 'Azure Functions' }}](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)
   {%- when 'infrastructure_repo' -%}
-    [{{ include.anchor_text | default: 'scramoose-infrastructure' }}](https://github.com/2ndsleep/scramoose-infrastructure)
+    [{{ include.anchor_text | default: site.data.fake.infrastructure_repo }}](https://github.com/2ndsleep/{{ site.data.fake.infrastructure_repo }})
   {%- when 'web_public_repo' -%}
-    [{{ include.anchor_text | default: 'scramoose-web-public' }}](https://github.com/2ndsleep/scramoose-web-public)
+    [{{ include.anchor_text | default: site.data.fake.web_public_repo }}](https://github.com/2ndsleep/{{ site.data.fake.web_public_repo }})
 {%- endcase -%}

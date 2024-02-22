@@ -41,7 +41,7 @@ You'll notice that we'll deploy the website code after we create the Static Web 
 
 {% include figure image_path="/assets/images/posts/static-web-app-temp-page.png" caption="This is the default Static Web App site as of 2024. If your customers see this, they'll know you're an amateur." alt="initial temporary Azure Static Web App website" %}
 
-You may also be wondering what the URL is for this site is. Well, Microsoft makes one up for you as a subdomain of **azurestaticapps.net**. That's why this example has the silly URL of **witty-pond-0f141550f.4.azurestaticapps.net**. You can't change that, but you can add your own custom domain that you own, which we'll do in the next service, so stay tuned.
+You may also be wondering what the URL is for this site is. Well, Microsoft makes one up for you as a subdomain of **azurestaticapps.net**. That's why this example has the silly URL of **{{ site.data.web.static_web_app_basic.swa_url }}**. You can't change that, but you can add your own custom domain that you own, which we'll do in the next service, so stay tuned.
 
 ## What Other Web Solutions Does Azure Have?
 

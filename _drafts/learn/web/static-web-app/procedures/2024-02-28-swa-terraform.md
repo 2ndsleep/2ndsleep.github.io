@@ -4,14 +4,14 @@ categories: web static-web-app procedure
 sort_order: 2
 description: Our first real thing! Let's deploy a Static Web App resource with Terraform.
 projects_folder:
-  - name: $HOME (my home folder)
+  - name: $HOME
     children:
       - name: Projects
         children:
           - name: scramoose-infrastructure
           - name: scramoose-web-public
 infrastructure_filesystem:
-  - name: $HOME (my home folder)
+  - name: $HOME
     children:
       - name: Projects
         children:
@@ -21,10 +21,6 @@ infrastructure_filesystem:
                 children:
                   - name: public-web-site-swa
 ---
-{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
-{% assign infrastructure_repo = '-infrastucture' | prepend: fake_company_name_lower %}
-{% assign swa_working_dir = 'public-web-site-swa' %}
-
 If you've been following along with the [guided tour]({% link _pages/guided.md %}), you know everything up to now has just been pillow talk. Well, it's time to get down and dirty as we use Terraform to deploy a resource.<!--more--> And that resource will be an empty Azure Static Web App!
 
 Empty? Yep. We asked our web designer to create a site and they're still working on it, so we don't actually have the web content yet. However, we can go ahead and deploy the web infrastructure so that we can just plop the web content on there when it's ready.
@@ -43,7 +39,7 @@ To do this procedure, you'll need to have already performed the following items.
 Before proceeding, read about how we're [*not* using Terraform Cloud]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Terraform vs. Terraform Cloud' | slugify }}) right now. This is an important thing to know because we're doing things a little differently for this deployment than we will be doing in future posts which is why logging in through the Azure CLI is necessary.
 {: .notice--info}
 
-We're going to create a service principal in Azure that will be used by Terraform to gain access to Azure in order to deploy our Static Web App resource. This is really just to be a rehash of the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step of the [Terraform Tutorial]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %}) that you may have already performed, so I'll provide links to that tutorial with some additional commentary.
+We're going to create a service principal in Azure that will be used by Terraform to gain access to Azure in order to deploy our Static Web App resource. This will just be a rehash of the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step of the [Terraform Tutorial]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %}) that you may have already performed, so I'll provide links to that tutorial with some additional commentary.
 
 - First, follow the steps to log into Azure and set your subscription in the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step.
 - Next, [create a service principal](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#create-a-service-principal). If you've already done that and saved the password in a secure location, you can skip this. If you don't know the password, you can create a new service principal (you may want to delete the old one for housekeeping purposes, if no one is using it). If you don't remember the app ID, you can find it in the Azure portal by searching for and selecting **App registrations**. You may need to select the **All application** tab if you don't see it listed.
@@ -53,11 +49,11 @@ We're going to create a service principal in Azure that will be used by Terrafor
 
 Time to define our Static Web App resource using Terraform. Let's get to it!
 
-In our [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) we create new repositories in GitHub and cloned them to our local computer. The folder structure should look like this on your computer.
+In our [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) we created new repositories in GitHub and cloned them to our local computer. The folder structure should look like this on your computer.
 
 {% include filesystem.html id="projects_folder" %}
 
-We'll be working in the **{{ infrastructure_repo }}** repository for this post. This will be the first resource we manage with Terraform, so let's create a new [working directory]({% post_url /learn/basics/iac/explainers/2024-02-06-terraform %}#how-terraform-works) for this. First, let's create a new folder for all our Terraform configurations called, well, *terraform*. Below that, let's create the working directory called *{{ swa_working_dir }}*. 
+We'll be working in the **{{ site.data.fake.infrastructure_repo }}** repository for this post. This will be the first resource we manage with Terraform, so let's create a new [working directory]({% post_url /learn/basics/iac/explainers/2024-02-06-terraform %}#how-terraform-works) for this. First, let's create a new folder for all our Terraform configurations called, well, *terraform*. Below that, let's create the working directory called *{{ site.data.web.static_web_app_basic.swa_working_dir }}*. 
 
 {% include filesystem.html id="infrastructure_filesystem" %}
 
@@ -69,7 +65,7 @@ Just in case you were afraid to ask, you can create new files and folders in VS 
 
 ### Terraform Settings
 
-Let's create our first Terraform file. We'll call this file *base.tf* and it will contain the settings for our Terraform configuration. Create a new file in VS Code named *base.tf* in the *{{ swa_working_dir }}* folder and add the following code.
+Let's create our first Terraform file. We'll call this file *base.tf* and it will contain the settings for our Terraform configuration. Create a new file in VS Code named *base.tf* in the *terraform/{{ site.data.web.static_web_app_basic.swa_working_dir }}* folder and add the following code.
 
 {% highlight terraform linenos %}
 terraform {
@@ -96,11 +92,13 @@ Great job! You've written a Terraform file that tells Terraform the following:
 
 Now we need to initialize our Terraform working directory which will download all our providers to the *.terraform* folder. It will also create a [dependency lock file](https://developer.hashicorp.com/terraform/language/files/dependency-lock) named *terraform.lock.hcl*. Some providers may depend on each other and this is how Terraform keeps track of that.
 
-Start a terminal in VS Code (**View > Terminal** or `` Ctrl+` ``) and `cd` into the *terraform/{{ swa_working_dir }}* folder. Type the following to initialize the working directory.
+Start a terminal in VS Code (**View > Terminal** or `` Ctrl+` ``) and `cd` into the *terraform/{{ site.data.web.static_web_app_basic.swa_working_dir }}* folder. Type the following to initialize the working directory.
 
 ``` shell
 terraform init
 ```
+
+{% include figure image_path="/assets/images/posts/vscode-swa-terraform-init.png" caption="Your VS Code instance should look like this so far." alt="VS Code terraform init command" %}
 
 You'll see something similar to the following output.
 
@@ -128,7 +126,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 {% endhighlight %}
 
-{% include figure image_path="/assets/images/posts/vscode-terraform-init.png" caption="Here's what your VS Code interface might look like now." alt="VS Code terraform init example" %}
+{% include figure image_path="/assets/images/posts/vscode-terraform-after-init.png" caption="Here's what your VS Code interface might look like now." alt="VS Code terraform init example" %}
 
 ### Create Resource Group
 
@@ -138,7 +136,7 @@ We'll need a resource group where the Static Web App will live, so let's define 
 
 ``` terraform
 resource "azurerm_resource_group" "public_site" {
-  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
   location = "East US 2"
 }
 ```
@@ -154,6 +152,8 @@ If you see the following output, you're all good! If not, go check your Terrafor
 {% highlight output %}
 Success! The configuration is valid.
 {% endhighlight %}
+
+{% include figure image_path="/assets/images/posts/vscode-terraform-validate.png" caption="Here's your new *main.tf* file that has been succesfully validated." alt="VS Code after terraform validate command" %}
 
 We're almost ready to deploy the resource group. But first, let's see what Terraform thinks would happen if we deployed this. Like a little test run.
 
@@ -174,7 +174,7 @@ Terraform will perform the following actions:
   + resource "azurerm_resource_group" "public_site" {
       + id       = (known after apply)
       + location = "eastus2"
-      + name     = "{{ site.data.fake.company_code }}-webpub-prd-1"
+      + name     = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -200,7 +200,7 @@ Terraform will perform the following actions:
   + resource "azurerm_resource_group" "public_site" {
       + id       = (known after apply)
       + location = "eastus2"
-      + name     = "{{ site.data.fake.company_code }}-webpub-prd-1"
+      + name     = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -212,7 +212,7 @@ Do you want to perform these actions?
   Enter a value:
 {% endhighlight %}
 
-Terraform runs the plan one last time and then asks you if you're double sure you want to do this. They even make you type out `yes` fully like a third-grader. But that's fine because it makes you think about what you're doing. Type Y-E-S and then shakily hit the Enter key.
+Terraform runs the plan one last time and then asks you if you're double sure you want to do this. They even make you type out `yes` fully like a third-grader. But that's fine because it makes you think about what you're doing. Type `y` - `e` - `s` and then shakily hit the Enter key.
 
 What have you done??!! Did you just mess up your whole Azure environment?? Don't worry, you're fine! Yes, just like anything in tech, you can screw up things royally but creating a resource group is one of the most harmless things you can do in Azure, so take a breath, you're good.
 {: .notice--info}
@@ -221,7 +221,7 @@ What have you done??!! Did you just mess up your whole Azure environment?? Don't
   Enter a value: yes
 
 azurerm_resource_group.public_site: Creating...
-azurerm_resource_group.public_site: Creation complete after 1s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Creation complete after 1s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 {% endhighlight %}
@@ -238,7 +238,7 @@ Now we're going to add the definition for our Static Web App and do this all ove
 
 ``` terraform
 resource "azurerm_static_site" "public_site" {
-  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
   resource_group_name = azurerm_resource_group.public_site.name
   location = azurerm_resource_group.public_site.location
 }
@@ -253,12 +253,12 @@ Now your whole *main.tf* file should look like this:
 
 ``` terraform
 resource "azurerm_resource_group" "public_site" {
-  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
   location = "East US 2"
 }
 
 resource "azurerm_static_site" "public_site" {
-  name = "{{ site.data.fake.company_code }}-webpub-prd-1"
+  name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
   resource_group_name = azurerm_resource_group.public_site.name
   location = azurerm_resource_group.public_site.location
 }
@@ -271,7 +271,7 @@ terraform plan
 ```
 
 {% highlight output %}
-azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -284,8 +284,8 @@ Terraform will perform the following actions:
       + default_host_name   = (known after apply)
       + id                  = (known after apply)
       + location            = "eastus2"
-      + name                = "{{ site.data.fake.company_code }}-webpub-prd-1"
-      + resource_group_name = "{{ site.data.fake.company_code }}-webpub-prd-1"
+      + name                = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
+      + resource_group_name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
       + sku_size            = "Free"
       + sku_tier            = "Free"
     }
@@ -300,7 +300,7 @@ terraform apply
 ```
 
 {% highlight output %}
-azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -313,8 +313,8 @@ Terraform will perform the following actions:
       + default_host_name   = (known after apply)
       + id                  = (known after apply)
       + location            = "eastus2"
-      + name                = "{{ site.data.fake.company_code }}-webpub-prd-1"
-      + resource_group_name = "{{ site.data.fake.company_code }}-webpub-prd-1"
+      + name                = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
+      + resource_group_name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
       + sku_size            = "Free"
       + sku_tier            = "Free"
     }
@@ -328,7 +328,7 @@ Do you want to perform these actions?
   Enter a value: yes
 
 azurerm_static_site.public_site: Creating...
-azurerm_static_site.public_site: Creation complete after 2s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-webpub-prd-1]
+azurerm_static_site.public_site: Creation complete after 2s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 {% endhighlight  %}
@@ -356,14 +356,14 @@ The URL for the Static Web App will be displayed on the overview blade for the S
 Run the following Azure CLI command to find the URL.
 
 ``` shell
-az staticwebapp show --name {{ site.data.fake.company_code }}-webpub-prd-1 --query "{url:defaultHostname}" 
+az staticwebapp show --name {{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1 --query "{url:defaultHostname}" 
 ```
 
 You'll see output like this. Paste that URL into your browser and behold!
 
 {% highlight output %}
 {
-  "url": "witty-pond-0f141550f.4.azurestaticapps.net"
+  "url": "{{ site.data.web.static_web_app_basic.swa_url }}"
 }
 {% endhighlight %}
 
@@ -378,11 +378,11 @@ output "static_site_hostname" {
 ```
 
 {% highlight output %}
-azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1]
-azurerm_static_site.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-webpub-prd-1]
+azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
+azurerm_static_site.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
 
 Changes to Outputs:
-  + static_site_hostname = "witty-pond-0f141550f.4.azurestaticapps.net"
+  + static_site_hostname = "{{ site.data.web.static_web_app_basic.swa_url }}"
 
 You can apply this plan to save these new output values to the Terraform state, without changing any real infrastructure.
 
@@ -397,7 +397,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-static_site_hostname = "witty-pond-0f141550f.4.azurestaticapps.net"
+static_site_hostname = "{{ site.data.web.static_web_app_basic.swa_url }}"
 {% endhighlight %}
 
 Note that Terraform detects that your code won't actually change the resources. After you type `yes`, you'll see that 0 resources were added, changed, or destroyed. That's nice to know. But if you take a peek at your *terraform.tfstate* file, you'll see a new entry for the output, because Terraform tracks output values in the state.
@@ -409,4 +409,4 @@ That's it! You haven't really done anything worth showing your family, not that 
 
 Remember, we've only deployed the infrastructure (that is, the Static Web App Azure resource) which is why you'll see a [temporary site]({% post_url /learn/web/static-web-app/explainers/2024-02-01-static-web-app %}#{{ 'How Do I Upload My Web Content to This Site?' | slugify }}) at the URL. We're still waiting for our web designer get back to us.
 
-Oh, and it looks like our web designer just finished the website. We'll deploy that to this new Static Web App in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}).
+Oh wouldn't you know? It looks like our web designer just finished the website. Good timing. We'll deploy that to this new Static Web App in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}).

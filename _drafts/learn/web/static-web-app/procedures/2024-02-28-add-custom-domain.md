@@ -9,7 +9,7 @@ published: false
 {% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
 {% assign infrastructure_repo = '-infrastructure' | prepend: fake_company_name_lower %}
 {% assign branch_name = 'custom-domain' %}
-{% assign swa_url = 'witty-pond-0f141550f.4.azurestaticapps.net' %}
+{% assign swa_url = '{{ site.data.web.static_web_app_basic.swa_url }}' %}
 
 Right now, our Static Web App is using the default URL that was assigned to it by Microsoft, which is **{{ swa_url }}**. As I noted earlier, we don't want to put "Visit us at {{ swa_url }}!" in our email signature. We want to use the corporate domain for {{ site.data.fake.company_name }}, which is **{{ site.data.fake.company_domain }}**.<!--more-->
 
