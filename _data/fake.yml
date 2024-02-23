@@ -4,7 +4,7 @@ company_code: scrm
 company_domain: scramoose.dev
 engineer_username: ximena
 engineer_name: Ximena
-ceo_name: Madison
+ceo_name: Madyson
 
 # Azure info
 subscription_guid: c36ff944-4355-4514-95c1-d43921b3d46c
@@ -14,3 +14,4 @@ terraform_service_principal_guid: 4aec28a9-ce27-4938-9e05-a91c0515e1c7
 # GitHub info
 infrastructure_repo: scramoose-infrastructure
 web_public_repo: scramoose-web-public
+engineer_github_account: scramoose-ximena

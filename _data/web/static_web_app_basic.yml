@@ -1,3 +1,4 @@
 swa_working_dir: public-web-site-swa
 workload: webpub
 swa_url: kind-stone-02389c60f.4.azurestaticapps.net
+update_branch_name: solicit-investors
