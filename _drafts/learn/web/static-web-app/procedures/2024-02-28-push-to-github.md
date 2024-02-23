@@ -5,27 +5,26 @@ sort_order: 4
 description: Now that we have our starter code, let's push it to our own GitHub repo.
 excerpt: Now that we've made some changes, we should push those changes up to GitHub in case our laptop craps out. We're also going to start screwing around with our app and if we mess it all up, we'll want to revert back.
 ---
-{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
-{% assign infrastructure_repo = '-infrastucture' | prepend: fake_company_name_lower %}
-{% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
-
 If you've been following along with the procedures in this service so far, you've done the following:
 
 - [Created your GitHub repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) and cloned them to your local computer
 - Created a new [Static Web App resource with Terraform]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %})
 - Run the static website on your [local computer]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}).
 
-Now that we've made some changes, we should push those changes up to GitHub in case our laptop craps out. We're also going to start screwing around with our app and if we mess it all up, we'll want to revert back. Just like when we [configured our repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}), there are two ways to push our changes back up to GitHub: the `git` command or using the VS Code interface. We'll push our changes with the command line for the {{ infrastructure_repo }} repo and do it the VS Code way for our {{ web_public_repo }} repo.
+Now that we've made some changes, we should push those changes up to GitHub in case our laptop craps out. We're also going to start screwing around with our app and if we mess it all up, we'll want to revert back. Just like when we [configured our repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}), there are two ways to push our changes back up to GitHub: the `git` command or using the VS Code interface. We'll push our changes with the command line for the {{ site.data.fake.infrastructure_repo }} repo and do it the VS Code way for our {{ site.data.fake.web_public_repo }} repo.
 
-There's actually a couple of steps before we can push changes into GitHub. Git doesn't actually know about our changes so we need to **stage** the files we want to add to our repository. After a file has been staged, it can be **committed** where we officially add it to the repository with a message about what the file is about (or what changes were made if the file already exists).
+There's a couple of steps before we can push changes into GitHub. Git doesn't know which of our changes we want to add to the repo so we need to **stage** those files first. After a file has been staged, it can be **committed** where we officially add it to the repository with a message about what the file is about (or what changes were made if the file already exists).
 
 ## Command Line
 
-Before you start this, you should see that the source control icon in VS Code will show that some files have not been committed. Even though we're using the command line, click on the source control icon so you can see how our changes will be detected by VS Code.
+Before you start this, you should see that the Source Control icon in VS Code will show that some files have not been committed. Even though we're using the command line, click on the Source Control ![VS Code Source Control icon](/assets/images/posts/vscode-source-control-icon.png) icon so you can see how our changes will be detected by VS Code.
 
-Start VS Code, open any file from the {{ infrastructure_repo }} folder, and then open the terminal. This should put you in the *{{ infrastructure_repo }}* folder, but if not, `cd` into that folder.
+{% capture vscode_unstaged_files_caption %}You should have 3 unstaged files in your local {{ site.data.fake.infrastructure_repo }} repository.{% endcapture %}
+{% include figure image_path="/assets/images/posts/vscode-source-control-unstaged-files.png" caption=vscode_unstaged_files_caption alt="VS Code with unstaged files" %}
 
-If you are in the *{{ infrastructure_repo }}/terraform/public-web-site-swa* folder, this will still work with that folder with slightly different output. I like to run my `git` commands at the root of the repository in case I'm forgetting any files, but you can run the commands from a subfolder if you want.
+Start VS Code and open a terminal into the {{ site.data.fake.infrastructure_repo }} folder.
+
+If you are in the *{{ site.data.fake.infrastructure_repo }}/terraform/public-web-site-swa* folder, this will still work with that folder with slightly different output. I like to run my `git` commands at the root of the repository in case I'm forgetting any files, but you can run the commands from a subfolder if you want.
 {: .notice--info}
 
 Type the following command to see what Git says the current status is.
@@ -53,7 +52,9 @@ Git is saying that we have some new files that it sees but that haven't been sta
 git add -A
 ```
 
-You won't see any output, but you'll notice that the source control extension in VS Code now shows these files as staged. Let's check the status again and see what Git says.
+You won't see any output, but you'll notice that the Source Control extension in VS Code now shows these files as staged. Let's check the status again and see what Git says.
+
+![staged files](/assets/images/posts/vscode-source-control-infra-repo-staged.png)
 
 ``` shell
 git status
@@ -75,9 +76,10 @@ Changes to be committed:
 Now let's commit these files to our repository with a message.
 
 ``` shell
-git commit * -m "Add Static Web App resource"
+git commit -m "Add Static Web App resource"
 ```
 
+{% capture author_notice %}
 There's a chance you get this output:
 
 {% highlight output %}
@@ -101,12 +103,34 @@ git config --global user.email "{{ site.data.fake.engineer_username }}@{{ site.d
 git config --global user.name "{{ site.data.fake.engineer_username | capitalize }}"
 ```
 
-Now that we're past that, run the same commit message again. If you didn't have that problem, you don't have to run this command again. (But if you do accidentally run this again, you'll get a friendly message that there's nothing to commit.)
+Now that we're past that, run the same commit message again.
 
 ``` shell
-# You only need to run this again if you got the "Author identity unknown" error message.
-git commit * -m "Add Static Web App resource"
+git commit -m "Add Static Web App resource"
 ```
+
+***
+
+You may have also received a message like this:
+
+{% highlight output %}
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+{% endhighlight %}
+
+If you got that, the commit probably worked but you should still run the same commands above to set your username and email.
+{% endcapture %}
+
+<div class="notice--info">{{ author_notice | markdownify }}</div>
 
 Git tells us that we successfully committed our changes.
 
@@ -118,7 +142,9 @@ Git tells us that we successfully committed our changes.
  create mode 100644 terraform/public-web-site-swa/main.tf
 {% endhighlight %}
 
-Now the source control extension in VS Code shows that everything is good and that you commits that need to pushed to GitHub, that should also be confirmed when we check the status.
+Now the Source Control extension in VS Code should show that everything is good and that your commits need to be pushed to GitHub. This will be confirmed when we check the status.
+
+![staged files](/assets/images/posts/vscode-source-control-infra-repo-committed.png)
 
 ``` shell
 git status
@@ -132,7 +158,7 @@ Your branch is ahead of 'origin/main' by 1 commit.
 nothing to commit, working tree clean
 {% endhighlight %}
 
-Yup, `git status` is telling us that our local repository has newer commits than the repository on GitHub and suggest we run `git push`. Great idea! Let's push our changes up to GitHub.
+Yup, `git status` is telling us that our local repository has newer commits than the repository on GitHub and is suggesting we run `git push`. Great idea! Let's push our changes up to GitHub.
 
 ``` shell
 git push
@@ -146,11 +172,11 @@ Compressing objects: 100% (6/6), done.
 Writing objects: 100% (7/7), 1.41 KiB | 1.41 MiB/s, done.
 Total 7 (delta 1), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To https://github.com/2ndsleep/{{ infrastructure_repo }}.git
+To https://github.com/2ndsleep/{{ site.data.fake.infrastructure_repo }}.git
    f3d9098..7477bd6  main -> main
 {% endhighlight %}
 
-We did it! The source control extension in VS Code should also show that there's nothing to push. Let's run one more `git status` to see what it says.
+We did it! The Source Control extension in VS Code should also show that there's nothing to push. Let's run one more `git status` to see what it says.
 
 ``` shell
 git status
@@ -169,20 +195,30 @@ nothing to commit, working tree clean
 
 ## VS Code
 
-Now let's do it the easy way with our {{ web_public_repo }} repository. Open VS Code and click on the Source Control icon. You should see 5 files under the **Changes** header that need to be added to our repo. Each file should have a green letter **U** next to it (this stands for **untracked** in Git parlance).
+Now let's do it the easy way with our {{ site.data.fake.infrastructure_repo }} repository. Open VS Code and click on the Source Control ![VS Code Source Control icon](/assets/images/posts/vscode-source-control-icon.png) icon. You should see 6 files under the **Changes** header that need to be added to our repo (or 4 files if you didn't copy the *LICENSE* and *README.md* files, which is a-okay). Each file should have a green letter **U** next to it, which stands for **untracked** in Git parlance.
 
-If you move your mouse slightly to the left of one of those U letters, you'll see a **+** sign. You can click on that for all of the files or to make it easier, click on the + sign in the **Changes** header to add all 5 files. The status should change from **Changes** to **Staged Changes**. This is the same as typing `git add -A`.
+If you move your mouse slightly to the left of one of those U letters, you'll see a **+** sign. You can click on that for each file or to make it easier, click on the + sign in the **Changes** header to add all the untracked files. The status should change from **Changes** to **Staged Changes**. This is the same as typing `git add -A`.
 
 {% include figure image_path="/assets/images/posts/vscode-source-control-stage-all.png" caption="Click the **+** button to stage all files." alt="VS Code stage all button" %}
 
 {% include figure image_path="/assets/images/posts/vscode-source-control-staged.png" caption="All files are now staged." alt="VS Code staged files" class="third" %}
 
-Now we want to commit our changes, so type the following message into the message bar above the files: `Add initial web content`. Click the **Commit** button. This is the same as typing `git commit * -m "Add initial web content"`.
+Now we want to commit our changes, so type the following message into the message bar above the files: `Add initial web content`. Click the **Commit** button. This is the same as typing `git commit -m "Add initial web content"`.
 
 {% include figure image_path="/assets/images/posts/vscode-source-control-pre-commit.png" caption="Add a commit message and click the **Commit** button." alt="VS Code commit changes" class="third" %}
 
-Okay, you've committed everything locally. Now you should see a button that says **Sync Changes 1 ⬆**. Click that button to push your changes to GitHub.
+Okay, you've committed everything locally. This is normally where you would see a button that says **Sync Changes 1 ⬆**. However, since I told you not to include a *.gitignore* or *README.md* file when you created the repo, GitHub had no initial files and didn't both creating a branch. However, as soon as you committed files locally, Git created a local branch named **main**. Now you have a local branch named main but no corresponding branch in GitHub so Git is confused. Luckily, there is an easy fix which is to run this command.
 
-{% include figure image_path="/assets/images/posts/vscode-source-control-sync.png" caption="Clicking the **Sync Changes** button is the same as `git push`." alt="VS Code sync changes" class="third" %}
+``` shell
+git branch --unset-upstream
+```
+
+Now you should see the **Public Branch** button. Click that button to create the main branch in GitHub and push the changes.
+
+{% include figure image_path="/assets/images/posts/vscode-source-control-infra-repo-publish.png" caption="Since the main branch is completely new to GitHub, you'll need to publish it first. After that, you should see the **Sync Changes ⬆** button whenever you have new commits to push." alt="VS Code Source Control publish branch button" class="half" %}
 
 Yeah, that's a lot easier. Despite that, I find myself frequently using the command lines just to stay sharp. I like to know what I'm doing and if you do it a lot it's almost as fast as using the visual interface.
+
+## What About the Friggin' Website?
+
+Yeah, I know. We keep *not* creating a website. Don't worry, that's [next]({% post_url /learn/web/static-web-app/procedures/2024-02-28-github-actions %}).
