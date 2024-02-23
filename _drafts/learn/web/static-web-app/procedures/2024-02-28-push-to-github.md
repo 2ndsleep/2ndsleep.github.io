@@ -219,6 +219,8 @@ Now you should see the **Public Branch** button. Click that button to create the
 
 Yeah, that's a lot easier. Despite that, I find myself frequently using the command lines just to stay sharp. I like to know what I'm doing and if you do it a lot it's almost as fast as using the visual interface.
 
+{% include figure image_path="/assets/images/posts/github-webpublicrepo-after-push.png" caption="And if you check your GitHub repo, the new files will be there." alt="GitHub repo after publish" %}
+
 ## What About the Friggin' Website?
 
 Yeah, I know. We keep *not* creating a website. Don't worry, that's [next]({% post_url /learn/web/static-web-app/procedures/2024-02-28-github-actions %}).
