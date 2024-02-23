@@ -4,10 +4,6 @@ categories: web static-web-app procedure
 sort_order: 3
 description: Before you deploy your website, make sure it looks right by editing it on your local computer.
 ---
-{% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
-{% assign web_public_repo = '-web-public' | prepend: fake_company_name_lower %}
-{% assign infrastructure_repo = '-infrastructure' | prepend: fake_company_name_lower %}
-
 Before we deploy our website to Azure, we want to make sure it looks right. We can do this by developing the app locally on our laptop. As you might guess, this part won't involve Azure at all.<!--more-->
 
 If you're purely a platform infrastructure engineer then this won't be something you do much, if ever, but it's still nice to know what your front-end developer friends are up to, those little pip-squeaks.
@@ -17,11 +13,11 @@ If you're purely a platform infrastructure engineer then this won't be something
 
 We were desperate so we paid $15 to the first web designer we could find to make a landing page for {% include reference.html item='fake_company' %}. They spent four minutes on it and then emailed a .zip of it to us. You can download a .zip of the web content by clicking on the button below.
 
-[Download {{ site.data.fake.company_name }} Website](https://github.com/2ndsleep/{{ web_public_repo }}/archive/refs/tags/web/static-web-app/initial-public-site.zip){: .btn .btn--info}
+[Download {{ site.data.fake.company_name }} Website](https://github.com/2ndsleep/{{ site.data.fake.web_public_repo }}/archive/refs/tags/web/static-web-app/designer.zip){: .btn .btn--info}
 
-Extract this .zip file to a temporary location and then copy the files to the *{{ web_public_repo }}* repository on your local computer that you cloned in the [first post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}) of this project.
+Extract this .zip file to a temporary location and then copy the files to the *{{ site.data.fake.web_public_repo }}* repository on your local computer that you cloned in the [first post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}) of this project.
 
-Now open VS Code and check the *{{ web_public_repo }}* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
+Now open VS Code and check the *{{ site.data.fake.web_public_repo }}* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
 
 {% include figure image_path="/assets/images/posts/vscode-web-public-contents.png" caption="VS Code Explorer view after adding website contents" alt="VS Code Explorer view after adding website contents" %}
 
@@ -36,8 +32,6 @@ Here are the basics steps we'll be doing.
 1. Configure SWA.
 1. Run our website locally using SWA.
 
-All these commands are assumed to be run from a command console (aka, terminal) from within the *{{ web_public_repo }}* folder. One cool thing about VS Code is that it includes a terminal and will drop you automatically into the *{{ web_public_repo }}* folder. If you don't see the terminal when you start VS Code, you can start it by clicking **View > Terminal** or by typing `` Ctrl+` `` (backtick).
-
 ### Install Node.js
 
 Node.js is a runtime environment for JavaScript. You probably think of JavaScript as something that runs on a web browser, but what Node.js does is allow you to use the JavaScript language to create applications that run on a server instead of a browser.
@@ -51,7 +45,7 @@ There are two ways to install Node.js. The most official way is to download the 
 
 We're about to add a bunch of files to our repository that are used for running the app locally. However, we don't need these files for production, so we don't want to add them to our repo. We just want them to stay on our local computer, so we need to create a [*.gitignore*]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ '.gitignore' | slugify }}) to exclude all these files.
 
-Right-click on the root of the **{{ web_public_repo }}** folder in VS Code and select **New File**, name it *.gitignore* (yes, the file starts with a `.`), add the following text, and then save the file.
+Right-click on the root of the **{{ site.data.fake.web_public_repo }}** folder in VS Code and select **New File**, name it *.gitignore* (yes, the file starts with a `.`), add the following text, and then save the file.
 
 ```
 node_modules
@@ -60,23 +54,23 @@ package.json
 swa-cli.config.json
 ```
 
-### Open Terminal in {{ web_public_repo }} Folder
+### Open Terminal in {{ site.data.fake.web_public_repo }} Folder
 
-If you were following along in the [last post]({% post_url /learn/web/static-web-app/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ infrastructure_repo }}. We need to switch over to the {{ web_public_repo }} folder now since we're working on the actual web content. You have a few options to do that.
+If you were following along in the [last post]({% post_url /learn/web/static-web-app/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ site.data.fake.infrastructure_repo }}. We need to switch over to the {{ site.data.fake.web_public_repo }} folder now since we're working on the actual web content. You have a few options to do that.
 
-- Type `cd ~/Projects/{{ web_public_repo }}` in the terminal.
-- Delete the current terminal by clicking the teeny, tiny trash can icon at the top of your terminal and opening a new terminal in the *{{ web_public_repo }}* folder by right-clicking on the **{{ web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
+- Type `cd ~/Projects/{{ site.data.fake.web_public_repo }}` in the terminal.
+- Delete the current terminal by clicking the teeny, tiny trash can icon at the top of your terminal and opening a new terminal in the *{{ site.data.fake.web_public_repo }}* folder by right-clicking on the **{{ site.data.fake.web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
 - Starting a second terminal by...
-  - right-clicking on the **{{ web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
-  - if you still have the *.gitignore* file open from the previous section, just clicking on the teeny, tiny plus sign at the top of your current terminal and selecting **{{ web_public_repo }}** from the dropdown which will create a new terminal starting in the *{{ web_public_repo }}* folder.
+  - right-clicking on the **{{ site.data.fake.web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
+  - if you still have the *.gitignore* file open from the previous section, just clicking on the teeny, tiny plus sign at the top of your current terminal and selecting **{{ site.data.fake.web_public_repo }}** from the dropdown which will create a new terminal starting in the *{{ site.data.fake.web_public_repo }}* folder.
 
-I'm going with the last option because I can then switch back to the {{ infrastructure_repo }} terminal if I need to.
+Our engineer {% include reference.html item='fake_company' anchor_text=site.data.fake.engineer_name %} likes the last option because she can then switch back to the {{ site.data.fake.infrastructure_repo }} terminal if she needs to.
 
 {% include figure image_path="/assets/images/posts/vscode-new-terminal.png" caption="Wow, two terminals!" alt="second terminal in VS Code" %}
 
 ### Install SWA
 
-Double-check that you're terminal is in the *{{ web_public_repo }}* folder and run the following command to install the static-web-app-cli Node.js app.
+Double-check that you're terminal is in the *{{ site.data.fake.web_public_repo }}* folder and run the following command to install the static-web-app-cli Node.js app.
 
 ``` bash
 npm install -D @azure/static-web-apps-cli
@@ -102,7 +96,7 @@ The SWA app will step you through the configuration process.
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-? Choose a configuration name: › {{ web_public_repo }}
+? Choose a configuration name: › {{ site.data.fake.web_public_repo }}
 ```
 
 Press `Enter` to accept the default configuration name.
@@ -110,7 +104,7 @@ Press `Enter` to accept the default configuration name.
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-✔ Choose a configuration name: … {{ web_public_repo }}
+✔ Choose a configuration name: … {{ site.data.fake.web_public_repo }}
 
 Detected configuration for your app:
 - Framework(s): Static HTML
@@ -145,8 +139,8 @@ You'll see the following output warning you that you're running locally and your
 ```
 Welcome to Azure Static Web Apps CLI (1.1.6)
 
-Using configuration "{{ web_public_repo }}" from file:
-  /home/{{ site.data.fake.engineer_username }}/Projects/{{ web_public_repo }}/swa-cli.config.json
+Using configuration "{{ site.data.fake.web_public_repo }}" from file:
+  /Users/{{ site.data.fake.engineer_username }}/Projects/{{ site.data.fake.web_public_repo }}/swa-cli.config.json
 
 ***********************************************************************
 * WARNING: This emulator may not match the cloud environment exactly. *
@@ -155,7 +149,7 @@ Using configuration "{{ web_public_repo }}" from file:
 
 [swa] 
 [swa] Serving static content:
-[swa]   /home/{{ site.data.fake.engineer_username }}/Projects/{{ web_public_repo }}/src
+[swa]   /Users/{{ site.data.fake.engineer_username }}/Projects/{{ site.data.fake.web_public_repo }}/src
 [swa] 
 [swa] Azure Static Web Apps emulator started at http://localhost:4280. Press CTRL+C to exit.
 [swa] 
@@ -168,23 +162,44 @@ Type `http://localhost:4280` in your web browser and behold our crappy site!
 
 ## Fix Typos
 
-As you recall, we hired a very inexpensive web designer who through something together as quickly as they could and possibly while drunk. What they gave us had a ton of typos, so we need to fix that.
-
-The point of all this is make changes locally before you push out your changes to GitHub and, subsequently, your Azure Static Web App instance. So let's make some changes to our site and see if we like it.
+As you recall, we hired a very inexpensive web designer who threw something together as quickly as they could and possibly while drunk. What they gave us had a ton of typos, so we need to fix that.
 
 If you closed VS Code or stopped the local emulator, you can start it up by running the SWA start command again: `./node_modules/.bin/swa start`
 {: .notice--info}
 
-Make the following changes to *index.html* and save the file.
+Make the following changes to line 11 of *index.html* and save the file.
 
 {% highlight html linenos %}
-<!--TO DO-->
+            <p>{{ site.data.fake.company_name }} is just getting started. Check back later when this becomes the best site on the internet!</p>
+{% endhighlight %}
+
+The whole *index.html* file should look like this:
+
+{% highlight html linenos %}
+<html>
+    <head>
+        <title>{{ site.data.fake.company_name }}</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+
+    <body>
+        <img src="/images/{{ site.data.fake.company_name | downcase }}_banner.png" id="banner" />
+
+        <div id="main-content">
+            <p>{{ site.data.fake.company_name }} is just getting started. Check back later when this becomes the best site on the internet!</p>
+        </div>
+
+        <footer>This is a demo site inspired by the <a href="https://www.secondsleep.io">Second Sleep</a> project.</footer>
+    </body>
+</html>
 {% endhighlight %}
 
 Now refresh the page (or navigate to `http://localhost:4280` if you closed the browser) and see your changes!
 
 Notice how you don't need to rebuild anything or restart the SWA CLI. Since this is static HTML, the changes are immediately reflected.
 {: .notice--info}
+
+{% include figure image_path="/assets/images/posts/swa-local-changes.png" caption="Still embarrassing, but less so." alt="basic public site with typos fixed" %}
 
 ## Next Steps
 
