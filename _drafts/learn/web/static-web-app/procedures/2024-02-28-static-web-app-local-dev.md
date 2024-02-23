@@ -6,7 +6,7 @@ description: Before you deploy your website, make sure it looks right by editing
 ---
 Before we deploy our website to Azure, we want to make sure it looks right. We can do this by developing the app locally on our laptop. As you might guess, this part won't involve Azure at all.<!--more-->
 
-If you're purely a platform infrastructure engineer then this won't be something you do much, if ever, but it's still nice to know what your front-end developer friends are up to, those little pip-squeaks.
+If you're purely a platform infrastructure engineer then this won't be something you do much, if ever, but it's still nice to know what your front-end developer friends are up to. Those little pip-squeaks.
 {: .notice--info}
 
 ## Get Static Website Content
@@ -17,7 +17,7 @@ We were desperate so we paid $15 to the first web designer we could find to make
 
 Extract this .zip file to a temporary location and then copy the files to the *{{ site.data.fake.web_public_repo }}* repository on your local computer that you cloned in the [first post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}) of this project.
 
-Now open VS Code and check the *{{ site.data.fake.web_public_repo }}* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our testing and eventually deployed to our Static Web App in Azure.
+Now open VS Code and check the *{{ site.data.fake.web_public_repo }}* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our local testing and eventually deployed to our Static Web App in Azure.
 
 {% include figure image_path="/assets/images/posts/vscode-web-public-contents.png" caption="VS Code Explorer view after adding website contents" alt="VS Code Explorer view after adding website contents" %}
 
@@ -43,7 +43,7 @@ There are two ways to install Node.js. The most official way is to download the 
 
 ### Create .gitignore File
 
-We're about to add a bunch of files to our repository that are used for running the app locally. However, we don't need these files for production, so we don't want to add them to our repo. We just want them to stay on our local computer, so we need to create a [*.gitignore*]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ '.gitignore' | slugify }}) to exclude all these files.
+We're about to add a bunch of files to our repository that will be used for running the app locally. However, we don't need these files for production, so we don't want to add them to our repo. We just want them to stay on our local computer, so we need to create a [*.gitignore*]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ '.gitignore' | slugify }}) to exclude all these files.
 
 Right-click on the root of the **{{ site.data.fake.web_public_repo }}** folder in VS Code and select **New File**, name it *.gitignore* (yes, the file starts with a `.`), add the following text, and then save the file.
 
@@ -56,13 +56,13 @@ swa-cli.config.json
 
 ### Open Terminal in {{ site.data.fake.web_public_repo }} Folder
 
-If you were following along in the [last post]({% post_url /learn/web/static-web-app/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ site.data.fake.infrastructure_repo }}. We need to switch over to the {{ site.data.fake.web_public_repo }} folder now since we're working on the actual web content. You have a few options to do that.
+If you were following along in the [last post]({% post_url /learn/web/static-web-app/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ site.data.fake.infrastructure_repo }}. We need to switch over to the *{{ site.data.fake.web_public_repo }}* folder now since we're working on the actual web content. You have a few options to do that.
 
 - Type `cd ~/Projects/{{ site.data.fake.web_public_repo }}` in the terminal.
 - Delete the current terminal by clicking the teeny, tiny trash can icon at the top of your terminal and opening a new terminal in the *{{ site.data.fake.web_public_repo }}* folder by right-clicking on the **{{ site.data.fake.web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
 - Starting a second terminal by...
   - right-clicking on the **{{ site.data.fake.web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
-  - if you still have the *.gitignore* file open from the previous section, just clicking on the teeny, tiny plus sign at the top of your current terminal and selecting **{{ site.data.fake.web_public_repo }}** from the dropdown which will create a new terminal starting in the *{{ site.data.fake.web_public_repo }}* folder.
+  - clicking on the teeny, tiny plus sign at the top of your current terminal and selecting **{{ site.data.fake.web_public_repo }}** from the dropdown which will create a new terminal starting in the *{{ site.data.fake.web_public_repo }}* folder.
 
 Our engineer {% include reference.html item='fake_company' anchor_text=site.data.fake.engineer_name %} likes the last option because she can then switch back to the {{ site.data.fake.infrastructure_repo }} terminal if she needs to.
 
@@ -70,7 +70,7 @@ Our engineer {% include reference.html item='fake_company' anchor_text=site.data
 
 ### Install SWA
 
-Double-check that you're terminal is in the *{{ site.data.fake.web_public_repo }}* folder and run the following command to install the static-web-app-cli Node.js app.
+Double-check that your terminal is in the *{{ site.data.fake.web_public_repo }}* folder and run the following command to install the static-web-app-cli Node.js app.
 
 ``` bash
 npm install -D @azure/static-web-apps-cli
@@ -162,7 +162,7 @@ Type `http://localhost:4280` in your web browser and behold our crappy site!
 
 ## Fix Typos
 
-As you recall, we hired a very inexpensive web designer who threw something together as quickly as they could and possibly while drunk. What they gave us had a ton of typos, so we need to fix that.
+As you recall, we hired a very inexpensive web designer who threw something together as quickly as they could, and possibly while drunk. What they gave us had a ton of typos, so we need to fix that.
 
 If you closed VS Code or stopped the local emulator, you can start it up by running the SWA start command again: `./node_modules/.bin/swa start`
 {: .notice--info}
