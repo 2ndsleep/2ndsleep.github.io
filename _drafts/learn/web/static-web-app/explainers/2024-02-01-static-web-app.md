@@ -48,3 +48,7 @@ You may also be wondering what the URL is for this site is. Well, Microsoft make
 Here are the other web services that Azure offers, in case you're interested.
 
 {% include service_comparison_web.html compare=true %}
+
+## Let's Get Started
+
+To start working on this service, head over to the [first procedure]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) to set up and clone the repositories you'll need. If you're new to all this, check out the the [Things to Know About This Project]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}) explainer for some helpful background.

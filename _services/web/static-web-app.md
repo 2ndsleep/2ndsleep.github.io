@@ -9,3 +9,6 @@ excerpt: It's time to get our company off the ground with a website!
 It's time to get our company {% include reference.html item='fake_company' %} off the ground! We've got a great idea for a product and we're recruiting an elite team to make this dream come true. In the meantime, our CEO {{ site.data.fake.ceo_name }} decided to hire the cheapest web designer we could find to stand up the crappiest website we could afford.
 
 The designer built a basic "Coming Soon" site that's a single HTML page. Since we still don't have any investors yet, we want to host this site as inexpensively as possible, and hopefully free. Luckily, Azure has just the solution for that: Static Web Apps.
+
+Since this is our first real service, this will include a lot of basics like navigating around VS Code and using Git that won't be included in future services.
+{: .notice--info}
