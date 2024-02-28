@@ -102,3 +102,9 @@ As you can see, there are a number of things to consider and the one I use proba
 ## Infrastructure as Code
 
 The whole point of this blog is to automate everything so of course we'll create an infrastructure as code module to handle naming and tagging for us automatically in a future post.
+
+## Other Things Have Names, Too
+
+I've only talked about a naming convention for our Azure resources. But there are many other things that can be named in Azure, such as subscriptions, management groups, service principals, users, and so much more. Beyond Azure, you have other objects that need names, such as hosts, GitHub repositories and branches, user stories, files, subdomains... everything!
+
+You don't have to have a documented convention for all of these things, but as your team grows, you may consider even a loose convention to contain the chaos.
