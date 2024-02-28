@@ -18,9 +18,6 @@ analytics:
     tracking_id: "G-58PR5VHWK0"
 atom_feed:
   hide: true
-fake_company_name: Scramoose
-fake_company_code: scrm
-fake_subscription_guid: c36ff944-4355-4514-95c1-d43921b3d46c
 permalink: /:categories/:title
 
 collections:

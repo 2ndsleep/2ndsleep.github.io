@@ -28,10 +28,10 @@ Behind the scenes, these command line tools just convert the commands to REST AP
 
 The [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli) is a cross-platform (meaning it can run on Windows, macOS, and Linux) command line tool to manage Azure. Almost anything you can do with the portal you can do with the Azure CLI.
 
-For example, to start a VM named **jumpbox** in the resource group called **{{ site.fake_company_code }}-sysadm-inf-1**, you would run this command on your preferred command prompt:
+For example, to start a VM named **jumpbox** in the resource group called **{{ site.data.fake.company_code }}-sysadm-inf-1**, you would run this command on your preferred command prompt:
 
 ``` bash
-az vm start -g {{ site.fake_company_code }}-sysadm-inf-1 -n jumpbox
+az vm start -g {{ site.data.fake.company_code }}-sysadm-inf-1 -n jumpbox
 ```
 
 ### Azure PowerShell

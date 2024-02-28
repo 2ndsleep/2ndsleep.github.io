@@ -68,12 +68,12 @@ Well, you could approach it by creating two different virtual machines like this
 {% highlight terraform linenos %}
 resource "azurerm_linux_virtual_machine" "database" {
   name                = "database"
-  resource_group_name = "{{ site.fake_company_code }}-badass"
+  resource_group_name = "{{ site.data.fake.company_code }}-badass"
   location            = "centralus"
   size                = "Standard_B1ms"
   admin_username      = "adminuser"
   network_interface_ids = [
-    "/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.fake_company_code }}-badass-nic-db"
+    "/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.data.fake.company_code }}-badass-nic-db"
   ]
 
   admin_ssh_key {
@@ -97,12 +97,12 @@ resource "azurerm_linux_virtual_machine" "database" {
 
 resource "azurerm_linux_virtual_machine" "web" {
   name                = "web"
-  resource_group_name = "{{ site.fake_company_code }}-badass"
+  resource_group_name = "{{ site.data.fake.company_code }}-badass"
   location            = "centralus"
   size                = "Standard_B1ms"
   admin_username      = "adminuser"
   network_interface_ids = [
-    "/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.fake_company_code }}-badass-nic-web"
+    "/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.data.fake.company_code }}-badass-nic-web"
   ]
 
   admin_ssh_key {
@@ -131,11 +131,11 @@ Notice the only differences are that lines 1, 2, 8, and 19 differ from lines 30,
 locals {
   vm_configs = {
     database = {
-      nic = "/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.fake_company_code }}-badass-nic-db"
+      nic = "/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.data.fake.company_code }}-badass-nic-db"
       disk_size_gb = 1023
     }
     web = {
-      nic = "/subscriptions/{{ site.fake_subscription_guid }}/resourceGroups/{{ site.fake_company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.fake_company_code }}-badass-nic-web"
+      nic = "/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-badass/providers/Microsoft.Network/networkInterfaces/{{ site.data.fake.company_code }}-badass-nic-web"
       disk_size_gb = 30
     }
   }
@@ -144,7 +144,7 @@ locals {
 resource "azurerm_linux_virtual_machine" "badass" {
   for_each            = local.vm_configs
   name                = each.key
-  resource_group_name = "{{ site.fake_company_code }}-badass"
+  resource_group_name = "{{ site.data.fake.company_code }}-badass"
   location            = "centralus"
   size                = "Standard_B1ms"
   admin_username      = "adminuser"

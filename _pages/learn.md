@@ -7,7 +7,7 @@ header:
   overlay_image: /assets/images/pages/second-sleep-banner.png
 feature_row:
   - title: Guided Training
-    excerpt: This steps you through the creation of our fake company Scramoose from the beginning.
+    excerpt: This steps you through the creation of our fake company from the beginning.
     url: /guided
     btn_label: Guided Training
     btn_class: btn--info

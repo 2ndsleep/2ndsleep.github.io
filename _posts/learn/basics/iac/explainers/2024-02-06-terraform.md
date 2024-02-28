@@ -111,7 +111,7 @@ provider "azurerm" {
 }
 ```
 
-If you deploy this code, literally nothing will happen to Azure. You're just telling Terraform to import the `azurerm` provider because you plan to do something in Azure. If you wanted to create a resource group named **{{ site.fake_company_code }}-monitr-inf**, you could add the `azurerm_resource_group` resource definition.
+If you deploy this code, literally nothing will happen to Azure. You're just telling Terraform to import the `azurerm` provider because you plan to do something in Azure. If you wanted to create a resource group named **{{ site.data.fake.company_code }}-monitr-inf**, you could add the `azurerm_resource_group` resource definition.
 
 ``` terraform
 # Configure the Azure provider
@@ -131,7 +131,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "{{ site.fake_company_code }}-monitr-inf"
+  name     = "{{ site.data.fake.company_code }}-monitr-inf"
   location = "westus2"
 }
 ```
@@ -146,7 +146,7 @@ All of these files (hidden or not) are located in a folder known as the Terrafor
 
 {% include filesystem.html id="folder_tf" %}
 
-Typically, each Terraform configuration will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainer/2024-01-12-azure-hierarchy %}#resource-groups).
+Typically, each Terraform configuration will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainers/2024-01-12-azure-hierarchy %}#resource-groups).
 {: .notice--info}
 
 The first time you deploy your configuration, Terraform will create a file named *terraform.tfstate*. This is called the **state file** and contains all the information about the resources you've deployed. As you make changes to your configuration and deploy them, the state file will be updated with those changes.
@@ -161,7 +161,7 @@ You can have multiple state files which some people do for testing different env
 
 Unless you specified differently, your backend location will be `local` which is your working directory and is why all the state files will be created locally. This isn't very shareable and doesn't fly when you're working on a team, so you can change your backend to be a remote location or use the Terraform Cloud service.
 
-The state file is a plain text JSON file. As you'll see, you often need to pass secrets (passwords) to Terraform in your deployments, which are going to be stored in your state file. That's a concern when you're using and unsecure location for your state files.
+The state file is a plain text JSON file. As you'll see, you often need to pass secrets (passwords) to Terraform in your deployments, which are going to be stored in your state file. That's a concern when you're using an unsecure location for your state files.
 {: .notice--info}
 
 Even though they are all technically different, when you first initialize your configuration there is a 1:1 relationship between your working directory, backend, state file, and workspace.
@@ -192,7 +192,7 @@ provider "azurerm" {
 
 ``` terraform
 resource "azurerm_resource_group" "rg" {
-  name     = "{{ site.fake_company_code }}-monitr-inf"
+  name     = "{{ site.data.fake.company_code }}-monitr-inf"
   location = "westus2"
 }
 ```
@@ -218,7 +218,7 @@ That's where **Terraform Cloud** comes in. You can use Terraform Cloud to manage
 Confusingly, a Terraform Cloud workspace is not the same as a Terraform CLI workspace. You probably won't use Terraform CLI workspaces much in real life, so you can associate the term "workspace" with Terraform Cloud. In short, a Terraform CLI configuration is roughly equivalent to a Terraform Cloud workspace.
 {: .notice--info}
 
-Typically, each Terraform Cloud Workspace will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainer/2024-01-12-azure-hierarchy %}#resource-groups). You can use Terraform Cloud to automatically update your Azure resources as you update your Terraform files.
+Typically, each Terraform Cloud Workspace will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainers/2024-01-12-azure-hierarchy %}#resource-groups). You can use Terraform Cloud to automatically update your Azure resources as you update your Terraform files.
 
 {% include svg.html path="svg/terraform-cloud-deployment-overview.svg" caption="Use Terraform Cloud to automatically deploy infrastructure changes as you update them in your Git repository." %}
 

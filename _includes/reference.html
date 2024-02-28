@@ -1,6 +1,6 @@
 {%- case include.item -%}
   {%- when 'fake_company' -%}
-    [{{ include.anchor_text | default: site.fake_company_name }}]({%- link _pages/about.md -%}#{{ site.fake_company_name | slugify }})
+    [{{ include.anchor_text | default: site.data.fake.company_name }}]({%- link _pages/about.md -%}#{{ site.data.fake.company_name | slugify }})
   {%- when 'azure_cli' -%}
     [{{ include.anchor_text | default: 'Azure CLI' }}](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
   {%- when 'vscode' -%}
@@ -15,6 +15,14 @@
     [{{ include.anchor_text | default: 'tags' }}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources)
   {%- when 'storage_account' -%}
     [{{ include.anchor_text | default: 'storage account' }}](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+  {%- when 'blob_storage' -%}
+    [{{ include.anchor_text | default: 'blob storage' }}](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview)
   {%- when 'key_vault' -%}
     [{{ include.anchor_text | default: 'Key Vault' }}](https://learn.microsoft.com/en-us/azure/key-vault/general/overview)
+  {%- when 'functions' -%}
+    [{{ include.anchor_text | default: 'Azure Functions' }}](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)
+  {%- when 'infrastructure_repo' -%}
+    [{{ include.anchor_text | default: site.data.fake.infrastructure_repo }}](https://github.com/2ndsleep/{{ site.data.fake.infrastructure_repo }})
+  {%- when 'web_public_repo' -%}
+    [{{ include.anchor_text | default: site.data.fake.web_public_repo }}](https://github.com/2ndsleep/{{ site.data.fake.web_public_repo }})
 {%- endcase -%}
