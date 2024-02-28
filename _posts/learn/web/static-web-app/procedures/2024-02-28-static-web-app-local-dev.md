@@ -56,7 +56,7 @@ swa-cli.config.json
 
 ### Open Terminal in {{ site.data.fake.web_public_repo }} Folder
 
-If you were following along in the [last post]({% post_url /learn/web/static-web-app/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ site.data.fake.infrastructure_repo }}. We need to switch over to the *{{ site.data.fake.web_public_repo }}* folder now since we're working on the actual web content. You have a few options to do that.
+If you were following along in the [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ site.data.fake.infrastructure_repo }}. We need to switch over to the *{{ site.data.fake.web_public_repo }}* folder now since we're working on the actual web content. You have a few options to do that.
 
 - Type `cd ~/Projects/{{ site.data.fake.web_public_repo }}` in the terminal.
 - Delete the current terminal by clicking the teeny, tiny trash can icon at the top of your terminal and opening a new terminal in the *{{ site.data.fake.web_public_repo }}* folder by right-clicking on the **{{ site.data.fake.web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.

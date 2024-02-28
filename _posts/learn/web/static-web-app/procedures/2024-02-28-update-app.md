@@ -12,7 +12,7 @@ First thing's first, let's make this change to our website locally and test it. 
 
 ### Create New Branch
 
-When we [pushed our changes to our GitHub repos]({% post_url /learn/static-web-app/procedures/2024-02-28-push-to-github %}), we pushed directly to our main branch. Well, that's not exactly the best way to go about it. A more appropriate way would be to create a branch for all your changes, and then create a pull request for that branch when the changes are ready.
+When we [pushed our changes to our GitHub repos]({% post_url /learn/web/static-web-app/procedures/2024-02-28-push-to-github %}), we pushed directly to our main branch. Well, that's not exactly the best way to go about it. A more appropriate way would be to create a branch for all your changes, and then create a pull request for that branch when the changes are ready.
 
 I'm going to show you how to do this on the command line. When we make changes to our Terraform configuration in our next project, I'll show you to do this in VS Code.
 
