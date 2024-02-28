@@ -146,7 +146,7 @@ All of these files (hidden or not) are located in a folder known as the Terrafor
 
 {% include filesystem.html id="folder_tf" %}
 
-Typically, each Terraform configuration will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainer/2024-01-12-azure-hierarchy %}#resource-groups).
+Typically, each Terraform configuration will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainers/2024-01-12-azure-hierarchy %}#resource-groups).
 {: .notice--info}
 
 The first time you deploy your configuration, Terraform will create a file named *terraform.tfstate*. This is called the **state file** and contains all the information about the resources you've deployed. As you make changes to your configuration and deploy them, the state file will be updated with those changes.
@@ -218,7 +218,7 @@ That's where **Terraform Cloud** comes in. You can use Terraform Cloud to manage
 Confusingly, a Terraform Cloud workspace is not the same as a Terraform CLI workspace. You probably won't use Terraform CLI workspaces much in real life, so you can associate the term "workspace" with Terraform Cloud. In short, a Terraform CLI configuration is roughly equivalent to a Terraform Cloud workspace.
 {: .notice--info}
 
-Typically, each Terraform Cloud Workspace will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainer/2024-01-12-azure-hierarchy %}#resource-groups). You can use Terraform Cloud to automatically update your Azure resources as you update your Terraform files.
+Typically, each Terraform Cloud Workspace will map to a single Azure [resource group]({% post_url /learn/basics/azure_intro/explainers/2024-01-12-azure-hierarchy %}#resource-groups). You can use Terraform Cloud to automatically update your Azure resources as you update your Terraform files.
 
 {% include svg.html path="svg/terraform-cloud-deployment-overview.svg" caption="Use Terraform Cloud to automatically deploy infrastructure changes as you update them in your Git repository." %}
 
