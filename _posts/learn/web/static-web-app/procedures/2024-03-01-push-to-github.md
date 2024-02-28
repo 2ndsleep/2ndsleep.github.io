@@ -7,11 +7,11 @@ excerpt: Now that we've made some changes, we should push those changes up to Gi
 ---
 If you've been following along with the procedures in this service so far, you've done the following:
 
-- [Created your GitHub repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-29-configure-dev-environment %}) and cloned them to your local computer
-- Created a new [Static Web App resource with Terraform]({% post_url /learn/web/static-web-app/procedures/2024-02-29-swa-terraform %})
+- [Created your GitHub repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) and cloned them to your local computer
+- Created a new [Static Web App resource with Terraform]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %})
 - Run the static website on your [local computer]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}).
 
-Now that we've made some changes, we should push those changes up to GitHub in case our laptop craps out. We're also going to start screwing around with our app and if we mess it all up, we'll want to revert back. Just like when we [configured our repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-29-configure-dev-environment %}), there are two ways to push our changes back up to GitHub: the `git` command or using the VS Code interface. We'll push our changes with the command line for the {{ site.data.fake.infrastructure_repo }} repo and do it the VS Code way for our {{ site.data.fake.web_public_repo }} repo.
+Now that we've made some changes, we should push those changes up to GitHub in case our laptop craps out. We're also going to start screwing around with our app and if we mess it all up, we'll want to revert back. Just like when we [configured our repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}), there are two ways to push our changes back up to GitHub: the `git` command or using the VS Code interface. We'll push our changes with the command line for the {{ site.data.fake.infrastructure_repo }} repo and do it the VS Code way for our {{ site.data.fake.web_public_repo }} repo.
 
 There's a couple of steps before we can push changes into GitHub. Git doesn't know which of our changes we want to add to the repo so we need to **stage** those files first. After a file has been staged, it can be **committed** where we officially add it to the repository with a message about what the file is about (or what changes were made if the file already exists).
 

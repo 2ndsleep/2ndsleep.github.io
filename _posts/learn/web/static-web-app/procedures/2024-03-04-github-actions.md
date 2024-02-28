@@ -6,12 +6,12 @@ description: Let's create a GitHub Actions workflow to push our website code to 
 ---
 Now it's time to deploy our website to our Static Web App resource using GitHub Actions.<!--more--> If you've been following along, so far we've done the following:
 
-- [Created your GitHub repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-29-configure-dev-environment %}) and cloned them to your local computer
-- Created a new [Static Web App resource with Terraform]({% post_url /learn/web/static-web-app/procedures/2024-02-29-swa-terraform %})
+- [Created your GitHub repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) and cloned them to your local computer
+- Created a new [Static Web App resource with Terraform]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %})
 - Run the static website on your [local computer]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}).
 - Pushed all the changes you made [back up to your GitHub repo]({% post_url /learn/web/static-web-app/procedures/2024-03-01-push-to-github %}).
 
-And as you recall, we haven't put our custom website content on our Azure Static Web App resource so it's using a [temporary default website]({% post_url /learn/web/static-web-app/explainers/2024-02-29-static-web-app %}#{{ 'How Do I Upload My Web Content to This Site?' | slugify }}). We're finally going to deploy the site that our designer created to our Azure Static Web App resource. The way this works is that we create a CI/CD pipeline with **GitHub Actions** known as a **workflow** that will take our website code and deploy it to our Static Web App. And this is way easier than it sounds.
+And as you recall, we haven't put our custom website content on our Azure Static Web App resource so it's using a [temporary default website]({% post_url /learn/web/static-web-app/explainers/2024-02-28-static-web-app %}#{{ 'How Do I Upload My Web Content to This Site?' | slugify }}). We're finally going to deploy the site that our designer created to our Azure Static Web App resource. The way this works is that we create a CI/CD pipeline with **GitHub Actions** known as a **workflow** that will take our website code and deploy it to our Static Web App. And this is way easier than it sounds.
 
 ## Create Static Web App API Token Secret in GitHub
 
@@ -112,7 +112,7 @@ You can see if this workflow ran successfully by clicking on the **Actions** tab
 
 ![GitHub Actions button](https://docs.github.com/assets/cb-15465/mw-1440/images/help/repository/actions-tab-global-nav-update.webp)
 
-If you see a green checkmark next to the most recent workflow run, you're good! Now go to the URL of your Static Web App that you got way back in our [Terraform deployment]({% post_url /learn/web/static-web-app/procedures/2024-02-29-swa-terraform %}#{{ 'Admire Our Work' | slugify }}), and see if our code is there.
+If you see a green checkmark next to the most recent workflow run, you're good! Now go to the URL of your Static Web App that you got way back in our [Terraform deployment]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}#{{ 'Admire Our Work' | slugify }}), and see if our code is there.
 
 {% include figure image_path="/assets/images/posts/static-web-app-deployed.png" caption="This is live for the world to see!" alt="deployed Static Web App site" %}
 

@@ -12,7 +12,7 @@ An Azure Static Web App is a web hosting service designed for hosting your stati
 
 One cool thing about a Static Web App is that it comes with a free API backend using {% include reference.html item='functions' %}. We won't be using the Azure Function part in this deployment, but I want you to know it's there.
 
-If you're not a web developer, terms like "static" and "API" can be confusing, so I tried to untangle it [here]({% post_url /learn/web/static-web-app/explainers/2024-02-29-html-rendering %}).
+If you're not a web developer, terms like "static" and "API" can be confusing, so I tried to untangle it [here]({% post_url /learn/web/static-web-app/explainers/2024-02-28-html-rendering %}).
 
 ## Why Use a Static Web App?
 
@@ -51,4 +51,4 @@ Here are the other web services that Azure offers, in case you're interested.
 
 ## Let's Get Started
 
-To start working on this service, head over to the [first procedure]({% post_url /learn/web/static-web-app/procedures/2024-02-29-configure-dev-environment %}) to set up and clone the repositories you'll need. If you're new to all this, check out the the [Things to Know About This Project]({% post_url /learn/web/static-web-app/explainers/2024-02-29-developing-app %}) explainer for some helpful background.
+To start working on this service, head over to the [first procedure]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) to set up and clone the repositories you'll need. If you're new to all this, check out the the [Things to Know About This Project]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}) explainer for some helpful background.

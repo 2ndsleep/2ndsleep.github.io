@@ -32,11 +32,11 @@ To do this procedure, you'll need to have already performed the following items.
 - [Create Azure account]({% post_url /learn/basics/cloud_intro/procedures/2024-01-10-cloud-sign-up %})
 - [Install Azure CLI]({% post_url /learn/basics/azure_intro/procedures/2024-01-14-azure-command-line-tools %})
 - [Install Terraform]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %})
-- [Create and clone repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-29-configure-dev-environment %})
+- [Create and clone repositories]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %})
 
 ## Configure Authentication
 
-Before proceeding, read about how we're [*not* using Terraform Cloud]({% post_url /learn/web/static-web-app/explainers/2024-02-29-developing-app %}#{{ 'Terraform vs. Terraform Cloud' | slugify }}) right now. This is an important thing to know because we're doing things a little differently for this deployment than we will be doing in future posts which is why logging in through the Azure CLI is necessary.
+Before proceeding, read about how we're [*not* using Terraform Cloud]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Terraform vs. Terraform Cloud' | slugify }}) right now. This is an important thing to know because we're doing things a little differently for this deployment than we will be doing in future posts which is why logging in through the Azure CLI is necessary.
 {: .notice--info}
 
 We're going to create a service principal in Azure that will be used by Terraform to gain access to Azure in order to deploy our Static Web App resource. This will just be a rehash of the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step of the [Terraform Tutorial]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %}) that you may have already performed, so I'll provide links to that tutorial with some additional commentary.
@@ -49,7 +49,7 @@ We're going to create a service principal in Azure that will be used by Terrafor
 
 Time to define our Static Web App resource using Terraform. Let's get to it!
 
-In our [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-29-configure-dev-environment %}) we created new repositories in GitHub and cloned them to our local computer. The folder structure should look like this on your computer.
+In our [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}) we created new repositories in GitHub and cloned them to our local computer. The folder structure should look like this on your computer.
 
 {% include filesystem.html id="projects_folder" %}
 
@@ -407,6 +407,6 @@ Note that Terraform detects that your code won't actually change the resources. 
 
 That's it! You haven't really done anything worth showing your family, not that they'd understand what we do anyway. But you've grown as a person, and isn't that better than any adulation you could receive from your loved ones? (Answer: no, it's not better.)
 
-Remember, we've only deployed the infrastructure (that is, the Static Web App Azure resource) which is why you'll see a [temporary site]({% post_url /learn/web/static-web-app/explainers/2024-02-29-static-web-app %}#{{ 'How Do I Upload My Web Content to This Site?' | slugify }}) at the URL. We're still waiting for our web designer get back to us.
+Remember, we've only deployed the infrastructure (that is, the Static Web App Azure resource) which is why you'll see a [temporary site]({% post_url /learn/web/static-web-app/explainers/2024-02-28-static-web-app %}#{{ 'How Do I Upload My Web Content to This Site?' | slugify }}) at the URL. We're still waiting for our web designer get back to us.
 
-Oh wouldn't you know? It looks like our web designer just finished the website. Good timing. We'll deploy that to this new Static Web App in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}).
+Oh wouldn't you know? It looks like our web designer just finished the website. Good timing. We'll deploy that to this new Static Web App in the next post{% comment %}[next post]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}){% endcomment %}.
