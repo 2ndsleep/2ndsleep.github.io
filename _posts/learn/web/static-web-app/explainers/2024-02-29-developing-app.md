@@ -4,7 +4,7 @@ categories: web static-web-app explainer
 sort_order: 3
 description: This is a bunch of random things about this project
 ---
-Since this is the first real service we're deploying as part of our {% include reference.html item='fake_company' %} venture, here's a bunch of random shit to know before you [jump in]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}).<!--more-->
+Since this is the first real service we're deploying as part of our {% include reference.html item='fake_company' %} venture, here's a bunch of random shit to know before you [jump in]({% post_url /learn/web/static-web-app/procedures/2024-02-29-configure-dev-environment %}).<!--more-->
 
 ## Terraform vs. Terraform Cloud
 
@@ -50,7 +50,7 @@ For your infrastructure repository, select **Terraform** for the dropdown box un
 
 ## Node Dependencies
 
-When we develop our web application code [locally]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}), we will install the **@azure/static-web-apps-cli** (SWA CLI) Node package using the `npm` command. The SWA CLI package simulates an Azure Static Web App service on your local computer.
+When we develop our web application code [locally]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}), we will install the **@azure/static-web-apps-cli** (SWA CLI) Node package using the `npm` command. The SWA CLI package simulates an Azure Static Web App service on your local computer.
 
 You can install Node packages either globally or as a development dependency. Microsoft's documentation recommends you install the SWA CLI package as a development dependency but doesn't explain why. So I'll try to clear it up a bit.
 

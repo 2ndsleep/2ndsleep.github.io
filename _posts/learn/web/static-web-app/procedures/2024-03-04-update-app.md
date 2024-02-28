@@ -1,7 +1,7 @@
 ---
 title: Update Static Web App
 categories: web static-web-app procedure
-sort_order: 5
+sort_order: 6
 description: We need to make some changes to our web app.
 ---
 {{ site.data.fake.ceo_name }}, the CEO of {% include reference.html item='fake_company' %} and a real ideas guy (trust fund kid), had the brilliant notion of trying to solicit investors in the company, even though we don't have a product yet. But hey, why should the lack of a product [stop entrepreneurship](https://www.alexanderjarvis.com/25-startups-that-raised-without-a-product/)? He's asked that we add an email address where people can inquire about investing. So sure, let's do that.<!--more-->
@@ -12,7 +12,7 @@ First thing's first, let's make this change to our website locally and test it. 
 
 ### Create New Branch
 
-When we [pushed our changes to our GitHub repos]({% post_url /learn/web/static-web-app/procedures/2024-02-28-push-to-github %}), we pushed directly to our main branch. Well, that's not exactly the best way to go about it. A more appropriate way would be to create a branch for all your changes, and then create a pull request for that branch when the changes are ready.
+When we [pushed our changes to our GitHub repos]({% post_url /learn/web/static-web-app/procedures/2024-03-01-push-to-github %}), we pushed directly to our main branch. Well, that's not exactly the best way to go about it. A more appropriate way would be to create a branch for all your changes, and then create a pull request for that branch when the changes are ready.
 
 I'm going to show you how to do this on the command line. When we make changes to our Terraform configuration in our next project, I'll show you to do this in VS Code.
 
@@ -26,7 +26,7 @@ git checkout -b {{ site.data.web.static_web_app_basic.update_branch_name }}
 
 ### Update Static Web Content
 
-If you need a refresher on testing locally, see the [Static Web App Local Development]({% post_url /learn/web/static-web-app/procedures/2024-02-28-static-web-app-local-dev %}) post.
+If you need a refresher on testing locally, see the [Static Web App Local Development]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}) post.
 {: .notice--info}
 
 Run the following command to start up the Static Web App emulator on your local computer.
@@ -140,7 +140,7 @@ on:
     branches: [ "main" ]
 ```
 
-The `push:` part says to run the workflow when we merge with the main branch, which we already did once back when we initially [deployed our app]({% post_url /learn/web/static-web-app/procedures/2024-02-28-github-actions  %}) and which we'll do when we complete the PR later in this post. But the `pull_request:` part says to run the workflow when we create a PR, which is what we just did.
+The `push:` part says to run the workflow when we merge with the main branch, which we already did once back when we initially [deployed our app]({% post_url /learn/web/static-web-app/procedures/2024-03-04-github-actions  %}) and which we'll do when we complete the PR later in this post. But the `pull_request:` part says to run the workflow when we create a PR, which is what we just did.
 
 Note that the `branches: [ "main" ]` line means that this won't happen for just any PR but only PRs that will be merged into the main branch. As you start progressing more, you may create a branch from another branch and this workflow won't run for a branch that is merged into a non-main branch. 
 {: .notice--info}

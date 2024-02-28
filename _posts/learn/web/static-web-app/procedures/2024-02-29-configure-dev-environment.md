@@ -80,7 +80,7 @@ Your repository should now be cloned into a subfolder of your *Projects* folder,
 
 ## Set Up VS Code Workspaces
 
-If everything went well in the previous section, you will have two beautiful cloned repositories in your *Projects* folder. Now let's add those repositories to a VS Code [workspace]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'VS Code Workspaces' | slugify }}), which will organize these two repositories into a single pane of glass since we'll be working on them together.
+If everything went well in the previous section, you will have two beautiful cloned repositories in your *Projects* folder. Now let's add those repositories to a VS Code [workspace]({% post_url /learn/web/static-web-app/explainers/2024-02-29-developing-app %}#{{ 'VS Code Workspaces' | slugify }}), which will organize these two repositories into a single pane of glass since we'll be working on them together.
 
 1. Launch VS Code.
 1. Click **File > Close Workspace**. If you don't see the Close Workspace option, it means you don't have a workspace open and you can move on to the next step.
@@ -92,4 +92,4 @@ If everything went well in the previous section, you will have two beautiful clo
 
 ## Now What?
 
-I know that wasn't the most fun, so let's get on to our first [Terraform configuration]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %})!
+I know that wasn't the most fun, so let's get on to our first [Terraform configuration]({% post_url /learn/web/static-web-app/procedures/2024-02-29-swa-terraform %})!

@@ -15,7 +15,7 @@ We were desperate so we paid $15 to the first web designer we could find to make
 
 [Download {{ site.data.fake.company_name }} Website](https://github.com/2ndsleep/{{ site.data.fake.web_public_repo }}/archive/refs/tags/web/static-web-app/designer.zip){: .btn .btn--info}
 
-Extract this .zip file to a temporary location and then copy the files to the *{{ site.data.fake.web_public_repo }}* repository on your local computer that you cloned in the [first post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}) of this project.
+Extract this .zip file to a temporary location and then copy the files to the *{{ site.data.fake.web_public_repo }}* repository on your local computer that you cloned in the [first post]({% post_url /learn/web/static-web-app/procedures/2024-02-29-swa-terraform %}) of this project.
 
 Now open VS Code and check the *{{ site.data.fake.web_public_repo }}* folder. Start digging around that folder and you'll find the *src* folder contains the actual website. This will be rendered in our local testing and eventually deployed to our Static Web App in Azure.
 
@@ -43,7 +43,7 @@ There are two ways to install Node.js. The most official way is to download the 
 
 ### Create .gitignore File
 
-We're about to add a bunch of files to our repository that will be used for running the app locally. However, we don't need these files for production, so we don't want to add them to our repo. We just want them to stay on our local computer, so we need to create a [*.gitignore*]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ '.gitignore' | slugify }}) to exclude all these files.
+We're about to add a bunch of files to our repository that will be used for running the app locally. However, we don't need these files for production, so we don't want to add them to our repo. We just want them to stay on our local computer, so we need to create a [*.gitignore*]({% post_url /learn/web/static-web-app/explainers/2024-02-29-developing-app %}#{{ '.gitignore' | slugify }}) to exclude all these files.
 
 Right-click on the root of the **{{ site.data.fake.web_public_repo }}** folder in VS Code and select **New File**, name it *.gitignore* (yes, the file starts with a `.`), add the following text, and then save the file.
 
@@ -56,7 +56,7 @@ swa-cli.config.json
 
 ### Open Terminal in {{ site.data.fake.web_public_repo }} Folder
 
-If you were following along in the [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}), you had the VS Code terminal open in the {{ site.data.fake.infrastructure_repo }}. We need to switch over to the *{{ site.data.fake.web_public_repo }}* folder now since we're working on the actual web content. You have a few options to do that.
+If you were following along in the [last post]({% post_url /learn/web/static-web-app/procedures/2024-02-29-swa-terraform %}), you had the VS Code terminal open in the {{ site.data.fake.infrastructure_repo }}. We need to switch over to the *{{ site.data.fake.web_public_repo }}* folder now since we're working on the actual web content. You have a few options to do that.
 
 - Type `cd ~/Projects/{{ site.data.fake.web_public_repo }}` in the terminal.
 - Delete the current terminal by clicking the teeny, tiny trash can icon at the top of your terminal and opening a new terminal in the *{{ site.data.fake.web_public_repo }}* folder by right-clicking on the **{{ site.data.fake.web_public_repo }}** root folder in the VS Code Explorer view and then clicking **Open in Integrated Terminal**.
@@ -76,7 +76,7 @@ Double-check that your terminal is in the *{{ site.data.fake.web_public_repo }}*
 npm install -D @azure/static-web-apps-cli
 ```
 
-Since SWA is installed as a [development dependency]({% post_url /learn/web/static-web-app/explainers/2024-02-28-developing-app %}#{{ 'Node Dependencies' | slugify }}), you must run the `swa` command from the *node_modules* folder in the steps below, which is different from what is shown in Microsoft's [examples](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#get-started).
+Since SWA is installed as a [development dependency]({% post_url /learn/web/static-web-app/explainers/2024-02-29-developing-app %}#{{ 'Node Dependencies' | slugify }}), you must run the `swa` command from the *node_modules* folder in the steps below, which is different from what is shown in Microsoft's [examples](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#get-started).
 {: .notice--info}
 
 {% include figure image_path="/assets/images/posts/vscode-install-swa-cli.png" caption="Your VS Code instance should look like this after installing the SWA CLI. Notice that all of the files related to our NPM packages have been added to *.gitignore* and are therefore greyed out." alt="VS Code after install the SWA CLI" %}
@@ -203,4 +203,4 @@ Notice how you don't need to rebuild anything or restart the SWA CLI. Since this
 
 ## Next Steps
 
-As discussed, we'll be deploying this to code to our Static Web App from GitHub, so in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-02-28-push-to-github %}) we'll push our code to GitHub.
+As discussed, we'll be deploying this to code to our Static Web App from GitHub, so in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-03-01-push-to-github %}) we'll push our code to GitHub.
