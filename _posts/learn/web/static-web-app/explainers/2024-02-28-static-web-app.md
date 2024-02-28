@@ -3,6 +3,7 @@ title: Static Web App
 categories: web static-web-app explainer
 sort_order: 1
 description: What is a Static Web App and why are we using it and why other things?
+tags: static-web-app container kubernetes
 ---
 Azure has several options for hosting your **web application**. We're going to use an [Azure Static Web App](https://learn.microsoft.com/en-us/azure/static-web-apps/overview) because we just need a simple website without a lot of bells and whistles right now.<!--more--> This post will go over Static Web Apps but also do a quick explainer of why we're picking this one and what other options we'll use down the line.
 
@@ -20,7 +21,7 @@ Good question. Azure has [several options](#{{ 'What Other Web Solutions Does Az
 
 - It's free as hell!
 - It supports HTTPS and we want to look professional here, folks.
-- We're not deploying a container, so we need an solution that supports containerless.
+- We're not deploying a container, so we need a solution that supports containerless.
 - We don't need (that is, we're not willing to pay for) high-availability at this time.
 - We're deploying a static website and don't need the complexity of the other offerings (I mean, Static Web App *does* have "static" in the name).
 
@@ -34,7 +35,7 @@ Here's a high-level overview of what we'll be doing:
 
 1. Deploy an Azure Static Web App resource (infrastructure)
 1. Push our website code to a new GitHub repository (application)
-1. Deploy our application code from GitHub to the Static Web App (CI/CD)
+1. Deploy our application code from GitHub to the Static Web App with GitHub Actions (CI/CD)
 1. Update our application code and redeploy (general DevOps)
 
 You'll notice that we'll deploy the website code after we create the Static Web App resource. So you may be wondering what is on that website before we deploy our app to it. Azure puts up a temporary website that looks something like this:

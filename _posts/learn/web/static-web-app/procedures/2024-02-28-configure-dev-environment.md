@@ -3,6 +3,7 @@ title: Configure Your Development Environment
 categories: web static-web-app procedure
 sort_order: 1
 description: First thing's first, let's set up our repositories and VS Code.
+tags: git github vs-code git-clone workspace
 projects_folder:
   - name: $HOME (/Users/ximena)
     children:
@@ -41,11 +42,11 @@ When you're done, you should see at least the following two repositories (or som
 - {{ site.data.fake.infrastructure_repo }}
 - {{ site.data.fake.web_public_repo }}
 
-{% include figure image_path="/assets/images/posts/github-swa-repos.png" caption="You should something like this when you click on your profile picture and select **Your repositories**." alt="GitHub repositories page" %}
+{% include figure image_path="/assets/images/posts/github-swa-repos.png" caption="You should see something like this when you click on your profile picture and select **Your repositories**." alt="GitHub repositories page" %}
 
 ## Clone Repositories
 
-Now we want to pull down the content from the repositories we just created on GitHub down to our local computer. This is called **cloning** your repository. Since we have two repositories for this project, I can show you two different ways for doing things: these hard way with the command line and the easy way with VS Code.
+Now we want to pull down the content from the repositories we just created on GitHub to our local computer. This is called **cloning** your repository. Since we have two repositories for this project, I can show you two different ways for doing things: the hard way with the command line and the easy way with VS Code.
 
 If you haven't [installed VS Code]({% post_url /learn/basics/iac/procedures/2024-01-31-vscode %}), do that now.
 {: .notice--info}
@@ -61,7 +62,7 @@ For both of these methods, you'll need to copy the URL of your GitHub repo from 
 Let's clone our {{ site.data.fake.infrastructure_repo }} with the command line.
 
 1. In VS Code, click **View > Terminal** from the menu bar or type `` Ctrl+` `` to bring up the terminal.
-1. Go into your [*Projects*](#{{ 'Projects Folder' | slugify }}) folder by typing `cd ~/Projects` (or `cd` into whatever folder you've chosen to keep your projects in).
+1. Go into your [*Projects*](#{{ 'Projects Folder' | slugify }}) folder by typing `cd ~/Projects` (or `cd %USERPROFILE%\Projects` if you're using the Windows command prompt for whatever freaky reason).
 1. Copy the URL of your repository and then type `git clone <URL of your repo>` as described [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).<br />![Clone GitHub repo with command line](/assets/images/posts/vscode-git-clone-cli.png)
 1. You will be prompted by VS Code to sign into GitHub. Click **Allow** which will launch a web browser where you can log into GitHub. After successfully logging in, you'll be directed back to VS Code where the clone process will continue. *You will not be prompted to log in if you made your repo public or if you have already authenticated to GitHub from the `git` command line.*<br />![GitHub authentication prompt](/assets/images/posts/vscode-git-auth-prompt.png)
 
@@ -76,7 +77,7 @@ Your repository should now be cloned into a subfolder of your *Projects* folder,
 1. Select **Clone from GitHub**.<br />![VS Code Clone from GitHub command palette](/assets/images/posts/vscode-git-clone-from-github.png)
 1. Type or select the **your-account/{{ site.data.fake.web_public_repo }}** repository from the list.<br />![VS Code select GitHub repository](/assets/images/posts/vscode-select-clone-repo.png)
 1. Select the [*Projects*](#{{ 'Projects Folder' | slugify }}) folder or whatever folder you've chosen to keep your projects in.<br />![VS Code select Git clone folder destination](/assets/images/posts/vscode-select-clone-folder.png)
-1. Click **Cancel** when VS Code asks you if you want to open the cloned repository. In most cases, you'd probably say yes, but for our demonstration, we're going to do that in the next section.<br />![VS Code prompt to open cloned repo](/assets/images/posts/vscode-prompt-open-repo.png)
+1. Click **Cancel** when VS Code asks you if you want to open the cloned repository. In most cases you'd probably say yes, but for our demonstration we're going to do that in the next section.<br />![VS Code prompt to open cloned repo](/assets/images/posts/vscode-prompt-open-repo.png)
 
 ## Set Up VS Code Workspaces
 
@@ -87,7 +88,7 @@ If everything went well in the previous section, you will have two beautiful clo
 1. If your VS Code instance does not look like the image below, click on the **Explorer** icon ![VS Code Explorer icon](/assets/images/posts/vscode-explorer-icon.png) in the Activity Bar on the left side of the VS Code window to show the Explorer view.<br />![VS Code Explorer view](/assets/images/posts/vscode-git-cloned-cli.png)
 1. Click **File > Add Folder to Workspace** and navigate to the *Projects* folder. Click on the *{{ site.data.fake.infrastructure_repo }}* folder without going into the folder itself and then click the **Add** button.<br />![VS Code add folder to workspace](/assets/images/posts/vscode-select-workspace-folder.png)
 1. Click **Yes** if it asks you if you trust this folder. Unless you don't trust it, in which case I'm sorry I haven't gained your trust (although I commend your vigilance!).<br />![VS Code trust folder prompt](/assets/images/posts/vscode-trust-prompt.png)
-1. Repeat steps 3 and 4, but with the *{{ site.data.fake.web_public_repo }}* folder instead.
+1. Repeat steps 4 and 5, but with the *{{ site.data.fake.web_public_repo }}* folder instead.
 1. Click **File > Save Workspace As** and then save this workspace as *swa* in a folder of your choosing (I like to create a *Workspaces* folder below my home folder).<br />![VS Code save workspace](/assets/images/posts/vscode-save-workspace.png)
 
 ## Now What?

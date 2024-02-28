@@ -2,7 +2,8 @@
 title: Things to Know About This Project
 categories: web static-web-app explainer
 sort_order: 3
-description: This is a bunch of random things about this project
+description: This is a bunch of random things about this project node
+tags: terraform terraform-cloud service-principal vs-code workspaces gitignore
 ---
 Since this is the first real service we're deploying as part of our {% include reference.html item='fake_company' %} venture, here's a bunch of random shit to know before you [jump in]({% post_url /learn/web/static-web-app/procedures/2024-02-28-configure-dev-environment %}).<!--more-->
 
@@ -39,7 +40,7 @@ This is especially useful if you're a platform infrastructure engineer who is de
 
 The *.gitignore* file is an optional file you can add to a Git project that tells Git not to include certain files in its repository. There are many reasons you may not want to commit some files to your repo, and here are the two main reasons I can think of.
 
-The first is that you may have configuration files that are specific to your environment. For example, a developer may have a configuration file that tells the app to connect to a database on that developers local laptop. The database hopefully doesn't have any production data on it, because we're concerned about security and customer privacy (right??), but instead has enough data so the developer can run and test the application locally. That database connection information is useless outside of the developer's laptop, so there's no need to check it in. In fact, it will only cause problems when another developer pulls the newest updates because it will have some other weird developer's connection strings. So it's best to leave it out of the repo altogether. The file can still exist locally, but can be edited independently by each developer without being committed to the repo.
+The first is that you may have configuration files that are specific to your environment. For example, a developer may have a configuration file that tells the app to connect to a database on that developer's local laptop. The database hopefully doesn't have any production data on it, because we're concerned about security and customer privacy (right??), but instead has enough data so the developer can run and test the application locally. That database connection information is useless outside of the developer's laptop, so there's no need to check it in. In fact, it will only cause problems when another developer pulls the newest updates because it will have some other weird developer's connection strings. So it's best to leave it out of the repo altogether. The file can still exist locally, but can be edited independently by each developer without being committed to the repo.
 
 Really, leave the configuration information out? Don't we need that in production? As we'll see in future projects, we can and will inject the correct configuration strings for each environment as part of our CI/CD process.
 {: .notice--info}
@@ -61,7 +62,7 @@ On your local laptop, if you're not using Node for anything other than this proj
 I guess I didn't clear it up.
 {: .notice--info}
 
-I'm going with the development dependency path since I'm a rule-follower. When you do that, the dependencies will go into a subfolder named *node_modules* relative to where ever you ran the `npm install` command. But I'd like to point out that even though Microsoft's Static Web App local development documentation says to use development dependencies, they show all the [examples](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#get-started) as if it was installed globally. So anywhere they show the `swa` command, replace that with `./node_modules/.bin/swa`.
+I'm going with the development dependency path since I'm a rule-follower. When you do that, the dependencies will go into a subfolder named *node_modules* relative to where ever you ran the `npm install` command. But I'd like to point out that even though Microsoft's Static Web App local development documentation says to use development dependencies, they show all the [examples](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#get-started) as if it were installed globally. So anywhere they show the `swa` command, replace that with `./node_modules/.bin/swa`.
 
 No matter which route you go, you should exclude all the Node-related files from your repository by adding the following lines to your *.gitignore* file.
 

@@ -3,6 +3,7 @@ title: Deploy Static Web App
 categories: web static-web-app procedure
 sort_order: 2
 description: Our first real thing! Let's deploy a Static Web App resource with Terraform.
+tags: static-web-app terraform service-principal resource resource-group terraform-output
 projects_folder:
   - name: $HOME
     children:
@@ -41,9 +42,12 @@ Before proceeding, read about how we're [*not* using Terraform Cloud]({% post_ur
 
 We're going to create a service principal in Azure that will be used by Terraform to gain access to Azure in order to deploy our Static Web App resource. This will just be a rehash of the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step of the [Terraform Tutorial]({% post_url /learn/basics/iac/procedures/2024-02-06-azure-terraform-tutorial %}) that you may have already performed, so I'll provide links to that tutorial with some additional commentary.
 
-- First, follow the steps to log into Azure and set your subscription in the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step.
-- Next, [create a service principal](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#create-a-service-principal). If you've already done that and saved the password in a secure location, you can skip this. If you don't know the password, you can create a new service principal (you may want to delete the old one for housekeeping purposes, if no one is using it). If you don't remember the app ID, you can find it in the Azure portal by searching for and selecting **App registrations**. You may need to select the **All application** tab if you don't see it listed.
-- Finally, [set your environment variables](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#set-your-environment-variables).
+If you've already created the service principal and remember your client secret, you only need to do the last step to set your environment variables.
+{: .notice--info}
+
+1. First, follow the steps to log into Azure and set your subscription in the [Authenticate using the Azure CLI](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#authenticate-using-the-azure-cli) step.
+1. Next, [create a service principal](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#create-a-service-principal). If you've already done that and saved the password in a secure location, you can skip this. If you don't know the password, you can create a new service principal (you may want to delete the old one for housekeeping purposes, if no one is using it). If you don't remember the app ID, you can find it in the Azure portal by searching for and selecting **App registrations**. You may need to select the **All application** tab if you don't see it listed.
+1. Finally, [set your environment variables](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build#set-your-environment-variables).
 
 ## Terraform
 
@@ -141,6 +145,9 @@ resource "azurerm_resource_group" "public_site" {
 }
 ```
 
+Notice that we're using our [naming conventions]({% post_url /learn/basics/azure_intro/explainers/2024-01-18-naming-conventions %}) for Azure resources.
+{: .notice--info}
+
 Now run this command to make sure you pasted/typed it correctly.
 
 ``` shell
@@ -180,7 +187,7 @@ Terraform will perform the following actions:
 Plan: 1 to add, 0 to change, 0 to destroy.
 {% endhighlight %}
 
-Terraform is telling you that it plans to create one resource which wil be our resource group. We haven't created that resource group yet, so that makes sense. We've defined most properties manually, but the ID our our resource group won't be known until after we create it which is why it is labeled as `(known after apply)`.
+Terraform is telling you that it plans to create one resource which wil be our resource group. We haven't created that resource group yet, so that checks out. We've defined most properties manually, but the ID of our resource group won't be known until after we create it which is why it is labeled as `(known after apply)`.
 
 Okay, let's tell Terraform to create the resource group!
 
@@ -234,7 +241,7 @@ You should see your new resource group in the Azure portal within the next coupl
 
 ### Create Static Web App
 
-Now we're going to add the definition for our Static Web App and do this all over again. Add this to your *main.tf* file:
+Now we're going to add the definition for our Static Web App and run the Terraform commands all over again. Add this to your *main.tf* file:
 
 ``` terraform
 resource "azurerm_static_site" "public_site" {
@@ -244,7 +251,7 @@ resource "azurerm_static_site" "public_site" {
 }
 ```
 
-Notice that the `resource_group_name` and `location` values are not hard-coded. Instead, we tell Terraform to get those values from the resource group we already defined above. Instead of re-writing those values and potentially messing them up, we know we'll just use the originally specified values. If we decide later to change the location or name of the resource group, we can do that it just for the resource group definition and everything else will follow.
+Notice that the `resource_group_name` and `location` values are not hard-coded. Instead, we tell Terraform to get those values from the resource group we already defined above. Instead of re-writing those values and potentially messing them up, we know we'll just use the originally specified values. If we decide later to change the location or name of the resource group, we can do that just for the resource group definition and everything else will follow.
 
 Why did I specify the same name for both the resource group and the Static Web App and not reference it like I did for the resource group name and location? Well, the names just happen to be the same for both the resource group and Static Web App, but that might not be the case all the time, so we want those to be independent.
 {: .notice--info}
