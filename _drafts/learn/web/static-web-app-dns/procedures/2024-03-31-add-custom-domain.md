@@ -3,7 +3,6 @@ title: Add Custom Domain
 categories: web static-web-app procedure
 sort_order: 6
 description: Let's use a real URL instead of stupid one.
-published: false
 ---
 {% assign engineer_name = site.data.fake.engineer_username | capitalize %}
 {% assign fake_company_name_lower = site.data.fake.company_name | downcase %}
