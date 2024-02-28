@@ -23,14 +23,14 @@ Although not absolutely required, it's nice to decide where you're going to put 
 
 {% include filesystem.html id="projects_folder" %}
 
-The *$HOME* folder is her user profile folder, which will be *\Users\{{ site.data.fake.engineer_username }}* in Windows, */Users/{{ site.data.fake.engineer_username }}* in macOS, and */home/{{ site.data.fake.engineer_username }}* in Linux. She puts all her repositories in the *Projects* subfolder which exists by default in macOS but you can create it in Windows or Linux.
+The *$HOME* folder is her user profile folder, which will be *\Users\{{ site.data.fake.engineer_username }}* in Windows, */Users/{{ site.data.fake.engineer_username }}* in macOS, and */home/{{ site.data.fake.engineer_username }}* in Linux. She creates a *Projects* folder in her home folder and puts all her repositories in there.
 
 We're not going to create our repository folders quite yet. That will happen automatically when we clone them from GitHub.
 {: .notice--info}
 
 ## Create GitHub Repos
 
-The first we're going to do is create a new repository in GitHub. If you've been following the [guided tour]({% link _pages/guided.md %}), you've already created your [infrastructure repository]({% post_url /learn/basics/iac/procedures/2024-02-07-github %}), but if you haven't, do that now.
+The first thing we're going to do is create a new repository in GitHub. If you've been following the [guided tour]({% link _pages/guided.md %}), you've already created your [infrastructure repository]({% post_url /learn/basics/iac/procedures/2024-02-07-github %}), but if you haven't, do that now.
 
 We also need a repo for the static website. Follow the same steps to [create a GitHub repository]({% post_url /learn/basics/iac/procedures/2024-02-07-github %}) as you did for the infrastructure repository, but name it **{{ site.data.fake.web_public_repo }}** and leave the **Add .gitignore** option set to `None`.
 

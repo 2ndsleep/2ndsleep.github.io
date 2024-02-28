@@ -195,7 +195,7 @@ nothing to commit, working tree clean
 
 ## VS Code
 
-Now let's do it the easy way with our {{ site.data.fake.infrastructure_repo }} repository. Open VS Code and click on the Source Control ![VS Code Source Control icon](/assets/images/posts/vscode-source-control-icon.png) icon. You should see 6 files under the **Changes** header that need to be added to our repo (or 4 files if you didn't copy the *LICENSE* and *README.md* files, which is a-okay). Each file should have a green letter **U** next to it, which stands for **untracked** in Git parlance.
+Now let's do it the easy way with our {{ site.data.fake.web_public_repo }} repository. Open VS Code and click on the Source Control ![VS Code Source Control icon](/assets/images/posts/vscode-source-control-icon.png) icon. You should see 6 files under the **Changes** header that need to be added to our repo (or 4 files if you didn't copy the *LICENSE* and *README.md* files, which is a-okay). Each file should have a green letter **U** next to it, which stands for **untracked** in Git parlance.
 
 If you move your mouse slightly to the left of one of those U letters, you'll see a **+** sign. You can click on that for each file or to make it easier, click on the + sign in the **Changes** header to add all the untracked files. The status should change from **Changes** to **Staged Changes**. This is the same as typing `git add -A`.
 
@@ -207,7 +207,7 @@ Now we want to commit our changes, so type the following message into the messag
 
 {% include figure image_path="/assets/images/posts/vscode-source-control-pre-commit.png" caption="Add a commit message and click the **Commit** button." alt="VS Code commit changes" class="third" %}
 
-Okay, you've committed everything locally. This is normally where you would see a button that says **Sync Changes 1 ⬆**. However, since I told you not to include a *.gitignore* or *README.md* file when you created the repo, GitHub had no initial files and didn't both creating a branch. However, as soon as you committed files locally, Git created a local branch named **main**. Now you have a local branch named main but no corresponding branch in GitHub so Git is confused. Luckily, there is an easy fix which is to run this command.
+Okay, you've committed everything locally. This is normally where you would see a button that says **Sync Changes 1 ⬆**. However, since I told you not to include a *.gitignore* or *README.md* file when you created the repo, GitHub had no initial files and didn't bother creating a branch. However, as soon as you committed files locally, Git created a local branch named **main**. Now you have a local branch named main but no corresponding branch in GitHub so Git is confused. Luckily, there is an easy fix which is to run this command.
 
 ``` shell
 git branch --unset-upstream

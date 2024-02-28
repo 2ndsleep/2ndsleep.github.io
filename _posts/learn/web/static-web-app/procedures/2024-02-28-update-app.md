@@ -4,7 +4,7 @@ categories: web static-web-app procedure
 sort_order: 5
 description: We need to make some changes to our web app.
 ---
-{{ site.data.fake.ceo_name }}, the CEO of {% include reference.html item='fake_company' %} - a real ideas guy (trust fund kid) - had the brilliant notion of trying to solicit investors in the company, even though we don't have a product yet. But hey, why should the lack of a product [stop entrepreneurship](https://www.alexanderjarvis.com/25-startups-that-raised-without-a-product/)? He's asked that we add an email address where people can inquire about investing. So sure, let's do that.<!--more-->
+{{ site.data.fake.ceo_name }}, the CEO of {% include reference.html item='fake_company' %} and a real ideas guy (trust fund kid), had the brilliant notion of trying to solicit investors in the company, even though we don't have a product yet. But hey, why should the lack of a product [stop entrepreneurship](https://www.alexanderjarvis.com/25-startups-that-raised-without-a-product/)? He's asked that we add an email address where people can inquire about investing. So sure, let's do that.<!--more-->
 
 ## Make Changes Locally
 

@@ -37,7 +37,7 @@ This is especially useful if you're a platform infrastructure engineer who is de
 
 ## .gitignore
 
-The *.gitignore* file is an optional file you can add to a Git project that tells Git not to include certain files in its repository. There are two main reasons you may not want to commit some files to your repo.
+The *.gitignore* file is an optional file you can add to a Git project that tells Git not to include certain files in its repository. There are many reasons you may not want to commit some files to your repo, and here are the two main reasons I can think of.
 
 The first is that you may have configuration files that are specific to your environment. For example, a developer may have a configuration file that tells the app to connect to a database on that developers local laptop. The database hopefully doesn't have any production data on it, because we're concerned about security and customer privacy (right??), but instead has enough data so the developer can run and test the application locally. That database connection information is useless outside of the developer's laptop, so there's no need to check it in. In fact, it will only cause problems when another developer pulls the newest updates because it will have some other weird developer's connection strings. So it's best to leave it out of the repo altogether. The file can still exist locally, but can be edited independently by each developer without being committed to the repo.
 
@@ -72,4 +72,4 @@ package.json
 swa-cli.config.json
 ```
 
-If you are actually writing a Node application (which we are not doing for this project), you probably shouldn't exclude these files. Again, you Node developers out there, please leave comments with any thoughts, guidance, or corrections.
+If you are actually writing a Node application (which we are not doing for this service), you probably shouldn't exclude these files. Again, you Node developers out there, please leave comments with any thoughts, guidance, or corrections.
