@@ -51,7 +51,7 @@ For your infrastructure repository, select **Terraform** for the dropdown box un
 
 ## Node Dependencies
 
-When we develop our web application code locally{% comment %}[locally]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}){% endcomment %}, we will install the **@azure/static-web-apps-cli** (SWA CLI) Node package using the `npm` command. The SWA CLI package simulates an Azure Static Web App service on your local computer.
+When we develop our web application code [locally]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}), we will install the **@azure/static-web-apps-cli** (SWA CLI) Node package using the `npm` command. The SWA CLI package simulates an Azure Static Web App service on your local computer.
 
 You can install Node packages either globally or as a development dependency. Microsoft's documentation recommends you install the SWA CLI package as a development dependency but doesn't explain why. So I'll try to clear it up a bit.
 

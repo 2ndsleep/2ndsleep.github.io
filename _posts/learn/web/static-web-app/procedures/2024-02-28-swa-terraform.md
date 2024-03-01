@@ -416,4 +416,4 @@ That's it! You haven't really done anything worth showing your family, not that 
 
 Remember, we've only deployed the infrastructure (that is, the Static Web App Azure resource) which is why you'll see a [temporary site]({% post_url /learn/web/static-web-app/explainers/2024-02-28-static-web-app %}#{{ 'How Do I Upload My Web Content to This Site?' | slugify }}) at the URL. We're still waiting for our web designer get back to us.
 
-Oh wouldn't you know? It looks like our web designer just finished the website. Good timing. We'll deploy that to this new Static Web App in the next post{% comment %}[next post]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}){% endcomment %}.
+Oh wouldn't you know? It looks like our web designer just finished the website. Good timing. We'll deploy that to this new Static Web App in the [next post]({% post_url /learn/web/static-web-app/procedures/2024-03-01-swa-local-dev %}).
