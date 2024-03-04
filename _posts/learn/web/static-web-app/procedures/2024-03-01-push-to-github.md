@@ -223,4 +223,4 @@ Yeah, that's a lot easier. Despite that, I find myself frequently using the comm
 
 ## What About the Friggin' Website?
 
-Yeah, I know. We keep *not* creating a website. Don't worry, that's next{% comment %}[next]({% post_url /learn/web/static-web-app/procedures/2024-03-04-github-actions %}){% endcomment %}.
+Yeah, I know. We keep *not* creating a website. Don't worry, that's [next]({% post_url /learn/web/static-web-app/procedures/2024-03-04-github-actions %}).
