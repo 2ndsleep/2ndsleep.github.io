@@ -14,9 +14,9 @@ Declarative code on the other hand describes "what" something should look like. 
 
 For a great explanation of imperative versus declaractive code, see Yehuda Margolis's [Imperative vs Declarative Programming in JavaScript](https://www.linkedin.com/pulse/imperative-vs-declarative-programming-javascript-yehuda-margolis) article.
 
-## Idempotency
+## Idempotence
 
-You may have come across this word before and thought it was needlessly academic, but it's a real honest-to-god principle that you should think about while authoring infrastructure as code. In computery terms, **idempotency** means that when you do some activity with a set of inputs, that activity will yield the same result every time if you provide the same input. Here's an absurbly simple JavaScript example.
+You may have come across this word before and thought it was needlessly academic, but it's a real honest-to-god principle that you should think about while authoring infrastructure as code. In computery terms, **idempotence** means that when you do some activity with a set of inputs, that activity will yield the same result every time if you provide the same input. Here's an absurdly simple JavaScript example.
 
 ``` javascript
 function idempotent(param1, param2) {
@@ -55,7 +55,7 @@ notIdempotent('Hello', 'World!')
 // We ran it again 5 seconds later, so the output changed.
 ```
 
-Idempotency alone isn't good or bad, it's just a thing. But when you are writing infrastructure as code, you'll want to be able to deploy the same infrastructure again and again and know exactly what it's going to produce. If you deploy an Apache web server one day and then run that exact same deployment the next day, you don't want it delete Apache and install Tomcat. Your developers are expecting an Apache server with some specific settings and you want to be able to deliver that exact same server configuration each time.
+Idempotence alone isn't good or bad, it's just a thing. But when you are writing infrastructure as code, you'll want to be able to deploy the same infrastructure again and again and know exactly what it's going to produce. If you deploy an Apache web server one day and then run that exact same deployment the next day, you don't want it delete Apache and install Tomcat. Your developers are expecting an Apache server with some specific settings and you want to be able to deliver that exact same server configuration each time.
 
 IaC code tends to be idempotent unless you go out of your way to make it dynamic by depending on random number generators or datetime values, so knowing about idempotence is a little show-offy if you work with people who don't like you talking fancy to them.
 
