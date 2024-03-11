@@ -24,7 +24,7 @@ function idempotent(param1, param2) {
 }
 ```
 
-You can call this function until you're blue in the face, but he result will be the same each time so long as you use the same parameters.
+You can call this function until you're blue in the face, but the result will be the same each time so long as you use the same parameters.
 
 ``` javascript
 idempotent('Hello', 'World!')

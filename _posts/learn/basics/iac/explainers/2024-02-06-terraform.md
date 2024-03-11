@@ -207,7 +207,7 @@ The problem you'll run into is that when it comes time to make changes, you migh
 
 {% include filesystem.html id="folder_tf_env_with_module" %}
 
-For example, let's say you decided to add a Redis Cache to your architecture. Instead of having to paste all that into each configuration, you just add it to the module and since each configuration is already calling the module, the Redis will be deployed as expected in each environment.
+For example, let's say you decided to add a Redis Cache to your architecture. Instead of having to paste all that into each configuration, you just add it to the module and since each configuration is already calling the module, the Redis Cache resource will be deployed as expected in each environment.
 
 ## Terraform Cloud
 
