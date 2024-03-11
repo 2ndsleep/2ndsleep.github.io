@@ -2,7 +2,7 @@
   {%- when 'fake_company' -%}
     [{{ include.anchor_text | default: site.data.fake.company_name }}]({%- link _pages/about.md -%}#{{ site.data.fake.company_name | slugify }})
   {%- when 'azure_cli' -%}
-    [{{ include.anchor_text | default: 'Azure CLI' }}](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+    [{{ include.anchor_text | default: 'Azure CLI' }}]({% post_url /learn/basics/azure_intro/procedures/2024-01-14-azure-command-line-tools %})
   {%- when 'vscode' -%}
     [{{ include.anchor_text | default: 'VS Code' }}]({%- post_url /learn/basics/iac/procedures/2024-01-31-vscode -%})
   {%- when 'policy' -%}

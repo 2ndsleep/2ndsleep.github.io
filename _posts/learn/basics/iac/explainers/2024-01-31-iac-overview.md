@@ -3,6 +3,7 @@ title: Infrastructure as Code Introduction
 categories: basics iac explainer
 sort_order: 1
 description: Introduction to the infrastructure as code concept
+tags: infrastructure infrastructure-as-code idempotence github vs-code
 ---
 **Infrastructure as code (IaC)** is a way to define your infrastructure using code. It's what this blog is all about and is a reliable way to automate the deployment of your cloud resources.<!--more-->
 
@@ -10,7 +11,7 @@ Let's back up and make sure we understand what we mean by **infrastructure**. In
 
 ## Defining Infrastructure with Code
 
-Infrastructure as code is exactly how it sounds. You write code that is saved to a text file that defines what you want your infrastructure to look like. You can think of this like an architect's blueprint that say exactly what your resource should look like.
+Infrastructure as code is exactly how it sounds. You write code that is saved to a text file that defines what you want your infrastructure to look like. You can think of this like an architect's blueprint that says exactly what your resource should look like.
 
 Here's an example of a fake infrastructure as code file.
 
@@ -29,7 +30,7 @@ This is saying that you want a VM named `jumpbox` running Windows Server with 4 
 
 {% include svg.html path="svg/iac-overview.svg" caption="Run your IaC file through a provisioning service and out pops your resource!" alt="IaC overview" %}
 
-This type of code is called [**declarative**]({% post_url /learn/basics/iac/explainers/2024-01-31-iac-principles %}#declarative-code) code because you are declaring what you what your resource should look like. You're not saying how it should be created, you're simply saying you want a VM with all those properties. You don't know how it gets created and you don't care.
+This type of code is called [**declarative**]({% post_url /learn/basics/iac/explainers/2024-01-31-iac-principles %}#declarative-code) code because you are declaring what your resource should look like. You're not saying how it should be created, you're simply saying you want a VM with all those properties. You don't know how it gets created and you don't care.
 
 The above example is fake using some half-ass YAML structure that I made up, so it won't work in real life. Most IaC will use JSON or a JSON-like format.
 {: .notice--info}
@@ -64,7 +65,7 @@ This means that you can run your IaC over and over again and always expect the s
 
 {% include svg.html path="svg/iac-known-state.svg" caption="Restore your resource back to known state after a cowboy screws things up." alt="Restore known state" attribution=cowboy_attribution %}
 
-This approach has a mantra of treating your resources like "cattle not pets," and can require a shift in thinking, depending on how you've worked in the past and depending on if you've ever had a pet cow. The idea is that no single resource is precious. If you've designed things correctly and have proper backups of your data, then your infrastructure can get wiped out and you simply re-run your IaC and restore your data, and you'll be back in operation. By the way, this idea of running a task over and over and getting the same result is known as [**idempotency**]({% post_url /learn/basics/iac/explainers/2024-01-31-iac-principles %}#idempotency).
+This approach has a mantra of treating your resources like "cattle not pets," and can require a shift in thinking, depending on how you've worked in the past and depending on if you've ever had a pet cow. The idea is that no single resource is precious. If you've designed things correctly and have proper backups of your data, then your infrastructure can get wiped out and you simply re-run your IaC and restore your data, and you'll be back in operation. By the way, this idea of running a task over and over and getting the same result is known as [**idempotence**]({% post_url /learn/basics/iac/explainers/2024-01-31-iac-principles %}#idempotence).
 
 ### Self-Documenting
 
@@ -77,7 +78,7 @@ There are tons of IaC tools you can use to manage your environment, but I'll hig
 Behind the scenes, these tools simply convert the IaC definitions to REST API calls to the [Azure orchestrator]({% post_url /thoughts/2023-12-29-azure-cloud-os %}#cloud-operating-system) which makes the changes to the resources.
 {: .notice--info}
 
-Both of these products are IaC tools and they are both fantastic. I like both of them a lot and wrestled with which one I'd use for {% include reference.html item='fake_company' %} but eventually settled on using Terraform for reasons I'll explain in a future post. I even considered using examples of both, but I thought that would be way too much work. I'll still do a quick explainer of ARM templates and Bicep.
+Both of these products are IaC tools and they are both fantastic. I like both of them a lot and wrestled with which one I'd use for {% include reference.html item='fake_company' %} but eventually settled on using Terraform for reasons I'll explain in a future post. I even considered using examples of both, but I thought that would be way too much work. I'll still do a quick explainer of [ARM templates and Bicep]({% post_url /learn/basics/iac/explainers/2024-02-04-arm-bicep %}).
 
 ## GitHub
 
@@ -85,7 +86,7 @@ You could save all of your IaC files on your laptop, but this isn't 1995. You'll
 
 ## Authoring
 
-You'll also want some type of application to write your IaC files. As I mentioned, these are text files, so you can use something as simple as Windows Notepad. But opening a ton of Notepad windows is a dumb way to work and you'd be dumb to do that, dummy. Instead, you should use something that will help you keep your files organized and highlight the text with pretty colors so it's easier to navigate.
+You'll also want some type of application to write your IaC files. As I mentioned, these are text files, so you can use something as simple as Windows Notepad. But opening a ton of Notepad windows is a dumb way to work and you'd be dumb to do that, dummy. Instead, you should use something that will help you keep your files organized and highlight the text with pretty colors so it's easier to read.
 
 There are lots of options for text editors with syntax highlighting, such as Notepad++ or Sublime Text. But we'll be using an editor that has quickly risen to fame, {% include reference.html item='vscode' %}.
 
