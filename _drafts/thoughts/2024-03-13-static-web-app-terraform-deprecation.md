@@ -2,8 +2,9 @@
 title: Terraform Version Constraint Syntax (Or "Learning From Our Mistakes")
 category: thoughts
 tags: static-web-app terraform
+toc: true
 ---
-So I've just started this project and spent all this time fine-tuning my first series of actionable posts to deploy an [Azure Static Web App]({% link _services/web/static-web-app.md %}). I published the last post on March 4, 2024 and fucking four days later, Terraform releases an update where they are deprecating the **azurerm_static_site** resource. We're now supposed to use the [**azurerm_static_web_app**](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/static_web_app) resource. Are you serious??!!<!--more-->
+So I've just started this project and spent all this time fine-tuning my first series of actionable posts to deploy an [Azure Static Web App]({% link _services/web/static-web-app.md %}). I published the last post on March 4, 2024 and four effing days later, Terraform releases an update where they are deprecating the **azurerm_static_site** resource. We're now supposed to use the [**azurerm_static_web_app**](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/static_web_app) resource. Are you serious??!!<!--more-->
 
 The procedures in those posts will still work as of now but they will eventually stop working. I'd like to make this as evergreen as possible, so I am going to update those posts soon. But now I have to make new little screenshots which is kind of a pain in the ass. I set an artificial deadline for myself to have all the posts released by the first week of March, but if I had waited, I could have made those changes before releasing it. Let this be a lesson: always procrastinate.
 
@@ -37,7 +38,7 @@ The first way is to use the brute force method of the `=` operator to say "we on
 version = "= 3.95.0"
 ```
 
-This is useful if you know that there is only a certain version that will work for your configuration. However, you're also saying you never want to use a future version. Maybe that's your scenario, but it's not the one I want to use here. I want to be able to use future versions because the provider changes as Azure changes.
+This is useful if you know that there is only a certain version that will work for your configuration. However, you're also saying you never want to use a future version. Maybe that's your scenario, but it's not the one I want to use here. I want to be able to use future versions because the azurerm provider will change as Azure changes.
 
 #### `!=` Operator
 
@@ -51,7 +52,7 @@ This might be useful if there is a bug in a certain version and you want to make
 
 #### `>`, `>=`, `<`, `>=` Operators
 
-Those two options will work, but we have some more flexibility to allow us to specify a minimum. Using the `>` syntax, we can say we want anything greater than 3.9.
+The last two options will work, but we have some more flexibility to allow us to specify a minimum. Using the `>` syntax, we can say we want anything greater than 3.9.
 
 ``` terraform
 version = "> 3.9.0"
@@ -145,7 +146,7 @@ Now that you've updated your provider version, you'd think you could simply run 
 
 Terraform is saying that the provider you've already downloaded isn't the version you specified in your *base.tf* file. Terraform is playing it safe by not automatically updating the provider in case you're still in the middle of testing things.
 
-Similarly, if you run `terraform validate`, you'll get a message saying that it doesn't know what the **azurerm_static_web_app** resource is. That's because it's still using version 3.9 and the azurerm_static_web_app resource isn't defined there.
+Similarly, if you run `terraform validate`, you'll get a message saying that it doesn't know what the azurerm_static_web_app resource is. That's because it's still using version 3.9 and the azurerm_static_web_app resource isn't defined there.
 {: .notice--info}
 
 Terraform tells you exactly what you need to do here, which is run this command.
@@ -208,11 +209,11 @@ Changes to Outputs:
 
 Never mind that it's the same underlying type of Azure resource. That's just the way Terraform works. In the Terraformm state file, this is a different resource, so the old one's gotta go and a new "different" resource will be created.
 
-**But wait, don't run `terraform apply` yet!** (I'm sorry if you already did. I should have warned you earlier. If you did, it's okay, you can [fix it](#whoops-i-accidentally-applied-my-configuration).) We can fix this without redeploying by updating our state file.
+**But wait, don't run `terraform apply` yet!** (I'm sorry if you already did. I should have warned you earlier. If you did, it's okay, I have a [solution](#whoops-i-accidentally-applied-my-configuration).) We can fix this without redeploying by updating our state file.
 
 ## Update State File
 
-Terraform has some commands to make your state file align with reality. What we need to do is get rid of our **azurerm_static_site** resource from the state file and import the Static Web App Azure resource as a **azurerm_static_web_app** Terraform resource. Whew!
+Terraform has some commands to make your state file align with reality. What we need to do is get rid of our **azurerm_static_site** resource from the state file and import the Static Web App Azure resource as an **azurerm_static_web_app** Terraform resource. Whew, that sounds like a lot!
 
 First, let's import our **azurerm_static_web_app** resource using the `terraform import` command. The full syntax looks like this:
 
@@ -220,9 +221,9 @@ First, let's import our **azurerm_static_web_app** resource using the `terraform
 terraform import TERRAFORM_RESOURCE AZURE_RESOURCE_ID
 ```
 
-The **TERRAFORM_RESOURCE** is in the form of `RESOURCE_TYPE.NAME` just as we have it defined in our configuration. In our case, it is **azurerm_static_web_app.public_site**.
+The **TERRAFORM_RESOURCE** is in the form of **RESOURCE_TYPE.NAME** just as we have it defined in our configuration. In our case, it is `azurerm_static_web_app.public_site`.
 
-The `AZURE_RESOURCE_ID` is the unique ID given to each resource in Azure. We haven't talked about it much, but you can find it in most resources' Properties blade, except for a Static Web App for some reason. In our case, we'll grab it from the state. Open the *terraform.state* file and look for the azurerm_static_site resource (`"type": "azurerm_static_site"`). In that resource, you'll find the Azure ID (`"id": "/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-webpub-prd-1"`).
+The **AZURE_RESOURCE_ID** is the unique ID given to each resource in Azure. We haven't talked about it much, but you can find it in most resources' Properties blade in the portal, except for a Static Web App for some reason. In our case, we'll grab it from the state. Open the *terraform.state* file and look for the azurerm_static_site resource (`"type": "azurerm_static_site"`). In that resource, you'll find the Azure ID (`"id": "/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-webpub-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-webpub-prd-1"`).
 
 Put those two things together, and you get the command below which is saying "import the Azure resource with this ID into the azurerm_static_web_app.public_site Terraform resource in our state file." Yours will have a different subscription ID but will otherwise look the same if you've been following along.
 
@@ -244,7 +245,7 @@ The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.
 {% endhighlight %}
 
-Now let's remove the old **azurerm_static_site** Terraform resource from our state file. This uses the following command:
+Now let's remove the old **azurerm_static_site** Terraform resource from our state file. This uses the following syntax:
 
 ``` shell
 terraform state rm TERRAFORM_RESOURCE
@@ -288,7 +289,7 @@ What happened is that Terraform destroyed the Azure resource and removed the azu
 
 All you need to do is run `terraform apply` again and it will create the new azure_static_web_app resource.
 
-This restores your Azure resource, but it is a different Static Web App resource which means it does not have our website content deployed to it. If you visit the site, it will be the temporary site that Microsoft throws up there. You'll need to run the GitHub Actions workflow again to deploy our custom site content. But another goddamn problem is that the workflow only runs when we update the main branch of our {{ site.data.fake.web_public_repo }} repository.
+This restores your Azure resource, but it is a different Static Web App resource which means it does not have our website content deployed to it. If you visit the site, it will be the temporary site that Microsoft throws up there. You'll need to run the GitHub Actions workflow again to deploy our custom site content. But another freaking problem is that the workflow only runs when we update the main branch of our {{ site.data.fake.web_public_repo }} repository.
 
 But we can trick our repo into thinking something changed by adding an **empty commit**. This is exactly how it sounds: a commit without any changes. To do that, open a console in your local {{ site.data.fake.web_public_repo }} repo and run these commands:
 
@@ -297,4 +298,4 @@ git commit --allow-empty -m "Trigger GitHub Actions workflow"
 git push
 ```
 
-Now go look at your GitHub Actions for the {{ site.data.fake.web_public_repo }} repo and make sure the workflow run successfully.
+Now go look at your GitHub Actions for the {{ site.data.fake.web_public_repo }} repo and make sure the workflow runs successfully.
