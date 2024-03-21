@@ -1,7 +1,7 @@
 ---
 title: Terraform Version Constraint Syntax (Or "Learning From Our Mistakes")
 category: thoughts
-tags: static-web-app terraform
+tags: static-web-app terraform git
 toc: true
 ---
 So I've just started this project and spent all this time fine-tuning my first series of actionable posts to deploy an [Azure Static Web App]({% link _services/web/static-web-app.md %}). I published the last post on March 4, 2024 and four effing days later, Terraform releases an update where they are deprecating the **azurerm_static_site** resource. We're now supposed to use the [**azurerm_static_web_app**](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/static_web_app) resource. Are you serious??!!<!--more-->
