@@ -251,5 +251,5 @@ Congratulations! You've completed the first service in our series. You've been a
 
 Remember, there's no right or wrong way to do this. If you found a solution to your problem, then you did it the right way! Having said that, my way is undoubtedly the most correct way and anything else is very wrong, so check the links below to see what my code looks like when this service is complete.
 
-- [{{ site.data.fake.infrastructure_repo }}](https://github.com/2ndsleep/{{ site.data.fake.infrastructure_repo }}/releases/tag/web%2Fstatic-web-app)
+- [{{ site.data.fake.infrastructure_repo }}](https://github.com/2ndsleep/{{ site.data.fake.infrastructure_repo }}/releases/tag/web%2Fstatic-web-app%2Fnew-terraform-resource)
 - [{{ site.data.fake.web_public_repo }}](https://github.com/2ndsleep/{{ site.data.fake.web_public_repo }}/releases/tag/web%2Fstatic-web-app%2Ffinal)
