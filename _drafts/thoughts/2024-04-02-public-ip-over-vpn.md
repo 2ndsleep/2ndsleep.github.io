@@ -4,20 +4,27 @@ category: thoughts
 tags: vpn vpn-gateway virtual-network
 toc: true
 ---
-{% assign ip_clearinghouse_peer = 'p.c.c.c' %}
-{% assign ip_org_peer = 'p.o.o.o' %}
-{% assign ip_org_app_public = 'a.o.o.o' %}
-{% assign net_clearinghouse_app_public = 'a.c.c.c/x' %}
-{% assign net_org_app = '10.16.0.0' %}
-{% assign ip_org_app = '10.16.0.32' %}
-{% assign ip_org_app_router = '10.16.0.8' %}
+{% comment %}
+SVG: maybe: challenges
+SVG: maybe: high-level with routing
+SVG: NVA
+SVG: custom router VM
+{% endcomment %}
+
+{% assign ip_clearinghouse_peer = 'c.c.p.p' %}
+{% assign ip_org_peer = 'o.o.p.p' %}
+{% assign ip_org_app_public = 'o.o.a.a' %}
+{% assign net_clearinghouse_app_public = 'c.c.a.a/x' %}
+{% assign net_org_app = '10.20.0.0' %}
+{% assign ip_org_app = '10.20.0.32' %}
+{% assign ip_org_app_router = '10.20.0.8' %}
 {% assign netmask_org_app = 24 %}
 {% assign port_org_app = 5000 %}
-{% assign net_org_routing = '10.20.0.0' %}
+{% assign net_org_routing = '10.16.0.0' %}
 {% assign netmask_org_routing = 24 %}
-{% assign ip_org_routing_router = '10.20.0.8' %}
-{% assign ip_org_routing_router_azure_gateway = '10.20.0.1' %}
-{% assign ip_vyos_vti = '10.8.0.1' %}
+{% assign ip_org_routing_router = '10.16.0.8' %}
+{% assign ip_org_routing_router_azure_gateway = '10.16.0.1' %}
+{% assign ip_vyos_vti = '192.168.128.1' %}
 {% assign netmask_vyos_vti = 24 %}
 
 Each industry has its weird little standards. When I worked in the pharmacy space, that weird little standard was how you had to route certain public IP addresses over a private VPN.<!--more--> When I first came across this, I scratched my head as to why they did it this way. Then I had to figure out how to do this in a virtual cloud environment. Then I balled up my fists and screamed. Then I figured it out and went and got a beer. It was a tumultuous, exhilarating time!
@@ -26,7 +33,14 @@ Each industry has its weird little standards. When I worked in the pharmacy spac
 
 Since this was required to process pharmacy payments, let me first offer the briefest background on how retail pharmacies process claims. When it's time to pick up your pills (none of my business what it's for), the pharmacy tech sends your prescription and insurance information to your insurance company. The insurance company responds back immediately with how much they will reimburse the pharmacy and how much the patient owes. It's actually a pretty well-oiled machine.
 
-But just like every other part of the medical industry, there is a middleman in this process. Each pharmacy doesn't make a direct connection to each of the roughly [66 pharmacy insurers](https://content.naic.org/cipr-topics/pharmacy-benefit-managers) in the US. Instead, a pharmacy makes a connection to something known as a **clearinghouse** that relays the connection to the correct insurance company. The clearinghouse is like a hub in the middle of a wagon wheel. It connects to all the pharmacies and all the insurance companies.
+But just like every other part of the medical industry, there is a middleman in this process. Each pharmacy doesn't make a direct connection to each of the roughly [66 pharmacy insurers](https://content.naic.org/cipr-topics/pharmacy-benefit-managers) in the US. Instead, a pharmacy makes a connection to something known as a **clearinghouse** that relays the claim to the correct insurance company. The clearinghouse is like a hub in the middle of a wagon wheel. It connects to all the pharmacies and all the insurance companies.
+
+{% capture pharmacy_attribution %}
+{% include attribution.html title='house' image_link='https://commons.wikimedia.org/wiki/File:House.svg' author='barretr (Open Clip Art Library)' author_link='http://openclipart.org/media/people/barretr' license='CC0' license_link='https://creativecommons.org/publicdomain/zero/1.0/deed.en' %}<br />
+{% include attribution.html title='office building' image_link='https://commons.wikimedia.org/wiki/File:587-office-building.svg' author='Vincent Le Moign' author_link='https://twitter.com/webalys' license='CC BY 4.0' license_link='https://creativecommons.org/licenses/by/4.0' %}
+{% endcapture %}
+
+{% include svg.html path="svg/pharmacy-clearinghouse.svg" caption="Who would have guessed that any part of the American healthcare system is actually efficient?" attribution=pharmacy_attribution %}
 
 <p class="notice--info">My experience with this is only in the pharmacy space, but my understanding is that this model is the same for medical claims processing.<br /><br />For stupid historical reasons, the pharmacy coverage part of your medical insurance is technically known as a pharmacy benefit manager or PBM. If you find yourself at a dinner party sitting next to someone in the retail pharmacy space, use the term "PBM" and watch their face light up and buckle in for a really boring conversation.</p>
 
@@ -44,7 +58,12 @@ If you're not a network person, there's two types of IPv4 addresses: public and 
 
 Since public IP addresses are guaranteed to be unique, the clearinghouses have chosen to use that as their solution. So you assign a public IP address to your adjudication endpoint where the clearinghouse will establish a TCP connection. The whole thing looks something like this:
 
+{% capture vpn_overview_attribution %}
+{% include attribution.html title='house' image_link='https://commons.wikimedia.org/wiki/File:House.svg' author='barretr (Open Clip Art Library)' author_link='http://openclipart.org/media/people/barretr' license='CC0' license_link='https://creativecommons.org/publicdomain/zero/1.0/deed.en' %}<br />
+{% include attribution.html title='firewall' image_link='https://commons.wikimedia.org/wiki/File:Breezeicons-apps-48-firewall-config.svg' author='Uri Herrera and others, KDE Visual Design Group' author_link='https://github.com/KDE/breeze-icons/blob/master/COPYING-ICONS' license='LGPL' license_link='https://www.gnu.org/copyleft/lgpl.html' %}
+{% endcapture %}
 
+{% include svg.html path="svg/public-ip-over-vpn-overview.svg" caption="Public IP over VPN high-level network design" attribution=vpn_overview_attribution %}
 
 Using public IPs ensures that there are no IP address collisions like you potentially would have if you were only connecting private networks. There is nothing in the IPSec VPN specifications that say you can't use public IP addresses, but it's a departure from how you regularly do things so it takes some noodling to get it right.
 
@@ -105,20 +124,30 @@ The adjudication subnet will need a route to the clearinghouse network as will a
 
 The best way to do this is to use a network virtual appliance (NVA). An NVA is virtual router from a non-Microsoft vendor of your choosing (Cisco, Palo Alto, Fortinet, etc.) that you can purchase from the Azure marketplace. This is like plopping a physical router that you're already familiar with in Azure (but it's like, virtual, man) and grants you complete control over your networking infrastructure, including the VPN connection, routing, and NAT. If you already have experience using, say, a Cisco device, you can apply all of your existing knowledge to the NVA without having to learn a new Azure networking service. The downside is that this can be a bit costly since you'll be paying for the underlying Azure VM that the NVA runs on plus a premium for the vendor's product license.
 
+{% capture nva_attribution %}
+{% include attribution.html title='house' image_link='https://commons.wikimedia.org/wiki/File:House.svg' author='barretr (Open Clip Art Library)' author_link='http://openclipart.org/media/people/barretr' license='CC0' license_link='https://creativecommons.org/publicdomain/zero/1.0/deed.en' %}<br />
+{% include attribution.html title='physical router image' image_link='https://commons.wikimedia.org/wiki/File:Router.svg' author='George Shuklin' author_link='https://commons.wikimedia.org/wiki/User:George_Shuklin' license='Creative Commons Attribution-Share Alike 3.0 Unported' license_link='https://creativecommons.org/licenses/by-sa/3.0/deed.en' %}
+{% endcapture %}
+
+{% include svg.html path="svg/public-ip-over-vpn-nva.svg" caption="Public IP over VPN NVA network design" attribution=nva_attribution %}
+
 Since this can be any type of device, I'm not going to show you how to do it, but you'll want to do the following in general on the NVA.
 
-1. Create your NVA resource in Azure and assign it a public IP address that will be used for the VPN peer. This is *not* the same as the public IP address for your application endpoint.
-1. Establish a VPN connection to the clearinghouse.
-1. Create a NAT rule to translate your application's public IP address to its private address.
-1. If necessary, create a NAT rule to translate your application's private IP address to its public address (for some routers this may have been done as part the previous step).
-1. If necessary, create a route to the clearinghouse's public IP over the VPN (`{{ net_clearinghouse_app_public }}` :arrow_right: VPN).
+1. Create your NVA resource in Azure and with at least two NICs.
+  - Assign a private static IP (`{{ ip_org_routing_router }}`) to the first NIC on the **routing** subnet.
+  - Assign a static public IP address (`{{ ip_org_peer }}`) to the first NIC that will be used for the VPN peer. This is *not* the same as the public IP address for your application endpoint. (This public IP may also be used as your management access point, depending on the vendor.)
+  - Assign a private static IP (`{{ ip_org_app_router }}`) to the second NIC on the **adjudication** subnet.
+1. Establish a VPN connection to the clearinghouse's IPSec peer IP (`{{ ip_clearinghouse_peer }}`).
+1. Create a NAT rule to translate your application's public IP address to its private address (`{{ ip_org_app_public }}` :arrow_right: `{{ ip_org_app }}`).
+1. If necessary, create a NAT rule to translate your application's private IP address to its public address (`{{ ip_org_app }}` :arrow_right: `{{ ip_org_app_public }}`). For some routers, this may have been done as part the previous step.
+1. If necessary, create a route to the clearinghouse's public IP over the VPN (`{{ net_clearinghouse_app_public }}` :arrow_right: VPN). For some routers, this route is inferred from the VPN.
 
-You will also need to create an [Azure Route Table](https://learn.microsoft.com/en-us/azure/virtual-network/manage-route-table#create-a-route-table) and associate it with the **adjudication** subnet and any other subnet that needs to access the clearinghouse network. In our example, the route table would contain a route with these properties.
+You will also need to create an [Azure Route Table](https://learn.microsoft.com/en-us/azure/virtual-network/manage-route-table#create-a-route-table) with a route to the NVA and associate it with the **adjudication** subnet and any other subnet that needs to access the clearinghouse network. Without this, our adjudication app will assume that traffic to `{{ net_clearinghouse_app_public }}` should go through the internet. In our example, the route table would contain a route with these properties.
 
 |**Destination type**|IP Addresses|
 |**Destination IP addresses**|{{ net_clearinghouse_app_public }}|
 |**Next hop type**|Virtual appliance|
-|**Next hop address**|{{ ip_org_routing_router }}|
+|**Next hop address**|{{ ip_org_app_router }}|
 
 ## Solution: Azure VPN Gateway + Custom VM Router (Bad Idea)
 
@@ -149,20 +178,21 @@ Create a route table with a route that has the following properties and associat
 |**Next hop type**|Virtual appliance|
 |**Next hop address**|{{ ip_org_routing_router }}|
 
-Create a route table with a route that has the following properties and associate it with your **adjudication** subnet.
+Create a route table with a route that has the following properties and associate it with your **adjudication** subnet. Without this, our adjudication app will assume that traffic to `{{ net_clearinghouse_app_public }}` should go through the internet.
 
 |**Destination type**|IP Addresses|
 |**Destination IP addresses**|{{ net_clearinghouse_app_public }}|
 |**Next hop type**|Virtual appliance|
-|**Next hop address**|{{ ip_org_routing_router }}|
+|**Next hop address**|{{ ip_org_app_router }}|
 
 ### Custom VM Router
 
 The first step is to create a VM. The Linux example here will use Debian, so choose that option unless you're comfortable configuring networking on other distributions.
 
-1. Create your Debian Linux or Windows Server VM with a static private IP address in the **routing** subnet.
+1. Create your Debian Linux or Windows Server VM with a static private IP address (`{{ ip_org_routing_router }}`) in the **routing** subnet.
 1. [Enable IP forwarding](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the NIC for the VM.
-1. [Create a second NIC](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface-vm#add-a-network-interface-to-an-existing-vm) on the VM with a static private IP address in the **adjudication** and then [enable IP forwarding](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the second NIC.
+1. [Create a second NIC](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface-vm#add-a-network-interface-to-an-existing-vm) on the VM with a static private IP address (`{{ ip_org_app_router }}`) in the **adjudication**.
+1. [Enable IP forwarding](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the second NIC.
 
 If this is an existing environment, you likely already have opened up the appropriate SSH or RDP access to your VMs. If not, you can use the [serial console](https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/serial-console-overview) to access the command line of your VMs.
 
