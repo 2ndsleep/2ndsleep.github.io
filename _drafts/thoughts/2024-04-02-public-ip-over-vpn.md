@@ -4,13 +4,6 @@ category: thoughts
 tags: vpn vpn-gateway virtual-network
 toc: true
 ---
-{% comment %}
-SVG: maybe: challenges
-SVG: maybe: high-level with routing
-SVG: NVA
-SVG: custom router VM
-{% endcomment %}
-
 {% assign ip_clearinghouse_peer = 'c.c.p.p' %}
 {% assign ip_org_peer = 'o.o.p.p' %}
 {% assign ip_org_app_public = 'o.o.a.a' %}
@@ -154,6 +147,12 @@ You will also need to create an [Azure Route Table](https://learn.microsoft.com/
 If your company is bordering on bankruptcy and needs to do this on the cheap, you can build your own router using a Linux or Windows VM. If that's your situation, well it's concerning that you're in the healthcare space. But on the other hand, this solution works just fine and I don't see any obvious security risks. It just doesn't feel right. In any case, here's how you do it.
 
 This solution involves two parts: an Azure VPN Gateway and either a Linux or Windows Server VM and the architecture looks like this:
+
+{% capture custom_router_attribution %}
+{% include attribution.html title='house' image_link='https://commons.wikimedia.org/wiki/File:House.svg' author='barretr (Open Clip Art Library)' author_link='http://openclipart.org/media/people/barretr' license='CC0' license_link='https://creativecommons.org/publicdomain/zero/1.0/deed.en' %}
+{% endcapture %}
+
+{% include svg.html path="svg/public-ip-over-vpn-custom-vm.svg" caption="Public IP over VPN custom router VM network design" attribution=custom_router_attribution %}
 
 ### Azure VPN Gateway
 
