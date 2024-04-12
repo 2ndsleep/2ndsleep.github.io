@@ -25,8 +25,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.2795114"
-     inkscape:cx="770.99744"
-     inkscape:cy="143.41412"
+     inkscape:cx="747.55099"
+     inkscape:cy="154.3558"
      inkscape:window-width="1472"
      inkscape:window-height="776"
      inkscape:window-x="73"
@@ -1315,7 +1315,7 @@
          style="font-size:3.52778px;text-align:start;text-anchor:start;stroke-width:0.264583"
          x="205.49374"
          y="87.33844"
-         id="tspan76">thru {{ ip_org_app_router }}</tspan></text>
+         id="tspan76">thru VPN Gateway</tspan></text>
     <g
        id="g62"
        transform="matrix(0.26458333,0,0,0.26458333,83.226992,79.625926)">

@@ -45,7 +45,7 @@ Here's a rapid fire set of concepts to know for the rest of this article.
 
 ### Public IP Addresses to the Rescue
 
-On to the technical problem. Each payer that wants to communicate with the clearinghouse will need some type of network connection. This often will be a site-to-site VPN connection. But when you traditionally think about a corporate site-to-site VPN, you're usually connecting two or more separate private networks that are controlled by the organization. This means you can ensure that each site has a separate private address space that don't overlap. For instance, your small satellite office in San Francisco, CA may have the 192.168.0.0/24 address space whereas your gigantic headquarters in Boerne, TX has the 10.0.0.0/12 address space.
+On to the technical problem. Each payer that wants to communicate with the clearinghouse will need some type of network connection. This often will be a site-to-site VPN connection. But when you traditionally think about a corporate site-to-site VPN, you're usually connecting two or more separate private networks that are controlled by the organization. This means you can ensure that each site has a separate private address space that doesn't overlap. For instance, your small satellite office in San Francisco, CA may have the 192.168.0.0/24 address space whereas your gigantic headquarters in Boerne, TX has the 10.0.0.0/12 address space.
 
 If you're not a network person, there's two types of IPv4 addresses: public and private. Private addresses can be assigned however you want in your private network but cannot be used on the public internet. Since private addresses can be assigned however you want, there's no guarantee that the private address space that the clearinghouse has available will be available on your network. In a perfect world, the clearinghouse would have the same unused private subnet as your organization does. Also, in a perfect world, there would be no disease and we wouldn't need pharmaceutical companies at all, but that's not our reality.
 
@@ -69,7 +69,7 @@ This can be done with native Azure services, but there are some challenges.
 
 The main challenge is that Azure VPN Gateway does not support DNAT. As you recall, the clearinghouse will be sending packets over the VPN to a public IP address. We need to translate that destination public IP address to the private IP address associated with our application, but the VPN Gateway lacks any DNAT feature. If you Google it you may discover that all but the cheapest SKUs support [NAT](https://learn.microsoft.com/en-us/azure/vpn-gateway/nat-overview). But this is only source NAT. Even if the source is translated, the destination will still go to our public IP address.
 
-But hmmm, you think. Maybe you could game the system and route to that public IP through Azure's software-defined networking, you think. (This is more of a thought experiment, so go with me on this one.) Since the packets to our application's public IP can route over the VPN we could assign the public IP to a VM and let it just route that last little bit over the public internet, is your thought. After all, since this will be going from one Azure resource (VPN Gateway) to another Azure resource (VM), it will probably stay within the edge of the Microsoft global network ([cold potato routing](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/routing-preference-overview#routing-via-microsoft-global-network)), such is your thinking.
+But hmmm, you think. Maybe you could game the system and route to that public IP through Azure's software-defined networking, you think. Since the packets to our application's public IP can route over the VPN we could assign the public IP to a VM and let it just route that last little bit over the public internet, is your thought. After all, since this will be going from one Azure resource (VPN Gateway) to another Azure resource (VM), it will probably stay within the edge of the Microsoft global network ([cold potato routing](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/routing-preference-overview#routing-via-microsoft-global-network)), such is your thinking.
 
 Shame on you for such sinful thoughts! That network is still untrusted! But even if your CSO approved such a hairbrained scheme, the Azure VPN Gateway [does not allow internet access](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-p2s-advertise-custom-routes#forced-tunneling), so you can give up on the idea.
 
@@ -86,10 +86,10 @@ There's a handful of ways to tackle this in Azure, including some bad ideas that
 |Adjudication application subnet|private|you|Azure virtual network subnet where your adjudication application instance(s) will live. We'll be calling this the **adjudication** subnet.|{{ net_org_app }}/{{ netmask_org_app }}|
 |Clearinghouse source subnet|public|clearinghouse|Public IP subnet of traffic originating from the clearinghouse.|{{ net_clearinghouse_app_public }}|
 |Routing subnet|private|you|Azure virtual network subnet used by your NVA or custom router. We'll be calling this the **routing** subnet.|{{ net_org_routing }}/{{ netmask_org_routing }}|
-|Router **routing** NIC IP|private|you|Private IP addressed assigned to the NIC in the **routing** subnet of your NVA or custom router. This will be the next-hop for the {{ ip_org_app_public }} address on the route table assigned to the VNet Gateway subnet when using a custom VM router.|{{ ip_org_routing_router }}|
-|Router **adjudication** NIC IP|private|you|Private IP addressed assigned to the NIC in the **adjudication** subnet of your router (does not apply to NVA). This will be the next-hop for the adjudication subnet when using a custom VM router.|{{ ip_org_app_router }}|
+|Router **routing** NIC IP|private|you|Private IP addressed assigned to the NIC in the **routing** subnet of your NVA or custom router. This will be the next-hop to the adjudication public IP address (`{{ ip_org_app_public }}`) on the route table assigned to the Azure VPN Gateway subnet when using a custom VM router.|{{ ip_org_routing_router }}|
+|Router **adjudication** NIC IP|private|you|Private IP addressed assigned to the NIC in the **adjudication** subnet of your router. This will be the next-hop to the clearinghouse network (`{{ net_clearinghouse_app_public }}`) on the route table associated with the adjudication subnet when using an NVA.|{{ ip_org_app_router }}|
 
-You will provision the public IP address for the adjudication public endpoint, but won't actually associate it to an Azure resource. This public IP will be translated to the private IP address of your adjudication private endpoint by a NAT rule inside your NVA, Azure Firewall, or custom router VM. You can acquire this public IP from Azure or from another vendor. If you purchase it from Azure, you simply buy a static public IP resource and then let it sit there. The point is to remove the IP from the global address pool so that it's not used for something else.
+You will provision the public IP address for the adjudication public endpoint but won't actually associate it to an Azure resource. This public IP will be translated to the private IP address of your adjudication private endpoint by a NAT rule inside your NVA or custom router VM. You can acquire this public IP from Azure or from another vendor. If you purchase it from Azure, you simply buy a static public IP resource and then let it sit there. The point is to remove the IP from the global address pool so that it's not used for something else.
 {: .notice--info}
 
 This post assumes that you have two separate subnets defined in your virtual network infrastructure: **adjudication** and **routing**. Furthermore, it is assumed that the adjudication subnet only contains resources related to your adjudication services, such as VMs and load balancers and that your routing subnet is only used for your NVA or custom router VM.
@@ -101,13 +101,13 @@ This is the configuration that will be common to all scenarios.
 
 |Configuration|NVA Solution Implementation|Azure VPN Gateway Implementation|
 |-------------|---------------------------|--------------------------------|
-|Translate adjudication endpoint public IP to private IP|DNAT rule within NVA|Azure Firewall NAT rule, `iptables`, or `NetNat` PowerShell module|
+|Translate adjudication endpoint public IP to private IP|DNAT rule within NVA|`iptables` or `NetNat` PowerShell module|
 |Route to adjudication public endpoint|Static route to VNet subnet within NVA|Route table associated with VPN Gateway subnet|
-|Route to clearinghouse network|Static route to clearinghouse subnet over VPN within NVA **and** route table associated with adjudication application subnet|Route table associated with adjudication application subnet (VPN Gateway should will have implicit route to clearinghouse)|
+|Route to clearinghouse network|Static route to clearinghouse subnet over VPN within NVA **and** route table associated with adjudication application subnet|Route table associated with adjudication application subnet (VPN Gateway should already have implicit route to clearinghouse)|
 
-1. Configure a NAT rule on your network solution to translate your adjudication endpoint's public IP to its private IP.
-1. Configure routing from your VPN to the public IP address of your application. This will be configured within your NVA or as a route table associated with your VPN Gateway subnet. (Some routers may define this route automatically as part of the NAT definition.)
-1. Configure routing from your application to the public subnet of the clearinghouse. This will require a route table associated with the subnet where your adjudication application service lives.
+1. Configure a NAT rule on your network solution to translate your adjudication endpoint's public IP to its private IP (`{{ ip_org_app_public }}` :arrow_right: `{{ ip_org_app }}`).
+1. Configure routing from your VPN to the public IP address of your application (`{{ ip_org_app_public }}`). This will be configured within your NVA or as a route table associated with your VPN Gateway subnet. (Some NVA routers may define this route automatically as part of the NAT definition.)
+1. Configure routing from your application to the public subnet of the clearinghouse (`{{ net_clearinghouse_app_public }}` :arrow_right: VPN). This will require a route table associated with the subnet where your adjudication application service lives.
 1. **Allow access for your adjudication application's port through all appropriate NSGs and/or NVA access rules.** Don't forget about this when troubleshooting any solution your implement!
 
 The adjudication subnet will need a route to the clearinghouse network as will any other applications that need to contact the clearinghouse. The clearinghouse will probably provide an IP address that you can ping for a health probe, so consider any subnets where your probes may live.
@@ -158,7 +158,7 @@ This solution involves two parts: an Azure VPN Gateway and either a Linux or Win
 
 You'll first need a VPN connection betwixt the clearinghouse and the Azure virtual network where your adjudication application lives. I can't provide a step-by-step for this since it will depend on the clearinghouse, but Microsoft has a [tutorial](https://learn.microsoft.com/en-us/azure/vpn-gateway/tutorial-site-to-site-portal) for a site-to-site VPN Gateway connection. This is always the tricky part and will probably involve some back and forth with the clearinghouse technician. You probably won't get it right the first time, so be prepared for this to potentially take a few days to get squared away.
 
-The frustrating thing is that the Azure VPN Gateway lacks real-time [logging](https://learn.microsoft.com/en-us/azure/vpn-gateway/troubleshoot-vpn-with-azure-diagnostics) which makes troubleshooting a slog. Below are my suggestions for items to check. The Azure VPN Gateway resource itself doesn't have a lot of configuration. Most of the settings for the configuration are found on the connection listed in the **Connections** blade of the VPN Gateway resource in the portal. The connection resource will have a link to the associate local network gateway resource that defines certain properties for the clearinghouse's side of the connection.
+The frustrating thing is that the Azure VPN Gateway lacks real-time [logging](https://learn.microsoft.com/en-us/azure/vpn-gateway/troubleshoot-vpn-with-azure-diagnostics) which makes troubleshooting a slog. Below are my suggestions for items to check. The Azure VPN Gateway resource itself doesn't have a lot of configuration. Most of the settings for the configuration are found on the connection listed in the **Connections** blade of the VPN Gateway resource in the portal. The connection resource will have a link to the associated local network gateway resource that defines certain properties for the clearinghouse's side of the connection.
 
 - Check Microsoft's recommended [site-to-site VPN troubleshooting](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-troubleshoot-site-to-site-cannot-connect) list.
 - Ensure that the basic configuration items are correct, like the pre-shared key (PSK) and IPSec peer addresses (yours and the clearinghouse's side).
@@ -181,8 +181,8 @@ Create a route table with a route that has the following properties and associat
 
 |**Destination type**|IP Addresses|
 |**Destination IP addresses**|{{ net_clearinghouse_app_public }}|
-|**Next hop type**|Virtual appliance|
-|**Next hop address**|{{ ip_org_app_router }}|
+|**Next hop type**|Virtual network gateway|
+|**Next hop address**|n/a|
 
 ### Custom VM Router
 
@@ -244,7 +244,7 @@ sudo netfilter-persistent save
 
 #### Windows Server Router
 
-This idea is even worse than the Linux router. The main reason is that Windows isn't designed for sophisticated routing, so the best we can do is translate individual ports. To do this, you have to assign your adjudication application's public IP as an additional IP to the NIC on the routing subnet. The side effect is that, by default, when you ping the adjudication application's public IP address, the Windows Server router will respond. This can be confusing when your troubleshooting. This whole thing is dumb and I hope you don't do it. But here's how.
+This idea is even worse than the Linux router. The main reason is that Windows isn't designed for sophisticated routing, so the best we can do is translate individual ports. To do this, you have to assign your adjudication application's public IP as an additional IP to the NIC on the routing subnet. The side effect is that, by default, when you ping the adjudication application's public IP address, the Windows Server router will respond. This can be confusing when you're troubleshooting. This whole thing is dumb and I hope you don't do it. But here's how.
 
 First, open a PowerShell prompt. Ugh, I don't already like this first step to disable the Windows firewall. Only do this if this is a test server or if you're initially configuring the server. After you get this working, re-enable the firewall with the appropriate holes punched through for your adjudication application.
 
@@ -258,7 +258,7 @@ Next, let's make this VM a router. *This will restart your VM.*
 Add-WindowsFeature RemoteAccess, Routing -IncludeAllSubFeature -IncludeManagementTools -Restart
 ```
 
-Next let's find the names of your NICs so that we can rename them so our next script will run appropriately. Run the following command.
+Next let's find the names of your NICs so that we can rename them to ensure our next script will run appropriately. Run the following command.
 
 ``` powershell
 Get-NetAdapter | Get-NetIPAddress -AddressFamily IPv4
