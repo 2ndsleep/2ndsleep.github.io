@@ -8,15 +8,15 @@ toc: true
 {% assign ip_org_peer = 'o.o.p.p' %}
 {% assign ip_org_app_public = 'o.o.a.a' %}
 {% assign net_clearinghouse_app_public = 'c.c.a.a/x' %}
-{% assign net_org_app = '10.20.0.0' %}
-{% assign ip_org_app = '10.20.0.32' %}
-{% assign ip_org_app_router = '10.20.0.8' %}
+{% assign net_org_app = '10.0.20.0' %}
+{% assign ip_org_app = '10.0.20.32' %}
+{% assign ip_org_app_router = '10.0.20.8' %}
 {% assign netmask_org_app = 24 %}
 {% assign port_org_app = 5000 %}
-{% assign net_org_routing = '10.16.0.0' %}
+{% assign net_org_routing = '10.0.16.0' %}
 {% assign netmask_org_routing = 24 %}
-{% assign ip_org_routing_router = '10.16.0.8' %}
-{% assign ip_org_routing_router_azure_gateway = '10.16.0.1' %}
+{% assign ip_org_routing_router = '10.0.16.8' %}
+{% assign ip_org_routing_router_azure_gateway = '10.0.16.1' %}
 {% assign ip_vyos_vti = '192.168.128.1' %}
 {% assign netmask_vyos_vti = 24 %}
 
@@ -173,7 +173,7 @@ You will need to create two [Azure Route Tables](https://learn.microsoft.com/en-
 Create a route table with a route that has the following properties and associate it with your **GatewaySubnet** subnet. (If you don't remember adding this subnet, you're not crazy. This subnet is created automatically when you create the VPN Gateway.)
 
 |**Destination type**|IP Addresses|
-|**Destination IP addresses**|{{ ip_org_app_public }}|
+|**Destination IP addresses**|{{ ip_org_app_public }}/32|
 |**Next hop type**|Virtual appliance|
 |**Next hop address**|{{ ip_org_routing_router }}|
 
@@ -323,17 +323,35 @@ Download a free [nightly build](https://vyos.org/get/) of VyOS and [install](htt
 
 Back at my physical router, I created a DHCP reservation for my VM to make the rest of this a little easier.
 
-After your VM restarts, log into VyOS and go to configuration mode.
+After your VM restarts, log into the VyOS and check the name of your NIC. If it's different than `eth0`, use that value in place of `eth0`.
+
+``` shell
+show interfaces
+```
+
+Now go to configuration mode.
 
 ``` shell
 configure
 ```
+
+I strongly suggest you [change your password](https://docs.vyos.io/en/latest/configuration/system/login.html#local) at this point.
+{: .notice--info}
+
+At any point in the rest of this procedure, you can make your changes take effect by using `commit` command and save the changes to disk to preserve your changes after a reboot with the `save` command.
+{: .notice--info}
 
 Configure your NIC to use DHCP.
 
 ``` shell
 set interfaces ethernet eth0 address dhcp
 set interfaces ethernet eth0 description Public
+```
+
+Optionally, set the DNS server in case you need to resolve an internet name. This will probably be the same DNS server that your VM host uses.
+
+``` shell
+set system name-server <IP of your home/business router DNS server>
 ```
 
 Create a virtual tunnel interface (VTI). This is required to create a route-based VPN. The IP address can be any private IP that is not being used.
@@ -348,27 +366,27 @@ Create your phase 1 and 2 configurations. Each of these groups will be named `az
 ``` shell
 set vpn ipsec ike-group azure dead-peer-detection action restart
 set vpn ipsec ike-group azure dead-peer-detection interval 15
-set vpn ipsec ike-group azure dead-peer-detection timeout 30
+set vpn ipsec ike-group azure dead-peer-detection timeout 45
 set vpn ipsec ike-group azure ikev2-reauth
 set vpn ipsec ike-group azure key-exchange ikev2
 set vpn ipsec ike-group azure lifetime 28800
 set vpn ipsec ike-group azure proposal 1 dh-group 2
 set vpn ipsec ike-group azure proposal 1 encryption aes256
-set vpn ipsec ike-group azure proposal 1 hash sha1
+set vpn ipsec ike-group azure proposal 1 hash sha256
 
-set vpn ipsec esp-group azure lifetime 3600
+set vpn ipsec esp-group azure lifetime 27000
 set vpn ipsec esp-group azure mode tunnel
 set vpn ipsec esp-group azure pfs dh-group2
 set vpn ipsec esp-group azure proposal 1 encryption aes256
-set vpn ipsec esp-group azure proposal 1 hash sha1
+set vpn ipsec esp-group azure proposal 1 hash sha256
 ```
 
 Enable IPSec on `eth0`.
 
 ``` shell
 set vpn ipsec interface eth0
-set vpn ipsec interface options disable-route-autoinstall
-set vpn ipsec interface options interface eth0
+set vpn ipsec options disable-route-autoinstall
+set vpn ipsec options interface eth0
 ```
 
 Configure authentication settings.
@@ -415,6 +433,9 @@ Commit and save your changes.
 commit
 save
 ```
+
+If this is the first time you've committed your changes, you may see a message about the vti interface not existing. You can ignore that.
+{: .notice--info}
 
 Try to ping the private IP of either your NVA or custom router. It may take several seconds for the VPN to come up if this is the first time you're sending traffic over it.
 
