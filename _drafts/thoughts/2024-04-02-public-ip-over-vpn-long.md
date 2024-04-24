@@ -9,6 +9,7 @@ toc: true
 {% assign ip_org_app_public = 'o.o.a.a' %}
 {% assign net_clearinghouse_app_public = 'c.c.a.a/x' %}
 {% assign net_org_app = '10.0.20.0' %}
+{% assign ip_org_app_router_azure_gateway = '10.0.16.1' %}
 {% assign ip_org_app = '10.0.20.32' %}
 {% assign ip_org_app_router = '10.0.20.8' %}
 {% assign netmask_org_app = 24 %}
