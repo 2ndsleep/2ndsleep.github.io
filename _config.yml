@@ -19,6 +19,9 @@ author:
     - label: "GitHub"
       icon: "fa-brands fa-github"
       url: "https://github.com/2ndsleep"
+    - label: "info@secondsleep.io"
+      icon: "fa-solid fa-envelope"
+      url: "mailto:info@secondsleep.io"
 analytics:
   provider: "google-gtag"
   google:
