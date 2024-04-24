@@ -12,6 +12,13 @@ author:
   name: "Blaine Perry"
   location: "Asheville, NC"
   bio: "Cloud architect with an irrational affinity for Azure"
+  links:
+    - label: "LinkedIn"
+      icon: "fa-brands fa-linkedin"
+      url: "https://www.linkedin.com/in/blaine-perry-second-sleep"
+    - label: "GitHub"
+      icon: "fa-brands fa-github"
+      url: "https://github.com/2ndsleep"
 analytics:
   provider: "google-gtag"
   google:
