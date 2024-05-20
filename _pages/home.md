@@ -63,6 +63,10 @@ Each business is different and requires a different approach. You have options w
 
 {% include feature_row id="work_style" type="right" %}
 
+# Ready to Get Started?
+
+Second Sleep isn't a one-size-fits-all shop. We tailor our services for each customer. Contact us at [info@secondsleep.io](mailto:info@secondsleep.io) to find out what we can do for you.
+
 # Services
 
 Here is a non-exhaustive list of services we provide.
