@@ -210,6 +210,7 @@ Now we want to commit our changes, so type the following message into the messag
 Okay, you've committed everything locally. This is normally where you would see a button that says **Sync Changes 1 ⬆**. However, since I told you not to include a *.gitignore* or *README.md* file when you created the repo, GitHub had no initial files and didn't bother creating a branch. However, as soon as you committed files locally, Git created a local branch named **main**. Now you have a local branch named main but no corresponding branch in GitHub so Git is confused. Luckily, there is an easy fix which is to run this command.
 
 ``` shell
+# Make sure you're in the {{ site.data.fake.web_public_repo }} repo first!
 git branch --unset-upstream
 ```
 

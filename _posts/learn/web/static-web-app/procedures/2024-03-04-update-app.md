@@ -230,7 +230,6 @@ Now delete your local {{ site.data.web.static_web_app_basic.update_branch_name }
 ``` shell
 git branch -D {{ site.data.web.static_web_app_basic.update_branch_name }}
 ```
-certificate 
 
 Git will tell you the branch was deleted:
 
