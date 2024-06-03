@@ -76,7 +76,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.9.0"
+      version = "~> 3.95"
     }
   }
 
@@ -102,7 +102,7 @@ Start a terminal in VS Code (**View > Terminal** or `` Ctrl+` ``) and `cd` into 
 terraform init
 ```
 
-{% include figure image_path="/assets/images/posts/vscode-swa-terraform-init.png" caption="Your VS Code instance should look like this so far." alt="VS Code terraform init command" %}
+{% include figure image_path="/assets/images/posts/vscode-swa-terraform-init.png" caption="Your VS Code instance should look like this so far. If you're wondering what all those `export` statements are, you probably skipped step 3 in the [Configure Authentication](#configure-authentication) section." alt="VS Code terraform init command" %}
 
 You'll see something similar to the following output.
 
@@ -110,9 +110,9 @@ You'll see something similar to the following output.
 Initializing the backend...
 
 Initializing provider plugins...
-- Finding hashicorp/azurerm versions matching "~> 3.9.0"...
-- Installing hashicorp/azurerm v3.9.0...
-- Installed hashicorp/azurerm v3.9.0 (signed by HashiCorp)
+- Finding hashicorp/azurerm versions matching "~> 3.95"...
+- Installing hashicorp/azurerm v3.106.1...
+- Installed hashicorp/azurerm v3.106.1 (signed by HashiCorp)
 
 Terraform has created a lock file .terraform.lock.hcl to record the provider
 selections it made above. Include this file in your version control repository
@@ -180,7 +180,7 @@ Terraform will perform the following actions:
   # azurerm_resource_group.public_site will be created
   + resource "azurerm_resource_group" "public_site" {
       + id       = (known after apply)
-      + location = "eastus2"
+      + location = "{{ site.data.web.static_web_app_basic.location }}"
       + name     = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
     }
 
@@ -206,7 +206,7 @@ Terraform will perform the following actions:
   # azurerm_resource_group.public_site will be created
   + resource "azurerm_resource_group" "public_site" {
       + id       = (known after apply)
-      + location = "eastus2"
+      + location = "{{ site.data.web.static_web_app_basic.location }}"
       + name     = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
     }
 
@@ -244,7 +244,7 @@ You should see your new resource group in the Azure portal within the next coupl
 Now we're going to add the definition for our Static Web App and run the Terraform commands all over again. Add this to your *main.tf* file:
 
 ``` terraform
-resource "azurerm_static_site" "public_site" {
+resource "azurerm_static_web_app" "public_site" {
   name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
   resource_group_name = azurerm_resource_group.public_site.name
   location = azurerm_resource_group.public_site.location
@@ -264,7 +264,7 @@ resource "azurerm_resource_group" "public_site" {
   location = "East US 2"
 }
 
-resource "azurerm_static_site" "public_site" {
+resource "azurerm_static_web_app" "public_site" {
   name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
   resource_group_name = azurerm_resource_group.public_site.name
   location = azurerm_resource_group.public_site.location
@@ -285,16 +285,18 @@ Terraform used the selected providers to generate the following execution plan. 
 
 Terraform will perform the following actions:
 
-  # azurerm_static_site.public_site will be created
-  + resource "azurerm_static_site" "public_site" {
-      + api_key             = (known after apply)
-      + default_host_name   = (known after apply)
-      + id                  = (known after apply)
-      + location            = "eastus2"
-      + name                = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
-      + resource_group_name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
-      + sku_size            = "Free"
-      + sku_tier            = "Free"
+  # azurerm_static_web_app.public_site will be created
+  + resource "azurerm_static_web_app" "public_site" {
+      + api_key                            = (sensitive value)
+      + configuration_file_changes_enabled = true
+      + default_host_name                  = (known after apply)
+      + id                                 = (known after apply)
+      + location                           = "{{ site.data.web.static_web_app_basic.location }}"
+      + name                               = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
+      + preview_environments_enabled       = true
+      + resource_group_name                = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
+      + sku_size                           = "Free"
+      + sku_tier                           = "Free"
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -314,16 +316,18 @@ Terraform used the selected providers to generate the following execution plan. 
 
 Terraform will perform the following actions:
 
-  # azurerm_static_site.public_site will be created
-  + resource "azurerm_static_site" "public_site" {
-      + api_key             = (known after apply)
-      + default_host_name   = (known after apply)
-      + id                  = (known after apply)
-      + location            = "eastus2"
-      + name                = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
-      + resource_group_name = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
-      + sku_size            = "Free"
-      + sku_tier            = "Free"
+  # azurerm_static_web_app.public_site will be created
+  + resource "azurerm_static_web_app" "public_site" {
+      + api_key                            = (sensitive value)
+      + configuration_file_changes_enabled = true
+      + default_host_name                  = (known after apply)
+      + id                                 = (known after apply)
+      + location                           = "{{ site.data.web.static_web_app_basic.location }}"
+      + name                               = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
+      + preview_environments_enabled       = true
+      + resource_group_name                = "{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1"
+      + sku_size                           = "Free"
+      + sku_tier                           = "Free"
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -334,13 +338,13 @@ Do you want to perform these actions?
 
   Enter a value: yes
 
-azurerm_static_site.public_site: Creating...
-azurerm_static_site.public_site: Creation complete after 2s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
+azurerm_static_web_app.public_site: Creating...
+azurerm_static_web_app.public_site: Creation complete after 2s [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 {% endhighlight  %}
 
-Draw your attention to the penultimate line: `azurerm_static_site.public_site: Creation complete after 2s`. Completed after two seconds! That's way less time than it would take to type and click this all in the portal. Arguably it took more time to create the Terraform code, but consider if you had to deploy this another ten times. Now that you have the Terraform code, you only have to change the resource group name and/or the Static Web App resource name.
+Draw your attention to the penultimate line: `azurerm_static_web_app.public_site: Creation complete after 2s`. Completed after two seconds! That's way less time than it would take to type and click this all in the portal. Arguably it took more time to create the Terraform code, but consider if you had to deploy this another ten times. Now that you have the Terraform code, you only have to change the resource group name and/or the Static Web App resource name.
 {: .notice--info}
 
 {% include figure image_path="/assets/images/posts/portal-resource-group-swa-resource.png" caption="Click on your resource group to see the new Static Web App resource you created." alt="Static Web App resource inside resource group" %}
@@ -380,13 +384,13 @@ Terraform can [output values](https://developer.hashicorp.com/terraform/language
 
 ``` terraform
 output "static_site_hostname" {
-  value = azurerm_static_site.public_site.default_host_name
+  value = azurerm_static_web_app.public_site.default_host_name
 }
 ```
 
 {% highlight output %}
 azurerm_resource_group.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
-azurerm_static_site.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
+azurerm_static_web_app.public_site: Refreshing state... [id=/subscriptions/{{ site.data.fake.subscription_guid }}/resourceGroups/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1/providers/Microsoft.Web/staticSites/{{ site.data.fake.company_code }}-{{ site.data.web.static_web_app_basic.workload }}-prd-1]
 
 Changes to Outputs:
   + static_site_hostname = "{{ site.data.web.static_web_app_basic.swa_url }}"
