@@ -16,7 +16,27 @@ This is pretty easy, but there's a little wrinkle with updating the **azurerm** 
 
 ### I Can Admit My Mistakes
 
-First, I screwed up a bit. On line 5 of the [*base.tf*]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}#{{ 'Terraform Settings' | slugify }}) file, I said to specify the provider version as `~> 3.9.0`. That is a mistake. At the time that I published my original post, the newest release of the azurerm Terraform provider was [3.93.0](https://registry.terraform.io/providers/hashicorp/azurerm/3.93.0/docs). My stupid brain was thinking "we need at least version 3.90," but the code I used says "we need the most recent version of 3.9.x but less than 3.10."
+First, I screwed up a bit. On line 5 of the [*base.tf*]({% post_url /learn/web/static-web-app/procedures/2024-02-28-swa-terraform %}#{{ 'Terraform Settings' | slugify }}) file, I said to specify the provider version as `~> 3.9.0`. That is a mistake.
+
+{% highlight terraform linenos %}
+# Original INCORRECT azurerm provider version.
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.9.0"
+    }
+  }
+
+  required_version = ">= 0.12"
+}
+
+provider "azurerm" {
+  features {}
+}
+{% endhighlight %}
+
+At the time that I published my original post, the newest release of the azurerm Terraform provider was [3.93.0](https://registry.terraform.io/providers/hashicorp/azurerm/3.93.0/docs). My stupid brain was thinking "we need at least version 3.90," but the code I used says "we need the most recent version of 3.9.x but less than 3.10."
 
 This is stupid for two reasons. One is that I messed up the syntax like I mentioned (let's get over that, okay??). Secondly is that there is nothing special about version 3.90 that I was interested in, so I honestly don't know what I was thinking. Either way, let's talk about how to fix that.
 
