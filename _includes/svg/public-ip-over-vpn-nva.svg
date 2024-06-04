@@ -25,12 +25,12 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.8581785"
-     inkscape:cx="779.25776"
-     inkscape:cy="224.6824"
+     inkscape:cx="627.49623"
+     inkscape:cy="273.11693"
      inkscape:window-width="1472"
      inkscape:window-height="776"
-     inkscape:window-x="1947"
-     inkscape:window-y="93"
+     inkscape:window-x="171"
+     inkscape:window-y="107"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -904,17 +904,17 @@
     <text
        xml:space="preserve"
        style="font-size:3.52777px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
-       x="151.98848"
+       x="155.16344"
        y="51.245335"
        id="text28"><tspan
          sodipodi:role="line"
          id="tspan27"
          style="stroke-width:0.264583"
-         x="151.98848"
+         x="155.16344"
          y="51.245335">adjudication subnet IP:</tspan><tspan
          sodipodi:role="line"
          style="stroke-width:0.264583"
-         x="151.98848"
+         x="155.16344"
          y="55.655048"
          id="tspan28">{{ ip_org_app_router }}</tspan></text>
     <g
@@ -959,17 +959,17 @@
     <text
        xml:space="preserve"
        style="font-size:3.52777px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:0.264583"
-       x="98.620415"
+       x="97.032913"
        y="51.245335"
        id="text8"><tspan
          sodipodi:role="line"
          id="tspan1"
          style="stroke-width:0.264583"
-         x="98.620415"
+         x="97.032913"
          y="51.245335">routing subnet IP:</tspan><tspan
          sodipodi:role="line"
          style="stroke-width:0.264583"
-         x="98.620415"
+         x="97.032913"
          y="55.655048"
          id="tspan8">{{ ip_org_routing_router }}</tspan></text>
     <path
