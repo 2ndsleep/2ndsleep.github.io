@@ -6,10 +6,10 @@ toc: true
 ---
 {% assign ip_clearinghouse_peer = 'c.c.p.p' %}
 {% assign ip_org_peer = 'o.o.p.p' %}
-{% assign ip_org_app_public = 'o.o.a.a' %}
-{% assign net_org_app_public = 'o.o.a.0/29' %}
-{% assign ip_org_app_public_azure_gateway = 'o.o.a.1' %}
-{% assign net_clearinghouse_app_public = 'c.c.a.a/x' %}
+{% assign ip_org_app_public = '203.0.113.83' %}
+{% assign net_org_app_public = '203.0.113.80/29' %}
+{% assign ip_org_app_public_azure_gateway = '203.0.113.81' %}
+{% assign net_clearinghouse_app_public = '198.51.100.0/25' %}
 {% assign net_org_app = '10.0.20.0' %}
 {% assign ip_org_app_router_azure_gateway = '10.0.16.1' %}
 {% assign ip_org_app = '10.0.20.32' %}
