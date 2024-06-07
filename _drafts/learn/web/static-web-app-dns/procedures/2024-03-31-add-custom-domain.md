@@ -113,9 +113,6 @@ The syntax for passing a command line is a little funky and gets funkier when th
 
 ### Variable Definition File
 
-Here's 
-**scramoose.tfvars**
-
 ``` terraform
-www_domain_name = "www.scramoose.dev"
+www_domain_name = "{{ fqdn }}"
 ```
