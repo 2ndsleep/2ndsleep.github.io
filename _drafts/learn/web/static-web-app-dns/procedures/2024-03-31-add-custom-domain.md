@@ -3,6 +3,9 @@ title: Add Custom www Domain
 categories: web static-web-app-custom-domain procedure
 sort_order: 6
 description: Let's use a real URL instead of stupid one.
+repos:
+  - alias: infrastructure_repo
+    tag: web/static-web-app/new-terraform-resource
 ---
 {% assign fqdn = 'www.' | append: site.data.fake.company_domain %}
 
