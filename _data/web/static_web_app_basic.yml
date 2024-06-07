@@ -3,3 +3,4 @@ workload: webpub
 swa_url: delightful-rock-088a1930f.5.azurestaticapps.net
 update_branch_name: solicit-investors
 location: eastus2
+final_infra_repo_tag: web/static-web-app/new-terraform-resource
