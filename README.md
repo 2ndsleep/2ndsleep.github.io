@@ -116,6 +116,25 @@ The simplest way to make changes is to set custom values for variables in the [*
 
 The [*minimal-mistakes-overrides.scss*](/_sass/minimal-mistakes-overrides.scss) is imported after the theme SASS is imported. You can specify SASS content that will take precedence over the theme's SASS.
 
+### Get Code Banner
+
+To add a banner at the top of a post to show where a visitor can download the code sample, add the following `repos` Front Matter. For each repo, a link to the GitHub tag page and a `git clone` command will be added. There will also be a link to a post that has more information about downloading the tagged repository.
+
+``` yaml
+repos:
+  - alias: infrastructure_repo
+    tag: web/static-web-app/new-terraform-resource
+  - alias: sample-code
+    tag: sometag
+    github_org: anotherorg
+```
+
+|Property|Required|Description|
+|--------|--------|-----------|
+|`alias`|:heavy_check_mark:|The alias of repository from the [fake.yml](_data/fake.yml) data file. If not found, the value of the alias is used.|
+|`tag`|:heavy_check_mark:|The tag name that defines this |
+|`github_org`||Specify the GitHub organization name if this isn't a 2ndsleep repository.|
+
 ### Render Folder Structure
 
 Use the [*filesystem.html*](/_includes/filesystem.html) include to render a folder structure with file/folder emojis. This include requires the folder structure to defined by Front Matter on the page, as so:
@@ -176,13 +195,13 @@ You can include image attribution using the *attribution.html* include, which su
 
 |Parameter|Required|Description|
 |---------|--------|-----------|
-|title|Yes|Name or title of the image|
-|image_link|No|Link to the image file|
-|quote_title|No|If this is [truthy](https://shopify.github.io/liquid/basics/truthy-and-falsy/), the title is surrounded by quotes|
-|author|Yes|Name of the author|
-|author_link|No|Link to author profile|
-|license|Yes|Name of the image's license|
-|license_link|Yes|Link to license|
+|title|:heavy_check_mark:|Name or title of the image|
+|image_link||Link to the image file|
+|quote_title||If this is [truthy](https://shopify.github.io/liquid/basics/truthy-and-falsy/), the title is surrounded by quotes|
+|author|:heavy_check_mark:|Name of the author|
+|author_link||Link to author profile|
+|license|:heavy_check_mark:|Name of the image's license|
+|license_link|:heavy_check_mark:|Link to license|
 
 This include can be captured to a variable that can then be used to pass to the caption for the image. The *svg.html* include has the `attribution` parameter (see [SVG Drawings](#svg-drawings)). For the [*figure*](https://mmistakes.github.io/minimal-mistakes/docs/helpers/#figure) include, you will need to add the attribution to the `caption` parameter.
 

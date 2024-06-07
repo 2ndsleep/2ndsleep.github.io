@@ -1,0 +1,13 @@
+{% if include.repos.size > 0 %}
+  <p class="notice--success">
+  {% for repo in include.repos %}
+    {% assign repo_url = repo.github_org | default: '2ndsleep' | prepend: 'https://github.com/' %}
+    {% assign repo_name = site.data.fake[repo.alias] | default: repo.alias %}
+    {% if forloop.first %}<i class="fa-brands fa-github"></i> Follow along by getting the code from the {% if forloop.length == 1 %}<strong>{{ repo_name }}</strong> repo{% else %}repos{% endif %}. <a href="{% post_url /thoughts/2024-06-05-copy-repo %}"><small>help</small></a>{% endif %}<br />
+    {% if forloop.length > 1 %}<strong>{{ repo_name }}</strong>{% endif %}<br />
+    <a href="{{ repo_url }}/{{ repo_name }}/releases/tag/{{ repo.tag | url_encode }}" class="btn btn--success">Download</a><br />
+    &nbsp;&nbsp;<em><small>-or-</small></em><br />
+    <code class="language-plaintext highlighter-rouge">git clone {{ repo_url }}/{{ repo_name }} --branch {{ repo.tag }}</code><br />
+  {% endfor %}
+  </p>
+{% endif %}
