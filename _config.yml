@@ -43,8 +43,8 @@ include: ["_pages"]
 footer:
   since: "2023"
   links:
-    - label: "Privacy Policy"
-      url: "/privacy"
+    - label: "SMS Terms of Use"
+      url: "/sms-terms"
 
 breadcrumbs: true
 breadcrumb_home_url: /learn
